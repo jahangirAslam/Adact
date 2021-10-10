@@ -1,0 +1,88 @@
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
+import Cookies from "js-cookie";
+
+import { REQUEST_ACTIONS } from "@consts/actionTypes"
+import { login } from "./requests";
+
+// Define a name for slice
+const sliceName = "auth";
+
+// Define the initial state using that type
+const initialState = {
+    loaderState: REQUEST_ACTIONS.REQUEST_IDLE,
+    errors: [],
+    signup: null,
+    forgetpassword: null,
+    authUser: JSON.parse(localStorage.getItem("user")),
+}
+
+export const signinUser = createAsyncThunk(
+    `${sliceName}/signinUser`,
+    async (auth, thunkApi) => {
+        const res = await login(auth);
+
+        // Login logic and error handling
+
+        localStorage.setItem("user", JSON.stringify(res.body.user));
+        Cookies.set("token", res.body.token); // Set this to cookies
+        return res.body;
+    }
+);
+
+
+export const authSlice = createSlice({
+    name: sliceName,
+    initialState,
+    reducers: {
+        logout: (state, action) => {
+            localStorage.clear();
+            Cookies.remove("token");
+            Cookies.remove("refreshtoken");
+
+            return {
+                ...initialState,
+                authUser: null,
+            };
+        },
+        signupUser: (state, action) => {
+            return {
+                ...initialState,
+                signup: action.payload,
+            };
+        },
+        forgetPassword: (state, action) => {
+            return {
+                ...initialState,
+                forgetpassword: action.payload,
+            };
+        }
+    },
+    extraReducers: (builder) => {
+        builder.addCase(signinUser.pending, (state, action) => {
+            localStorage.removeItem("user");
+            Cookies.remove("token");
+            return {
+                ...initialState,
+                loaderState: REQUEST_ACTIONS.REQUEST_PENDING,
+            };
+        });
+        builder.addCase(signinUser.fulfilled, (state, action) => {
+            return {
+                ...initialState,
+                loaderState: REQUEST_ACTIONS.REQUEST_SUCCESS,
+                errors: [],
+                authUser: action.payload.user
+            };
+        });
+        builder.addCase(signinUser.rejected, (state, action) => {
+            return {
+                ...initialState,
+                loaderState: REQUEST_ACTIONS.REQUEST_ERROR,
+                errors: action.payload
+            };
+        });
+    }
+});
+
+export default authSlice.reducer;
+export const { signupUser, forgetPassword, logout } = authSlice.actions;

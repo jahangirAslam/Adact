@@ -1,10 +1,14 @@
-import thunk from 'redux-thunk'
-import createDebounce from 'redux-debounced'
+import { configureStore, combineReducers } from '@reduxjs/toolkit'
+import { createBrowserHistory } from 'history';
+import { routerMiddleware, connectRouter } from "connected-react-router";
 import rootReducer from './rootReducer'
-import { createStore, applyMiddleware, compose } from 'redux'
 
-const middleware = [thunk, createDebounce()]
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
+export const history = createBrowserHistory();
+const routeMiddleware = routerMiddleware(history);
 
-const store = createStore(rootReducer, {}, composeEnhancers(applyMiddleware(...middleware)))
+const store = configureStore({
+    reducer: combineReducers({ router: connectRouter(history), ...rootReducer }),
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(routeMiddleware),
+})
+
 export default store

@@ -1,13 +1,7 @@
-import { combineReducers } from "redux";
+import authReducer from "@mods/userManagement/auth/authSlice";
 
-import calendarReducer from "./calendar/calendarReducer";
-import contactReducer from "./contact/contactReducer";
-import ecommerceReducer from "./ecommerce/ecommerceReducer";
+const reducer = {
+  auth: authReducer,
+}
 
-const rootReducer = combineReducers({
-  calendar: calendarReducer,
-  contact: contactReducer,
-  ecommerce: ecommerceReducer,
-});
-
-export default rootReducer;
+export default reducer;
