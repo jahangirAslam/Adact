@@ -10,10 +10,7 @@ import {
     Bookmark,
 } from "react-iconly";
 
-const pages = [
-    {
-        header: "PAGES",
-    },
+const navigation = [
     {
         id: "errors",
         title: "Error Pages",
@@ -22,37 +19,37 @@ const pages = [
             {
                 id: "error-404",
                 title: "404",
-                navLink: "/pages/error-404",
+                uri: "/error-404",
             },
             {
                 id: "error-403",
                 title: "403",
-                navLink: "/pages/error-403",
+                uri: "/error-403",
             },
             {
                 id: "error-500",
                 title: "500",
-                navLink: "/pages/error-500",
+                uri: "/error-500",
             },
             {
                 id: "error-503",
                 title: "503",
-                navLink: "/pages/error-503",
+                uri: "/error-503",
             },
             {
                 id: "error-502",
                 title: "502",
-                navLink: "/pages/error-502",
+                uri: "/error-502",
             },
             {
                 id: "maintenance",
                 title: "Maintenance",
-                navLink: "/pages/maintenance",
+                uri: "/maintenance",
             },
             {
                 id: "comming-soon",
                 title: "Coming Soon",
-                navLink: "/pages/coming-soon",
+                uri: "/coming-soon",
             },
         ],
     },
@@ -60,26 +57,26 @@ const pages = [
         id: "pricing",
         title: "Pricing",
         icon: <Discount set="curved" className="remix-icon" />,
-        navLink: "/pages/pricing",
+        uri: "/pricing",
     },
     {
         id: "profile",
         title: "Profile",
         icon: <User set="curved" className="remix-icon" />,
-        navLink: "/pages/profile/personel-information",
+        uri: "/profile/personel-information",
     },
     {
         id: "invoice",
         title: "Invoice",
         icon: <Paper set="curved" className="remix-icon" />,
-        navLink: "/pages/invoice",
+        uri: "/invoice",
     },
 
     {
         id: "faq",
         title: "FAQ",
         icon: <InfoSquare set="curved" className="remix-icon" />,
-        navLink: "/pages/faq",
+        uri: "/faq",
     },
     {
         id: "knowledge-base",
@@ -89,12 +86,12 @@ const pages = [
             {
                 id: "knowledge-base-1",
                 title: "Knowledge Base 1",
-                navLink: "/pages/knowledge-base/knowledge-base-1",
+                uri: "/knowledge-base/knowledge-base-1",
             },
             {
                 id: "knowledge-base-2",
                 title: "Knowledge Base 2",
-                navLink: "/pages/knowledge-base/knowledge-base-2",
+                uri: "/knowledge-base/knowledge-base-2",
             },
         ],
     },
@@ -102,7 +99,7 @@ const pages = [
         id: "blank-page",
         title: "Blank Page",
         icon: <PaperPlus set="curved" className="remix-icon" />,
-        navLink: "/pages/blank-page",
+        uri: "/blank-page",
     },
     {
         id: "authentication",
@@ -112,22 +109,22 @@ const pages = [
             {
                 id: "login-page",
                 title: "Login Page",
-                navLink: "/pages/authentication/login",
+                uri: "/authentication/login",
             },
             {
                 id: "register-page",
                 title: "Register Page",
-                navLink: "/pages/authentication/register",
+                uri: "/authentication/register",
             },
             {
                 id: "recover-password",
                 title: "Receover Password",
-                navLink: "/pages/authentication/recover-password",
+                uri: "/authentication/recover-password",
             },
             {
                 id: "reset-password",
                 title: "Reset Password",
-                navLink: "/pages/authentication/reset-password",
+                uri: "/authentication/reset-password",
             },
         ],
     },
@@ -139,25 +136,25 @@ const pages = [
             {
                 id: "welcome",
                 title: "Welcome",
-                navLink: "/pages/welcome",
+                uri: "/welcome",
             },
             {
                 id: "password-is-changed",
                 title: "Password Is Changed",
-                navLink: "/pages/password-is-changed",
+                uri: "/password-is-changed",
             },
             {
                 id: "deactivated",
                 title: "Deactivated",
-                navLink: "/pages/deactivated",
+                uri: "/deactivated",
             },
             {
                 id: "lock",
                 title: "Lock",
-                navLink: "/pages/lock",
+                uri: "/lock",
             },
         ],
     },
 ];
 
-export default pages
+export default navigation

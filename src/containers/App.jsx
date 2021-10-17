@@ -4,7 +4,7 @@ import MainApp from "./Main";
 import AuthApp from "@mods/userManagement/auth/routes";
 
 const App = () => {
-  const authUser = useSelector((state) => state.auth);
+  const authUser = useSelector((state) => state.auth.authUser);
 
   return (
     authUser && authUser.id ? MainApp() : AuthApp()

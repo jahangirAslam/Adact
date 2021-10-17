@@ -4,16 +4,15 @@ import Cookies from "js-cookie";
 import { REQUEST_ACTIONS } from "@consts/actionTypes"
 import { login } from "./requests";
 
+import avatarImg from "../../../assets/images/memoji/memoji-1.png";
+
 // Define a name for slice
 const sliceName = "auth";
 
 // Define the initial state using that type
 const initialState = {
     loaderState: REQUEST_ACTIONS.REQUEST_IDLE,
-    errors: [],
-    signup: null,
-    forgetpassword: null,
-    authUser: JSON.parse(localStorage.getItem("user")),
+    authUser: JSON.parse(localStorage.getItem("user")) || { profile_url: avatarImg },
 }
 
 export const signinUser = createAsyncThunk(
@@ -44,18 +43,6 @@ export const authSlice = createSlice({
                 authUser: null,
             };
         },
-        signupUser: (state, action) => {
-            return {
-                ...initialState,
-                signup: action.payload,
-            };
-        },
-        forgetPassword: (state, action) => {
-            return {
-                ...initialState,
-                forgetpassword: action.payload,
-            };
-        }
     },
     extraReducers: (builder) => {
         builder.addCase(signinUser.pending, (state, action) => {
@@ -85,4 +72,4 @@ export const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const { signupUser, forgetPassword, logout } = authSlice.actions;
+export const { logout } = authSlice.actions;
