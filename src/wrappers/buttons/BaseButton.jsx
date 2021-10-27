@@ -1,6 +1,6 @@
 import { Button } from "antd";
 import { LoadingOutlined, CheckOutlined, CloseOutlined, StopOutlined } from '@ant-design/icons';
-import { REQUEST_ACTIONS } from "@consts/ActionTypes";
+import { REQUEST_ACTIONS } from "@consts/actionTypes";
 
 
 const BaseButton = (props) => {

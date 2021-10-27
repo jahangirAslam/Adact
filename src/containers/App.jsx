@@ -7,7 +7,7 @@ const App = () => {
   const authUser = useSelector((state) => state.auth.authUser);
 
   return (
-    authUser && authUser.id ? MainApp() : AuthApp()
+    authUser && authUser.id ? <MainApp /> : <AuthApp />
   );
 
 }

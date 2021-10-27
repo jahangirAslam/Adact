@@ -1,5 +1,11 @@
 import { post } from "@utils/axios";
 
 export const login = (payload) => {
-    return post("auth/login", payload, false);
+    return post("login", payload, false);
+}
+export const forget = (payload) => {
+    return post("forgot-password", payload, false);
+}
+export const reset = (payload) => {
+    return post("reset-password", payload, false);
 }

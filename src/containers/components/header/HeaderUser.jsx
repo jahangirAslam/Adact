@@ -1,12 +1,18 @@
 import React from "react";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 import { Menu, Dropdown, Col, Avatar } from "antd";
 import { User, Logout } from "react-iconly";
-
+import { logout as logoutAction } from "@mods/userManagement/auth/authSlice";
 
 export default function HeaderUser() {
+  const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authUser);
+
+  const logout = () => {
+      dispatch({type:logoutAction.type});
+  }
+
 
   const menu = (
     <Menu>
@@ -23,6 +29,7 @@ export default function HeaderUser() {
       </Menu.Item>
 
       <Menu.Item
+        onClick={logout}
         icon={
           <Logout
             set="curved"
