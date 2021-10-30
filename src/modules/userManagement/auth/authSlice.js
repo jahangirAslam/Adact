@@ -1,8 +1,8 @@
-import {createSlice, createAsyncThunk} from '@reduxjs/toolkit'
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from "js-cookie";
 
-import {REQUEST_ACTIONS} from "@consts/actionTypes"
-import {login} from "./requests";
+import { REQUEST_ACTIONS } from "@consts/actionTypes"
+import { login } from "./requests";
 
 import avatarImg from "../../../assets/images/memoji/memoji-1.png";
 
@@ -11,8 +11,9 @@ const sliceName = "auth";
 
 // Define the initial state using that type
 const initialState = {
+    errors: [],
     loaderState: REQUEST_ACTIONS.REQUEST_IDLE,
-    authUser: JSON.parse(localStorage.getItem("user")) || {profile_url: avatarImg},
+    authUser: JSON.parse(localStorage.getItem("user")) || { profile_url: avatarImg },
 }
 
 export const signinUser = createAsyncThunk(
@@ -20,14 +21,15 @@ export const signinUser = createAsyncThunk(
     async (auth, thunkApi) => {
         const res = await login(auth);
 
-        if (res.status !== 200) {
-            // Login logic and error handling
-            return thunkApi.rejectWithValue("error string");
+        if (res.code === 200) {
+            localStorage.setItem("user", JSON.stringify(res.data.user));
+            Cookies.set("token", res.data.access_token); // Set this to cookies
+            return res.data;
+        } else {
+            let errors = [];
+            errors['email'] = res.msg
+            return thunkApi.rejectWithValue(errors);
         }
-
-        localStorage.setItem("user", JSON.stringify(res.data.data.user));
-        Cookies.set("token", res.data.access_token); // Set this to cookies
-        return res.data.data;
     }
 );
 
@@ -52,7 +54,7 @@ export const authSlice = createSlice({
             Cookies.remove("token");
             return {
                 ...initialState,
-                loaderState: REQUEST_ACTIONS.REQUEST_PENDING,
+                loaderState: REQUEST_ACTIONS.REQUEST_LOADING,
             };
         });
         builder.addCase(signinUser.fulfilled, (state, action) => {
@@ -74,4 +76,4 @@ export const authSlice = createSlice({
 });
 
 export default authSlice.reducer;
-export const {logout} = authSlice.actions;
+export const { logout } = authSlice.actions;

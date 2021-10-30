@@ -4,19 +4,15 @@ import { REQUEST_ACTIONS } from "@consts/actionTypes";
 
 
 const BaseButton = (props) => {
-    let icon = props.children;
+    let text = props.children;
+    let icon = null;
 
-    if (props.state === REQUEST_ACTIONS.REQUEST_PENDING) {
+    if (props.state === REQUEST_ACTIONS.REQUEST_LOADING) {
         return (
             <Button {...props} disabled>
-                <span className="dot-collision gx-mr-3 gx-ml-3"></span>
+                <LoadingOutlined />
             </Button>
         );
-    }
-    if (props.state === REQUEST_ACTIONS.REQUEST_LOADING) {
-        <Button {...props} disabled>
-            <LoadingOutlined />
-        </Button>
     }
     if (props.state === REQUEST_ACTIONS.REQUEST_SUCCESS) { icon = <CheckOutlined />; }
     if (props.state === REQUEST_ACTIONS.REQUEST_ERROR) { icon = <CloseOutlined />; }
@@ -24,7 +20,7 @@ const BaseButton = (props) => {
 
     return (
         <Button {...props} >
-            <span></span>
+            <span>{text} </span>
             {icon}
         </Button>
     );

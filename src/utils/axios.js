@@ -42,7 +42,7 @@ export const post = (uri, payload, tocInstance = true, req = false) =>
     getAxios(tocInstance, req)
         .post(uri, payload)
         .then((res) => {
-            return res;
+            return res.data;
         }, onAxiosRejected);
 
 export const put = (uri, payload, tocInstance = true, req = false) =>
