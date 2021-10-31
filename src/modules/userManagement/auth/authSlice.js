@@ -4,6 +4,7 @@ import Cookies from "js-cookie";
 import { REQUEST_ACTIONS } from "@consts/actionTypes"
 import { login } from "./requests";
 
+// this is temp
 import avatarImg from "../../../assets/images/memoji/memoji-1.png";
 
 // Define a name for slice
@@ -71,7 +72,7 @@ export const authSlice = createSlice({
             };
         });
         builder.addCase(signinUser.rejected, (state, action) => {
-            if (action.payload.code && action.payload.code === 202) {
+            if (action.payload && action.payload.code && action.payload.code === 202) {
                 return {
                     ...initialState,
                     loaderState: REQUEST_ACTIONS.REQUEST_IDLE,

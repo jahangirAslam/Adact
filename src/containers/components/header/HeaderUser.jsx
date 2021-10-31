@@ -10,13 +10,14 @@ export default function HeaderUser() {
   const user = useSelector((state) => state.auth.authUser);
 
   const logout = () => {
-      dispatch({type:logoutAction.type});
+    dispatch({ type: logoutAction.type });
   }
 
 
   const menu = (
     <Menu>
       <Menu.Item
+        key="user"
         icon={
           <User
             set="curved"
@@ -29,6 +30,7 @@ export default function HeaderUser() {
       </Menu.Item>
 
       <Menu.Item
+        key="logout"
         onClick={logout}
         icon={
           <Logout

@@ -10,6 +10,7 @@ module.exports = {
         baseUrl: './',
         aliases: {
           "@consts": "./src/constants",
+          "@state": "./src/redux",
           "@utils": "./src/utils",
           "@comps": "./src/wrappers",
           "@mods": "./src/modules",

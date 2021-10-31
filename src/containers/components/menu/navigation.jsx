@@ -12,9 +12,19 @@ import {
 
 const navigation = [
     {
+        id: "dashboard",
+        title: "Dashboard",
+        icon: <CloseSquare set="curved" className="remix-icon" />,
+        uri: '/',
+        module: '',
+        action: '',
+    },
+    {
         id: "errors",
         title: "Error Pages",
         icon: <CloseSquare set="curved" className="remix-icon" />,
+        module: "dash",
+        action: "board",
         children: [
             {
                 id: "error-404",

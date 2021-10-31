@@ -1,4 +1,4 @@
-import React, { useState, createElement } from "react";
+import React, { useState, createElement, useMemo } from "react";
 import { useLocation, Link } from "react-router-dom";
 
 import {
@@ -16,10 +16,12 @@ import {
     RiCloseFill,
 } from "react-icons/ri";
 
-
 import MenuLogo from "./logo";
-import logoSmall from "../../../assets/images/logo/logo-small.svg";
 import navigation from "./navigation";
+import { hasPermission } from "@utils/helpers";
+
+// temp image
+import logoSmall from "../../../assets/images/logo/logo-small.svg";
 
 const { Sider } = Layout;
 
@@ -52,6 +54,12 @@ export default function Sidebar(props) {
         }
     );
 
+    const MemoizedMenuItems = useMemo(() => (
+        <>
+            {navigation.map((item, index) => MenuItem(item, index, '0'))}
+        </>
+    ), []);
+
     const MainMenu = () => {
         const menu = <Menu
             mode="inline"
@@ -62,7 +70,7 @@ export default function Sidebar(props) {
                 splitLocation[splitLocation.length - 2],
             ]}
         >
-            {navigation.map((item, index) => MenuItem(item, index, '0'))}
+            {MemoizedMenuItems}
         </Menu>;
 
         if (!visible) {
@@ -122,7 +130,7 @@ export default function Sidebar(props) {
                     </Col>
                 )}
             </Row>
-            {MainMenu()}
+            <MainMenu />
         </Sider >
     );
 };
@@ -132,6 +140,11 @@ const MenuItem = (each, i, k) => {
     if (!each.children || each.children === null) {
         each.children = [];
     }
+
+    if (!hasPermission(each.module, each.action)) {
+        return <></>;
+    }
+
     if (each.children.length) {
         return (
             <Menu.SubMenu key={concat} title={each.title} icon={each.icon}>

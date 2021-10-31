@@ -50,3 +50,16 @@ export const notify = (title, message, type = NOTIFICATION_TYPE.SUCCESS) => {
         description: message,
     });
 }
+
+let all_permissions = [];
+export const hasPermission = (module, action) => {
+    if (!all_permissions.length) {
+        all_permissions = JSON.parse(localStorage.getItem("moduleList"));
+    }
+
+    if (!module && !action) {
+        return true;
+    }
+
+    return !all_permissions.indexOf(`${module}_${action}`);
+}
