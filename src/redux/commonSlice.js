@@ -9,6 +9,10 @@ const sliceName = "common";
 // Define the initial state using that type
 const initialState = {
     permissions: JSON.parse(localStorage.getItem("moduleList")),
+    pageHeader: {
+        title: "", // Create action for setting page header title
+        breadcrumb: [], // Create action for setting breadcrumb
+    }
 }
 
 export const getPermissions = createAsyncThunk(

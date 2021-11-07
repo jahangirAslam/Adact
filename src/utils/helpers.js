@@ -1,4 +1,5 @@
 import { notification } from "antd";
+import moment from "moment";
 
 import { REQUEST_ACTIONS } from "@consts/actionTypes"
 
@@ -52,14 +53,51 @@ export const notify = (title, message, type = NOTIFICATION_TYPE.SUCCESS) => {
 }
 
 let all_permissions = [];
-export const hasPermission = (module, action) => {
+export const hasPermission = (key) => {
+    if (process.env.REACT_APP_ENV === "local") {
+        return true;
+    }
+
     if (!all_permissions.length) {
         all_permissions = JSON.parse(localStorage.getItem("moduleList"));
     }
 
-    if (!module && !action) {
+    if (!all_permissions) {
+        all_permissions = [];
+        return false;
+    }
+
+    if (key === "always") {
         return true;
     }
 
-    return !all_permissions.indexOf(`${module}_${action}`);
+    return !all_permissions.indexOf(`${key}`);
+}
+
+const formatDate = (date, format) => {
+    return moment(date).format(format);;
+}
+
+export const formatFullYearOnly = (date) => {
+    return formatDate(date, 'YYYY');;
+}
+
+export const formatYearOnly = (date) => {
+    return formatDate(date, 'YY');;
+}
+
+export const formatMonthOnly = (date) => {
+    return formatDate(date, 'm');;
+}
+
+export const formatDayOnly = (date) => {
+    return formatDate(date, 'd');;
+}
+
+export const formatCompleteData = (date) => {
+    return formatDate(date, 'MM DD, YYYY');;
+}
+
+export const formatCompleteDataTime = (date) => {
+    return formatDate(date, 'MMMM DD, YYYY hh:mm A');;
 }

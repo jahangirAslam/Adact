@@ -30,9 +30,9 @@ function onAxiosRejected(error) {
     return error;
 }
 
-export const get = (uri, tocInstance = true, req = false) =>
+export const get = (uri, payload = null, tocInstance = true, req = false) =>
     getAxios(tocInstance, req)
-        .get(uri)
+        .get(uri, { params: payload })
         .then((res) => {
             return res.data;
         }, onAxiosRejected);

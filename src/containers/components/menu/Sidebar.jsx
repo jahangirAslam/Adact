@@ -135,22 +135,24 @@ export default function Sidebar(props) {
     );
 };
 
-const MenuItem = (each, i, k) => {
+const MenuItem = (each, i, k, uri = '/') => {
     let concat = `${k}-${i}`;
     if (!each.children || each.children === null) {
         each.children = [];
     }
 
-    if (!hasPermission(each.module, each.action)) {
+    if (!hasPermission(each.permissionKey)) {
         return <></>;
     }
+
+    // implement has children
 
     if (each.children.length) {
         return (
             <Menu.SubMenu key={concat} title={each.title} icon={each.icon}>
-                {each.children.map((child, j) => MenuItem(child, j, concat))}
+                {each.children.map((child, j) => MenuItem(child, j, concat, each.uri))}
             </Menu.SubMenu>
         );
     }
-    return <Menu.Item key={concat} icon={each.icon} ><span><Link to={each.uri}>{each.title}</Link></span></Menu.Item>;
+    return <Menu.Item key={concat} icon={each.icon} ><span><Link to={uri + each.uri}>{each.title}</Link></span></Menu.Item>;
 }
