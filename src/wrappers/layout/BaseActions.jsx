@@ -8,12 +8,12 @@ const classes = "gx-p-0 gx-my-0 button-padding-5";
 const BaseAction = (props) => {
   return (
     <>
-      {props.onView ? <Button className={classes} type="link" size="middle" onClick={() => add(props)}><FolderViewOutlined className={"icon-style"}/></Button> : null}
+      {props.onView ? <Button className={classes} type="link" size="middle" onClick={() => view(props)}><FolderViewOutlined className={"icon-style"}/></Button> : null}
       {props.onAdd ? <Button className={classes} type="link" size="middle" onClick={() => add(props)}>Add</Button> : null}
-      {props.onEdit ? <Button className={classes} type="link" size="middle" onClick={() => add(props)}><EditOutlined className={"icon-style"} /></Button> : null}
+      {props.onEdit ? <Button className={classes} type="link" size="middle" onClick={() => edit(props)}><EditOutlined className={"icon-style"} /></Button> : null}
       {props.onDelete ? (
         <Popconfirm title="Are you sure?" icon={<WarningOutlined />} onConfirm={() => del(props)}>
-          <Button className={classes} type="link" size="middle" onClick={() => add(props)}><DeleteOutlined className={"icon-style"} /></Button>
+          <Button className={classes} type="link" size="middle"><DeleteOutlined className={"icon-style"} /></Button>
         </Popconfirm>
       ) : null}
     </>
