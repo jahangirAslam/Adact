@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { Tag } from "antd";
+import React, {useState, useEffect} from "react";
+import {useHistory} from "react-router-dom";
+import {Tag} from "antd";
 
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent } from "@comps/components";
-import { execWithLoadingState, formatCompleteDataTime } from "@utils/helpers";
-import { getUsers } from "./requests";
+import {HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent} from "@comps/components";
+import {execWithLoadingState, formatCompleteDataTime, notify} from "@utils/helpers";
+import {getUsers, deleteUser} from "./requests";
 import CreateUser from "./components/CreateUser";
 
 const IndexUser = () => {
@@ -45,7 +45,7 @@ const IndexUser = () => {
                 let color = is_active ? 'green' : 'red';
                 let text = is_active ? 'ACTIVE' : 'INACTIVE';
                 return (
-                    <Tag color={color} >{text}</Tag>
+                    <Tag color={color}>{text}</Tag>
                 );
             }
         },
@@ -61,7 +61,7 @@ const IndexUser = () => {
         {
             key: "actionns",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponent({each: record, onView: onView, onEdit: onEdit, onDelete: onDelete})
         },
     ];
 
@@ -85,6 +85,11 @@ const IndexUser = () => {
         setDataSource(response.data);
     }
 
+    const onDeleteSuccess = (response,msg) => {
+        setDataSource(dataSource.filter((index)=>(index.id !== response.id)))
+        notify(msg.msg)
+    }
+
     const handleTableChange = (page, filters, sorter) => {
         let payload = {
             ...pagination,
@@ -98,7 +103,7 @@ const IndexUser = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateUser onCreated={onCreated} />);
+        setChildComponent(<CreateUser onCreated={onCreated}/>);
     }
     const onCreated = (success) => {
         if (success) {
@@ -116,17 +121,18 @@ const IndexUser = () => {
     }
 
     const onDelete = (record) => {
-        // delete here
+        execWithLoadingState(setLoader, deleteUser, record.id, onDeleteSuccess, null);
     }
 
     return (
         <>
             {childComponent}
             <HeaderComponent>
-                <CreateComponent onClick={onCreate} />
+                <CreateComponent onClick={onCreate}/>
             </HeaderComponent>
             <BodyComponent>
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+                <TableComponent loader={loader} columns={columns} dataSource={dataSource}
+                                pagination={{...pagination, total: totalRecords}} onChange={handleTableChange}/>
             </BodyComponent>
         </>
     );

@@ -1,7 +1,6 @@
 import React from "react";
-import { PlusOutlined } from "@ant-design/icons";
 import BaseButton from "./BaseButton";
 
-const BaseCreate = (props) => <BaseButton type="primary" {...props}><PlusOutlined /> Save</BaseButton>
+const BaseCreate = (props) => <BaseButton type="primary" icon={<i className="ri-save-fill" />} {...props}>Save</BaseButton>
 
 export default BaseCreate;

@@ -66,6 +66,12 @@ const CreateUser = (props) => {
                 >
                     <Input.Password />
                 </Form.Item>
+
+                <Form.Item name="confirmed_password" rules={rules.confirmed_password} label="Confirm Password :" className="da-mb-8"
+                    {...getErrorProps(errors['confirmed_password'])}
+                >
+                    <Input.Password />
+                </Form.Item>
             </Form>
         </ModalComponent>
     );
@@ -88,4 +94,18 @@ const rules = {
         { min: 6, message: 'Minimum password length is 6', },
         { max: 30, message: 'Maximum password length is 30', },
     ],
+    confirmed_password: [
+        {
+            required: true,
+            message: 'Please confirm your password!',
+        },
+        ({ getFieldValue }) => ({
+            validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                    return Promise.resolve();
+                }
+                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+            },
+        }),
+    ]
 };
