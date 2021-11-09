@@ -15,45 +15,45 @@ import ModuleRoutes from "@mods/routes";
 
 
 const Main = () => {
-    const dispatch = useDispatch();
-    const { path } = useRouteMatch();
-    const [visible, setVisible] = useState(false);
+  const dispatch = useDispatch();
+  const { path } = useRouteMatch();
+  const [visible, setVisible] = useState(false);
 
-    useEffect(() => {
-        dispatch(getPermissions());
-        // eslint-disable-next-line
-    }, []);
+  useEffect(() => {
+    dispatch(getPermissions());
+    // eslint-disable-next-line
+  }, []);
 
-    return (
-        <div>
-            <Layout className="da-app-layout">
-                <Sidebar visible={visible} setVisible={setVisible} />
+  return (
+    <div>
+      <Layout className="da-app-layout">
+        <Sidebar visible={visible} setVisible={setVisible} />
 
-                <Layout>
-                    <MenuHeader setVisible={setVisible} />
+        <Layout>
+          <MenuHeader setVisible={setVisible} />
 
-                    <Layout.Content className="da-content-main">
-                        <Switch>
-                            <Route path={path} component={ModuleRoutes} />
-                        </Switch>
-                    </Layout.Content>
+          <Layout.Content className="da-content-main">
+            <Switch>
+              <Route path={path} component={ModuleRoutes} />
+            </Switch>
+          </Layout.Content>
 
-                    <MenuFooter />
-                </Layout>
-            </Layout>
+          <MenuFooter />
+        </Layout>
+      </Layout>
 
-            <div className="scroll-to-top">
-                <ScrollToTop showUnder={300} style={{ bottom: "5%" }}>
-                    <Button
-                        className="da-primary-shadow"
-                        type="primary"
-                        shape="circle"
-                        icon={<RiArrowUpLine />}
-                    />
-                </ScrollToTop>
-            </div>
-        </div>
-    );
+      <div className="scroll-to-top">
+        <ScrollToTop showUnder={300} style={{ bottom: "5%" }}>
+          <Button
+            className="da-primary-shadow"
+            type="primary"
+            shape="circle"
+            icon={<RiArrowUpLine />}
+          />
+        </ScrollToTop>
+      </div>
+    </div>
+  );
 };
 
 export default Main;

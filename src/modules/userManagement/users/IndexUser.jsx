@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from "react";
-import {useHistory} from "react-router-dom";
-import {Tag} from "antd";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import { Tag } from "antd";
 
-import {HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent} from "@comps/components";
-import {execWithLoadingState, formatCompleteDataTime, notify} from "@utils/helpers";
-import {getUsers, deleteUser} from "./requests";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent } from "@comps/components";
+import { execWithLoadingState, formatCompleteDataTime, notify } from "@utils/helpers";
+import { getUsers, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
 
 const IndexUser = () => {
@@ -61,7 +61,7 @@ const IndexUser = () => {
         {
             key: "actionns",
             title: 'Actions',
-            render: (record) => ActionComponent({each: record, onView: onView, onEdit: onEdit, onDelete: onDelete})
+            render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
         },
     ];
 
@@ -85,8 +85,8 @@ const IndexUser = () => {
         setDataSource(response.data);
     }
 
-    const onDeleteSuccess = (response,msg) => {
-        setDataSource(dataSource.filter((index)=>(index.id !== response.id)))
+    const onDeleteSuccess = (response, msg) => {
+        setDataSource(dataSource.filter((index) => (index.id !== response.id)))
         notify(msg.msg)
     }
 
@@ -132,7 +132,7 @@ const IndexUser = () => {
             </HeaderComponent>
             <BodyComponent>
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource}
-                                pagination={{...pagination, total: totalRecords}} onChange={handleTableChange}/>
+                                pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange}/>
             </BodyComponent>
         </>
     );
