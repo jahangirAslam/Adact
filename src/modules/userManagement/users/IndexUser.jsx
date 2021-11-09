@@ -28,13 +28,13 @@ const IndexUser = () => {
       key: "name",
       title: "Name",
       dataIndex: "name",
-      sorter: true,
+      sorter: true
     },
     {
       key: "role_name",
       title: "Role",
       dataIndex: "role_name",
-      sorter: true,
+      sorter: true
     },
     {
       key: "status",
@@ -62,7 +62,7 @@ const IndexUser = () => {
       key: "actionns",
       title: "Actions",
       render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
-    },
+    }
   ];
 
   useEffect(() => {
@@ -75,7 +75,7 @@ const IndexUser = () => {
       start: pagination.current - 1,
       length: pagination.pageSize,
       sort_name: pagination.sortName,
-      sort_type: pagination.sortType,
+      sort_type: pagination.sortType
     };
     execWithLoadingState(setLoader, getUsers, payload, onSuccess, null);
   };
@@ -96,7 +96,7 @@ const IndexUser = () => {
       current: page.current,
       pageSize: page.pageSize,
       sortName: sorter.field || "id",
-      sortType: sorter.order === "ascend" ? "asc" : "desc",
+      sortType: sorter.order === "ascend" ? "asc" : "desc"
     };
     setPagination(payload);
   };

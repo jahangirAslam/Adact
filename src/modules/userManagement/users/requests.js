@@ -17,3 +17,7 @@ export const updateUser = (payload) => {
 export const deleteUser = (id) => {
     return del(`${api}/${id}`);
 }
+
+export const getUserDependencies = () => {
+    return get('user-management/users/dependencies');
+}

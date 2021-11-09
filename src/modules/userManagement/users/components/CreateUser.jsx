@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Form, Input } from "antd";
+import React, { useEffect, useState } from "react";
+import { Form, Input, Select } from "antd";
 
 import { CancelComponent, SaveComponent, ModalComponent } from "@comps/components";
 import { execWithLoadingState, getErrorProps, notify } from "@utils/helpers";
-import { createUser } from "../requests";
+import { createUser, getUserDependencies } from "../requests";
 
 
 const formName = "createUser";
@@ -12,6 +12,17 @@ const CreateUser = (props) => {
 
     const [loader, setLoader] = useState('');
     const [errors, setErrors] = useState([]);
+    const [rolesOptions, setRolesOptions] = useState([]);
+    const [companiesOptions, setCompaniesOptions] = useState([]);
+
+    const getSelectFieldsData = () => {
+        execWithLoadingState(setLoader, getUserDependencies, null, onDependencySuccess, null);
+    }
+
+    useEffect(() => {
+        getSelectFieldsData();
+        // eslint-disable-next-line
+    }, []);
 
     const onFinish = (data) => {
         let payload = { "object": data }
@@ -23,11 +34,17 @@ const CreateUser = (props) => {
         props.onCreated(true);
     }
 
+    const onDependencySuccess = (data, res) => {
+        setRolesOptions(data.roles);
+        setCompaniesOptions(data.companies);
+    }
+
     const onError = (err) => {
         let errors = [];
         errors['name'] = err.name;
         errors['email'] = err.email;
-        errors['password'] = err.password;
+        errors['role_id'] = err.role_id;
+        errors['company_id'] = err.company_id;
         setErrors(errors);
     }
 
@@ -61,17 +78,29 @@ const CreateUser = (props) => {
                 >
                     <Input/>
                 </Form.Item>
-                <Form.Item name="password" rules={rules.password} label="Password :" className="da-mb-8"
-                           {...getErrorProps(errors['password'])}
+
+                <Form.Item name="role_id" label="Select Role :" rules={rules.role_id}
+                           className="da-mb-8"
+                           {...getErrorProps(errors['role_id'])}
                 >
-                    <Input.Password/>
+                    <Select
+                      showSearch
+                      placeholder="Select a user role"
+                      options={rolesOptions}
+                    >
+                    </Select>
                 </Form.Item>
 
-                <Form.Item name="confirmed_password" rules={rules.confirmed_password} label="Confirm Password :"
+                <Form.Item name="company_id" label="Select Third Party :" rules={rules.company_id}
                            className="da-mb-8"
-                           {...getErrorProps(errors['confirmed_password'])}
+                           {...getErrorProps(errors['company_id'])}
                 >
-                    <Input.Password/>
+                    <Select
+                      showSearch
+                      placeholder="Select a user third party"
+                      options={companiesOptions}
+                    >
+                    </Select>
                 </Form.Item>
             </Form>
         </ModalComponent>
@@ -90,23 +119,10 @@ const rules = {
         { type: "email", message: "The input is not valid email!" },
         { required: true, message: "Please input your email!" },
     ],
-    password: [
-        { required: true, message: 'Please input your password!', },
-        { min: 6, message: 'Minimum password length is 6', },
-        { max: 30, message: 'Maximum password length is 30', },
+    role_id: [
+        { required: true, message: 'Please select user role!', },
     ],
-    confirmed_password: [
-        {
-            required: true,
-            message: 'Please confirm your password!',
-        },
-        ({ getFieldValue }) => ({
-            validator(_, value) {
-                if (!value || getFieldValue('password') === value) {
-                    return Promise.resolve();
-                }
-                return Promise.reject(new Error('The two passwords that you entered do not match!'));
-            },
-        }),
-    ]
+    company_id: [
+        { required: true, message: 'Please select user third party!', },
+    ],
 };
