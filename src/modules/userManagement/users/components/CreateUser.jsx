@@ -10,54 +10,54 @@ const formName = "createUser";
 
 const CreateUser = (props) => {
 
-    const [loader, setLoader] = useState('');
-    const [errors, setErrors] = useState([]);
-    const [rolesOptions, setRolesOptions] = useState([]);
-    const [companiesOptions, setCompaniesOptions] = useState([]);
+  const [loader, setLoader] = useState('');
+  const [errors, setErrors] = useState([]);
+  const [rolesOptions, setRolesOptions] = useState([]);
+  const [companiesOptions, setCompaniesOptions] = useState([]);
 
-    const getSelectFieldsData = () => {
-        execWithLoadingState(setLoader, getUserDependencies, null, onDependencySuccess, null);
-    }
+  const getSelectFieldsData = () => {
+      execWithLoadingState(setLoader, getUserDependencies, null, onDependencySuccess, null);
+  }
 
-    useEffect(() => {
-        getSelectFieldsData();
-        // eslint-disable-next-line
-    }, []);
+  useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+  }, []);
 
-    const onFinish = (data) => {
-        let payload = { "object": data }
-        execWithLoadingState(setLoader, createUser, payload, onSuccess, onError);
-    }
+  const onFinish = (data) => {
+    let payload = { "object": data }
+    execWithLoadingState(setLoader, createUser, payload, onSuccess, onError);
+  }
 
-    const onSuccess = (data, res) => {
-        notify("User Created", res.msg);
-        props.onCreated(true);
-    }
+  const onSuccess = (data, res) => {
+    notify("User Created", res.msg);
+    props.onCreated(true);
+  }
 
-    const onDependencySuccess = (data, res) => {
-        setRolesOptions(data.roles);
-        setCompaniesOptions(data.companies);
-    }
+  const onDependencySuccess = (data, res) => {
+    setRolesOptions(data.roles);
+    setCompaniesOptions(data.companies);
+  }
 
-    const onError = (err) => {
-        let errors = [];
-        errors['name'] = err.name;
-        errors['email'] = err.email;
-        errors['role_id'] = err.role_id;
-        errors['company_id'] = err.company_id;
-        setErrors(errors);
-    }
+  const onError = (err) => {
+    let errors = [];
+    errors['name'] = err.name;
+    errors['email'] = err.email;
+    errors['role_id'] = err.role_id;
+    errors['company_id'] = err.company_id;
+    setErrors(errors);
+  }
 
-    // ------------------------------------
-    // Start footer buttons array
-    // ------------------------------------
-    const footer = [
-        <SaveComponent form={formName} key="create_button" htmlType="submit" state={loader}/>,
-        <CancelComponent key="close_button" onClick={() => props.onClose()}/>
-    ];
-    // ------------------------------------
-    // Eend footer buttons array
-    // ------------------------------------
+  // ------------------------------------
+  // Start footer buttons array
+  // ------------------------------------
+  const footer = [
+    <SaveComponent form={formName} key="create_button" htmlType="submit" state={loader}/>,
+    <CancelComponent key="close_button" onClick={() => props.onClose()}/>
+  ];
+  // ------------------------------------
+  // Eend footer buttons array
+  // ------------------------------------
 
     return (
         <ModalComponent mainTitle="Create" subTitle="User" visible={true} footer={footer}
