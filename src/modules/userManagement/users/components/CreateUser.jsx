@@ -69,13 +69,13 @@ const CreateUser = (props) => {
         <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
           {...getErrorProps(errors['name'])}
         >
-          <Input/>
+          <Input />
         </Form.Item>
 
         <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
           {...getErrorProps(errors['email'])}
         >
-          <Input/>
+          <Input />
         </Form.Item>
 
         <Form.Item name="role_id" label="Select Role :" rules={rules.role_id} className="da-mb-8"
@@ -101,7 +101,7 @@ const CreateUser = (props) => {
       </Form>
 
     </ModalComponent>
-    );
+  );
 }
 
 export default CreateUser
