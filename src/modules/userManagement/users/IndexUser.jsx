@@ -47,7 +47,7 @@ const IndexUser = () => {
         return (
           <Tag color={color} >{text}</Tag>
         );
-      },
+      }
     },
     {
       key: 'created_at',
@@ -61,7 +61,7 @@ const IndexUser = () => {
     {
       key: "actionns",
       title: 'Actions',
-      render: (record) => ActionComponent( { each: record, onView: onView, onEdit: onEdit, onDelete: onDelete }),
+      render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
     },
   ];
 
