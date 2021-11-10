@@ -56,20 +56,19 @@ const IndexUser = () => {
       sorter: true,
       render: (created_at) => {
         return formatCompleteDataTime(created_at);
-      },
+      }
     },
     {
       key: "actionns",
       title: 'Actions',
-      render: (record) => ActionComponent(
-        { each: record, onView: onView, onEdit: onEdit, onDelete: onDelete }),
+      render: (record) => ActionComponent( { each: record, onView: onView, onEdit: onEdit, onDelete: onDelete }),
     },
   ];
 
   useEffect(() => {
-    getAllUsers()
+    getAllUsers();
     // eslint-disable-next-line
-  }, [pagination])
+  }, [pagination]);
 
   const getAllUsers = () => {
     let payload = {
@@ -77,13 +76,13 @@ const IndexUser = () => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
-    }
-    execWithLoadingState(setLoader, getUsers, payload, onSuccess, null)
+    };
+    execWithLoadingState(setLoader, getUsers, payload, onSuccess, null);
   }
 
   const onSuccess = (response) => {
-    setTotalRecords(response.recordsTotal)
-    setDataSource(response.data)
+    setTotalRecords(response.recordsTotal);
+    setDataSource(response.data);
   }
 
   const onDeleteSuccess = (response, msg) => {
@@ -98,27 +97,27 @@ const IndexUser = () => {
       pageSize: page.pageSize,
       sortName: sorter.field || 'id',
       sortType: sorter.order === 'ascend' ? 'asc' : 'desc',
-    }
-    setPagination(payload)
+    };
+    setPagination(payload);
   }
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateUser onCreated={onCreated}/>)
+    setChildComponent(<CreateUser onCreated={onCreated} />);
   }
   const onCreated = (success) => {
     if (success) {
-      getAllUsers()
+      getAllUsers();
     }
-    setChildComponent(null)
+    setChildComponent(null);
   }
 
   const onView = (record) => {
-    history.push(`/user-management/users/view/${record.id}`)
+    history.push(`/user-management/users/view/${record.id}`);
   }
 
   const onEdit = (record) => {
-    history.push(`/user-management/users/edit/${record.id}`)
+    history.push(`/user-management/users/edit/${record.id}`);
   }
 
   const onDelete = (record) => {
@@ -130,16 +129,13 @@ const IndexUser = () => {
     <>
       {childComponent}
       <HeaderComponent>
-        <CreateComponent onClick={onCreate}/>
+        <CreateComponent onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
-        <TableComponent loader={loader} columns={columns}
-                        dataSource={dataSource}
-                        pagination={{ ...pagination, total: totalRecords }}
-                        onChange={handleTableChange}/>
+        <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
       </BodyComponent>
     </>
-  )
+  );
 }
 
-export default IndexUser
+export default IndexUser;
