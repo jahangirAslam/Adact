@@ -15,7 +15,7 @@ const BaseHeader = (props) => {
       <Breadcrumb.Item>Home</Breadcrumb.Item>
       <Breadcrumb.Item>Next</Breadcrumb.Item>
     </Breadcrumb>
-    )
+  )
 
   return (
     <>
