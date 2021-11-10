@@ -12,8 +12,8 @@ const BaseHeader = (props) => {
 
   const Bread = () => (
     <Breadcrumb>
-        <Breadcrumb.Item>Home</Breadcrumb.Item>
-        <Breadcrumb.Item>Next</Breadcrumb.Item>
+      <Breadcrumb.Item>Home</Breadcrumb.Item>
+      <Breadcrumb.Item>Next</Breadcrumb.Item>
     </Breadcrumb>
     )
 
