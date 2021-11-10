@@ -2,18 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Tag } from 'antd'
 
-import {
-  HeaderComponent,
-  BodyComponent,
-  TableComponent,
-  ActionComponent,
-  CreateComponent,
-} from '@comps/components'
-import {
-  execWithLoadingState,
-  formatCompleteDataTime,
-  notify,
-} from '@utils/helpers'
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent } from '@comps/components'
+import { execWithLoadingState, formatCompleteDataTime, notify } from '@utils/helpers'
 import { getUsers, deleteUser } from './requests'
 import CreateUser from './components/CreateUser'
 
