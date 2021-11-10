@@ -85,7 +85,7 @@ const IndexUser = () => {
     setDataSource(response.data);
   }
 
-  const onDeleteSuccess = (response, msg) => {
+  const OnDelete = (response, msg) => {
     setDataSource(dataSource.filter((index) => (index.id !== response.id)))
     notify(msg.msg)
   }
@@ -121,7 +121,7 @@ const IndexUser = () => {
   }
 
   const onDelete = (record) => {
-    execWithLoadingState(setLoader, deleteUser, record.id, onDeleteSuccess,
+    execWithLoadingState(setLoader, deleteUser, record.id, OnDelete,
       null)
   }
 
