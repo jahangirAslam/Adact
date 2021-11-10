@@ -5,16 +5,16 @@ import BaseTitle from "./BaseTitle";
 
 const BaseHeader = (props) => {
 
-    let params = {...props};
+  let params = { ...props };
 
-    delete params.children;
-    params.extra = props.children;
+  delete params.children;
+  params.extra = props.children;
 
-    const Bread = () => (
-        <Breadcrumb>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>Next</Breadcrumb.Item>
-        </Breadcrumb>
+  const Bread = () => (
+    <Breadcrumb>
+        <Breadcrumb.Item>Home</Breadcrumb.Item>
+        <Breadcrumb.Item>Next</Breadcrumb.Item>
+    </Breadcrumb>
     )
 
     return (
