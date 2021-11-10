@@ -60,8 +60,7 @@ const CreateUser = (props) => {
   // ------------------------------------
 
   return (
-    <ModalComponent mainTitle="Create" subTitle="User" visible={true} footer={footer}
-                    onCancel={() => props.onCreated(false)}>
+    <ModalComponent mainTitle="Create" subTitle="User" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
       <Form
         layout="vertical"
         name={formName}
