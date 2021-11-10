@@ -67,19 +67,19 @@ const CreateUser = (props) => {
         onFinish={onFinish}
       >
         <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
-                   {...getErrorProps(errors['name'])}
+          {...getErrorProps(errors['name'])}
         >
           <Input/>
         </Form.Item>
 
         <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
-                   {...getErrorProps(errors['email'])}
+          {...getErrorProps(errors['email'])}
         >
           <Input/>
         </Form.Item>
 
         <Form.Item name="role_id" label="Select Role :" rules={rules.role_id} className="da-mb-8"
-                   {...getErrorProps(errors['role_id'])}
+          {...getErrorProps(errors['role_id'])}
         >
           <Select
             showSearch
@@ -89,7 +89,7 @@ const CreateUser = (props) => {
         </Form.Item>
 
         <Form.Item name="company_id" label="Select Third Party :" rules={rules.company_id} className="da-mb-8"
-                   {...getErrorProps(errors['company_id'])}
+          {...getErrorProps(errors['company_id'])}
         >
           <Select
             showSearch
