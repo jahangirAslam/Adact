@@ -108,19 +108,19 @@ const CreateUser = (props) => {
 export default CreateUser
 
 const rules = {
-    name: [
-        { required: true, message: 'Please input your password!', },
-        { min: 3, message: 'Minimum password length is 3', },
-        { max: 100, message: 'Maximum password length is 100', },
-    ],
-    email: [
-        { type: "email", message: "The input is not valid email!" },
-        { required: true, message: "Please input your email!" },
-    ],
-    role_id: [
-        { required: true, message: 'Please select user role!', },
-    ],
-    company_id: [
-        { required: true, message: 'Please select user third party!', },
-    ],
+  name: [
+    { required: true, message: 'Please input your password!', },
+    { min: 3, message: 'Minimum password length is 3', },
+    { max: 100, message: 'Maximum password length is 100', },
+  ],
+  email: [
+    { type: "email", message: "The input is not valid email!" },
+    { required: true, message: "Please input your email!" },
+  ],
+  role_id: [
+    { required: true, message: 'Please select user role!', },
+  ],
+  company_id: [
+    { required: true, message: 'Please select user third party!', },
+  ],
 };
