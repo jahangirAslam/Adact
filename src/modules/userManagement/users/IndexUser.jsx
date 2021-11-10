@@ -9,19 +9,19 @@ import CreateUser from "./components/CreateUser";
 
 const IndexUser = () => {
 
-  const history = useHistory()
-  const [loader, setLoader] = useState('')
+  const history = useHistory();
+  const [loader, setLoader] = useState('');
 
-  const [dataSource, setDataSource] = useState([])
-  const [totalRecords, setTotalRecords] = useState(0)
+  const [dataSource, setDataSource] = useState([]);
+  const [totalRecords, setTotalRecords] = useState(0);
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
     sortName: 'id',
-    sortType: 'desc',
-  })
+    sortType: 'desc'
+  });
 
-  const [childComponent, setChildComponent] = useState(null)
+  const [childComponent, setChildComponent] = useState(null);
 
   const columns = [
     {
@@ -42,11 +42,11 @@ const IndexUser = () => {
       dataIndex: 'is_active',
       sorter: true,
       render: (is_active) => {
-        let color = is_active ? 'green' : 'red'
-        let text = is_active ? 'ACTIVE' : 'INACTIVE'
+        let color = is_active ? 'green' : 'red';
+        let text = is_active ? 'ACTIVE' : 'INACTIVE';
         return (
-          <Tag color={color}>{text}</Tag>
-        )
+          <Tag color={color} >{text}</Tag>
+        );
       },
     },
     {
@@ -55,16 +55,16 @@ const IndexUser = () => {
       dataIndex: 'created_at',
       sorter: true,
       render: (created_at) => {
-        return formatCompleteDataTime(created_at)
+        return formatCompleteDataTime(created_at);
       },
     },
     {
-      key: 'actionns',
+      key: "actionns",
       title: 'Actions',
       render: (record) => ActionComponent(
         { each: record, onView: onView, onEdit: onEdit, onDelete: onDelete }),
     },
-  ]
+  ];
 
   useEffect(() => {
     getAllUsers()
