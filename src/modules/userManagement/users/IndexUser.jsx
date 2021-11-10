@@ -85,11 +85,6 @@ const IndexUser = () => {
     setDataSource(response.data);
   }
 
-  const OnDelete = (response, msg) => {
-    setDataSource(dataSource.filter((index) => (index.id !== response.id)))
-    notify(msg.msg)
-  }
-
   const handleTableChange = (page, filters, sorter) => {
     let payload = {
       ...pagination,
@@ -121,8 +116,16 @@ const IndexUser = () => {
   }
 
   const onDelete = (record) => {
-    execWithLoadingState(setLoader, deleteUser, record.id, OnDelete,
-      null)
+    execWithLoadingState(setLoader, deleteUser, record.id, onDeleteSuccess,
+      onError)
+  }
+
+  const onDeleteSuccess = (response, msg) => {
+    getAllUsers();
+    notify(msg.msg)
+  }
+
+  const  onError = (error, msg) => {
   }
 
   return (

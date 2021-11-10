@@ -12,8 +12,10 @@ const CreateUser = (props) => {
 
   const [loader, setLoader] = useState('');
   const [errors, setErrors] = useState([]);
-  const [rolesOptions, setRolesOptions] = useState([]);
-  const [companiesOptions, setCompaniesOptions] = useState([]);
+  const [deps, setDeps] = useState({
+    roles: [],
+    companies: [],
+  });
 
   const getSelectFieldsData = () => {
       execWithLoadingState(setLoader, getUserDependencies, null, onDependencySuccess, null);
@@ -35,8 +37,10 @@ const CreateUser = (props) => {
   }
 
   const onDependencySuccess = (data, res) => {
-    setRolesOptions(data.roles);
-    setCompaniesOptions(data.companies);
+    setDeps({
+      roles: data.roles,
+      companies: data.companies
+    });
   }
 
   const onError = (err) => {
@@ -84,7 +88,7 @@ const CreateUser = (props) => {
           <Select
             showSearch
             placeholder="Select a user role"
-            options={rolesOptions}
+            options={deps.roles}
           />
         </Form.Item>
 
@@ -94,7 +98,7 @@ const CreateUser = (props) => {
           <Select
             showSearch
             placeholder="Select a user third party"
-            options={companiesOptions}
+            options={deps.companies}
           />
         </Form.Item>
 
