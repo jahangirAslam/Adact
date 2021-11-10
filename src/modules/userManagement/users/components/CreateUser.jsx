@@ -52,58 +52,56 @@ const CreateUser = (props) => {
   // Start footer buttons array
   // ------------------------------------
   const footer = [
-    <SaveComponent form={formName} key="create_button" htmlType="submit" state={loader}/>,
-    <CancelComponent key="close_button" onClick={() => props.onClose()}/>
+    <SaveComponent form={formName} key="create_button" htmlType="submit" state={loader} />,
+    <CancelComponent key="close_button" onClick={() => props.onClose()} />
   ];
   // ------------------------------------
   // Eend footer buttons array
   // ------------------------------------
 
-    return (
-        <ModalComponent mainTitle="Create" subTitle="User" visible={true} footer={footer}
-                        onCancel={() => props.onCreated(false)}>
-            <Form
-                layout="vertical"
-                name={formName}
-                onFinish={onFinish}
-            >
-                <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
-                           {...getErrorProps(errors['name'])}
-                >
-                    <Input/>
-                </Form.Item>
+  return (
+    <ModalComponent mainTitle="Create" subTitle="User" visible={true} footer={footer}
+                    onCancel={() => props.onCreated(false)}>
+      <Form
+        layout="vertical"
+        name={formName}
+        onFinish={onFinish}
+      >
+        <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
+                   {...getErrorProps(errors['name'])}
+        >
+          <Input/>
+        </Form.Item>
 
-                <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
-                           {...getErrorProps(errors['email'])}
-                >
-                    <Input/>
-                </Form.Item>
+        <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
+                   {...getErrorProps(errors['email'])}
+        >
+          <Input/>
+        </Form.Item>
 
-                <Form.Item name="role_id" label="Select Role :" rules={rules.role_id}
-                           className="da-mb-8"
-                           {...getErrorProps(errors['role_id'])}
-                >
-                    <Select
-                      showSearch
-                      placeholder="Select a user role"
-                      options={rolesOptions}
-                    >
-                    </Select>
-                </Form.Item>
+        <Form.Item name="role_id" label="Select Role :" rules={rules.role_id} className="da-mb-8"
+                   {...getErrorProps(errors['role_id'])}
+        >
+          <Select
+            showSearch
+            placeholder="Select a user role"
+            options={rolesOptions}
+          />
+        </Form.Item>
 
-                <Form.Item name="company_id" label="Select Third Party :" rules={rules.company_id}
-                           className="da-mb-8"
-                           {...getErrorProps(errors['company_id'])}
-                >
-                    <Select
-                      showSearch
-                      placeholder="Select a user third party"
-                      options={companiesOptions}
-                    >
-                    </Select>
-                </Form.Item>
-            </Form>
-        </ModalComponent>
+        <Form.Item name="company_id" label="Select Third Party :" rules={rules.company_id} className="da-mb-8"
+                   {...getErrorProps(errors['company_id'])}
+        >
+          <Select
+            showSearch
+            placeholder="Select a user third party"
+            options={companiesOptions}
+          />
+        </Form.Item>
+
+      </Form>
+
+    </ModalComponent>
     );
 }
 
