@@ -46,7 +46,6 @@ export const authSlice = createSlice({
         logout: (state, action) => {
             localStorage.clear();
             Cookies.remove("token");
-            Cookies.remove("refreshtoken");
 
             return {
                 ...initialState,

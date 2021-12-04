@@ -20,6 +20,12 @@ function getAxios(tocInstance, req) {
         const bearer = Cookies.get("token");
         if (bearer) {
             instance.defaults.headers.common.Authorization = `Bearer ${bearer}`;
+        } else {
+            localStorage.clear();
+            Cookies.remove("token");
+            window.location.href = "/";
+            // push toast message
+            return;
         }
     }
     return instance;
@@ -66,4 +72,3 @@ export const delWithPayload = (uri, payload, tocInstance = true, req = false) =>
         .then((res) => {
             return res.data;
         }, onAxiosRejected);
-
