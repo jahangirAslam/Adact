@@ -14,6 +14,7 @@ module.exports = {
           "@utils": "./src/utils",
           "@comps": "./src/wrappers",
           "@mods": "./src/modules",
+          "@assets": "./src/assets",
         }
       }
     },

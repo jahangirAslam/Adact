@@ -8,7 +8,7 @@ import {
   Table,
 } from "antd";
 
-import logo from "../../../assets/images/logo/logo.svg";
+import logo from "@assets/images/logo/sample_logo.svg";
 
 export default function InvoiceCard() {
   const columns = [
