@@ -17,3 +17,7 @@ export const updateUser = (payload) => {
 export const deleteUser = (id) => {
     return del(`${api}/${id}`);
 }
+
+export const getFilters = () => {
+    return get(`${api}/filters`);
+}

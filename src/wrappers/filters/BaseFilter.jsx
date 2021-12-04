@@ -1,91 +1,85 @@
-import React, {useState} from "react";
-import {Button, DatePicker, Form, Input, Select, Row, Col} from "antd";
-import {LoadingOutlined, CloseOutlined, DownOutlined} from '@ant-design/icons';
-import {REQUEST_ACTIONS} from "@consts/actionTypes";
-import {execWithLoadingState} from "@utils/helpers";
+import React, { useState, useEffect } from "react";
+import { Button, DatePicker, Input, Select, Row, Col, Form } from "antd";
+import { execWithLoadingState } from "@utils/helpers";
 
 const BaseFilter = (props) => {
-    const {filter, onFilter} = props;
+    const { filters, onFilter, api } = props;
+    // eslint-disable-next-line
     const [loader, setLoader] = useState('');
     const [options, setOptions] = useState([]);
+    const [selected, setSelected] = useState({});
 
     const onSuccess = (data) => {
         setOptions(data);
     }
 
-    const onError = (err) => {
-    }
-
-    React.useEffect(() => {
-        execWithLoadingState(setLoader, null, null, onSuccess, onError);
+    useEffect(() => {
+        if (api) {
+            execWithLoadingState(setLoader, api, null, onSuccess, null);
+        }
+        // eslint-disable-next-line
     }, []);
 
-    const SelectField = ({filter}) => {
-        let icon = null;
-        if (loader === REQUEST_ACTIONS.REQUEST_LOADING) {
-            icon = <LoadingOutlined/>;
-        }
-        if (loader === REQUEST_ACTIONS.REQUEST_SUCCESS) {
-            icon = <DownOutlined/>;
-        }
-        if (loader === REQUEST_ACTIONS.REQUEST_ERROR) {
-            icon = <CloseOutlined/>;
-        }
+    const onSubmit = () => {
+        onFilter(selected);
+    }
 
-        return <Form.Item name={filter.key}>
-            <Select allowClear suffixIcon={icon} placeholder={filter.placeholder} options={options[filter.data_key]}>
-            </Select>
-        </Form.Item>;
+    const onReset = () => {
+        setSelected({});
+        onFilter({});
+    }
+
+    const onChange = (key, value) => {
+        setSelected({ ...selected, [key]: value });
+    }
+
+    const InputField = ({ each }) => (
+        <Input placeholder={each.placeholder} value={selected[each.key]} onChange={val => onChange(each.key, val)} />
+    )
+    const DateTimeField = ({ each }) => (
+        <DatePicker value={selected[each.key]} onChange={val => onChange(each.key, val)} />
+    )
+    const SelectField = ({ each }) => (
+        <Select allowClear placeholder={each.placeholder} options={options[each.data_key]} value={selected[each.key]} onChange={val => onChange(each.key, val)} ></Select>
+    )
+    const FilterField = (each, i) => {
+        let item = null;
+        switch (each.type) {
+            case 'text':
+                item = <InputField className="da-w-100" each={each} />;
+                break;
+            case 'date':
+                item = <DateTimeField className="da-w-100" each={each} />;
+                break;
+            case 'select':
+                item = <SelectField className="da-w-100" each={each} />;
+                break;
+            default:
+                return null;
+        }
+        return (
+            <Col key={i} className="gutter-row" span={6}>
+                <Form.Item>{item}</Form.Item>
+            </Col>
+        );
     }
 
     return (
-        <>
-            <Form onFinish={onFilter}>
-                <Row gutter={[8, 8]}>
-                    {filter.map((value, index) => {
-                        let item;
-                        if (value.type === "text") {
-                            item = <Col className="gutter-row" span={4}>
-                                <InputField key={value.key} filter={value}/>
-                            </Col>;
-                        } else if (value.type === "select") {
-                            item = <Col className="gutter-row" span={4}>
-                                <SelectField key={value.key} filter={value}/>
-                            </Col>;
-                        } else if (value.type === "date") {
-                            item = <Col className="gutter-row" span={4}>
-                                <DateTimeField key={value.key} filter={value}/>
-                            </Col>;
-
-                        }
-                        return item;
-                    })}
-                    <Col className="gutter-row" span={2.5}>
-                        <Form.Item>
-                            <Button type="primary" htmlType="submit">Apply Filter</Button>
-                        </Form.Item>
-                    </Col>
-                    <Col className="gutter-row" span={2.5}>
-                        <Form.Item>
-                            <Button>Clear Filter</Button>
-                        </Form.Item>
-                    </Col>
-                </Row>
-            </Form>
-        </>
+        <div className="da-my-18">
+            <Row gutter={[16]}>
+                {filters.map((value, index) => FilterField(value, index))}
+            </Row>
+            <Row gutter={[16]}>
+                <Col className="gutter-row" span={2.5} offset={8}>
+                    <Button type="primary" onClick={onSubmit}>Apply Filter</Button>
+                </Col>
+                <Col className="gutter-row" span={2.5}>
+                    <Button onClick={onReset}>Clear Filter</Button>
+                </Col>
+            </Row>
+        </div>
     );
 };
 
 export default BaseFilter;
 
-const InputField = ({filter}) => {
-    return <Form.Item name={filter.key}>
-        <Input placeholder={filter.placeholder}/>
-    </Form.Item>;
-}
-
-const DateTimeField = ({filter}) => {
-    return <Form.Item name={filter.key}>
-        <DatePicker showTime/>
-    </Form.Item>;
-}

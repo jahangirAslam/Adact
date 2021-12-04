@@ -4,6 +4,8 @@ import BaseBody from "./layout/BaseBody";
 import BaseTable from "./layout/BaseTable";
 import BaseAction from "./layout/BaseActions";
 import BaseModal from "./layout/BaseModal";
+// Filters
+import BaseFilter from "./filters/BaseFilter";
 // Buttons
 import BaseButton from "./buttons/BaseButton";
 import BaseCreate from "./buttons/BaseCreate";
@@ -16,6 +18,8 @@ export const BodyComponent = BaseBody;
 export const TableComponent = BaseTable;
 export const ActionComponent = BaseAction;
 export const ModalComponent = BaseModal;
+// Filters
+export const FilterComponent = BaseFilter;
 // Buttons
 export const ButtonComponent = BaseButton;
 export const CreateComponent = BaseCreate;

@@ -2,9 +2,9 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Tag } from "antd";
 
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent } from "@comps/components";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent, FilterComponent } from "@comps/components";
 import { execWithLoadingState, formatCompleteDataTime } from "@utils/helpers";
-import { getUsers } from "./requests";
+import { getUsers, getFilters } from "./requests";
 import CreateUser from "./components/CreateUser";
 
 const IndexUser = () => {
@@ -14,6 +14,7 @@ const IndexUser = () => {
 
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
+  const [filters, setFilters] = useState({});
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
@@ -68,7 +69,7 @@ const IndexUser = () => {
   useEffect(() => {
     getAllUsers();
     // eslint-disable-next-line
-  }, [pagination]);
+  }, [pagination, filters]);
 
   const getAllUsers = () => {
     let payload = {
@@ -76,6 +77,7 @@ const IndexUser = () => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
+      filters
     };
     execWithLoadingState(setLoader, getUsers, payload, onSuccess, null);
   }
@@ -85,7 +87,7 @@ const IndexUser = () => {
     setDataSource(response.data);
   }
 
-  const handleTableChange = (page, filters, sorter) => {
+  const handleTableChange = (page, fil, sorter) => {
     let payload = {
       ...pagination,
       current: page.current,
@@ -126,6 +128,7 @@ const IndexUser = () => {
         <CreateComponent onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
+        <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
         <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
       </BodyComponent>
     </>
@@ -133,3 +136,28 @@ const IndexUser = () => {
 }
 
 export default IndexUser;
+
+const availableFilters = [
+  {
+    key: 'name',
+    placeholder: 'User Name',
+    type: 'text',
+  },
+  {
+    key: 'created_at',
+    placeholder: 'Creation Date',
+    type: 'date',
+  },
+  {
+    key: 'is_active',
+    placeholder: 'Select Status',
+    type: 'select',
+    data_key: 'actives'
+  },
+  {
+    key: 'role_id',
+    placeholder: 'Select Role',
+    type: 'select',
+    data_key: 'all_roles',
+  }
+];
