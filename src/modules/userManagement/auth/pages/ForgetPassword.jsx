@@ -3,7 +3,7 @@ import { Link, useHistory } from "react-router-dom";
 import { Col, Form, Input, Row } from "antd";
 
 import { ButtonComponent } from "@comps/components";
-import { execWithLoadingState, getErrorProps, notify } from "@utils/helpers";
+import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 
 import AuthCommon from "../components/AuthCommon";
 import { forget } from "../requests";
@@ -12,11 +12,11 @@ import { forget } from "../requests";
 const ForgetPassword = () => {
 
   const history = useHistory();
-  const [loader, setLoader] = useState('');
+  const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const onFinish = (payload) => {
-    execWithLoadingState(setLoader, forget, payload, onSuccess, onError);
+    makeRequest(setLoader, forget, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {

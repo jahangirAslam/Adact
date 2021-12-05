@@ -4,6 +4,7 @@ import BaseBody from "./layout/BaseBody";
 import BaseTable from "./layout/BaseTable";
 import BaseAction from "./layout/BaseActions";
 import BaseModal from "./layout/BaseModal";
+import BaseTab from "./layout/BaseTab";
 // Filters
 import BaseFilter from "./filters/BaseFilter";
 // Buttons
@@ -18,6 +19,7 @@ export const BodyComponent = BaseBody;
 export const TableComponent = BaseTable;
 export const ActionComponent = BaseAction;
 export const ModalComponent = BaseModal;
+export const TabComponent = BaseTab;
 // Filters
 export const FilterComponent = BaseFilter;
 // Buttons

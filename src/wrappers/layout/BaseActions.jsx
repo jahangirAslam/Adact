@@ -3,7 +3,7 @@ import { Button, Popconfirm } from "antd";
 import { DeleteOutlined, EditOutlined, EyeOutlined, WarningOutlined, PlusOutlined } from "@ant-design/icons";
 import "./layouts-styles.css"
 
-const classes = "gx-p-0 gx-my-0 button-padding-5";
+const classes = "da-px-10 da-my-0";
 
 const BaseAction = (props) => {
   return (

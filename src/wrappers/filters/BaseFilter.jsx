@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Button, DatePicker, Input, Select, Row, Col, Form } from "antd";
-import { execWithLoadingState } from "@utils/helpers";
+import { makeRequest } from "@utils/helpers";
 
 const BaseFilter = (props) => {
     const { filters, onFilter, api } = props;
     // eslint-disable-next-line
-    const [loader, setLoader] = useState('');
+    const [loader, setLoader] = useState(false);
     const [options, setOptions] = useState([]);
     const [selected, setSelected] = useState({});
 
@@ -15,7 +15,7 @@ const BaseFilter = (props) => {
 
     useEffect(() => {
         if (api) {
-            execWithLoadingState(setLoader, api, null, onSuccess, null);
+            makeRequest(setLoader, api, null, onSuccess, null);
         }
         // eslint-disable-next-line
     }, []);

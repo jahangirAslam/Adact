@@ -1,7 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
 import Cookies from "js-cookie";
 
-import { REQUEST_ACTIONS } from "@consts/actionTypes"
 import { login } from "./requests";
 
 // this is temp
@@ -14,7 +13,7 @@ const sliceName = "auth";
 const initialState = {
     errors: [],
     otpRequired: false,
-    loaderState: REQUEST_ACTIONS.REQUEST_IDLE,
+    loaderState: false,
     authUser: JSON.parse(localStorage.getItem("user")) || { profile_url: avatarImg },
 }
 
@@ -60,13 +59,12 @@ export const authSlice = createSlice({
             return {
                 ...initialState,
                 otpRequired: state.otpRequired,
-                loaderState: REQUEST_ACTIONS.REQUEST_LOADING,
             };
         });
         builder.addCase(signinUser.fulfilled, (state, action) => {
             return {
                 ...initialState,
-                loaderState: REQUEST_ACTIONS.REQUEST_SUCCESS,
+                loaderState: true,
                 authUser: action.payload.user
             };
         });
@@ -74,14 +72,12 @@ export const authSlice = createSlice({
             if (action.payload && action.payload.code && action.payload.code === 202) {
                 return {
                     ...initialState,
-                    loaderState: REQUEST_ACTIONS.REQUEST_IDLE,
                     otpRequired: true,
                     errors: action.payload.msg
                 };
             }
             return {
                 ...initialState,
-                loaderState: REQUEST_ACTIONS.REQUEST_ERROR,
                 otpRequired: state.otpRequired,
                 errors: action.payload
             };

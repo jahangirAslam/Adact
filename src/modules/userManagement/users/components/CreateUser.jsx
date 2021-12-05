@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Form, Input, Select } from "antd";
 
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
-import { execWithLoadingState, execWithoutState, getErrorProps, notify } from "@utils/helpers";
+import { makeRequest, makeRequestStateless, getErrorProps, notify } from "@utils/helpers";
 import { createUser, getUserDependencies } from "../requests";
 
 
@@ -10,7 +10,7 @@ const formName = "createUser";
 
 const CreateUser = (props) => {
 
-  const [loader, setLoader] = useState('');
+  const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);
   const [deps, setDeps] = useState({
     roles: [],
@@ -18,7 +18,7 @@ const CreateUser = (props) => {
   });
 
   const getSelectFieldsData = () => {
-    execWithoutState(getUserDependencies, null, onDependencySuccess, null);
+    makeRequestStateless(getUserDependencies, null, onDependencySuccess, null);
   }
 
   useEffect(() => {
@@ -28,7 +28,7 @@ const CreateUser = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    execWithLoadingState(setLoader, createUser, payload, onSuccess, onError);
+    makeRequest(setLoader, createUser, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {

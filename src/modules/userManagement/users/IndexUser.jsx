@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { Tag } from "antd";
 
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { execWithLoadingState, formatCompleteDataTime, notify } from "@utils/helpers";
+import { makeRequest, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getUsers, getFilters, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
 
@@ -22,7 +22,7 @@ const pageConfig = {
 const IndexUser = () => {
 
   const history = useHistory();
-  const [loader, setLoader] = useState('');
+  const [loader, setLoader] = useState(false);
 
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -91,7 +91,7 @@ const IndexUser = () => {
       sort_type: pagination.sortType,
       filters
     };
-    execWithLoadingState(setLoader, getUsers, payload, onSuccess, null);
+    makeRequest(setLoader, getUsers, payload, onSuccess, null);
   }
 
   const onSuccess = (response) => {
@@ -130,7 +130,7 @@ const IndexUser = () => {
   }
 
   const onDelete = (record) => {
-    execWithLoadingState(setLoader, deleteUser, record.id, onDeleteSuccess,
+    makeRequest(setLoader, deleteUser, record.id, onDeleteSuccess,
       onError)
   }
 

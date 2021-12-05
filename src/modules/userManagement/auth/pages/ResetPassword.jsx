@@ -3,7 +3,7 @@ import { Link, useHistory, useLocation } from "react-router-dom";
 import { Col, Form, Input, Row } from "antd";
 
 import { ButtonComponent } from "@comps/components";
-import { execWithLoadingState, getErrorProps, notify } from "@utils/helpers";
+import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 
 import AuthCommon from "../components/AuthCommon";
 import { reset } from "../requests";
@@ -16,13 +16,13 @@ const ResetPassword = () => {
   const token = new URLSearchParams(search).get('token');
 
   const history = useHistory();
-  const [loader, setLoader] = useState('');
+  const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const onFinish = (payload) => {
     payload.email = email;
     payload.token = token;
-    execWithLoadingState(setLoader, reset, payload, onSuccess, onError);
+    makeRequest(setLoader, reset, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {

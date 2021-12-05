@@ -1,8 +1,6 @@
 import { notification } from "antd";
 import moment from "moment";
 
-import { REQUEST_ACTIONS } from "@consts/actionTypes"
-
 export const getErrorProps = (errors) => {
     if (Array.isArray(errors) && !errors.length) {
         return {};
@@ -12,31 +10,25 @@ export const getErrorProps = (errors) => {
     return { validateStatus: 'error', help: errors };
 }
 
-export const execWithLoadingState = async (loader, call, payload, onSuccess, onError) => {
-    loader(REQUEST_ACTIONS.REQUEST_IDLE);
+export const makeRequest = async (loader, call, payload, onSuccess, onError) => {
+    loader(true);
     try {
-
-        loader(REQUEST_ACTIONS.REQUEST_LOADING);
         let res = await call(payload);
 
         if (res.code === 200) {
-            loader(REQUEST_ACTIONS.REQUEST_SUCCESS);
             onSuccess(res.data, res);
-            return;
         } else if (res.code === 422) {
             onError(res.data, res);
         } else {
             onError([res.msg], res);
         }
-        loader(REQUEST_ACTIONS.REQUEST_ERROR);
-
     } catch (e) {
-        loader(REQUEST_ACTIONS.REQUEST_ERROR);
         onError(e.message, e);
     }
+    loader(false);
 }
 
-export const execWithoutState = async (call, payload, onSuccess, onError) => {
+export const makeRequestStateless = async (call, payload, onSuccess, onError) => {
     try {
         let res = await call(payload);
         if (res.code === 200) {
