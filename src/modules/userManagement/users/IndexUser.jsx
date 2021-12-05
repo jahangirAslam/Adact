@@ -7,6 +7,13 @@ import { execWithLoadingState, formatCompleteDataTime, notify } from "@utils/hel
 import { getUsers, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
 
+const pageConfig = {
+  headers: {
+    title: "Users",
+    breadcrumb: []
+  }
+}
+
 const IndexUser = () => {
 
   const history = useHistory();
@@ -125,13 +132,13 @@ const IndexUser = () => {
     notify(msg.msg)
   }
 
-  const  onError = (error, msg) => {
+  const onError = (error, msg) => {
   }
 
   return (
     <>
       {childComponent}
-      <HeaderComponent>
+      <HeaderComponent headers={pageConfig.headers}>
         <CreateComponent onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>

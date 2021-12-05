@@ -32,7 +32,7 @@ const Main = () => {
         <Layout>
           <MenuHeader setVisible={setVisible} />
 
-          <Layout.Content className="da-content-main">
+          <Layout.Content className="da-content-main da-bg-black-0">
             <Switch>
               <Route path={path} component={ModuleRoutes} />
             </Switch>
