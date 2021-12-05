@@ -13,7 +13,7 @@ const BaseModal = (props) => {
       </>
     );
   }
-  return <Modal width="500px" title={title} {...props} >{props.children}</Modal>;
+  return <Modal width="500px" title={title} {...props} bodyStyle={{padding: "20px"}} >{props.children}</Modal>;
 };
 
 export default BaseModal;

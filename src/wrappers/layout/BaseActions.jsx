@@ -1,18 +1,19 @@
 import React from "react";
 import { Button, Popconfirm } from "antd";
-import { WarningOutlined } from "@ant-design/icons";
+import { DeleteOutlined, EditOutlined, EyeOutlined, WarningOutlined, PlusOutlined } from "@ant-design/icons";
+import "./layouts-styles.css"
 
-const classes = "gx-p-0 gx-my-0";
+const classes = "gx-p-0 gx-my-0 button-padding-5";
 
 const BaseAction = (props) => {
   return (
     <>
-      {props.onView ? <Button className={classes} type="link" size="middle" onClick={() => view(props)}>View</Button> : null}
-      {props.onAdd ? <Button className={classes} type="link" size="middle" onClick={() => add(props)}>Add</Button> : null}
-      {props.onEdit ? <Button className={classes} type="link" size="middle" onClick={() => edit(props)}>Edit</Button> : null}
+      {props.onView ? <Button className={classes} type="link" size="middle" onClick={() => view(props)}><EyeOutlined className="icon-style da-text-color-info-1" /></Button> : null}
+      {props.onAdd ? <Button className={classes} type="link" size="middle" onClick={() => add(props)}><PlusOutlined className="icon-style" /></Button> : null}
+      {props.onEdit ? <Button className={classes} type="link" size="middle" onClick={() => edit(props)}><EditOutlined className="icon-style da-text-color-warning-1" /></Button> : null}
       {props.onDelete ? (
         <Popconfirm title="Are you sure?" icon={<WarningOutlined />} onConfirm={() => del(props)}>
-          <Button className={classes} type="link" size="middle">Delete</Button>
+          <Button className={classes} type="link" size="middle"><DeleteOutlined className="icon-style  da-text-color-danger-1" /></Button>
         </Popconfirm>
       ) : null}
     </>

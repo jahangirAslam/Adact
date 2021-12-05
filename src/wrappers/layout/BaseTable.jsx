@@ -11,7 +11,7 @@ const BaseTable = (props) => {
     loading = true;
   }
 
-  const tab = useMemo(() => <Table rowKey="id" {...otherProps} columns={columns} showSorterTooltip={false} tableLayout="fixed" loading={loading} />, [otherProps.dataSource, loading]);// eslint-disable-line react-hooks/exhaustive-deps
+  const tab = useMemo(() => <Table rowKey="id" size="small" {...otherProps} columns={columns} showSorterTooltip={false} tableLayout="fixed" loading={loading} />, [otherProps.dataSource, loading]);// eslint-disable-line react-hooks/exhaustive-deps
   return tab;
 };
 

@@ -2,10 +2,22 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Tag } from "antd";
 
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent, FilterComponent } from "@comps/components";
-import { execWithLoadingState, formatCompleteDataTime } from "@utils/helpers";
-import { getUsers, getFilters } from "./requests";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
+import { execWithLoadingState, formatCompleteDataTime, notify } from "@utils/helpers";
+import { getUsers, getFilters, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
+
+const pageConfig = {
+  headers: {
+    title: "Users",
+    breadcrumb: [
+      {
+        name: "Users",
+        path: "/user-management/users"
+      }
+    ]
+  }
+}
 
 const IndexUser = () => {
 
@@ -118,14 +130,23 @@ const IndexUser = () => {
   }
 
   const onDelete = (record) => {
-    // delete here
+    execWithLoadingState(setLoader, deleteUser, record.id, onDeleteSuccess,
+      onError)
+  }
+
+  const onDeleteSuccess = (response, msg) => {
+    getAllUsers();
+    notify(msg.msg)
+  }
+
+  const onError = (error, msg) => {
   }
 
   return (
     <>
       {childComponent}
-      <HeaderComponent>
-        <CreateComponent onClick={onCreate} />
+      <HeaderComponent headers={pageConfig.headers}>
+        <CreateButton onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />

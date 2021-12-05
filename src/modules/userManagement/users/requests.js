@@ -21,3 +21,7 @@ export const deleteUser = (id) => {
 export const getFilters = () => {
     return get(`${api}/filters`);
 }
+
+export const getUserDependencies = () => {
+    return get(`${api}/dependencies`);
+}

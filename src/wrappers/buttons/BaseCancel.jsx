@@ -1,7 +1,8 @@
 import React from "react";
-import { PlusOutlined } from "@ant-design/icons";
 import BaseButton from "./BaseButton";
+import { CloseOutlined } from '@ant-design/icons';
 
-const BaseCreate = (props) => <BaseButton type="primary" {...props}><PlusOutlined /> Cancel</BaseButton>
+
+const BaseCreate = (props) => <BaseButton type="primary" danger {...props}>Cancel <CloseOutlined /></BaseButton>
 
 export default BaseCreate;

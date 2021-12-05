@@ -1,22 +1,35 @@
 import React from "react";
-import { Breadcrumb, PageHeader } from "antd";
+import { Link } from "react-router-dom";
+import { PageHeader, Breadcrumb } from "antd";
 
 
 const BaseHeader = (props) => {
 
-  let params = { ...props };
+  const { children, headers } = { ...props };
 
-  delete params.children;
-  params.extra = props.children;
+  const BreadItem = (each, i) => {
+    let elem = each.name;
+    if (each.path) {
+      elem = <Link to={each.path}>{each.name}</Link>;
+    }
+    return <Breadcrumb.Item key={i}>{elem}</Breadcrumb.Item>
+  };
 
-  const Bread = () => (
-    <Breadcrumb>
-      <Breadcrumb.Item>Home</Breadcrumb.Item>
-      <Breadcrumb.Item>Next</Breadcrumb.Item>
-    </Breadcrumb>
-  )
-
-  return <PageHeader breadcrumbRender={Bread} {...params} />;
+  return (
+    <div className="da-px-16 da-pt-16">
+      <Breadcrumb>
+        <Breadcrumb.Item><Link to="/">Home</Link></Breadcrumb.Item>
+        {headers.breadcrumb.map((item, index) => (
+          BreadItem(item, index)
+        ))}
+      </Breadcrumb>
+      <PageHeader
+        className="site-page-header da-p-0"
+        title={headers.title}
+        extra={children}
+      />
+    </div>
+  );
 };
 
 export default BaseHeader;

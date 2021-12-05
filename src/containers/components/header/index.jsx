@@ -5,6 +5,7 @@ import { RiMenuFill } from "react-icons/ri";
 
 import HeaderUser from "./HeaderUser";
 import HeaderNotifications from "./HeaderNotifications";
+import "./header-styles.css"
 
 const { Header } = Layout;
 
@@ -17,7 +18,7 @@ export default function MenuHeader(props) {
   };
 
   return (
-    <Header>
+    <Header className={"headerStyle"}>
       <Row
         className="da-w-100 da-position-relative"
         align="right"

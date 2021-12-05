@@ -1,5 +1,5 @@
 import { Button } from "antd";
-import { LoadingOutlined, CheckOutlined, CloseOutlined, StopOutlined } from '@ant-design/icons';
+import { LoadingOutlined, CloseOutlined, StopOutlined } from '@ant-design/icons';
 import { REQUEST_ACTIONS } from "@consts/actionTypes";
 
 
@@ -14,7 +14,6 @@ const BaseButton = (props) => {
       </Button>
     );
   }
-  if (props.state === REQUEST_ACTIONS.REQUEST_SUCCESS) { icon = <CheckOutlined />; }
   if (props.state === REQUEST_ACTIONS.REQUEST_ERROR) { icon = <CloseOutlined />; }
   if (props.disabled) { icon = <StopOutlined />; }
 
