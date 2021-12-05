@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Tag } from "antd";
 
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateComponent } from "@comps/components";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
 import { execWithLoadingState, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getUsers, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
@@ -139,7 +139,7 @@ const IndexUser = () => {
     <>
       {childComponent}
       <HeaderComponent headers={pageConfig.headers}>
-        <CreateComponent onClick={onCreate} />
+        <CreateButton onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
         <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />

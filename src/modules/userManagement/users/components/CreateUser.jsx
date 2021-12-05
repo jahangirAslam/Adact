@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Select } from "antd";
 
-import { CancelComponent, SaveComponent, ModalComponent } from "@comps/components";
-import { execWithLoadingState, getErrorProps, notify } from "@utils/helpers";
+import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
+import { execWithLoadingState, execWithoutState, getErrorProps, notify } from "@utils/helpers";
 import { createUser, getUserDependencies } from "../requests";
 
 
@@ -18,7 +18,7 @@ const CreateUser = (props) => {
   });
 
   const getSelectFieldsData = () => {
-      execWithLoadingState(setLoader, getUserDependencies, null, onDependencySuccess, null);
+    execWithoutState(getUserDependencies, null, onDependencySuccess, null);
   }
 
   useEffect(() => {
@@ -56,8 +56,8 @@ const CreateUser = (props) => {
   // Start footer buttons array
   // ------------------------------------
   const footer = [
-    <SaveComponent form={formName} key="create_button" htmlType="submit" state={loader} />,
-    <CancelComponent key="close_button" onClick={() => props.onClose()} />
+    <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
+    <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
   ];
   // ------------------------------------
   // Eend footer buttons array
@@ -101,9 +101,7 @@ const CreateUser = (props) => {
             options={deps.companies}
           />
         </Form.Item>
-
       </Form>
-
     </ModalComponent>
   );
 }

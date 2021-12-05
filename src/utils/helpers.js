@@ -36,6 +36,22 @@ export const execWithLoadingState = async (loader, call, payload, onSuccess, onE
     }
 }
 
+export const execWithoutState = async (call, payload, onSuccess, onError) => {
+    try {
+        let res = await call(payload);
+        if (res.code === 200) {
+            onSuccess(res.data, res);
+            return;
+        } else if (res.code === 422) {
+            onError(res.data, res);
+        } else {
+            onError([res.msg], res);
+        }
+    } catch (e) {
+        onError(e.message, e);
+    }
+}
+
 
 export const NOTIFICATION_TYPE = {
     INFO: "info",

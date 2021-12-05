@@ -1,7 +1,7 @@
 import React from "react";
 import BaseButton from "./BaseButton";
-import "./buttons-styles.css"
+import { PlusOutlined } from '@ant-design/icons';
 
-const BaseCreate = (props) => <BaseButton type="primary" className={"button-right-align"} {...props} > <i className="ri-add-box-fill" /> Create</BaseButton>
+const BaseCreate = (props) => <BaseButton type="primary" className={"button-right-align"} {...props} >Create <PlusOutlined /></BaseButton>
 
 export default BaseCreate;

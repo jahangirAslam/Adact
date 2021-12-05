@@ -18,6 +18,6 @@ export const ActionComponent = BaseAction;
 export const ModalComponent = BaseModal;
 // Buttons
 export const ButtonComponent = BaseButton;
-export const CreateComponent = BaseCreate;
-export const CancelComponent = BaseCancel;
-export const SaveComponent = BaseSave;
+export const CreateButton = BaseCreate;
+export const CancelButton = BaseCancel;
+export const SaveButton = BaseSave;
