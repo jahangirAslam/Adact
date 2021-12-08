@@ -47,7 +47,7 @@ const IndexUser = () => {
       key: 'role_name',
       title: 'Role',
       dataIndex: 'role_name',
-      sorter: true,
+      sorter: false,
     },
     {
       key: 'status',
