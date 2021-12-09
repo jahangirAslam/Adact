@@ -20,6 +20,12 @@ const navigation = [
                 uri: "/users",
                 permissionKey: 'users_index',
             },
+            {
+                id: "roles",
+                title: "Roles",
+                uri: "/roles",
+                permissionKey: 'roles_index',
+            },
         ]
     },
 ];

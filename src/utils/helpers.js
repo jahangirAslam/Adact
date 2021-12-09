@@ -5,7 +5,7 @@ export const getErrorProps = (errors) => {
     if (Array.isArray(errors) && !errors.length) {
         return {};
     } else if (errors === null || errors === '' || errors === "" || errors === undefined) {
-        return {};
+        return ;
     }
     return { validateStatus: 'error', help: errors };
 }
@@ -81,31 +81,40 @@ export const hasPermission = (key) => {
 
     return !all_permissions.indexOf(`${key}`);
 }
+export const replaceById = (data, each) => {
+    return data.map(obj => (each.id === obj.id ? each : false) || obj);
+}
+
+export const removeById = (data, id) => {
+    return data.filter(function (value, index, arr) {
+        return value.id !== id;
+    });
+}
 
 const formatDate = (date, format) => {
-    return moment(date).format(format);;
+    return moment(date).format(format);
 }
 
 export const formatFullYearOnly = (date) => {
-    return formatDate(date, 'YYYY');;
+    return formatDate(date, 'YYYY');
 }
 
 export const formatYearOnly = (date) => {
-    return formatDate(date, 'YY');;
+    return formatDate(date, 'YY');
 }
 
 export const formatMonthOnly = (date) => {
-    return formatDate(date, 'm');;
+    return formatDate(date, 'm');
 }
 
 export const formatDayOnly = (date) => {
-    return formatDate(date, 'd');;
+    return formatDate(date, 'd');
 }
 
 export const formatCompleteData = (date) => {
-    return formatDate(date, 'MM DD, YYYY');;
+    return formatDate(date, 'MM DD, YYYY');
 }
 
 export const formatCompleteDataTime = (date) => {
-    return formatDate(date, 'MMMM DD, YYYY hh:mm A');;
+    return formatDate(date, 'MMMM DD, YYYY hh:mm A');
 }

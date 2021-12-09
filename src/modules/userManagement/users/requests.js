@@ -18,6 +18,10 @@ export const getUser = (id) => {
     return get(`${api}/${id}`);
 }
 
+export const activateUserRequest = (user) => {
+    return get(`${api}/activate/${user.id}/${!user.is_active ? 1 : 0}`);
+}
+
 export const createUser = (payload) => {
     return post(api, payload);
 }

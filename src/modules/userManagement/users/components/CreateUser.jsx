@@ -33,7 +33,7 @@ const CreateUser = (props) => {
 
   const onSuccess = (data, res) => {
     notify("User Created", res.msg);
-    props.onCreated(true);
+    props.onCreated(data);
   }
 
   const onDependencySuccess = (data, res) => {
@@ -44,12 +44,12 @@ const CreateUser = (props) => {
   }
 
   const onError = (err) => {
-    let errors = [];
-    errors['name'] = err.name;
-    errors['email'] = err.email;
-    errors['role_id'] = err.role_id;
-    errors['company_id'] = err.company_id;
-    setErrors(errors);
+    let errorList = [];
+    errorList['name'] = err.name;
+    errorList['email'] = err.email;
+    errorList['role_id'] = err.role_id;
+    errorList['company_id'] = err.company_id;
+    setErrors(errorList);
   }
 
   // ------------------------------------

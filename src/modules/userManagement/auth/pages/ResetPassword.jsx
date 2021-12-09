@@ -31,9 +31,9 @@ const ResetPassword = () => {
   }
 
   const onError = (err) => {
-    let errors = [];
-    errors['password'] = err;
-    setErrors(errors);
+    let errorList = [];
+    errorList['password'] = err;
+    setErrors(errorList);
   }
 
   return (

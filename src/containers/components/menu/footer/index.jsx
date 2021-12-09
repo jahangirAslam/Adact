@@ -51,4 +51,4 @@ export default function MenuFooter(props) {
       </Col>
     </Row>
   );
-};
+}

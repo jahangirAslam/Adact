@@ -19,9 +19,9 @@ const BasicInformation = (props) => {
   }
 
   const onError = (err) => {
-    let errors = [];
-    errors['password'] = err;
-    setErrors(errors);
+    let errorList = [];
+    errorList['password'] = err;
+    setErrors(errorList);
   }
 
 
@@ -59,7 +59,7 @@ const BasicInformation = (props) => {
         />
       </Form.Item>
       <Form.Item wrapperCol={{ offset: 5 }}>
-        <ButtonComponent className="da-mr-10" type="primary" htmlType="submit">Submit</ButtonComponent>
+        <ButtonComponent className="da-mr-10" type="primary" htmlType="submit" state={loader}>Submit</ButtonComponent>
         <ButtonComponent type="primary">Reset Password</ButtonComponent>
       </Form.Item>
     </Form>

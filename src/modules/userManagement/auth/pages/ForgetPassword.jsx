@@ -25,9 +25,9 @@ const ForgetPassword = () => {
   }
 
   const onError = (err) => {
-    let errors = [];
-    errors['email'] = err;
-    setErrors(errors);
+    let errorList = [];
+    errorList['email'] = err;
+    setErrors(errorList);
   }
 
   return (

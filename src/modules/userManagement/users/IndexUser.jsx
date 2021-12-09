@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Tag } from "antd";
-
+import { Button,Tag } from "antd";
+import { CheckOutlined ,CloseOutlined} from "@ant-design/icons";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { makeRequest, formatCompleteDataTime, notify } from "@utils/helpers";
-import { getUsers, getFilters, deleteUser } from "./requests";
+import { makeRequest, formatCompleteDataTime, notify,removeById, replaceById} from "@utils/helpers";
+import { getUsers , activateUserRequest, getFilters, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
-
+import "../../../wrappers/layout/layouts-styles.css"
 const pageConfig = {
   headers: {
     title: "Users",
@@ -74,7 +74,7 @@ const IndexUser = () => {
     {
       key: "actionns",
       title: 'Actions',
-      render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
+      render: (record) =>  <> <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)} > {!record.is_active ? <CheckOutlined className="icon-style da-text-color-success-1" /> : <CloseOutlined  className="icon-style da-text-color-danger-1" />}  </Button> {ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })}</>
     },
   ];
 
@@ -94,6 +94,13 @@ const IndexUser = () => {
     makeRequest(setLoader, getUsers, payload, onSuccess, null);
   }
 
+  const activateDeactiveUser = (user) => {
+    makeRequest(setLoader, activateUserRequest , user, onActivateSuccess, onError);
+  }
+  const onActivateSuccess = (res,msg) => {
+    setDataSource(replaceById(dataSource, res));
+    notify(msg.msg)
+  }
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
@@ -114,10 +121,8 @@ const IndexUser = () => {
   const onCreate = () => {
     setChildComponent(<CreateUser onCreated={onCreated} />);
   }
-  const onCreated = (success) => {
-    if (success) {
-      getAllUsers();
-    }
+  const onCreated = (each) => {
+    setDataSource([...dataSource, each.object]);
     setChildComponent(null);
   }
 
@@ -135,11 +140,12 @@ const IndexUser = () => {
   }
 
   const onDeleteSuccess = (response, msg) => {
-    getAllUsers();
+    setDataSource(removeById(dataSource, response.id));
     notify(msg.msg)
   }
 
   const onError = (error, msg) => {
+    //
   }
 
   return (

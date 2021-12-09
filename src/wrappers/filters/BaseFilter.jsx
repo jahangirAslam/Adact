@@ -71,7 +71,7 @@ const BaseFilter = (props) => {
             </Row>
             <Row gutter={[16]}>
                 <Col className="gutter-row" span={2.5} offset={8}>
-                    <Button type="primary" onClick={onSubmit}>Apply Filter</Button>
+                    <Button type="primary" onClick={onSubmit} state={loader}>Apply Filter</Button>
                 </Col>
                 <Col className="gutter-row" span={2.5}>
                     <Button onClick={onReset}>Clear Filter</Button>

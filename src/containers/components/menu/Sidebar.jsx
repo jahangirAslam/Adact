@@ -133,7 +133,7 @@ export default function Sidebar(props) {
       <MainMenu />
     </Sider >
   );
-};
+}
 
 const MenuItem = (each, i, k, uri = '/') => {
   let concat = `${k}-${i}`;
