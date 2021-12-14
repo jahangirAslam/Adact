@@ -90,10 +90,14 @@ const IndexRole = () => {
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateRole onCreated={onCreated} />);
+    setChildComponent(<CreateRole onCreated={onCreated} onClosed={onClosed}/>);
   }
   const onCreated = (res) => {
     setDataSource([...dataSource, res]);
+    setChildComponent(null);
+  }
+
+  const onClosed = () =>{
     setChildComponent(null);
   }
 

@@ -35,14 +35,14 @@ const CreateRole = (props) => {
   // ------------------------------------
   const footer = [
     <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
-    <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
+    <CancelButton key="close_button" onClick={() => props.onClosed(false)} />
   ];
   // ------------------------------------
   // Eend footer buttons array
   // ------------------------------------
 
   return (
-    <ModalComponent mainTitle="Create" subTitle="Role" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+    <ModalComponent mainTitle="Create" subTitle="Role" visible={true} footer={footer} onCancel={() => props.onClosed(false)}>
       <Form
         layout="vertical"
         name={formName}
