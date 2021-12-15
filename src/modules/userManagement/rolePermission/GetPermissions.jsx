@@ -30,7 +30,7 @@ const GetPermissions = (props) => {
         return permission.filter(x => x.role_id === props.data.object.id && x.module_id === module && x.action_id === action);
     }
 
-    const permission = (action, module, event, permission) => {
+    const permission = async (action, module, event, permission) => {
         let payload = { "object": { "role_id": props.data.object.id, "module_id": module.id, "action_id": action.id } };
         if (event.currentTarget.checked) {
             makeRequest(Function, createPermission, payload, onPermissionCreateSuccess, onPermissionError);
@@ -45,20 +45,21 @@ const GetPermissions = (props) => {
         return (
             <>
                 {module.map((eachModule, i) =>
-                    <Collapse key={i}>
-                        <Panel header={eachModule.name}>
-                            <div className="da-mt-10">
+                    <div className="da-my-10">
+                        <Collapse key={i}>
+                            <Panel header={eachModule.name}>
                                 {eachModule.actions ?
                                     <Row>
                                         {eachModule.actions.map((action, i) =>
+                                            // It should be a separate component
                                             <Col span={4} key={i}><Checkbox disabled={props.disable} checked={checkPermission(permissionList, eachModule.id, action.id).length > 0 ? true : false} onClick={(event) => permission(action, eachModule, event, permissionList)}> {action.name}</Checkbox></Col>
                                         )}
                                     </Row>
                                     : null}
-                            </div>
-                            {eachModule.children ? GetPermissions(eachModule.children) : null}
-                        </Panel>
-                    </Collapse>
+                                {eachModule.children ? GetPermissions(eachModule.children) : null}
+                            </Panel>
+                        </Collapse>
+                    </div>
                 )}
             </>
         );

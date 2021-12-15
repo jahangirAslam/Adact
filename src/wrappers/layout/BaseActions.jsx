@@ -16,6 +16,7 @@ const BaseAction = (props) => {
           <Button className={classes} type="link" size="middle"><DeleteOutlined className="icon-style  da-text-color-danger-1" /></Button>
         </Popconfirm>
       ) : null}
+      {props.children}
     </>
   );
 };

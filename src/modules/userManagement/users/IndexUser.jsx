@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { Button,Tag } from "antd";
-import { CheckOutlined ,CloseOutlined} from "@ant-design/icons";
+import { Button, Tag } from "antd";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { makeRequest, formatCompleteDataTime, notify,removeById, replaceById} from "@utils/helpers";
-import { getUsers , activateUserRequest, getFilters, deleteUser } from "./requests";
+import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
+import { getUsers, activateUserRequest, getFilters, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
-import "../../../wrappers/layout/layouts-styles.css"
+
 const pageConfig = {
   headers: {
     title: "Users",
@@ -72,11 +72,25 @@ const IndexUser = () => {
       }
     },
     {
-      key: "actionns",
+      key: "actions",
       title: 'Actions',
-      render: (record) =>  <> <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)} > {!record.is_active ? <CheckOutlined className="icon-style da-text-color-success-1" /> : <CloseOutlined  className="icon-style da-text-color-danger-1" />}  </Button> {ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })}</>
+      render: (record) => ActionComponentEx(record)
     },
   ];
+
+  const ActionComponentEx = (record) => {
+    let icon = null;
+    if (record.is_active) {
+      icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
+    } else {
+      icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+    }
+    return (
+      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
+      </ActionComponent>
+    );
+  }
 
   useEffect(() => {
     getAllUsers();
@@ -95,9 +109,9 @@ const IndexUser = () => {
   }
 
   const activateDeactiveUser = (user) => {
-    makeRequest(setLoader, activateUserRequest , user, onActivateSuccess, onError);
+    makeRequest(setLoader, activateUserRequest, user, onActivateSuccess, onError);
   }
-  const onActivateSuccess = (res,msg) => {
+  const onActivateSuccess = (res, msg) => {
     setDataSource(replaceById(dataSource, res));
     notify(msg.msg)
   }

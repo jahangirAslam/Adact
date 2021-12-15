@@ -5,8 +5,8 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import { getUser } from "../requests";
 
-import BasicInformation from "./edit/BasicInformation";
-import Permission from "./edit/Permission";
+import BasicInformation from "./view/BasicInformation";
+import Permission from "./view/Permission";
 import Setting from "./edit/Setting";
 
 

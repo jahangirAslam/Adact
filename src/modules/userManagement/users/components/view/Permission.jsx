@@ -21,12 +21,13 @@ const Permission = (props) => {
     notify("Permission", res.msg);
   }
 
+
   if (moduleList.length === 0) {
     return <Skeleton />;
   }
 
   return (
-    <GetPermissions data={moduleList} modules={moduleList.modules} />
+    <GetPermissions data={moduleList} modules={moduleList.modules} disable={true} />
   );
 }
 
