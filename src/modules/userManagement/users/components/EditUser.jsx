@@ -29,25 +29,13 @@ const pageConfig = {
 const EditUser = () => {
   const { id } = useParams();
   const [loader, setLoader] = useState(true);
+
   const [data, setData] = useState({
     object: null,
     dependencies: []
   });
 
-  const tabs = [
-    {
-      title: "Basic Information",
-      content: <BasicInformation data={data.object} dependencies={data.dependencies} />
-    },
-    {
-      title: "Permission",
-      content: <Permission />
-    },
-    {
-      title: "Setting",
-      content: <Setting />
-    }
-  ]
+
 
   useEffect(() => {
     getData();
@@ -62,11 +50,29 @@ const EditUser = () => {
     setData(res);
   }
 
+
+  const tabs = [
+    {
+      title: "Basic Information",
+      content: <BasicInformation data={data.object} dependencies={data.dependencies} />
+    },
+    {
+      title: "Permission",
+      content: <Permission data={data.object} />
+    },
+    {
+      title: "Setting",
+      content: <Setting />
+    }
+  ]
+
   const onError = (res) => {
     // handle call failed error
   }
 
-
+  if (data.length === 0) {
+    return "";
+  }
   return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
 }
 

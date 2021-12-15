@@ -1,9 +1,10 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {  HeaderComponent,ButtonComponent } from "@comps/components";
-import { makeRequest,notify,getErrorProps } from "@utils/helpers";
-import { getRole,updateRole,createPermission ,deletePermission} from "../requests";
-import { Form, Input,Checkbox,Collapse ,Row, Col } from "antd";
+import { HeaderComponent, ButtonComponent } from "@comps/components";
+import { makeRequest, notify, getErrorProps } from "@utils/helpers";
+import { getRole, updateRole } from "../requests";
+import { Form, Input, Row, Col } from "antd";
+import GetPermissions from "../../rolePermission/GetPermissions";
 
 
 const pageConfig = {
@@ -24,11 +25,10 @@ const pageConfig = {
 
 const EditRole = () => {
   const { id } = useParams();
-  const { Panel } = Collapse;
   const [loader, setLoader] = useState(true);
   const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
-  
+
 
   useEffect(() => {
     getData();
@@ -53,100 +53,50 @@ const EditRole = () => {
     notify("User", response.msg);
   }
 
-  const onPermissionDeleteSuccess = (res, response) => {
-    getData();
-    notify("Permission", response.msg);
-  }
-
-  const onPermissionCreateSuccess = (res, response) => {
-    getData();
-    notify("Permission", response.msg);
-  }
-
-  const onPermissionError = (res, response) => {
-    notify("Permission", res.message);
-  }
-
-  const onError = (err, error) => {
+  const onError = (err) => {
     let errorList = [];
     errorList['name'] = err.name;
     setErrors(errorList);
   }
 
-  const checkPermission = (permission, module, action) =>{
-    return permission.filter(x => x.role_id === data.object.id && x.module_id === module && x.action_id===action);
-  }
-
-  const permission = (action, module, event, permission) => {
-    let payload = {"object":{"role_id": data.object.id, "module_id": module.id, "action_id": action.id}};
-    if(event.currentTarget.checked){
-      makeRequest(setLoader, createPermission, payload, onPermissionCreateSuccess, onPermissionError);
-    }else{
-      var index =  checkPermission(permission, payload.object.module_id, payload.object.action_id);
-      index.length<1 ?  notify("Permission", "Permission not found"):
-        makeRequest(setLoader, deletePermission, index[0].id, onPermissionDeleteSuccess, onPermissionError);
-    }
-  }
-
-  const modules = (module) => {
-    return(
-      <>
-      {module.map((eachModule, i)=>
-        <Collapse key={i}>
-        <Panel header={eachModule.name}>
-        <div className="da-mt-10">
-        {eachModule.actions ?
-        <Row>
-          {eachModule.actions.map((action,i)=>
-        <Col span={4} key={i}><Checkbox checked={checkPermission(eachModule.permission, eachModule.id, action.id).length>0 ? true : false} onClick={(event) => permission(action, eachModule, event, eachModule.permission)}> {action.name}</Checkbox></Col>
-        )}
-      </Row>
-      : null }
-        </div>
-          {eachModule.children ? modules(eachModule.children) : null}
-        </Panel>
-        </Collapse>
-        )}
-        </>
-    );
-  }
-  
-  if(data.length===0){
+  if (data.length === 0) {
     return "";
   }
   return (
     <>
-    <HeaderComponent headers={pageConfig.headers}/>
-    <div className="da-mr-64 da-ml-64 da-mt-48">
-    <Form
-      layout="horizontal"
-      labelCol={{ span: 2 }}
-      initialValues={data.object}
-      onFinish={onFinish}
-    >
-      <Row>
+      <HeaderComponent headers={pageConfig.headers} />
+      <div className="da-mr-64 da-ml-64 da-mt-48">
+        <Form
+          layout="horizontal"
+          labelCol={{ span: 2 }}
+          initialValues={data.object}
+          onFinish={onFinish}
+        >
+          <Row>
 
-      <Col span={20}>
-      <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
-        {...getErrorProps(errors['name'])}
-      >
-        <Input />
-      </Form.Item>
-      </Col>
-      <Col span={4}>
-      <Form.Item wrapperCol={{ offset: 5 }}>
-        <ButtonComponent className="da-mr-10" type="primary" htmlType="submit" state={loader}>Update Name</ButtonComponent>
-      </Form.Item>
-      </Col>
-      </Row>
-    </Form>
-    {modules(data.modules)}
-    </div>
+            <Col span={20}>
+              <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
+                {...getErrorProps(errors['name'])}
+              >
+                <Input />
+              </Form.Item>
+            </Col>
+            <Col span={4}>
+              <Form.Item wrapperCol={{ offset: 5 }}>
+                <ButtonComponent className="da-mr-10" type="primary" htmlType="submit" state={loader}>Update Name</ButtonComponent>
+              </Form.Item>
+            </Col>
+          </Row>
+        </Form>
+
+        <GetPermissions data={data} modules={data.modules} disable={false} />
+      </div>
     </>
   );
 }
 
 export default EditRole;
+
 const rules = {
   name: [
     { required: true, message: 'Please input your Role Name!', },
