@@ -5,7 +5,7 @@ export const getErrorProps = (errors) => {
     if (Array.isArray(errors) && !errors.length) {
         return {};
     } else if (errors === null || errors === '' || errors === "" || errors === undefined) {
-        return ;
+        return;
     }
     return { validateStatus: 'error', help: errors };
 }
@@ -20,10 +20,14 @@ export const makeRequest = async (loader, call, payload, onSuccess, onError) => 
         } else if (res.code === 422) {
             onError(res.data, res);
         } else {
-            onError([res.msg], res);
+            if (onError) {
+                onError(res.data, res);
+            }
         }
     } catch (e) {
-        onError(e.message, e);
+        if (onError) {
+            onError(e.message, e);
+        }
     }
     loader(false);
 }
@@ -35,12 +39,18 @@ export const makeRequestStateless = async (call, payload, onSuccess, onError) =>
             onSuccess(res.data, res);
             return;
         } else if (res.code === 422) {
-            onError(res.data, res);
+            if (onError) {
+                onError(res.data, res);
+            }
         } else {
-            onError([res.msg], res);
+            if (onError) {
+                onError([res.msg], res);
+            }
         }
     } catch (e) {
-        onError(e.message, e);
+        if (onError) {
+            onError(e.message, e);
+        }
     }
 }
 
