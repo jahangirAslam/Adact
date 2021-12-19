@@ -7,7 +7,7 @@ import { getUser } from "../requests";
 
 import BasicInformation from "./view/BasicInformation";
 import Permission from "./view/Permission";
-import Setting from "./edit/Setting";
+import { GetSettings } from "@mods/settings/GetSettings";
 
 
 const pageConfig = {
@@ -54,15 +54,15 @@ const ViewUser = () => {
   const tabs = [
     {
       title: "Basic Information",
-      content: <BasicInformation data={data.object} dependencies={data.dependencies} disable={true} />
+      content: <BasicInformation data={ data.object } dependencies={ data.dependencies } disable={ true } />
     },
     {
       title: "Permission",
-      content: <Permission data={data.object} disable={true} />
+      content: <Permission data={ data.object } disable={ true } />
     },
     {
       title: "Setting",
-      content: <Setting />
+      content: <GetSettings disable={ true } group="users" />
     }
   ]
 
@@ -73,7 +73,7 @@ const ViewUser = () => {
   if (data.length === 0) {
     return "";
   }
-  return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
+  return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={ loader }></TabComponent>;
 }
 
 export default ViewUser;

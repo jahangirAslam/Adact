@@ -7,7 +7,7 @@ import { getUser } from "../requests";
 
 import BasicInformation from "./edit/BasicInformation";
 import Permission from "./edit/Permission";
-import Setting from "./edit/Setting";
+import { GetSettings } from "@mods/settings/GetSettings";
 
 
 const pageConfig = {
@@ -54,15 +54,15 @@ const EditUser = () => {
   const tabs = [
     {
       title: "Basic Information",
-      content: <BasicInformation data={data.object} dependencies={data.dependencies} />
+      content: <BasicInformation data={ data.object } dependencies={ data.dependencies } />
     },
     {
       title: "Permission",
-      content: <Permission data={data.object} />
+      content: <Permission data={ data.object } />
     },
     {
       title: "Setting",
-      content: <Setting />
+      content: <GetSettings group="users" />
     }
   ]
 
@@ -73,7 +73,7 @@ const EditUser = () => {
   if (data.length === 0) {
     return "";
   }
-  return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
+  return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={ loader }></TabComponent>;
 }
 
 export default EditUser;
