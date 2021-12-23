@@ -1,4 +1,4 @@
-import { get, post, del, put } from "@utils/axios";
+import { get, post, del, put, postFd} from "@utils/axios";
 
 const api = "user-management/users";
 
@@ -32,4 +32,8 @@ export const updateUser = (payload) => {
 
 export const deleteUser = (id) => {
     return del(`${api}/${id}`);
+}
+
+export const importUser = (payload) => {
+    return postFd(`${api}/import`,payload);
 }

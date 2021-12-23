@@ -1,10 +1,10 @@
 import axios from 'axios';
 import Cookies from 'js-cookie';
 
-function getAxios(tocInstance, req) {
+function getAxios(tocInstance, header) {
     const instance = axios.create({
         baseURL: process.env.REACT_APP_API_BASE_URL,
-        headers: {
+        headers: header ? header : {
             "Access-Control-Allow-Origin": "*",
             'Content-Type': 'application/json',
         },
@@ -50,6 +50,15 @@ export const post = (uri, payload, tocInstance = true, req = false) =>
         .then((res) => {
             return res.data;
         }, onAxiosRejected);
+
+export const postFd = (uri, payload, tocInstance = true) => {
+    let header = { "Access-Control-Allow-Origin": "*", 'content-type': 'multipart/form-data' }
+    return getAxios(tocInstance, header)
+        .post(uri, payload)
+        .then((res) => {
+            return res.data;
+        }, onAxiosRejected);
+}
 
 export const put = (uri, payload, tocInstance = true, req = false) =>
     getAxios(tocInstance, req)

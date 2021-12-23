@@ -2,10 +2,11 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Tag } from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent, ImportButton } from "@comps/components";
 import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
 import { getUsers, activateUserRequest, getFilters, deleteUser } from "./requests";
 import CreateUser from "./components/CreateUser";
+import ImportUser from "./components/ImportUser";
 
 const pageConfig = {
   headers: {
@@ -58,7 +59,7 @@ const IndexUser = () => {
         let color = is_active ? 'green' : 'red';
         let text = is_active ? 'ACTIVE' : 'INACTIVE';
         return (
-          <Tag color={color} >{text}</Tag>
+          <Tag color={ color } >{ text }</Tag>
         );
       }
     },
@@ -80,14 +81,16 @@ const IndexUser = () => {
 
   const ActionComponentEx = (record) => {
     let icon = null;
-    if (record.is_active) {
-      icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
-    } else {
-      icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+    if (record) {
+      if (record.is_active) {
+        icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
+      } else {
+        icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+      }
     }
     return (
-      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
-        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
+      <ActionComponent each={ record } onView={ onView } onEdit={ onEdit } onDelete={ onDelete }>
+        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={ () => activateDeactiveUser(record) }>{ icon }</Button>
       </ActionComponent>
     );
   }
@@ -120,6 +123,11 @@ const IndexUser = () => {
     setDataSource(response.data);
   }
 
+  const onImported = (res) => {
+    getAllUsers();
+    setChildComponent(null);
+  }
+
   const handleTableChange = (page, fil, sorter) => {
     let payload = {
       ...pagination,
@@ -133,11 +141,18 @@ const IndexUser = () => {
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateUser onCreated={onCreated} />);
+    setChildComponent(<CreateUser onCreated={ onCreated } />);
   }
+
   const onCreated = (each) => {
+    if (!each) {
+      setChildComponent(null);
+    }
     setDataSource([...dataSource, each.object]);
-    setChildComponent(null);
+  }
+
+  const onImport = () => {
+    setChildComponent(<ImportUser onImported={ onImported } />);
   }
 
   const onView = (record) => {
@@ -164,13 +179,14 @@ const IndexUser = () => {
 
   return (
     <>
-      {childComponent}
-      <HeaderComponent headers={pageConfig.headers}>
-        <CreateButton onClick={onCreate} />
+      { childComponent }
+      <HeaderComponent headers={ pageConfig.headers }>
+        <ImportButton onClick={ onImport } />
+        <CreateButton onClick={ onCreate } />
       </HeaderComponent>
       <BodyComponent>
-        <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-        <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+        <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
+        <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
       </BodyComponent>
     </>
   );
