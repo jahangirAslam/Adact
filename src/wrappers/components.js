@@ -5,6 +5,7 @@ import BaseTable from "./layout/BaseTable";
 import BaseAction from "./layout/BaseActions";
 import BaseModal from "./layout/BaseModal";
 import BaseTab from "./layout/BaseTab";
+import BaseGoogleMap from "./layout/BaseGoogleMap";
 import BaseTree from "./layout/BaseTree";
 import BaseDropzone from "./layout/BaseDropzone";
 import BaseEditor from "./layout/BaseEditor";
@@ -37,3 +38,5 @@ export const ImportButton = BaseImport;
 export const UploadButton = BaseUpload;
 export const CancelButton = BaseCancel;
 export const SaveButton = BaseSave;
+//Components
+export const GoogleMap = BaseGoogleMap;
