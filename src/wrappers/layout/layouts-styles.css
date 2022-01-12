@@ -15,3 +15,6 @@ display: block !important;
     color: #a4a9ab !important;
     background-color: #f9f9f9 !important;
 }
+.rdw-editor-wrapper {
+    border: 1px solid #dfe6e9 !important;
+}
