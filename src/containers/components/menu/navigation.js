@@ -28,6 +28,12 @@ const navigation = [
             },
         ]
     },
+    {
+        id: "documentManagement",
+        title: "Documents",
+        uri: 'document-management/documents',
+        permissionKey: 'document_index',
+    },
 ];
 
 export default navigation
