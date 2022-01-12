@@ -28,6 +28,7 @@ const CreateUser = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
+    payload.object.is_active = false;
     makeRequest(setLoader, createUser, payload, onSuccess, onError);
   }
 

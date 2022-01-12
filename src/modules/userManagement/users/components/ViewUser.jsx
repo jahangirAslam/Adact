@@ -7,7 +7,8 @@ import { getUser } from "../requests";
 
 import BasicInformation from "./view/BasicInformation";
 import Permission from "./view/Permission";
-import { GetSettings } from "@mods/settings/GetSettings";
+import { GetSettings } from "@mods/commons/settings/GetSettings";
+import ActivityLog from "@mods/commons/activityLogs/ActivityLog";
 
 
 const pageConfig = {
@@ -54,15 +55,19 @@ const ViewUser = () => {
   const tabs = [
     {
       title: "Basic Information",
-      content: <BasicInformation data={ data.object } dependencies={ data.dependencies } disable={ true } />
+      content: <BasicInformation data={data.object} dependencies={data.dependencies} disable={true} />
     },
     {
       title: "Permission",
-      content: <Permission data={ data.object } disable={ true } />
+      content: <Permission data={data.object} disable={true} />
     },
     {
       title: "Setting",
-      content: <GetSettings disable={ true } group="users" />
+      content: <GetSettings disable={true} group="users" />
+    },
+    {
+      title: "Activity Logs",
+      content: <ActivityLog logs={data.activities} />
     }
   ]
 
@@ -73,7 +78,7 @@ const ViewUser = () => {
   if (data.length === 0) {
     return "";
   }
-  return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={ loader }></TabComponent>;
+  return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
 }
 
 export default ViewUser;

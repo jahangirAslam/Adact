@@ -7,7 +7,7 @@ import { getUser } from "../requests";
 
 import BasicInformation from "./edit/BasicInformation";
 import Permission from "./edit/Permission";
-import { GetSettings } from "@mods/settings/GetSettings";
+import { GetSettings } from "@mods/commons/settings/GetSettings";
 
 
 const pageConfig = {

@@ -32,13 +32,13 @@ const BasicInformation = (props) => {
       initialValues={props.data}
       onFinish={onFinish}
     >
-      <Form.Item  name="name" rules={rules.name} label="Name :" className="da-mb-16"
+      <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
         {...getErrorProps(errors['name'])}
       >
-        <Input disabled={props.disable}/>
+        <Input />
       </Form.Item>
       <Form.Item name="email" label="Email :" className="da-mb-16">
-        <Input disabled={props.disable} />
+        <Input disabled={true} />
       </Form.Item>
       <Form.Item name="role_id" label="Select Role :" rules={rules.role_id} className="da-mb-8"
         {...getErrorProps(errors['role_id'])}
@@ -47,7 +47,7 @@ const BasicInformation = (props) => {
           showSearch
           placeholder="Select a user role"
           options={props.dependencies.roles}
-          disabled={props.disable}
+
         />
       </Form.Item>
       <Form.Item name="company_id" label="Select Third Party :" rules={rules.company_id} className="da-mb-8"
@@ -57,12 +57,12 @@ const BasicInformation = (props) => {
           showSearch
           placeholder="Select a user third party"
           options={props.dependencies.companies}
-          disabled={props.disable}
+
         />
       </Form.Item>
       <Form.Item wrapperCol={{ offset: 5 }}>
-        <ButtonComponent disabled={props.disable} className="da-mr-10" type="primary" htmlType="submit" state={loader}>Submit</ButtonComponent>
-        <ButtonComponent disabled={props.disable} type="primary">Reset Password</ButtonComponent>
+        <ButtonComponent className="da-mr-10" type="primary" htmlType="submit" state={loader}>Submit</ButtonComponent>
+        <ButtonComponent type="primary">Reset Password</ButtonComponent>
       </Form.Item>
     </Form>
   );
