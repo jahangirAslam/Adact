@@ -29,6 +29,20 @@ const navigation = [
         ]
     },
     {
+        id: "thirdparyManagement",
+        title: "Third Party",
+        uri: '/third-party-management',
+        permissionKey: 'hasChildren',
+        children: [
+            {
+                id: "contacts",
+                title: "Contacts",
+                uri: "/contacts",
+                permissionKey: 'contacts_index',
+            },
+        ]
+    },
+    {
         id: "documentManagement",
         title: "Documents",
         uri: 'document-management/documents',
