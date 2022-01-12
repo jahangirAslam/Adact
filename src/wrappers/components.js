@@ -5,6 +5,7 @@ import BaseTable from "./layout/BaseTable";
 import BaseAction from "./layout/BaseActions";
 import BaseModal from "./layout/BaseModal";
 import BaseTab from "./layout/BaseTab";
+import BaseTree from "./layout/BaseTree";
 import BaseDropzone from "./layout/BaseDropzone";
 // Filters
 import BaseFilter from "./filters/BaseFilter";
@@ -24,6 +25,7 @@ export const Dropzone = BaseDropzone;
 export const ActionComponent = BaseAction;
 export const ModalComponent = BaseModal;
 export const TabComponent = BaseTab;
+export const TreeComponent = BaseTree;
 // Filters
 export const FilterComponent = BaseFilter;
 // Buttons
