@@ -8,7 +8,7 @@ import IndexContact from "./contacts/IndexContact";
 import EditContact from "./contacts/components/EditContact";
 import ViewContact from "./contacts/components/ViewContact";
 
-const ThirdPartyModule = ({ match }) => (
+const CommonModule = ({ match }) => (
   <Switch>
     <Route exact path={ `${match.url}/locations` } component={ IndexLocation } />
     <Route exact path={ `${match.url}/locations/edit/:id` } component={ EditLocation } />
@@ -19,4 +19,4 @@ const ThirdPartyModule = ({ match }) => (
   </Switch>
 );
 
-export default ThirdPartyModule;
+export default CommonModule;

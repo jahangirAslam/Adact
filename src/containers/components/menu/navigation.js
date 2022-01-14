@@ -29,9 +29,9 @@ const navigation = [
         ]
     },
     {
-        id: "thirdpartyManagement",
-        title: "Third Party",
-        uri: '/third-party-management',
+        id: "common",
+        title: "Commons",
+        uri: '/common',
         permissionKey: 'hasChildren',
         children: [
             {

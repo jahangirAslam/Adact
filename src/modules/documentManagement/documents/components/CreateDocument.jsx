@@ -31,7 +31,7 @@ const CreateDocument = (props) => {
 
   const onFinish = (data) => {
     let payload = { "name": data.name, "type_id": document.type_id, "id": document.id, "is_used":true  }
-    let s3Payload = {"url":"https://adact-test.s3.eu-west-2.amazonaws.com/"+document.path,"data":file}
+    let s3Payload = {"url":document.bucket+document.path,"data":file}
     uploadFileS3(s3Payload);
     makeRequest(setLoader, updateDocument, payload, onSuccess, onError);
   }
