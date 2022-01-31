@@ -47,6 +47,12 @@ const navigation = [
                 permissionKey: 'contacts_index',
             },
             {
+                id: "attachment",
+                title: "Attachments",
+                uri: "/attachments",
+                permissionKey: 'attachments_index',
+            },
+            {
                 id: "brands",
                 title: "Brands",
                 uri: "/brands",
