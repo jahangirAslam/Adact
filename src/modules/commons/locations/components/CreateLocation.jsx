@@ -16,6 +16,7 @@ const CreateLocation = (props) => {
     });
     const onFinish = (data) => {
         let payload = { "object": data }
+        payload.object["type"] = props.type;
         makeRequest(setLoader, createLocation, payload, onSuccess, onError);
     }
 

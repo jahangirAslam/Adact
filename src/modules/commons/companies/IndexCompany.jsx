@@ -1,16 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
-import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getLocations, deleteLocation } from "./requests";
-import CreateLocation from "./components/CreateLocation.jsx";
-import EditLocation from "./components/EditLocation.jsx";
-import ViewLocation from "./components/ViewLocation.jsx";
+import { useHistory } from "react-router-dom";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
+import { getCompanys, deleteCompany } from "./requests";
 
+const pageConfig = {
+    headers: {
+        title: "Companies",
+        breadcrumb: [
+            {
+                name: "Companies",
+                path: "/common/companies"
+            }
+        ]
+    }
+}
 
-const IndexLocation = () => {
+const IndexCompany = () => {
 
     const [loader, setLoader] = useState(false);
-
+    const history = useHistory();
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -20,19 +29,11 @@ const IndexLocation = () => {
         sortType: 'desc'
     });
 
-    const [childComponent, setChildComponent] = useState(null);
-
     const columns = [
         {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
-            sorter: true,
-        },
-        {
-            key: 'city',
-            title: 'City',
-            dataIndex: 'city',
             sorter: true,
         },
         {
@@ -47,24 +48,23 @@ const IndexLocation = () => {
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponent({ each: record,  onEdit: onEdit, onDelete: onDelete })
         },
     ];
 
     useEffect(() => {
-        getAllLocations();
+        getAllCompanys();
         // eslint-disable-next-line
     }, [pagination]);
 
-    const getAllLocations = () => {
+    const getAllCompanys = () => {
         let payload = {
             start: pagination.current - 1,
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": props.type}
         };
-        makeRequest(setLoader, getLocations, payload, onSuccess, null);
+        makeRequest(setLoader, getCompanys, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
@@ -85,33 +85,15 @@ const IndexLocation = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateLocation onCreated={ onCreated } type={props.type} />);
-    }
-    const onCreated = (res) => {
-        if (res) {
-            setDataSource([...dataSource, res]);
-        }
-        setChildComponent(null);
-    }
-
-
-    const onView = (record) => {
-        setChildComponent(<ViewLocation onUpdated={ onUpdated } id={ record.id } />);
+        history.push(`/common/companies/create`);
     }
 
     const onEdit = (record) => {
-        setChildComponent(<EditLocation onUpdated={ onUpdated } id={ record.id } />);
-    }
-
-    const onUpdated = (res) => {
-        if (res) {
-            setDataSource(replaceById(dataSource, res));
-        }
-        setChildComponent(null);
+        history.push(`/common/companies/edit/${record.id}`);
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteLocation, record.id, onDeleteSuccess,
+        makeRequest(setLoader, deleteCompany, record.id, onDeleteSuccess,
             onError)
     }
 
@@ -126,8 +108,9 @@ const IndexLocation = () => {
 
     return (
         <>
-            { childComponent }
-            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={ onCreate } /></div>
+            <HeaderComponent headers={ pageConfig.headers }>
+                <CreateButton onClick={ onCreate } />
+            </HeaderComponent>
             <BodyComponent>
                 <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
@@ -135,4 +118,4 @@ const IndexLocation = () => {
     );
 }
 
-export default IndexLocation;
+export default IndexCompany;

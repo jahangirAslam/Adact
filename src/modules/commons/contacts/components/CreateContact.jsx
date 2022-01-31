@@ -16,6 +16,7 @@ const CreateContact = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
+    payload.object["type"] = props.type;
     makeRequest(setLoader, createContact, payload, onSuccess, onError);
   }
 

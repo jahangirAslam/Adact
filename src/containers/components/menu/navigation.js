@@ -29,16 +29,34 @@ const navigation = [
         ]
     },
     {
-        id: "common",
-        title: "Commons",
-        uri: '/common',
+        id: "thirdparty",
+        title: "Third Party",
+        uri: '/third-party',
         permissionKey: 'hasChildren',
         children: [
             {
-                id: "locations",
-                title: "Locations",
-                uri: "/locations",
-                permissionKey: 'locations_index',
+                id: "customers",
+                title: "Customers",
+                uri: "/customers",
+                permissionKey: 'customers_index',
+            },
+            {
+                id: "manufacturers",
+                title: "Manufacturerss",
+                uri: "/manufacturers",
+                permissionKey: 'manufacturerss_index',
+            },
+            {
+                id: "laboratories",
+                title: "Laboratories",
+                uri: "/laboratories",
+                permissionKey: 'laboratories_index',
+            },
+            {
+                id: "allparties",
+                title: "All Third Parties",
+                uri: "/all-third-parties",
+                permissionKey: 'allparties_index',
             },
             {
                 id: "contacts",

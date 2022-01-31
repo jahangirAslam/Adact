@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
 import { getContacts, deleteContact } from "./requests";
 import CreateContact from "./components/CreateContact.jsx";
@@ -18,7 +18,7 @@ const pageConfig = {
     }
 }
 
-const IndexContact = () => {
+const IndexContact = (props) => {
 
     const [loader, setLoader] = useState(false);
 
@@ -73,6 +73,7 @@ const IndexContact = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
+            filters : {"type": props.type}
         };
         makeRequest(setLoader, getContacts, payload, onSuccess, null);
     }
@@ -95,7 +96,7 @@ const IndexContact = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateContact onCreated={ onCreated } />);
+        setChildComponent(<CreateContact onCreated={ onCreated } type={props.type}/>);
     }
     const onCreated = (res) => {
         if (res) {
@@ -137,9 +138,7 @@ const IndexContact = () => {
     return (
         <>
             { childComponent }
-            <HeaderComponent headers={ pageConfig.headers }>
-                <CreateButton onClick={ onCreate } />
-            </HeaderComponent>
+            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={ onCreate } /></div>
             <BodyComponent>
                 <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
