@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getContacts, deleteContact } from "./requests";
-import CreateContact from "./components/CreateContact.jsx";
-import EditContact from "./components/EditContact.jsx";
-import ViewContact from "./components/ViewContact.jsx";
+import { getBrands, deleteBrand } from "./requests";
+import ViewBrand from "./components/ViewBrand.jsx";
+
 
 const pageConfig = {
     headers: {
-        title: "Contacts",
+        title: "Brands",
         breadcrumb: [
             {
-                name: "Contacts",
-                path: "/common/contacts"
+                name: "Brands",
+                path: "/common/brands"
             }
         ]
     }
 }
 
-const IndexContact = () => {
+const IndexBrand = () => {
 
     const [loader, setLoader] = useState(false);
-
+    const history = useHistory();
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -37,13 +37,13 @@ const IndexContact = () => {
         {
             key: 'name',
             title: 'Name',
-            dataIndex: 'first_name',
+            dataIndex: 'name',
             sorter: true,
         },
         {
-            key: 'mobile',
-            title: 'Mobile',
-            dataIndex: 'mobile',
+            key: 'market',
+            title: 'Market',
+            dataIndex: 'market',
             sorter: true,
         },
         {
@@ -63,18 +63,18 @@ const IndexContact = () => {
     ];
 
     useEffect(() => {
-        getAllContacts();
+        getAllBrands();
         // eslint-disable-next-line
     }, [pagination]);
 
-    const getAllContacts = () => {
+    const getAllBrands = () => {
         let payload = {
             start: pagination.current - 1,
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
         };
-        makeRequest(setLoader, getContacts, payload, onSuccess, null);
+        makeRequest(setLoader, getBrands, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
@@ -95,22 +95,15 @@ const IndexContact = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateContact onCreated={ onCreated } />);
+        history.push(`/common/brands/create`);
     }
-    const onCreated = (res) => {
-        if (res) {
-            setDataSource([...dataSource, res]);
-        }
-        setChildComponent(null);
-    }
-
 
     const onView = (record) => {
-        setChildComponent(<ViewContact onUpdated={ onUpdated } id={ record.id } />);
+        setChildComponent(<ViewBrand onUpdated={ onUpdated } id={ record.id } />);
     }
 
     const onEdit = (record) => {
-        setChildComponent(<EditContact onUpdated={ onUpdated } id={ record.id } />);
+        history.push(`/common/brands/edit/${record.id}`);
     }
 
     const onUpdated = (res) => {
@@ -121,7 +114,7 @@ const IndexContact = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteContact, record.id, onDeleteSuccess,
+        makeRequest(setLoader, deleteBrand, record.id, onDeleteSuccess,
             onError)
     }
 
@@ -140,6 +133,7 @@ const IndexContact = () => {
             <HeaderComponent headers={ pageConfig.headers }>
                 <CreateButton onClick={ onCreate } />
             </HeaderComponent>
+
             <BodyComponent>
                 <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
@@ -147,4 +141,4 @@ const IndexContact = () => {
     );
 }
 
-export default IndexContact;
+export default IndexBrand;

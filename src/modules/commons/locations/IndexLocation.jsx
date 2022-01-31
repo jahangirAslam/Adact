@@ -12,7 +12,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Location",
-                path: "/third-party-management/Location"
+                path: "/common/locations"
             }
         ]
     }

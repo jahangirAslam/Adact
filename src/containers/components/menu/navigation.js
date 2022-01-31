@@ -40,11 +40,17 @@ const navigation = [
                 uri: "/locations",
                 permissionKey: 'locations_index',
             },
-             {
+            {
                 id: "contacts",
                 title: "Contacts",
                 uri: "/contacts",
                 permissionKey: 'contacts_index',
+            },
+            {
+                id: "brands",
+                title: "Brands",
+                uri: "/brands",
+                permissionKey: 'brands_index',
             },
         ]
     },
