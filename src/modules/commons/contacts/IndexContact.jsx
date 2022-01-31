@@ -6,17 +6,6 @@ import CreateContact from "./components/CreateContact.jsx";
 import EditContact from "./components/EditContact.jsx";
 import ViewContact from "./components/ViewContact.jsx";
 
-const pageConfig = {
-    headers: {
-        title: "Contacts",
-        breadcrumb: [
-            {
-                name: "Contacts",
-                path: "/common/contacts"
-            }
-        ]
-    }
-}
 
 const IndexContact = (props) => {
 
@@ -73,7 +62,7 @@ const IndexContact = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": props.type}
+            filters: { "type": props.type }
         };
         makeRequest(setLoader, getContacts, payload, onSuccess, null);
     }
@@ -96,7 +85,7 @@ const IndexContact = (props) => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateContact onCreated={ onCreated } type={props.type}/>);
+        setChildComponent(<CreateContact onCreated={onCreated} type={props.type} />);
     }
     const onCreated = (res) => {
         if (res) {
@@ -107,11 +96,11 @@ const IndexContact = (props) => {
 
 
     const onView = (record) => {
-        setChildComponent(<ViewContact onUpdated={ onUpdated } id={ record.id } />);
+        setChildComponent(<ViewContact onUpdated={onUpdated} id={record.id} />);
     }
 
     const onEdit = (record) => {
-        setChildComponent(<EditContact onUpdated={ onUpdated } id={ record.id } />);
+        setChildComponent(<EditContact onUpdated={onUpdated} id={record.id} />);
     }
 
     const onUpdated = (res) => {
@@ -137,10 +126,10 @@ const IndexContact = (props) => {
 
     return (
         <>
-            { childComponent }
-            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={ onCreate } /></div>
+            {childComponent}
+            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
-                <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );

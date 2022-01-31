@@ -7,7 +7,7 @@ import EditLocation from "./components/EditLocation.jsx";
 import ViewLocation from "./components/ViewLocation.jsx";
 
 
-const IndexLocation = () => {
+const IndexLocation = (props) => {
 
     const [loader, setLoader] = useState(false);
 
@@ -62,7 +62,7 @@ const IndexLocation = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": props.type}
+            filters: { "type": props.type }
         };
         makeRequest(setLoader, getLocations, payload, onSuccess, null);
     }
@@ -85,7 +85,7 @@ const IndexLocation = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateLocation onCreated={ onCreated } type={props.type} />);
+        setChildComponent(<CreateLocation onCreated={onCreated} type={props.type} />);
     }
     const onCreated = (res) => {
         if (res) {
@@ -96,11 +96,11 @@ const IndexLocation = () => {
 
 
     const onView = (record) => {
-        setChildComponent(<ViewLocation onUpdated={ onUpdated } id={ record.id } />);
+        setChildComponent(<ViewLocation onUpdated={onUpdated} id={record.id} />);
     }
 
     const onEdit = (record) => {
-        setChildComponent(<EditLocation onUpdated={ onUpdated } id={ record.id } />);
+        setChildComponent(<EditLocation onUpdated={onUpdated} id={record.id} />);
     }
 
     const onUpdated = (res) => {
@@ -126,10 +126,10 @@ const IndexLocation = () => {
 
     return (
         <>
-            { childComponent }
-            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={ onCreate } /></div>
+            {childComponent}
+            <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
-                <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );
