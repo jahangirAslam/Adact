@@ -2,17 +2,15 @@ import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
-import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
-import IndexFacility from "@mods/commons/facilities/IndexFacility";
 
 const pageConfig = {
   headers: {
-    title: "Manage Laboratory",
+    title: "Manage Facility",
     breadcrumb: [
       {
-        name: "Laboratories",
-        path: "/third-party/laboratories"
+        name: "Facility",
+        path: "/third-party/facilities"
       },
       {
         name: "Manage",
@@ -22,7 +20,7 @@ const pageConfig = {
 
 }
 
-const EditLaboratory = () => {
+const EditFacility = () => {
   const { id } = useParams();
 
   const tabs = [
@@ -31,20 +29,16 @@ const EditLaboratory = () => {
       content: <EditCompany id={ id } />
     },
     {
-      title: "Locations",
-      content: <IndexAttachment type="Laboratories" />
+      title: "Attachments",
+      content: <IndexAttachment type="Facilities" />
     },
     {
-      title: "Contacts",
-      content: <ContactIndex id={ id } type="Laboratories" />
-    },
-    {
-      title: "Facility",
-      content: <IndexFacility />
+      title: "Changes",
+      content: "Changes"
     }
   ]
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;
 }
 
-export default EditLaboratory;
+export default EditFacility;

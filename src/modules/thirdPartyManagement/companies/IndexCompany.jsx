@@ -10,7 +10,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Companies",
-                path: "/common/companies"
+                path: "/third-party/companies"
             }
         ]
     }

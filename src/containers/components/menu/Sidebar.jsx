@@ -56,21 +56,21 @@ export default function Sidebar(props) {
 
   const MemoizedMenuItems = useMemo(() => (
     <>
-      {navigation.map((item, index) => MenuItem(item, index, '0'))}
+      { navigation.map((item, index) => MenuItem(item, index, '0')) }
     </>
   ), []);
 
   const MainMenu = () => {
     const menu = <Menu
       mode="inline"
-      defaultOpenKeys={[
+      defaultOpenKeys={ [
         splitLocation.length === 5
           ? splitLocation[splitLocation.length - 3]
           : null,
         splitLocation[splitLocation.length - 2],
-      ]}
+      ] }
     >
-      {MemoizedMenuItems}
+      { MemoizedMenuItems }
     </Menu>;
 
     if (!visible) {
@@ -79,56 +79,56 @@ export default function Sidebar(props) {
 
     return <Drawer
       title={
-        <MenuLogo onClose={onClose} />
+        <MenuLogo onClose={ onClose } />
       }
       className="da-mobile-sidebar"
       placement="left"
-      closable={true}
-      onClose={onClose}
-      visible={visible}
+      closable={ true }
+      onClose={ onClose }
+      visible={ visible }
       closeIcon={
         <RiCloseFill
           className="remix-icon da-text-color-black-80"
-          size={24}
+          size={ 24 }
         />
       }
     >
-      {menu}
+      { menu }
     </Drawer>;
   }
 
   return (
     <Sider
-      trigger={null}
+      trigger={ null }
       collapsible
-      collapsed={collapsed}
+      collapsed={ collapsed }
       theme="light"
-      width={256}
+      width={ 256 }
       className="da-sidebar"
     >
       <Row className="da-mr-12 da-ml-24 da-mt-24" align="bottom" justify="space-between">
         <Col>
-          {collapsed === false ? <MenuLogo onClose={onClose} /> : ""}
+          { collapsed === false ? <MenuLogo onClose={ onClose } /> : "" }
         </Col>
 
         <Col className="da-pr-0">
           <Button
-            icon={trigger}
+            icon={ trigger }
             type="text"
             className="da-float-right"
           ></Button>
         </Col>
 
-        {collapsed !== false && (
+        { collapsed !== false && (
           <Col className="da-mt-8">
             <Link
               to="/"
-              onClick={onClose}
+              onClick={ onClose }
             >
-              <img className="da-logo" src={logoSmall} alt="logo" />
+              <img className="da-logo" src={ logoSmall } alt="logo" />
             </Link>
           </Col>
-        )}
+        ) }
       </Row>
       <MainMenu />
     </Sider >
@@ -149,10 +149,10 @@ const MenuItem = (each, i, k, uri = '/') => {
 
   if (each.children.length) {
     return (
-      <Menu.SubMenu key={concat} title={each.title} icon={each.icon}>
-        {each.children.map((child, j) => MenuItem(child, j, concat, each.uri))}
+      <Menu.SubMenu key={ concat } title={ each.title } icon={ each.icon }>
+        { each.children.map((child, j) => MenuItem(child, j, concat, each.uri)) }
       </Menu.SubMenu>
     );
   }
-  return <Menu.Item key={concat} icon={each.icon} ><span><Link to={uri + each.uri}>{each.title}</Link></span></Menu.Item>;
+  return <Menu.Item key={ concat } icon={ each.icon } ><span><Link to={ uri + each.uri }>{ each.title }</Link></span></Menu.Item>;
 }

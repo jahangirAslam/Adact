@@ -3,16 +3,15 @@ import { TabComponent } from "@comps/components";
 
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
-import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
-import IndexFacility from "@mods/commons/facilities/IndexFacility";
+import IndexDocument from "@mods/documentManagement/documents/IndexDocument";
 
 const pageConfig = {
   headers: {
-    title: "Manage Laboratory",
+    title: "Manage Agent",
     breadcrumb: [
       {
-        name: "Laboratories",
-        path: "/third-party/laboratories"
+        name: "Agent",
+        path: "/third-party/agents"
       },
       {
         name: "Manage",
@@ -22,7 +21,7 @@ const pageConfig = {
 
 }
 
-const EditLaboratory = () => {
+const EditAgent = () => {
   const { id } = useParams();
 
   const tabs = [
@@ -31,20 +30,20 @@ const EditLaboratory = () => {
       content: <EditCompany id={ id } />
     },
     {
-      title: "Locations",
-      content: <IndexAttachment type="Laboratories" />
-    },
-    {
       title: "Contacts",
-      content: <ContactIndex id={ id } type="Laboratories" />
+      content: <ContactIndex id={ id } type="Agent" />
     },
     {
-      title: "Facility",
-      content: <IndexFacility />
+      title: "Documents",
+      content: <IndexDocument id={ id } type="Agent" />
+    },
+    {
+      title: "Changes",
+      content: "Changes"
     }
   ]
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;
 }
 
-export default EditLaboratory;
+export default EditAgent;

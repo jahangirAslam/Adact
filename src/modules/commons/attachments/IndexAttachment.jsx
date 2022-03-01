@@ -1,31 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
+import {  BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
 import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
-import { getAttachments, getFilters, deleteAttachment, downloadAttachmentRequest, downloadFileS3 } from "./requests";
+import { getAttachments,  deleteAttachment, downloadAttachmentRequest, downloadFileS3 } from "./requests";
 import CreateAttachment from "./components/CreateAttachment";
 import EditAttachment from "./components/EditAttachment";
 
-const pageConfig = {
-  headers: {
-    title: "Attachments",
-    breadcrumb: [
-      {
-        name: "Attachments",
-        path: "/common/attachments"
-      }
-    ]
-  }
-}
 
-const IndexAttachment = () => {
+const IndexAttachment = (props) => {
 
   const [loader, setLoader] = useState(false);
 
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
-  const [filters, setFilters] = useState({});
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 10,
@@ -70,7 +58,7 @@ const IndexAttachment = () => {
   useEffect(() => {
     getAllAttachments();
     // eslint-disable-next-line
-  }, [pagination, filters]);
+  }, [pagination]);
 
   const downloadAttachment = (record) => {
     makeRequest(setLoader, downloadAttachmentRequest, record.id, onDownloadSuccess, onDownloadError);
@@ -90,7 +78,7 @@ const IndexAttachment = () => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
-      filters : {"is_used":true}
+      filters : {"is_used":true,"type": props.type}
     };
     makeRequest(setLoader, getAttachments, payload, onSuccess, null);
   }
@@ -153,11 +141,8 @@ const IndexAttachment = () => {
   return (
     <>
       { childComponent }
-      <HeaderComponent headers={ pageConfig.headers }>
-        <CreateButton onClick={ onCreate } />
-      </HeaderComponent>
+      <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
       <BodyComponent>
-        <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
         <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
       </BodyComponent>
     </>
@@ -165,11 +150,3 @@ const IndexAttachment = () => {
 }
 
 export default IndexAttachment;
-
-const availableFilters = [
-  {
-    key: 'name',
-    placeholder: 'User Name',
-    type: 'text',
-  }
-];

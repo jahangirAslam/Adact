@@ -42,7 +42,7 @@ const navigation = [
             },
             {
                 id: "manufacturers",
-                title: "Manufacturerss",
+                title: "Manufacturers",
                 uri: "/manufacturers",
                 permissionKey: 'manufacturerss_index',
             },
@@ -53,29 +53,23 @@ const navigation = [
                 permissionKey: 'laboratories_index',
             },
             {
+                id: "facilities",
+                title: "Facilities",
+                uri: "/facilities",
+                permissionKey: 'facilities_index',
+            },
+            {
+                id: "agents",
+                title: "Agents",
+                uri: "/agents",
+                permissionKey: 'agents_index',
+            },
+            {
                 id: "allparties",
                 title: "All Third Parties",
                 uri: "/all-third-parties",
                 permissionKey: 'allparties_index',
-            },
-            {
-                id: "contacts",
-                title: "Contacts",
-                uri: "/contacts",
-                permissionKey: 'contacts_index',
-            },
-            {
-                id: "attachment",
-                title: "Attachments",
-                uri: "/attachments",
-                permissionKey: 'attachments_index',
-            },
-            {
-                id: "brands",
-                title: "Brands",
-                uri: "/brands",
-                permissionKey: 'brands_index',
-            },
+            }
         ]
     },
     {

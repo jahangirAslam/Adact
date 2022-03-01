@@ -1,9 +1,11 @@
 import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 
-import EditCompany from "@mods/commons/companies/components/EditCompany";
+import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
 import LocationIndex from "@mods/commons/locations/IndexLocation";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
+import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
+import  IndexBrand  from "@mods/commons/brands/IndexBrand";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
 
 const pageConfig = {
@@ -28,15 +30,15 @@ const EditCustomer = () => {
   const tabs = [
     {
       title: "Summary",
-      content: <EditCompany id={id}/>
+      content: <EditCompany id={ id } />
     },
     {
       title: "Locations",
-      content: <LocationIndex id={id} type="customers"/>
+      content: <LocationIndex id={ id } type="customers" />
     },
     {
       title: "Contacts",
-      content: <ContactIndex id={id} type="customers"/>
+      content: <ContactIndex id={ id } type="customers" />
     },
     {
       title: "Settings",
@@ -44,7 +46,7 @@ const EditCustomer = () => {
     },
     {
       title: "Attachments",
-      content: "Attachments"
+      content: <IndexAttachment type="customers" />
     },
     {
       title: "Products",
@@ -52,7 +54,7 @@ const EditCustomer = () => {
     },
     {
       title: "Brands",
-      content: "Brands"
+      content: <IndexBrand type="customers" />
     },
     {
       title: "Submissions",
@@ -64,7 +66,7 @@ const EditCustomer = () => {
     }
   ]
 
-  return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent> ;
+  return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;
 }
 
 export default EditCustomer;
