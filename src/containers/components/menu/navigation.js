@@ -79,11 +79,26 @@ const navigation = [
         ]
     },
     {
+        id: "componentManagement",
+        title: "Components",
+        uri: '/component-management',
+        permissionKey: 'hasChildren',
+        children: [
+            {
+                id: "substance",
+                title: "Chemical substances",
+                uri: "/substances",
+                permissionKey: 'substances_index',
+            }
+        ]
+    },
+    {
         id: "documentManagement",
         title: "Documents",
         uri: 'document-management/documents',
         permissionKey: 'document_index',
     },
+
 ];
 
 export default navigation
