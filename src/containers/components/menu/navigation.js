@@ -83,6 +83,12 @@ const navigation = [
                 title: "Chemical substances",
                 uri: "/substances",
                 permissionKey: 'substances_index',
+            },
+            {
+                id: "chemical-compound",
+                title: "Chemical Compounds",
+                uri: "/chemical-compounds",
+                permissionKey: 'chemical_compounds_index',
             }
         ]
     },

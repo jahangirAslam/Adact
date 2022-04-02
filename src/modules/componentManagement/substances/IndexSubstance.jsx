@@ -92,7 +92,7 @@ const IndexSubstance = () => {
 
     const onCreated = (res) => {
         if(res){
-            history.push(`/third-party/substances/edit/${res.id}`);
+            history.push(`/component-management/substances/edit/${res.id}`);
         }
         setChildComponent(null);
     }
