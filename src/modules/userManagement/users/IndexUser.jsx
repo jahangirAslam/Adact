@@ -59,7 +59,7 @@ const IndexUser = () => {
         let color = is_active ? 'green' : 'red';
         let text = is_active ? 'ACTIVE' : 'INACTIVE';
         return (
-          <Tag color={ color } >{ text }</Tag>
+          <Tag color={color} >{text}</Tag>
         );
       }
     },
@@ -89,8 +89,8 @@ const IndexUser = () => {
       }
     }
     return (
-      <ActionComponent each={ record } onView={ onView } onEdit={ onEdit } onDelete={ onDelete }>
-        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={ () => activateDeactiveUser(record) }>{ icon }</Button>
+      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
       </ActionComponent>
     );
   }
@@ -141,7 +141,7 @@ const IndexUser = () => {
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateUser onCreated={ onCreated } />);
+    setChildComponent(<CreateUser onCreated={onCreated} />);
   }
 
   const onCreated = (each) => {
@@ -152,7 +152,7 @@ const IndexUser = () => {
   }
 
   const onImport = () => {
-    setChildComponent(<ImportUser onImported={ onImported } />);
+    setChildComponent(<ImportUser onImported={onImported} />);
   }
 
   const onView = (record) => {
@@ -179,14 +179,15 @@ const IndexUser = () => {
 
   return (
     <>
-      { childComponent }
-      <HeaderComponent headers={ pageConfig.headers }>
-        <ImportButton onClick={ onImport } />
-        <CreateButton onClick={ onCreate } />
+      {childComponent}
+      <HeaderComponent headers={pageConfig.headers}>
+        <ImportButton onClick={onImport} />
+        <CreateButton onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
-        <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
-        <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+        <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
+
+        <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
       </BodyComponent>
     </>
   );

@@ -1,18 +1,21 @@
 import React from "react";
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch, useSelector } from "react-redux";
 
 import { Menu, Dropdown, Col, Avatar } from "antd";
 import { User, Logout } from "react-iconly";
 import { logout as logoutAction } from "@mods/userManagement/auth/authSlice";
+import Man from "@assets/images/menu/man.svg";
 
+const AvatarIcon = () => {
+  return <img src={Man} alt="Avatar" />;
+};
 export default function HeaderUser() {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authUser);
 
   const logout = () => {
     dispatch({ type: logoutAction.type });
-  }
-
+  };
 
   const menu = (
     <Menu>
@@ -48,8 +51,8 @@ export default function HeaderUser() {
   return (
     <Dropdown overlay={menu}>
       <Col className="da-d-flex-center" onClick={(e) => e.preventDefault()}>
-        <Avatar src={user.profile_url} size={40} />
+        <Avatar src={user.profile_url} icon={<AvatarIcon />} size={40} />
       </Col>
     </Dropdown>
   );
-};
+}

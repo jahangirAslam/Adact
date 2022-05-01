@@ -1,0 +1,219 @@
+@font-face {
+    font-family: "Neo Sans W1G";
+    src: url(/src/font/NeoSansW1G-Regular_0.otf);
+}
+
+@font-face {
+    font-family: "Neo Sans H";
+    src: url(/src/font/neo-sans-w1g-843.otf);
+}
+
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+    font-family: 'Neo Sans W1G' !important;
+}
+
+.ant-select-selector {
+    border: none !important;
+}
+
+.ant-select {
+    border: 0.5px solid #dfdfdf;
+    border-radius: 8px;
+}
+
+.ant-pagination-item-active {
+    border-color: #0093CD;
+}
+
+.ant-pagination-item-active a {
+    color: #0093CD;
+}
+
+.ant-switch-checked {
+    background-color: #0093CD;
+}
+
+.ant-btn:focus {
+    color: #0093CD;
+    border-color: #0093CD;
+}
+
+.ant-btn:active {
+    color: #0093CD;
+    border-color: #0093CD;
+}
+
+.ant-breadcrumb a {
+    color: #0093CD;
+    transition: color 0.3s;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+    color: white !important;
+    background: #0093CD;
+    border-color: rgb(17, 67, 87);
+}
+
+.ant-btn:hover {
+    color: #0093CD;
+    border-color: #0093CD;
+}
+
+.ant-input:hover {
+    border-color: #0093CD;
+}
+
+.ant-input-affix-wrapper:not(.ant-input-affix-wrapper-disabled):hover {
+    border-color: #0093CD;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+    border-color: #0093CD;
+    box-shadow: 0px 0px 10px rgb(10 175 255 / 35%);
+}
+
+.ant-input-affix-wrapper:focus,
+.ant-input-affix-wrapper-focused {
+    border-color: #0093CD;
+    border-right-width: 1px !important;
+    outline: 0;
+    box-shadow: #3794b9;
+}
+
+.ant-menu-light .ant-menu-submenu-title:hover {
+    color: #0093CD;
+}
+
+.ant-menu-item a:hover {
+    color: #0093CD;
+}
+
+.ant-picker:hover,
+.ant-picker-focused {
+    border-color: #0093CD;
+}
+
+.login-img {
+    padding: 0px !important;
+}
+
+.login-note {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 36px;
+    color: #6A6A6A !important;
+    font-family: 'Neo Sans W1G';
+}
+
+.login-form label {
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    text-transform: capitalize;
+    color: black;
+    font-family: 'Neo Sans W1G';
+    font-style: normal;
+}
+
+.login-form p {
+    color: #0093CD;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 15px;
+    letter-spacing: -0.05em;
+    font-family: 'Neo Sans W1G';
+}
+
+.login-form input {
+    height: 55px !important;
+}
+
+.rem-me {
+    font-style: normal;
+    font-weight: 100 !important;
+    font-size: 16px;
+    color: #737373;
+}
+
+.sign-in-btn button {
+    background-color: #0093CD;
+    border: none;
+}
+
+.dashbord-search {
+    padding-top: 18px;
+}
+
+.dashbord-search button {
+    background-color: #0093CD !important;
+    border: none;
+}
+
+.mian-layout {
+    min-height: calc(100vh - 173px);
+    min-height: 95vh;
+}
+
+.menu-logo {
+    border-bottom: 1px solid #DFDFDF;
+    height: 64px;
+}
+
+.menu-btn button {
+    color: #0093CD;
+}
+
+.noti-avtar svg {
+    color: #0093CD !important;
+}
+
+.remix-icon {
+    fill: #0093CD;
+}
+
+.use-profile span {
+    padding: 5px;
+}
+
+.noti-icon {
+    color: #0093CD !important;
+}
+
+.login-form span {
+    padding: 0;
+    background-image: none;
+}
+
+.login-form-item span {
+    background-color: #e8f0fe;
+    border-radius: 6px;
+}
+
+.login-form-item input {
+    border-radius: 6px;
+}
+
+@media only screen and (max-width: 997px) {
+    .login-img {
+        display: none;
+    }
+}
+
+.ant-picker {
+    width: 100%;
+    height: 56px;
+}
+
+.sign-in-btn button :hover {
+    background-color: red;
+}

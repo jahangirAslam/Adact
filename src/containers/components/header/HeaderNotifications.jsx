@@ -120,7 +120,7 @@ export default function HeaderNotifications() {
           <Badge dot offset={[-4, 5]}>
             <Notification
               set="curved"
-              className="da-text-color-black-60"
+              className="noti-icon"
             />
           </Badge>
         </Dropdown>

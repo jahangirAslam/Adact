@@ -13,7 +13,6 @@ import MenuHeader from "./components/header";
 import MenuFooter from "./components/footer";
 import ModuleRoutes from "@mods/routes";
 
-
 const Main = () => {
   const dispatch = useDispatch();
   const { path } = useRouteMatch();
@@ -25,23 +24,23 @@ const Main = () => {
   }, []);
 
   return (
-    <div>
+    <>
       <Layout className="da-app-layout">
-        <Sidebar visible={visible} setVisible={setVisible} />
-
+        <MenuHeader setVisible={setVisible} />
         <Layout>
-          <MenuHeader setVisible={setVisible} />
+          <Sidebar visible={visible} setVisible={setVisible} />
 
-          <Layout.Content className="da-content-main da-bg-black-0">
-            <Switch>
-              <Route path={path} component={ModuleRoutes} />
-            </Switch>
-          </Layout.Content>
+          <Layout>
+            <Layout.Content className="da-content-main">
+              <Switch>
+                <Route path={path} component={ModuleRoutes} />
+              </Switch>
+            </Layout.Content>
 
-          <MenuFooter />
+            <MenuFooter />
+          </Layout>
         </Layout>
       </Layout>
-
       <div className="scroll-to-top">
         <ScrollToTop showUnder={300} style={{ bottom: "5%" }}>
           <Button
@@ -52,7 +51,7 @@ const Main = () => {
           />
         </ScrollToTop>
       </div>
-    </div>
+    </>
   );
 };
 

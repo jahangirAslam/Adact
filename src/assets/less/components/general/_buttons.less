@@ -7,21 +7,31 @@
   min-height: 40px;
 }
 
-.ant-btn>.remix-icon {
+.ant-btn > .remix-icon {
   line-height: 1;
   font-size: 16px;
 }
 
 .ant-btn-text:hover,
 .ant-btn-text:focus {
-  color: @b-80  !important;
-  background: @b-10  !important;
+  color: @b-80 !important;
+  background: @b-10 !important;
   border-color: transparent !important;
 }
 
 .ant-btn:hover {
   color: @primary-2;
   border-color: @primary-2;
+}
+
+.ant-btn-primary {
+  border-color: #0093cd;
+  background: #0093cd;
+}
+
+.ant-form-item-control-input-content .ant-btn {
+  height: 66px !important;
+  min-width: 232px !important;
 }
 
 .ant-btn-primary:hover,
@@ -43,10 +53,9 @@
 }
 
 .ant-btn-background-ghost.ant-btn-primary {
-
   &:hover,
   &:focus {
-    background-color: @primary-1  !important;
-    color: @b-0  !important;
+    background-color: @primary-1 !important;
+    color: @b-0 !important;
   }
 }

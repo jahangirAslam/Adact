@@ -1,7 +1,15 @@
 .@{class-prefix}-content-main {
-  margin: 0 32px;
   min-height: calc(100vh - 173px);
-
+  background-color: #fbfbfb !important;
+  .page-header {
+    background-color: #f5f5f5;
+    .ant-page-header {
+      .ant-page-header-heading-title {
+        line-height: 1;
+        color: #0093cd;
+      }
+    }
+  }
   @media @sm {
     margin: 24px 16px 0;
     min-height: calc(100vh - 144px);

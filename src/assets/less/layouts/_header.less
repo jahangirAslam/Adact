@@ -6,6 +6,37 @@
   align-items: center;
   z-index: 3;
 
+  &.top-header {
+    height: 85px;
+    border-bottom: 1px solid #dfdfdf;
+    margin: 0;
+    border-radius: 0;
+    display: unset;
+  }
+
+  .main-row {
+    height: 85px;
+    .ant-btn.menu-btn {
+      padding: 0;
+      background: transparent;
+    }
+
+    .ant-input-prefix {
+      color: #6a6a6aad;
+    }
+
+    .ant-btn.ant-input-search-button {
+      background: #0093cd;
+    }
+
+    .last-item {
+      align-self: center;
+    }
+
+    .ant-input-group-wrapper {
+      display: block;
+    }
+  }
   .@{class-prefix}-header-search {
     opacity: 0;
     visibility: hidden;
@@ -49,7 +80,7 @@
             background-color: @primary-4;
 
             a {
-              color: @primary-1
+              color: @primary-1;
             }
           }
         }

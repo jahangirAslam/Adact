@@ -8,7 +8,7 @@ import { ButtonComponent } from "@comps/components";
 
 import { signinUser } from "../authSlice";
 import AuthCommon from "../components/AuthCommon";
-
+import loginLogo from '../../../../assets/images/dasboard/loginLogo.png'
 
 let credentials = {};
 
@@ -36,43 +36,61 @@ const Login = () => {
 
   const LoginForm = () => (
     <>
-      <h1 className="da-mb-sm-0">Login</h1>
-      <p className="da-mt-sm-0 da-mt-8 da-text-color-black-60">
-        Welcome back, please login to your account.
-      </p>
+      <Row justify="center" align="top">
+
+        <img src={loginLogo} alt="" />
+      </Row>
+      <Row justify="center" align="top" >
+        <p className=" da-mt-36 da-mb-48 da-text-color-black-60 login-note ">
+          Welcome back, please login to your account.
+        </p>
+      </Row >
+
       <Form
         layout="vertical"
         name="basic"
         initialValues={{ remember: true }}
         className="da-mt-sm-16 da-mt-32"
         onFinish={handleLoginSubmit}
+        className="login-form "
       >
-        <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
+        <Form.Item name="email" rules={rules.email} label="Username" className="da-mb-16 login-form-item"
           {...getErrorProps(errors['email'])}>
           <Input />
         </Form.Item>
 
-        <Form.Item name="password" rules={rules.password} label="Password :" className="da-mb-8"
+        <Row align="middle" justify="end">
+
+          <Link
+            className="da-button da-text-color-black-80 "
+            to="/forget-password"
+          >
+            <p> Forgot your username?</p>
+          </Link>
+        </Row>
+        <Form.Item name="password" rules={rules.password} label="Password" className="da-mb-8 login-form-item"
           {...getErrorProps(errors['password'])}>
           <Input.Password />
         </Form.Item>
 
         <Row align="middle" justify="space-between">
           <Form.Item className="da-mb-0">
-            <Checkbox name="remember">Remember me</Checkbox>
+            <Checkbox name="remember"> <span className="rem-me da-ml-4" > Remember me</span></Checkbox>
           </Form.Item>
 
           <Link
             className="da-button da-text-color-black-80"
             to="/forget-password"
           >
-            Forgot Password?
+            <p>
+              Forgot your Password?
+            </p>
           </Link>
         </Row>
 
-        <Form.Item className="da-mt-16 da-mb-8">
+        <Form.Item className="da-mt-16 da-mb-8 sign-in-btn ">
           <ButtonComponent block type="primary" htmlType="submit" state={loaderState}>
-            Sign in
+            Login
           </ButtonComponent>
         </Form.Item>
       </Form>
@@ -110,7 +128,7 @@ const Login = () => {
     </>
   );
 
-  return <Row gutter={[32, 0]} className="da-authentication-page">
+  return <Row gutter={[32, 0]} className="da-authentication-page"  >
     <AuthCommon />
 
     <Col lg={12} span={24} className="da-py-sm-0 da-py-md-64">

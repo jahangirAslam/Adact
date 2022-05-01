@@ -46,19 +46,19 @@ const BaseFilter = (props) => {
         let item = null;
         switch (each.type) {
             case 'text':
-                item = <InputField className="da-w-100" each={each} />;
+                item = <InputField   className="da-w-100" each={each} />;
                 break;
             case 'date':
                 item = <DateTimeField className="da-w-100" each={each} />;
                 break;
             case 'select':
-                item = <SelectField className="da-w-100" each={each} />;
+                item = <SelectField     className="da-w-100 " each={each} />;
                 break;
             default:
                 return null;
         }
         return (
-            <Col key={i} className="gutter-row" span={6}>
+            <Col key={i} className="gutter-row" sm={12} xs={24} md={6} >
                 <Form.Item>{item}</Form.Item>
             </Col>
         );
