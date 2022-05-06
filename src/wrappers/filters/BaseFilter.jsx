@@ -7,8 +7,8 @@ const BaseFilter = (props) => {
     // eslint-disable-next-line
     const [loader, setLoader] = useState(false);
     const [options, setOptions] = useState([]);
-    const [selected, setSelected] = useState({});
-
+    // const [selected, setSelected] = useState({});
+    var selected = {}
     const onSuccess = (data) => {
         setOptions(data);
     }
@@ -25,16 +25,24 @@ const BaseFilter = (props) => {
     }
 
     const onReset = () => {
-        setSelected({});
+        selected = {};
         onFilter({});
     }
 
-    const onChange = (key, value) => {
-        setSelected({ ...selected, [key]: value });
+    const onChange = (key, value, each) => {
+        debugger
+        if (each && each.type === "text") {
+            selected = { ...selected, [key]: value.target.value };
+
+        } else {
+
+            selected = { ...selected, [key]: value };
+
+        }
     }
 
     const InputField = ({ each }) => (
-        <Input placeholder={each.placeholder} value={selected[each.key]} onChange={val => onChange(each.key, val)} />
+        <Input placeholder={each.placeholder} value={selected[each.key]} onChange={val => onChange(each.key, val, each)} />
     )
     const DateTimeField = ({ each }) => (
         <DatePicker value={selected[each.key]} onChange={val => onChange(each.key, val)} />
@@ -46,13 +54,13 @@ const BaseFilter = (props) => {
         let item = null;
         switch (each.type) {
             case 'text':
-                item = <InputField   className="da-w-100" each={each} />;
+                item = <InputField className="da-w-100" each={each} />;
                 break;
             case 'date':
                 item = <DateTimeField className="da-w-100" each={each} />;
                 break;
             case 'select':
-                item = <SelectField     className="da-w-100 " each={each} />;
+                item = <SelectField className="da-w-100 " each={each} />;
                 break;
             default:
                 return null;
