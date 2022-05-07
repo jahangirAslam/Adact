@@ -3,15 +3,15 @@ import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getCustomers, deleteCustomer, getFilters } from "../../thirdPartyManagement/customers/requests";
-import CreateCustomer from "../../thirdPartyManagement/customers/components/CreateCustomer";
+import CreateProduct from "./components/CreateProducts";
 
 const pageConfig = {
     headers: {
-        title: "Customers",
+        title: "Products",
         breadcrumb: [
             {
-                name: "Customers",
-                path: "/third-party/customers"
+                name: "ALl Products",
+                // path: "/all_products"
             }
         ]
     }
@@ -89,7 +89,7 @@ const IndexProducts = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateCustomer onCreated={onCreated} />)
+        setChildComponent(<CreateProduct onCreated={onCreated} />)
     }
 
     const onCreated = (res) => {
