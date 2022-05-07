@@ -4,11 +4,11 @@ import { Button, Tag } from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent, ImportButton } from "@comps/components";
 import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
-import { getUsers, activateUserRequest, getFilters, deleteUser } from "../../userManagement/users/requests";
+import { getUsers, activateUserRequest, deleteUser } from "../../userManagement/users/requests";
 import CreateUser from "../../userManagement/users/components/CreateUser";
 import ImportUser from "../../userManagement/users/components/ImportUser";
 import CreateFlavour from "./components/CreateFlavour";
-import { deleteFlavour, getFlavours } from "./components/request";
+import { deleteFlavour, getFilters, getFlavours } from "./components/request";
 
 const pageConfig = {
   headers: {
@@ -98,7 +98,7 @@ const Flavours = () => {
     }
     return (
       <ActionComponent each={record} onView={onView}  onDelete={onDelete}>
-        <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
+        {/* <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button> */}
       </ActionComponent>
     );
   }
@@ -193,7 +193,6 @@ const Flavours = () => {
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-
         <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
       </BodyComponent>
     </>

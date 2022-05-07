@@ -18,3 +18,6 @@ export const updateSubstance = (payload) => {
 export const deleteFlavour = (id) => {
     return del(`${api}/${id}`);
 }
+export const getFilters = () => {
+    return get(`${api}/filters`);
+}
