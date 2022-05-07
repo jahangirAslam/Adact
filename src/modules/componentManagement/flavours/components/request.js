@@ -15,3 +15,6 @@ export const updateSubstance = (payload) => {
     console.log(payload);
     return put(`${api}/${payload.id}`, payload);
 };
+export const deleteFlavour = (id) => {
+    return del(`${api}/${id}`);
+}

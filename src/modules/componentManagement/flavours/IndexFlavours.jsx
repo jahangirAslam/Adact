@@ -8,7 +8,7 @@ import { getUsers, activateUserRequest, getFilters, deleteUser } from "../../use
 import CreateUser from "../../userManagement/users/components/CreateUser";
 import ImportUser from "../../userManagement/users/components/ImportUser";
 import CreateFlavour from "./components/CreateFlavour";
-import { getFlavours } from "./components/request";
+import { deleteFlavour, getFlavours } from "./components/request";
 
 const pageConfig = {
   headers: {
@@ -97,7 +97,7 @@ const Flavours = () => {
       }
     }
     return (
-      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+      <ActionComponent each={record} onView={onView}  onDelete={onDelete}>
         <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
       </ActionComponent>
     );
@@ -172,7 +172,7 @@ const Flavours = () => {
   }
 
   const onDelete = (record) => {
-    makeRequest(setLoader, deleteUser, record.id, onDeleteSuccess,
+    makeRequest(setLoader, deleteFlavour, record.id, onDeleteSuccess,
       onError)
   }
 
