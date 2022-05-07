@@ -7,6 +7,7 @@ import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } 
 import { getUsers, activateUserRequest, getFilters, deleteUser } from "../../userManagement/users/requests";
 import CreateUser from "../../userManagement/users/components/CreateUser";
 import ImportUser from "../../userManagement/users/components/ImportUser";
+import CreateFlavour from "./components/CreateFlavour";
 
 const pageConfig = {
   headers: {
@@ -141,7 +142,7 @@ const Flavours = () => {
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateUser onCreated={onCreated} />);
+    setChildComponent(<CreateFlavour onCreated={onCreated} />);
   }
 
   const onCreated = (each) => {
