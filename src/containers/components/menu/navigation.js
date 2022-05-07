@@ -11,26 +11,18 @@ const navigation = [{
     permissionKey: "always",
 },
 {
-    id: "userManagement",
-    title: "User & Role",
+    id: "products",
+    title: "Products",
     icon: < MembershipIcon />,
-    uri: "/user-management",
+    uri: "/third-party",
     permissionKey: "hasChildren",
     children: [{
-        id: "users",
-        title: "Users",
-        uri: "/users",
-        permissionKey: "users_index",
-    },
-    {
-        id: "roles",
-        title: "Roles",
-        uri: "/roles",
-        permissionKey: "roles_index",
-    },
-    ],
-},
-{
+        id: "all_products",
+        title: "All Products",
+        uri: "/all_products",
+        permissionKey: "customers_index",
+    },],
+}, {
     id: "thirdparty",
     title: "Third Party",
     icon: < MembershipIcon />,
@@ -95,12 +87,33 @@ const navigation = [{
     ],
 },
 {
+    id: "userManagement",
+    title: "User & Role",
+    icon: < MembershipIcon />,
+    uri: "/user-management",
+    permissionKey: "hasChildren",
+    children: [{
+        id: "users",
+        title: "Users",
+        uri: "/users",
+        permissionKey: "users_index",
+    },
+    {
+        id: "roles",
+        title: "Roles",
+        uri: "/roles",
+        permissionKey: "roles_index",
+    },
+    ],
+},
+{
     id: "documentManagement",
     title: "Documents",
     icon: < MembershipIcon />,
     uri: "document-management/documents",
     permissionKey: "document_index",
 },
+
 ];
 
 export default navigation;
