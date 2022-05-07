@@ -104,11 +104,11 @@ const Flavours = () => {
   }
 
   useEffect(() => {
-    getAllUsers();
+    getAllFlavours();
     // eslint-disable-next-line
   }, [pagination, filters]);
 
-  const getAllUsers = () => {
+  const getAllFlavours = () => {
     let payload = {
       start: pagination.current - 1,
       length: pagination.pageSize,
@@ -132,7 +132,7 @@ const Flavours = () => {
   }
 
   const onImported = (res) => {
-    getAllUsers();
+    getAllFlavours();
     setChildComponent(null);
   }
 
