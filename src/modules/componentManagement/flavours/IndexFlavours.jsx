@@ -46,33 +46,39 @@ const Flavours = () => {
       sorter: true,
     },
     {
-      key: 'role_name',
-      title: 'Role',
-      dataIndex: 'role_name',
+      key: 'manufacturer_id',
+      title: 'Manufacturer name',
+      dataIndex: 'manufacturer_id',
       sorter: false,
     },
     {
-      key: 'status',
-      title: 'Status',
-      dataIndex: 'is_active',
-      sorter: true,
-      render: (is_active) => {
-        let color = is_active ? 'green' : 'red';
-        let text = is_active ? 'ACTIVE' : 'INACTIVE';
-        return (
-          <Tag color={color} >{text}</Tag>
-        );
-      }
+      key: 'manufacturer_ref',
+      title: 'Ref.(Manufacturer)',
+      dataIndex: 'manufacturer_ref',
+      sorter: false,
     },
     {
-      key: 'created_at',
-      title: 'Create At',
-      dataIndex: 'created_at',
-      sorter: true,
-      render: (created_at) => {
-        return formatCompleteDataTime(created_at);
-      }
+      key: 'fed_uuin',
+      title: 'FED UUIN',
+      dataIndex: 'fed_uuin',
+      sorter: false,
+    }, {
+      key: 'is_valid',
+      title: 'is_valid',
+      dataIndex: 'is_valid',
+      sorter: false,
+    }, {
+      key: 'has_recipe',
+      title: 'has_recipe',
+      dataIndex: 'has_recipe',
+      sorter: false,
+    }, {
+      key: 'is_valid_manufacturer',
+      title: 'is_valid_manufacturer',
+      dataIndex: 'is_valid_manufacturer',
+      sorter: false,
     },
+
     {
       key: "actions",
       title: 'Actions',
@@ -215,15 +221,15 @@ const availableFilters = [
     key: 'role_id',
     placeholder: 'FED UUIN',
     type: 'text',
-  },{
+  }, {
     key: 'role_id',
     placeholder: 'Composition',
     type: 'select',
   }
-  ,{
+  , {
     key: 'role_id',
     placeholder: 'Status',
     type: 'select',
   }
-  
+
 ];
