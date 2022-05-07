@@ -8,6 +8,7 @@ import { getUsers, activateUserRequest, getFilters, deleteUser } from "../../use
 import CreateUser from "../../userManagement/users/components/CreateUser";
 import ImportUser from "../../userManagement/users/components/ImportUser";
 import CreateFlavour from "./components/CreateFlavour";
+import { getFlavours } from "./components/request";
 
 const pageConfig = {
   headers: {
@@ -115,7 +116,7 @@ const Flavours = () => {
       sort_type: pagination.sortType,
       filters
     };
-    makeRequest(setLoader, getUsers, payload, onSuccess, null);
+    makeRequest(setLoader, getFlavours, payload, onSuccess, null);
   }
 
   const activateDeactiveUser = (user) => {

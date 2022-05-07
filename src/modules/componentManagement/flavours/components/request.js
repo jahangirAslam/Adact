@@ -6,3 +6,6 @@ export const createFlavour = (payload) => {
     debugger
     return post(api, payload);
 }
+export const getFlavours = (payload) => {
+    return get(api, payload);
+}
