@@ -4,9 +4,10 @@ import { Form, Input, Select } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, makeRequestStateless, getErrorProps, notify } from "@utils/helpers";
 import { createUser, getUserDependencies } from "../../../userManagement/users/requests";
+import { createFlavour } from "./request";
 
 
-const formName = "createUser";
+const formName = "createFlavour";
 
 const CreateUser = (props) => {
 
@@ -27,9 +28,11 @@ const CreateUser = (props) => {
     }, []);
 
     const onFinish = (data) => {
+        
         let payload = { "object": data }
         payload.object.is_active = false;
-        makeRequest(setLoader, createUser, payload, onSuccess, onError);
+        makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
+        debugger
     }
 
     const onSuccess = (data, res) => {
@@ -76,7 +79,7 @@ const CreateUser = (props) => {
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="role_id" label="Select Manufacturer"  className="da-mb-8"
+                <Form.Item name="manufacturer_id" label="Select Manufacturer"  className="da-mb-8"
                     {...getErrorProps(errors['role_id'])}
                 >
                     <Select
@@ -85,7 +88,7 @@ const CreateUser = (props) => {
                         options={deps.roles}
                     />
                 </Form.Item>
-                <Form.Item name="email"  label="Select Manufacturer refernece" className="da-mb-16"
+                <Form.Item name="manufacturer_ref"  label="Select Manufacturer refernece" className="da-mb-16"
                     {...getErrorProps(errors['email'])}
                 >
                     <Input />

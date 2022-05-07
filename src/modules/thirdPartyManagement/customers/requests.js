@@ -1,4 +1,4 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "third-party/customers";
 
@@ -15,6 +15,7 @@ export const getCustomer = (id) => {
 }
 
 export const createCustomer = (payload) => {
+    debugger
     return post(api, payload);
 }
 
