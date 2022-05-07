@@ -5,6 +5,7 @@ import IndexSubstance from "./substances/IndexSubstance";
 import EditSubstance from "./substances/components/EditSubstance";
 import Flavours from "./flavours/IndexFlavours";
 import ViewUser from "../userManagement/users/components/ViewUser";
+import ViewFlavour from "./flavours/components/ViewFlavour";
 
 const SubstanceModule = ({ match }) => (
   <Switch>
@@ -14,7 +15,7 @@ const SubstanceModule = ({ match }) => (
      {/* Chemical substances Rautes */}
      {/* Flavours Rautes */}
     <Route exact path={ `${match.url}/flavours` } component={ Flavours } />
-    <Route exact path={ `${match.url}/users/view/:id` } component={ ViewUser } />
+    <Route exact path={ `${match.url}/users/view/:id` } component={ ViewFlavour } />
      {/* Flavours Rautes */}
   </Switch>
 );

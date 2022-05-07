@@ -3,12 +3,9 @@ import { useParams } from "react-router-dom";
 
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
+import { getUser } from "../../../userManagement/users/requests"; 
 
-import BasicInformation from "./view/BasicInformation";
-import Permission from "./view/Permission";
-import { GetSettings } from "@mods/commons/settings/GetSettings";
-import ActivityLog from "@mods/commons/activityLogs/ActivityLog";
-import { getUser } from "../../../userManagement/users/requests";
+import BasicInformation from "../../substances/components/edits/BasicInformation";
 
 
 const pageConfig = {
@@ -57,18 +54,7 @@ const ViewFlavour = () => {
       title: "Basic Information",
       content: <BasicInformation data={data.object} dependencies={data.dependencies} disable={true} />
     },
-    {
-      title: "Permission",
-      content: <Permission data={data.object} disable={true} />
-    },
-    {
-      title: "Setting",
-      content: <GetSettings disable={true} group="users" />
-    },
-    {
-      title: "Activity Logs",
-      content: <ActivityLog logs={data.activities} />
-    }
+   
   ]
 
   const onError = (res) => {
