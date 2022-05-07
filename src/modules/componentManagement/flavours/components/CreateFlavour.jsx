@@ -32,7 +32,6 @@ const CreateUser = (props) => {
         let payload = { "object": data }
         payload.object.is_active = false;
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
-        debugger
     }
 
     const onSuccess = (data, res) => {

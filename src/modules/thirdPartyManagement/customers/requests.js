@@ -15,7 +15,6 @@ export const getCustomer = (id) => {
 }
 
 export const createCustomer = (payload) => {
-    debugger
     return post(api, payload);
 }
 

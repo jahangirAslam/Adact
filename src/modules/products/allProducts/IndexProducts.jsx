@@ -93,11 +93,10 @@ const IndexProducts = () => {
         setChildComponent(<CreateProduct onCreated={onCreated} />)
     }
 
-    const onCreated = (res) => {
-        if (res) {
-            history.push(`/third-party/customers/edit/${res.id}`);
-        }
-        setChildComponent(null);
+    const onCreated = (each) => {
+        if (!each) {
+            setChildComponent(null);        }
+        setDataSource([...dataSource, each.object]);
     }
 
     const onEdit = (record) => {

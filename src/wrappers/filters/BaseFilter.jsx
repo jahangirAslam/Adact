@@ -30,7 +30,6 @@ const BaseFilter = (props) => {
     }
 
     const onChange = (key, value, each) => {
-        debugger
         if (each && each.type === "text") {
             selected = { ...selected, [key]: value.target.value };
 
