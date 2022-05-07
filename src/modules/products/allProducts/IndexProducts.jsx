@@ -4,6 +4,7 @@ import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getCustomers, deleteCustomer, getFilters } from "../../thirdPartyManagement/customers/requests";
 import CreateProduct from "./components/CreateProducts";
+import { getAllProducts } from "./components/request";
 
 const pageConfig = {
     headers: {
@@ -56,11 +57,11 @@ const IndexProducts = () => {
     ];
 
     useEffect(() => {
-        getAllCustomers();
+        getProducts();
         // eslint-disable-next-line
     }, [pagination, filters]);
 
-    const getAllCustomers = () => {
+    const getProducts = () => {
         let payload = {
             start: pagination.current - 1,
             length: pagination.pageSize,
@@ -68,7 +69,7 @@ const IndexProducts = () => {
             sort_type: pagination.sortType,
             filters: { "type": "customers" }
         };
-        makeRequest(setLoader, getCustomers, payload, onSuccess, null);
+        makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
