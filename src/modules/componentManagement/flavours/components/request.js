@@ -8,3 +8,10 @@ export const createFlavour = (payload) => {
 export const getFlavours = (payload) => {
     return get(api, payload);
 }
+export const getFlavour = (id) => {
+    return get(`${api}/${id}`);
+}
+export const updateSubstance = (payload) => {
+    console.log(payload);
+    return put(`${api}/${payload.id}`, payload);
+};

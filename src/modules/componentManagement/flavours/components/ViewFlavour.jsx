@@ -3,18 +3,18 @@ import { useParams } from "react-router-dom";
 
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-import { getUser } from "../../../userManagement/users/requests"; 
 
-import BasicInformation from "../../substances/components/edits/BasicInformation";
+import BasicInformation from "./BasicInformation";
+import { getFlavour } from "./request";
 
 
 const pageConfig = {
   headers: {
-    title: "View User",
+    title: "View Flavour",
     breadcrumb: [
       {
-        name: "Users",
-        path: "/user-management/users"
+        name: "Falvours",
+        path: "/component-management/flavours"
       },
       {
         name: "View",
@@ -41,7 +41,7 @@ const ViewFlavour = () => {
   }, []);
 
   const getData = () => {
-    makeRequest(setLoader, getUser, id, onSuccess, onError);
+    makeRequest(setLoader, getFlavour, id, onSuccess, onError);
   }
 
   const onSuccess = (res) => {
@@ -54,7 +54,7 @@ const ViewFlavour = () => {
       title: "Basic Information",
       content: <BasicInformation data={data.object} dependencies={data.dependencies} disable={true} />
     },
-   
+
   ]
 
   const onError = (res) => {
