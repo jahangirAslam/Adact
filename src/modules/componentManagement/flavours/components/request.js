@@ -8,6 +8,3 @@ export const createFlavour = (payload) => {
 export const getFlavours = (payload) => {
     return get(api, payload);
 }
-export const getUser = (id) => {
-    return get(`${api}/${id}`);
-}

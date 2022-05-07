@@ -8,7 +8,7 @@ import BasicInformation from "./view/BasicInformation";
 import Permission from "./view/Permission";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
 import ActivityLog from "@mods/commons/activityLogs/ActivityLog";
-import { getUser } from "./request";
+import { getUser } from "../../../userManagement/users/requests";
 
 
 const pageConfig = {
