@@ -164,7 +164,7 @@ const Flavours = () => {
   }
 
   const onView = (record) => {
-    history.push(`/user-management/users/view/${record.id}`);
+    history.push(`/component-management/users/view/1`);
   }
 
   const onEdit = (record) => {
