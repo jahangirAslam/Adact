@@ -1,23 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-
-import BasicInformation from "../../../substances/components/edits/BasicInformation";
-import Permission from "../../../../userManagement/users/components/view/Permission";
-import { GetSettings } from "@mods/commons/settings/GetSettings";
-import { getUser } from "../../../../userManagement/users/requests";
 import { getFlavour } from "../request";
+import FlavourInformation from "./FlavourInformation";
 
 
 const pageConfig = {
     headers: {
-        title: "Edit User",
+        title: "Edit Flavour",
         breadcrumb: [
             {
-                name: "Users",
-                path: "/user-management/users"
+                name: "Flavours",
+                path: "/component-management/flavours"
             },
             {
                 name: "Edit",
@@ -54,8 +49,8 @@ const EditFlavour = () => {
 
     const tabs = [
         {
-            title: "Basic Information",
-            content: <BasicInformation data={data.object} dependencies={data.dependencies} />
+            title: "Flavour Information",
+            content: <FlavourInformation data={data.object} dependencies={data.dependencies} />
         },
 
     ]
