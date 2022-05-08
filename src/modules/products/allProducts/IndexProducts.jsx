@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
-import { getCustomers, deleteCustomer, getFilters } from "../../thirdPartyManagement/customers/requests";
 import CreateProduct from "./components/CreateProducts";
-import { getAllProducts } from "./components/request";
+import { deleteCustomer, getAllProducts, getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {

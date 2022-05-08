@@ -10,3 +10,10 @@ export const getAllProducts = (payload) => {
     return get(api);
 
 }
+export const deleteCustomer = (id) => {
+    return del(`${api}/${id}`);
+}
+export const getFilters = () => {
+
+    return get(`${api}/filters`);
+}
