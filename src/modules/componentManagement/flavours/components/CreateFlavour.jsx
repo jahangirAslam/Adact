@@ -28,14 +28,14 @@ const CreateUser = (props) => {
     }, []);
 
     const onFinish = (data) => {
-        
+
         let payload = { "object": data }
         payload.object.is_active = false;
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("User Created", res.msg);
+        notify("Flavour Created", res.msg);
         props.onCreated(data);
     }
 
@@ -73,12 +73,12 @@ const CreateUser = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name"  label="Flavour Name :" className="da-mb-16"
+                <Form.Item name="name" label="Flavour Name :" className="da-mb-16"
                     {...getErrorProps(errors['name'])}
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="manufacturer_id" label="Select Manufacturer"  className="da-mb-8"
+                <Form.Item name="manufacturer_id" label="Select Manufacturer" className="da-mb-8"
                     {...getErrorProps(errors['role_id'])}
                 >
                     <Select
@@ -87,7 +87,7 @@ const CreateUser = (props) => {
                         options={deps.roles}
                     />
                 </Form.Item>
-                <Form.Item name="manufacturer_ref"  label="Select Manufacturer refernece" className="da-mb-16"
+                <Form.Item name="manufacturer_ref" label="Select Manufacturer refernece" className="da-mb-16"
                     {...getErrorProps(errors['email'])}
                 >
                     <Input />

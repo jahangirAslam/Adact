@@ -97,7 +97,7 @@ const Flavours = () => {
       }
     }
     return (
-      <ActionComponent each={record} onView={onView}  onDelete={onDelete}>
+      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
         {/* <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button> */}
       </ActionComponent>
     );
@@ -168,7 +168,7 @@ const Flavours = () => {
   }
 
   const onEdit = (record) => {
-    history.push(`/user-management/users/edit/${record.id}`);
+    history.push(`/component-management/users/edit/${record.id}`);
   }
 
   const onDelete = (record) => {
