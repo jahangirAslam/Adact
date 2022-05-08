@@ -14,7 +14,7 @@ const navigation = [{
     id: "products",
     title: "Products",
     icon: < MembershipIcon />,
-    uri: "/third-party",
+    uri: "/products",
     permissionKey: "hasChildren",
     children: [{
         id: "all_products",

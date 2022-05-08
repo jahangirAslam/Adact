@@ -21,7 +21,6 @@ import EditFacility from "./facilities/components/EditFacility";
 
 const ThirdPartyModule = ({ match }) => (
   <Switch>
-    <Route exact path={`${match.url}/all_products`} component={IndexProducts} />
     <Route exact path={`${match.url}/customers`} component={IndexCustomer} />
     <Route exact path={`${match.url}/customers/edit/:id`} component={EditCustomer} />
     <Route exact path={`${match.url}/manufacturers`} component={IndexManufacturer} />
