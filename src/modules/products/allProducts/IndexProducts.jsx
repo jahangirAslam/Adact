@@ -11,7 +11,6 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "ALl Products",
-                // path: "/all_products"
             }
         ]
     }
@@ -40,14 +39,19 @@ const IndexProducts = () => {
             sorter: true,
         },
         {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
+            key: 'category_name',
+            title: 'category_name',
+            dataIndex: 'category_name',
             sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
         },
+        {
+            key: 'category_id',
+            title: 'category_id',
+            dataIndex: 'name',
+            sorter: true,
+        },
+
+        
         {
             key: "actions",
             title: 'Actions',
@@ -99,7 +103,7 @@ const IndexProducts = () => {
     }
 
     const onEdit = (record) => {
-        history.push(`/third-party/customers/edit/${record.id}`);
+        history.push(`/products/product/edit/${record.id}`);
     }
 
     const onDelete = (record) => {
