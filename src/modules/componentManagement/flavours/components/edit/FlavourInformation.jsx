@@ -9,6 +9,7 @@ const FlavourInformation = (props) => {
     const [errors, setErrors] = useState([]);
 
     const onFinish = (payload) => {
+      debugger
         payload.id = props.data.id;
         makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
     };

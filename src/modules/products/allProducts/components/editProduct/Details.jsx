@@ -48,17 +48,17 @@ const Details = (props) => {
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="fed_uuin" label="fed_uuin :">
+                    <Form.Item name="id" label="id :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="manufacturer_id" label="manufacturer_id :">
+                    <Form.Item name="category_name" label="category_name :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="manufacturer_ref" label="manufacturer_ref :">
+                    <Form.Item name="category_id" label="category_id :">
                         <Input />
                     </Form.Item>
                 </Col>
