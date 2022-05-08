@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 
-import BasicInformation from "../../substances/components/edits/BasicInformation";
-import Permission from "../../../userManagement/users/components/view/Permission";
+import BasicInformation from "../../../substances/components/edits/BasicInformation";
+import Permission from "../../../../userManagement/users/components/view/Permission";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
-import { getUser } from "../../../userManagement/users/requests";
-import { getFlavour } from "./request";
+import { getUser } from "../../../../userManagement/users/requests";
+import { getFlavour } from "../request";
 
 
 const pageConfig = {

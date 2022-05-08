@@ -6,7 +6,7 @@ import EditSubstance from "./substances/components/EditSubstance";
 import Flavours from "./flavours/IndexFlavours";
 import ViewUser from "../userManagement/users/components/ViewUser";
 import ViewFlavour from "./flavours/components/ViewFlavour";
-import EditFlavour from "./flavours/components/EditFlavour";
+import EditFlavour from "./flavours/components/edit/EditFlavour";
 
 const SubstanceModule = ({ match }) => (
   <Switch>
