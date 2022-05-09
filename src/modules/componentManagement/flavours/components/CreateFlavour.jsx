@@ -18,14 +18,14 @@ const CreateUser = (props) => {
         companies: [],
     });
 
-    const getSelectFieldsData = () => {
-        makeRequestStateless(getUserDependencies, null, onDependencySuccess, null);
-    }
+    // const getSelectFieldsData = () => {
+    //     makeRequestStateless( null, onDependencySuccess, null);
+    // }
 
-    useEffect(() => {
-        getSelectFieldsData();
-        // eslint-disable-next-line
-    }, []);
+    // useEffect(() => {
+    //     getSelectFieldsData();
+    //     // eslint-disable-next-line
+    // }, []);
 
     const onFinish = (data) => {
 
