@@ -1,8 +1,8 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import IndexLiquid from "../e-liquid/IndexLiquid";
 import EditProduct from "./components/editProduct/EditProduct";
-import IndexProducts from "./IndexProducts";
+import IndexLiquid from "./IndexLiquid";
+import IndexProducts from "./IndexLiquid";
 
 const ProductRoutes = ({ match }) => (
   <Switch>

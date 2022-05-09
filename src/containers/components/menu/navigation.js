@@ -16,12 +16,20 @@ const navigation = [{
     icon: < MembershipIcon />,
     uri: "/products",
     permissionKey: "hasChildren",
-    children: [{
-        id: "all_products",
-        title: "All Products",
-        uri: "/all_products",
-        permissionKey: "customers_index",
-    },],
+    children: [
+        {
+            id: "e-liquid",
+            title: "eLiquid product",
+            uri: "/e-liquid",
+            permissionKey: "customers_index",
+        }, {
+            id: "all_products",
+            title: "All Products",
+            uri: "/all_products",
+            permissionKey: "customers_index",
+        }
+
+    ],
 }, {
     id: "thirdparty",
     title: "Third Party",
