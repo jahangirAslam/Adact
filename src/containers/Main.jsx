@@ -29,14 +29,12 @@ const Main = () => {
         <MenuHeader setVisible={setVisible} />
         <Layout>
           <Sidebar visible={visible} setVisible={setVisible} />
-
           <Layout>
             <Layout.Content className="da-content-main">
               <Switch>
                 <Route path={path} component={ModuleRoutes} />
               </Switch>
             </Layout.Content>
-
             <MenuFooter />
           </Layout>
         </Layout>

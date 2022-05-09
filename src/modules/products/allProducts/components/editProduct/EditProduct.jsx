@@ -7,11 +7,11 @@ import { getProduct } from "../request";
 
 const pageConfig = {
     headers: {
-        title: "Edit Flavour",
+        title: "Edit Product",
         breadcrumb: [
             {
-                name: "Flavours",
-                path: "/component-management/flavours"
+                name: "Product",
+                path: "/products"
             },
             {
                 name: "Edit",
@@ -48,7 +48,7 @@ const EditProduct = () => {
 
     const tabs = [
         {
-            title: "Flavour Information",
+            title: "Details",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
 

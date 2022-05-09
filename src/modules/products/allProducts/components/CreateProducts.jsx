@@ -23,7 +23,7 @@ const CreateProduct = (props) => {
             category_id: 2
         }
         let payload = { "object": load }
-        payload.object["type"] = "customers";
+        payload.object["type"] = "product";
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
     }
 
