@@ -28,7 +28,7 @@ const CreateProduct = (props) => {
     }
 
     const onSuccess = (data, res) => {
-        notify("Customer Created", res.msg);
+        notify("Product Created", res.msg);
         props.onCreated(data.object);
     }
 
