@@ -9,7 +9,10 @@ export const createProduct = (payload) => {
 export const getAllProducts = (payload) => {
     return get(api, payload);
 }
-export const deleteCustomer = (id) => {
+export const getProduct = (id) => {
+    return get(`${api}/${id}`);
+}
+export const deleteProduct = (id) => {
     return del(`${api}/${id}`);
 }
 export const getFilters = () => {

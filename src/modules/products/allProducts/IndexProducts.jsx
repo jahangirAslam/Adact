@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import CreateProduct from "./components/CreateProducts";
-import { deleteCustomer, getAllProducts, getFilters } from "./components/request";
+import { deleteProduct, getAllProducts, getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {
@@ -107,7 +107,7 @@ const IndexProducts = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteCustomer, record.id, onDeleteSuccess,
+        makeRequest(setLoader, deleteProduct, record.id, onDeleteSuccess,
             onError)
     }
 
