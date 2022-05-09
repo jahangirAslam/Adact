@@ -7,8 +7,7 @@ export const createProduct = (payload) => {
     return post(api, payload);
 }
 export const getAllProducts = (payload) => {
-    return get(api);
-
+    return get(api, payload);
 }
 export const deleteCustomer = (id) => {
     return del(`${api}/${id}`);

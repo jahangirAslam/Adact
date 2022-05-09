@@ -70,7 +70,7 @@ const IndexProducts = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "customers" }
+            filters: {  }
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
