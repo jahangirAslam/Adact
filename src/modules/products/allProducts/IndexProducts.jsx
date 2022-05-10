@@ -120,7 +120,7 @@ const IndexProducts = () => {
         setDataSource([...dataSource, each.object]);
     }
     const onView = (record) => {
-        history.push(`/products/product/edit/${record.id}`);
+        history.push(`/products/product/view/${record.id}`);
 
     }
     const onEdit = (record) => {
