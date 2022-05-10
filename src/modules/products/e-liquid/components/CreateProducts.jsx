@@ -47,6 +47,7 @@ const CreateProduct = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
+        debugger
         setDeps({
             countries: data.countries,
         });

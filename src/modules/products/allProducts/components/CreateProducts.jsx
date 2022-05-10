@@ -4,7 +4,7 @@ import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
 import { createCustomer } from "../../../thirdPartyManagement/customers/requests";
 import { getLocationDependencies } from "@mods/commons/locations/requests";
-import { createProduct } from "./request";
+import { createProduct, getProductDependencies } from "./request";
 
 const formName = "createProduct";
 const CreateProduct = (props) => {
@@ -13,6 +13,13 @@ const CreateProduct = (props) => {
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         countries: []
+        
+    });
+    const [type, setType] = useState({
+        types: []
+    });
+    const [customer, setCustomer] = useState({
+        customers: []
     });
 
     const onFinish = (data) => {
@@ -33,7 +40,7 @@ const CreateProduct = (props) => {
     }
 
     const getSelectFieldsData = () => {
-        makeRequestStateless(getLocationDependencies, null, onDependencySuccess, null);
+        makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
     }
 
     useEffect(() => {
@@ -42,9 +49,17 @@ const CreateProduct = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
+        debugger
         setDeps({
             countries: data.countries,
         });
+        setType({
+            types: data.product_types,
+        });
+        setCustomer({
+            customers: data.customers,
+        })
+
     }
 
     const onError = (err) => {
@@ -71,26 +86,32 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item type="number" name="customer_id" label="Customer Name" placeholder="Customer Name" className="da-mb-16"
-                    {...getErrorProps(errors['number'])}>
-                    <Input />
+                <Form.Item name="name" rules={rules.country} label="Customer Name :" className="da-mb-16"
+                    {...getErrorProps(errors['country'])}>
+                    <Select
+                        showSearch
+                        placeholder="Customer Name"
+                        options={customer.customers}
+                    />
+                </Form.Item>
+
+                <Form.Item name="type_name" rules={rules.country} label="Product Type :" className="da-mb-16"
+                    {...getErrorProps(errors['country'])}>
+                    <Select
+                        showSearch
+                        placeholder="Product Type"
+                        options={type.types}
+                    />
                 </Form.Item>
                 <Form.Item name="e_type" rules={rules.country} label="Product Type :" className="da-mb-16"
                     {...getErrorProps(errors['country'])}>
                     <Select
                         showSearch
                         placeholder="Product Type"
-                        options={deps.countries}
+                        options={type.types}
                     />
                 </Form.Item>
-                <Form.Item name="ecid" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.countries}
-                    />
-                </Form.Item>
+
                 <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
                     {...getErrorProps(errors['name'])}>
                     <Input />
