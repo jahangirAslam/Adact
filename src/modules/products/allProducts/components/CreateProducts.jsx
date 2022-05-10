@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Select } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
-import { createCustomer } from "../../../thirdPartyManagement/customers/requests";
-import { getLocationDependencies } from "@mods/commons/locations/requests";
 import { createProduct, getProductDependencies } from "./request";
 
 const formName = "createProduct";
@@ -48,7 +46,6 @@ const CreateProduct = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-        debugger
         setDeps({
             countries: data.countries,
             types: data.product_types,
