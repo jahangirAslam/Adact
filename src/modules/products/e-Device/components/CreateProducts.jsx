@@ -23,7 +23,7 @@ const CreateProduct = (props) => {
             ecid: "00000-19-11111",
             mhra: "00000-19-11111",
             withdrawn: 0,
-            e_type: [{ "type": "E-Liquid" }],
+            e_type: [{"type": "E-Device"}],
             insights: [{ "name": "John" }],
             on_market: "2022-04-06",
             is_active: 1
