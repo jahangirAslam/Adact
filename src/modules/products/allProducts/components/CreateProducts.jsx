@@ -12,17 +12,16 @@ const CreateProduct = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: []
+        countries: [],
+        types: [],
+        customers: [],
+        typeB:[]
         
     });
-    const [type, setType] = useState({
-        types: []
-    });
-    const [customer, setCustomer] = useState({
-        customers: []
-    });
+   
 
     const onFinish = (data) => {
+        debugger
         let load = {
             customer_id: 1,
             name: data.name,
@@ -52,13 +51,12 @@ const CreateProduct = (props) => {
         debugger
         setDeps({
             countries: data.countries,
-        });
-        setType({
             types: data.product_types,
-        });
-        setCustomer({
             customers: data.customers,
-        })
+            typeB:data.e_types,
+
+        });
+      
 
     }
 
@@ -91,7 +89,7 @@ const CreateProduct = (props) => {
                     <Select
                         showSearch
                         placeholder="Customer Name"
-                        options={customer.customers}
+                        options={deps.customers}
                     />
                 </Form.Item>
 
@@ -100,7 +98,7 @@ const CreateProduct = (props) => {
                     <Select
                         showSearch
                         placeholder="Product Type"
-                        options={type.types}
+                        options={deps.types}
                     />
                 </Form.Item>
                 <Form.Item name="e_type" rules={rules.country} label="Product Type :" className="da-mb-16"
@@ -108,7 +106,7 @@ const CreateProduct = (props) => {
                     <Select
                         showSearch
                         placeholder="Product Type"
-                        options={type.types}
+                        options={deps.typeB}
                     />
                 </Form.Item>
 
