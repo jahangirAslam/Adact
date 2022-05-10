@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import CreateProduct from "./components/CreateProducts";
-import { deleteCustomer, getAllProducts, getFilters } from "./components/request";
+import { deleteProduct, getAllProducts, getFilters } from "./components/request";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const pageConfig = {
@@ -60,7 +60,6 @@ const IndexLiquid = () => {
         },
     ];
 
-
     const ActionComponentEx = (record) => {
         let icon = null;
         if (record) {
@@ -76,6 +75,7 @@ const IndexLiquid = () => {
         );
     }
 
+
     useEffect(() => {
         getProducts();
         // eslint-disable-next-line
@@ -87,7 +87,7 @@ const IndexLiquid = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "customers" }
+            filters
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
@@ -119,17 +119,16 @@ const IndexLiquid = () => {
         }
         setDataSource([...dataSource, each.object]);
     }
-
-    const onEdit = (record) => {
-        history.push(`/products/product/edit/${record.id}`);
-    }
     const onView = (record) => {
         history.push(`/products/product/view/${record.id}`);
 
     }
+    const onEdit = (record) => {
+        history.push(`/products/product/edit/${record.id}`);
+    }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteCustomer, record.id, onDeleteSuccess,
+        makeRequest(setLoader, deleteProduct, record.id, onDeleteSuccess,
             onError)
     }
 
