@@ -87,7 +87,7 @@ const IndexProducts = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: {}
+            filters
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
