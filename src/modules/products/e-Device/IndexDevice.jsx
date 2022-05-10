@@ -8,16 +8,16 @@ import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const pageConfig = {
     headers: {
-        title: "eLiquid",
+        title: "eDevice",
         breadcrumb: [
             {
-                name: "eLiquid",
+                name: "eDevice",
             }
         ]
     }
 }
 
-const IndexLiquid = () => {
+const IndexDevice = () => {
 
     const [loader, setLoader] = useState(false);
     const history = useHistory();
@@ -156,7 +156,7 @@ const IndexLiquid = () => {
     );
 }
 
-export default IndexLiquid;
+export default IndexDevice;
 
 const availableFilters = [
     {

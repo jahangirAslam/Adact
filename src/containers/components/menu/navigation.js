@@ -25,7 +25,7 @@ const navigation = [{
             {
                 id: "e-Device",
                 title: "eDevice products",
-                uri: "/e-liquid",
+                uri: "/e-device",
                 permissionKey: "e-liquid_index",
             },
             {
