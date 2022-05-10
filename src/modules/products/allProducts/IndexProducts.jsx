@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
@@ -51,13 +52,29 @@ const IndexProducts = () => {
             sorter: true,
         },
 
-        
+
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponentEx(record)
         },
     ];
+
+    const ActionComponentEx = (record) => {
+        let icon = null;
+        if (record) {
+            if (record.is_active) {
+                icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
+            } else {
+                icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+            }
+        }
+        return (
+            <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+            </ActionComponent>
+        );
+    }
+
 
     useEffect(() => {
         getProducts();
@@ -70,7 +87,7 @@ const IndexProducts = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: {  }
+            filters: {}
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
@@ -98,10 +115,14 @@ const IndexProducts = () => {
 
     const onCreated = (each) => {
         if (!each) {
-            setChildComponent(null);        }
+            setChildComponent(null);
+        }
         setDataSource([...dataSource, each.object]);
     }
+    const onView = (record) => {
+        history.push(`/products/product/edit/${record.id}`);
 
+    }
     const onEdit = (record) => {
         history.push(`/products/product/edit/${record.id}`);
     }
