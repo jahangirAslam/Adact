@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Switch } from "react-router-dom";
 import IndexLiquid from "../e-liquid/IndexLiquid";
 import EditProduct from "./components/editProduct/EditProduct";
-import ViewAllProduct from "./components/ViewAllProduct";
+import ViewAllProduct from "./components/viewProdtucs/ViewAllProduct";
 import IndexProducts from "./IndexProducts";
 
 const ProductRoutes = ({ match }) => (

@@ -4,6 +4,7 @@ import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import CreateProduct from "./components/CreateProducts";
 import { deleteCustomer, getAllProducts, getFilters } from "./components/request";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 
 const pageConfig = {
     headers: {
@@ -51,13 +52,29 @@ const IndexLiquid = () => {
             sorter: true,
         },
 
-        
+
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponentEx(record)
         },
     ];
+
+
+    const ActionComponentEx = (record) => {
+        let icon = null;
+        if (record) {
+            if (record.is_active) {
+                icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
+            } else {
+                icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+            }
+        }
+        return (
+            <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+            </ActionComponent>
+        );
+    }
 
     useEffect(() => {
         getProducts();
@@ -98,12 +115,17 @@ const IndexLiquid = () => {
 
     const onCreated = (each) => {
         if (!each) {
-            setChildComponent(null);        }
+            setChildComponent(null);
+        }
         setDataSource([...dataSource, each.object]);
     }
 
     const onEdit = (record) => {
         history.push(`/products/product/edit/${record.id}`);
+    }
+    const onView = (record) => {
+        history.push(`/products/product/view/${record.id}`);
+
     }
 
     const onDelete = (record) => {

@@ -3,8 +3,7 @@ import { useParams } from "react-router-dom";
 
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-import { getProduct } from "./request";
-import BasicInformation from "../../../userManagement/users/components/view/BasicInformation";
+import { getProduct } from "../request";
 import ViewDetails from "./ViewDetails";
 
 
