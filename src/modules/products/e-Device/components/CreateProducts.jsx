@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { Form, Input, Select } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
-import { getLocationDependencies } from "@mods/commons/locations/requests";
 import { createProduct } from "./request";
+import { getProductDependencies } from "../../allProducts/components/request";
 
 const formName = "createProduct";
 const CreateProduct = (props) => {
@@ -11,24 +11,24 @@ const CreateProduct = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: []
+        countries: [],
+        types: [],
+        customers: [],
+        typeB:[]
+        
     });
+   
 
     const onFinish = (data) => {
+        debugger
         let load = {
             customer_id: 1,
             name: data.name,
             type_id: 1,
-            category_id: 2,
-            ecid: "00000-19-11111",
-            mhra: "00000-19-11111",
-            withdrawn: 0,
-            e_type: [{"type": "E-Device"}],
-            insights: [{ "name": "John" }],
-            on_market: "2022-04-06",
-            is_active: 1
+            category_id: 2
         }
         let payload = { "object": load }
+        payload.object["type"] = "product";
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
     }
 
@@ -38,7 +38,7 @@ const CreateProduct = (props) => {
     }
 
     const getSelectFieldsData = () => {
-        makeRequestStateless(getLocationDependencies, null, onDependencySuccess, null);
+        makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
     }
 
     useEffect(() => {
@@ -49,7 +49,13 @@ const CreateProduct = (props) => {
     const onDependencySuccess = (data, res) => {
         setDeps({
             countries: data.countries,
+            types: data.product_types,
+            customers: data.customers,
+            typeB:data.e_types,
+
         });
+      
+
     }
 
     const onError = (err) => {
@@ -76,26 +82,32 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item type="number" name="customer_id" label="Customer Name" placeholder="Customer Name" className="da-mb-16"
-                    {...getErrorProps(errors['number'])}>
-                    <Input />
+                <Form.Item name="name" rules={rules.country} label="Customer Name :" className="da-mb-16"
+                    {...getErrorProps(errors['country'])}>
+                    <Select
+                        showSearch
+                        placeholder="Customer Name"
+                        options={deps.customers}
+                    />
+                </Form.Item>
+
+                <Form.Item name="type_name" rules={rules.country} label="Product Type :" className="da-mb-16"
+                    {...getErrorProps(errors['country'])}>
+                    <Select
+                        showSearch
+                        placeholder="Product Type"
+                        options={deps.types}
+                    />
                 </Form.Item>
                 <Form.Item name="e_type" rules={rules.country} label="Product Type :" className="da-mb-16"
                     {...getErrorProps(errors['country'])}>
                     <Select
                         showSearch
                         placeholder="Product Type"
-                        options={deps.countries}
+                        options={deps.typeB}
                     />
                 </Form.Item>
-                <Form.Item name="ecid" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.countries}
-                    />
-                </Form.Item>
+
                 <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
                     {...getErrorProps(errors['name'])}>
                     <Input />
