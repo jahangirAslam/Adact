@@ -39,9 +39,10 @@ const ChemicalPhysicalProperties = (props) => {
       // labelCol={{ span: 12 }}
       initialValues={props.data}
       onFinish={onFinish}
+      className="chem-phy-from"
     >
       <Row gutter={[16, 24]}>
-        <Col className="gutter-row" span={24}>
+        <Col className=" gutter-row" span={24}>
           <Title level={4}>Chemical and Physical Properties</Title>
         </Col>
         <Col className="gutter-row" xs={24} md={12}  >
@@ -94,7 +95,7 @@ const ChemicalPhysicalProperties = (props) => {
             />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} xs={12} >
+        <Col className="gutter-row" xs={24}  >
           <Form.Item
             name="substanceCanonicalized"
             label="Canonicalized"
@@ -116,7 +117,7 @@ const ChemicalPhysicalProperties = (props) => {
         <Col className="gutter-row" span={24}>
           <Title level={4}>Mass,weight,Density</Title>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceDensity"
             label="Density (g/cm3) :"
@@ -125,7 +126,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceMass"
             label="Mass (g/mol) :"
@@ -134,7 +135,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceMolecular"
             label="Molecular weight (g/mol) :"
@@ -143,7 +144,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceVaporDensity"
             label="Vapor Density (Relative to Air) :"
@@ -152,7 +153,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceMonoisotopicMass"
             label="Monoisotopic mass (g/mol) :"
@@ -161,7 +162,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceMolarVolume"
             label="Molar volume :"
@@ -176,7 +177,7 @@ const ChemicalPhysicalProperties = (props) => {
         <Col className="gutter-row" span={24}>
           <Title level={4}>Properties</Title>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substancePartitionCoefficient"
             label="Partition coefficient :"
@@ -185,7 +186,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceRotatableBondCount"
             label="Rotatable Bond Count :"
@@ -194,7 +195,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceCharge"
             label="Formal Charge :"
@@ -203,7 +204,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceHydrogenBondDonorCount"
             label="Hydrogen Bond Donor Count :"
@@ -212,7 +213,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceSurfaceArea"
             label="Surface area :"
@@ -221,7 +222,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceComplexity"
             label="Complexity :"
@@ -230,7 +231,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceHydrogenBondAccptorCount"
             label="Hydrogen Bond Acceptor Count :"
@@ -239,7 +240,7 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="substanceHeavyAtom"
             label="Heavy Atom Count :"

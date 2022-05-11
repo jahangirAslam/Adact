@@ -63,23 +63,7 @@ const Flavours = () => {
       title: 'FED UUIN',
       dataIndex: 'fed_uuin',
       sorter: false,
-    }, {
-      key: 'is_valid',
-      title: 'is_valid',
-      dataIndex: 'is_valid',
-      sorter: false,
-    }, {
-      key: 'has_recipe',
-      title: 'has_recipe',
-      dataIndex: 'has_recipe',
-      sorter: false,
-    }, {
-      key: 'is_valid_manufacturer',
-      title: 'is_valid_manufacturer',
-      dataIndex: 'is_valid_manufacturer',
-      sorter: false,
     },
-
     {
       key: "actions",
       title: 'Actions',

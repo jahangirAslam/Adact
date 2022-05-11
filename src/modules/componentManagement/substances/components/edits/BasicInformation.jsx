@@ -36,7 +36,7 @@ const BasicInformation = (props) => {
       onFinish={onFinish}
     >
       <Row gutter={[16, 24]}>
-        <Col className="gutter-row" xs={24}  md={12} lg={8} >
+        <Col className="gutter-row" xs={24}  md={12}  >
           <Form.Item
             name="name"
             rules={rules.name}
@@ -46,37 +46,37 @@ const BasicInformation = (props) => {
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="iupac_name" label="IUPAC Name :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="ref_number" label="Reference Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="reach_number" label="Reach Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="fema_number" label="FEMA Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="reach_registration" label="Reach Registration :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="cas_number" label="CAS Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} lg={8}>
+        <Col className="gutter-row" xs={24}  md={12} >
           <Form.Item name="vaporised" label="Non Vaporised Status :">
             <Select
               showSearch
