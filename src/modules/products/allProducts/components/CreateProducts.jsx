@@ -19,7 +19,6 @@ const CreateProduct = (props) => {
    
 
     const onFinish = (data) => {
-        debugger
         let load = {
             customer_id: 1,
             name: data.name,

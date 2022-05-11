@@ -35,6 +35,8 @@ const IndexSubstance = () => {
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [childComponent, setChildComponent] = useState(null);
+  const [filters, setFilters] = useState({});
+
   const [pagination, setPagination] = useState({
     current: 1,
     pageSize: 25,
@@ -69,7 +71,7 @@ const IndexSubstance = () => {
   useEffect(() => {
     getAllSubstances();
     // eslint-disable-next-line
-  }, [pagination]);
+  }, [pagination , filters ]);
 
   const getAllSubstances = () => {
     let payload = {
@@ -77,6 +79,7 @@ const IndexSubstance = () => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
+      filters
     };
     makeRequest(setLoader, getSubstances, payload, onSuccess, null);
   };
@@ -139,7 +142,7 @@ const IndexSubstance = () => {
         <CreateButton onClick={onCreate} />
       </HeaderComponent>
       <BodyComponent>
-        <FilterComponent filters={availableFilters} api={getFilters} />
+        <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
         <TableComponent
           loader={loader}
           columns={columns}
@@ -155,6 +158,11 @@ const IndexSubstance = () => {
 export default IndexSubstance;
 
 const availableFilters = [
+  {
+    key: "name",
+    placeholder: "Name",
+    type: "text",
+  },
   {
     key: "name",
     placeholder: "Name",
