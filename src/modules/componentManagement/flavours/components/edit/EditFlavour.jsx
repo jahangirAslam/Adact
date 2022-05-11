@@ -15,7 +15,7 @@ const pageConfig = {
                 path: "/component-management/flavours"
             },
             {
-                name: "Edit",
+                name: "Information",
             }
         ]
     }
@@ -49,7 +49,7 @@ const EditFlavour = () => {
 
     const tabs = [
         {
-            title: "Flavour Information",
+            title: "Summary",
             content: <FlavourInformation data={data.object} dependencies={data.dependencies} />
         },
 

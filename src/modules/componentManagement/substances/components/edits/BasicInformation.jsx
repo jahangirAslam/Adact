@@ -36,7 +36,7 @@ const BasicInformation = (props) => {
       onFinish={onFinish}
     >
       <Row gutter={[16, 24]}>
-        <Col className="gutter-row" xs={24}  md={12}  >
+        <Col className="gutter-row" xs={24} md={12}  >
           <Form.Item
             name="name"
             rules={rules.name}
@@ -46,37 +46,37 @@ const BasicInformation = (props) => {
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="iupac_name" label="IUPAC Name :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="ref_number" label="Reference Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="reach_number" label="Reach Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="fema_number" label="FEMA Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="reach_registration" label="Reach Registration :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="cas_number" label="CAS Number :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={24}  md={12} >
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="vaporised" label="Non Vaporised Status :">
             <Select
               showSearch
@@ -106,11 +106,6 @@ const BasicInformation = (props) => {
             <Switch defaultChecked={props.data.is_test} />
           </Form.Item>
         </Col>
-        {/* <Radio.Group>
-          <Radio name="is_safe">Ingredient unsafe to use? :</Radio>
-          <Radio name="status">Status :</Radio>
-          <Radio name="is_test">Test Mode:</Radio>
-        </Radio.Group> */}
       </Row>
       <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent
