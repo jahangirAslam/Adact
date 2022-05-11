@@ -163,9 +163,5 @@ const availableFilters = [
     placeholder: "Name",
     type: "text",
   },
-  {
-    key: "name",
-    placeholder: "Name",
-    type: "text",
-  },
+
 ];
