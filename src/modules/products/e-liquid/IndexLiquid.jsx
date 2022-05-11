@@ -3,8 +3,9 @@ import { useHistory } from "react-router-dom";
 import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import CreateProduct from "./components/CreateProducts";
-import { deleteProduct, getAllProducts, getFilters } from "./components/request";
+import { deleteProduct, getAllProducts } from "./components/request";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { getFilters } from "../allProducts/components/request";
 
 const pageConfig = {
     headers: {
@@ -156,7 +157,6 @@ const IndexLiquid = () => {
 }
 
 export default IndexLiquid;
-
 const availableFilters = [
     {
         key: 'prduct_id',
@@ -167,6 +167,8 @@ const availableFilters = [
         key: 'client',
         placeholder: 'Client Name',
         type: 'select',
+        data_key: 'customers',
+
     },
     {
         key: 'name',
@@ -182,15 +184,14 @@ const availableFilters = [
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
+        data_key: 'withdrawn',
     },
     {
         key: 'type',
         placeholder: 'Type',
-        type: 'text',
-    },
-    {
-        key: 'insights',
-        placeholder: 'Insights',
         type: 'select',
+        data_key: 'product_types',
+
     },
+
 ];

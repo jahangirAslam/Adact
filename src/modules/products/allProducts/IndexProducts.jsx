@@ -167,6 +167,8 @@ const availableFilters = [
         key: 'client',
         placeholder: 'Client Name',
         type: 'select',
+        data_key: 'customers',
+
     },
     {
         key: 'name',
@@ -182,15 +184,14 @@ const availableFilters = [
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
+        data_key:'withdrawn',
     },
     {
         key: 'type',
         placeholder: 'Type',
-        type: 'text',
-    },
-    {
-        key: 'insights',
-        placeholder: 'Insights',
         type: 'select',
+        data_key:'product_types',
+        
     },
+   
 ];

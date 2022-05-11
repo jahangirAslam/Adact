@@ -15,10 +15,6 @@ export const getProduct = (id) => {
 export const deleteProduct = (id) => {
     return del(`${api}/${id}`);
 }
-export const getFilters = () => {
-
-    return get(`${api}/filters`);
-}
 export const updateSubstance = (payload) => {
 
     return put(`${api}/${payload.id}`, payload);
