@@ -2,22 +2,12 @@ import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Button, Col, Row, Tag } from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent, ImportButton } from "@comps/components";
-import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
+import { TableComponent, ActionComponent, CreateButton, } from "@comps/components";
+import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import CreateFlavour from "../../../components/CreateFlavour";
-import { deleteFlavour, getFilters, getFlavours } from "../../../components/request";
+import { deleteFlavour, getFlavours } from "./request";
 
-const pageConfig = {
-    headers: {
-        title: "Flavour",
-        breadcrumb: [
-            {
-                name: "Flavour",
-                // path: "/flavours"
-            }
-        ]
-    }
-}
+
 
 const Recipe = () => {
 
@@ -162,9 +152,8 @@ const Recipe = () => {
     return (
         < >
             {childComponent}
-            <Row  justify="end" className="da-pb-24" >
-
-            <CreateButton onClick={onCreate} />
+            <Row justify="end" className="da-pb-24" >
+                <CreateButton onClick={onCreate} />
             </Row>
 
             <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
