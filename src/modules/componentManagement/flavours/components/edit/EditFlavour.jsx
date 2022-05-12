@@ -4,6 +4,7 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import { getFlavour } from "../request";
 import FlavourInformation from "./FlavourInformation";
+import Recipe from "./recipe/Recipe";
 
 
 const pageConfig = {
@@ -51,6 +52,10 @@ const EditFlavour = () => {
         {
             title: "Summary",
             content: <FlavourInformation data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Recipe",
+            content: <Recipe data={data.object} dependencies={data.dependencies} />
         },
 
     ]
