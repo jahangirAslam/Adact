@@ -6,9 +6,9 @@ import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { createFlavour } from "./request";
 
 
-const formName = "createFlavour";
+const formName = "createRecipe";
 
-const CreateUser = (props) => {
+const CreateRecipe = (props) => {
 
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -66,7 +66,7 @@ const CreateUser = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Flavour" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="Create" subTitle="Recipe" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
@@ -98,6 +98,6 @@ const CreateUser = (props) => {
     );
 }
 
-export default CreateUser
+export default CreateRecipe
 
 

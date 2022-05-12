@@ -6,6 +6,7 @@ import { TableComponent, ActionComponent, CreateButton, } from "@comps/component
 import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import CreateFlavour from "../../../components/CreateFlavour";
 import { deleteFlavour, getFlavours } from "./request";
+import CreateRecipe from "./CreateRecipe";
 
 
 
@@ -33,21 +34,15 @@ const Recipe = () => {
             sorter: true,
         },
         {
-            key: 'manufacturer_id',
-            title: 'Manufacturer name',
-            dataIndex: 'manufacturer_id',
+            key: 'type',
+            title: 'Type',
+            dataIndex: 'type',
             sorter: false,
         },
         {
-            key: 'manufacturer_ref',
-            title: 'Ref.(Manufacturer)',
-            dataIndex: 'manufacturer_ref',
-            sorter: false,
-        },
-        {
-            key: 'fed_uuin',
-            title: 'FED UUIN',
-            dataIndex: 'fed_uuin',
+            key: 'cas_number',
+            title: 'Cas Number',
+            dataIndex: 'cas_number',
             sorter: false,
         },
         {
@@ -67,7 +62,7 @@ const Recipe = () => {
             }
         }
         return (
-            <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+            <ActionComponent each={record} onEdit={onEdit} onDelete={onDelete}>
                 {/* <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button> */}
             </ActionComponent>
         );
@@ -114,7 +109,7 @@ const Recipe = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateFlavour onCreated={onCreated} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} />);
     }
 
     const onCreated = (each) => {
@@ -122,13 +117,6 @@ const Recipe = () => {
             setChildComponent(null);
         }
         setDataSource([...dataSource, each.object]);
-    }
-
-
-
-    const onView = (record) => {
-
-        history.push(`/component-management/users/view/${record.id}`);
     }
 
     const onEdit = (record) => {
