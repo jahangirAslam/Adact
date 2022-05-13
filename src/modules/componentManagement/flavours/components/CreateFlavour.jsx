@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from "react";
+import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
+import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-
-import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
+import React, { useState } from "react";
 import { createFlavour } from "./request";
+
 
 
 const formName = "createFlavour";

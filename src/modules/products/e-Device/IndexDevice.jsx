@@ -1,11 +1,11 @@
-import React, { useState, useEffect } from "react";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
+import { makeRequest, notify, removeById } from "@utils/helpers";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
+import { getFilters } from "../allProducts/components/request";
 import CreateProduct from "./components/CreateProducts";
 import { deleteProduct, getAllProducts } from "./components/request";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { getFilters } from "../allProducts/components/request";
 
 const pageConfig = {
     headers: {

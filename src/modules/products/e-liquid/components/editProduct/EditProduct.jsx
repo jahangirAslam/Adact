@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
+import { useParams } from "react-router-dom";
 import Details from "./Details";
 
 const pageConfig = {

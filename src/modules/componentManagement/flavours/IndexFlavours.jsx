@@ -1,12 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { Button, Tag } from "antd";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent, ImportButton } from "@comps/components";
-import { makeRequest, formatCompleteDataTime, notify, removeById, replaceById } from "@utils/helpers";
-import { getUsers, activateUserRequest, deleteUser } from "../../userManagement/users/requests";
-import CreateUser from "../../userManagement/users/components/CreateUser";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
+import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import ImportUser from "../../userManagement/users/components/ImportUser";
+import { activateUserRequest } from "../../userManagement/users/requests";
 import CreateFlavour from "./components/CreateFlavour";
 import { deleteFlavour, getFilters, getFlavours } from "./components/request";
 

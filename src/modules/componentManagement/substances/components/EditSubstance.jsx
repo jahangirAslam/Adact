@@ -1,11 +1,11 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import DashboardIcon from "../../../../containers/components/menu/icons/DashboardIcon";
+import { getSubstance } from "./../requests";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
-import { getSubstance } from "./../requests";
-import DashboardIcon from "../../../../containers/components/menu/icons/DashboardIcon";
 
 const pageConfig = {
   headers: {

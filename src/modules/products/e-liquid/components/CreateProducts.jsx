@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
+import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
-import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
-import { createProduct } from "./request";
+import React, { useEffect, useState } from "react";
 import { getProductDependencies } from "../../allProducts/components/request";
+import { createProduct } from "./request";
 
 const formName = "createProduct";
 const CreateProduct = (props) => {
