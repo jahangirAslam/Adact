@@ -80,8 +80,8 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name" rules={rules.country} label="Customer Name :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
+                <Form.Item name="name"  label="Customer Name :" className="da-mb-16"
+                    >
                     <Select
                         showSearch
                         placeholder="Customer Name"
@@ -89,16 +89,16 @@ const CreateProduct = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
+                <Form.Item name="type_name"  label="Product Type :" className="da-mb-16"
+                    >
                     <Select
                         showSearch
                         placeholder="Product Type"
                         options={deps.types}
                     />
                 </Form.Item>
-                <Form.Item name="e_type" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
+                <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
+                    >
                     <Select
                         showSearch
                         placeholder="Product Type"
