@@ -108,7 +108,7 @@ const Recipe = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated}  />);
     }
 
     const onCreated = (each) => {
@@ -140,7 +140,7 @@ const Recipe = () => {
         < >
             {childComponent}
             <Row justify="end" className="da-pb-24" >
-                <CreateButton onClick={onCreate} />
+                <CreateButton onClick={onCreate}   />
             </Row>
 
             <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />

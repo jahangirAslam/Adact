@@ -1,25 +1,24 @@
-import React, { useEffect, useState } from "react";
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
+import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
 
 
-const formName = "createProduct";
+const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
-
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: [],
+        compounds: [],
+        substances: [],
         types: [],
-        customers: [],
-        typeB:[]
-        
+
     });
-   
+
 
     const onFinish = (data) => {
+        debugger
         let load = {
             customer_id: 1,
             name: data.name,
@@ -27,12 +26,12 @@ const CreateRecipe = (props) => {
             category_id: 2
         }
         let payload = { "object": load }
-        payload.object["type"] = "product";
+        payload.object["type"] = "recipe";
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Product Created", res.msg);
+        notify("Recipe Created", res.msg);
         props.onCreated(data.object);
     }
 
@@ -46,14 +45,14 @@ const CreateRecipe = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
+
         setDeps({
-            countries: data.countries,
-            types: data.product_types,
-            customers: data.customers,
-            typeB:data.e_types,
+            compounds: data.compounds,
+            substances: data.substances,
+            types: data.types,
 
         });
-      
+
 
     }
 
@@ -75,39 +74,34 @@ const CreateRecipe = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Product" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="Create" subTitle="Component" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name"  label="Customer Name :" className="da-mb-16"
-                    >
+                <Form.Item name="type" label="Component Type" className="da-mb-16"
+                >
                     <Select
                         showSearch
-                        placeholder="Customer Name"
-                        options={deps.customers}
-                    />
-                </Form.Item>
-
-                <Form.Item name="type_name"  label="Product Type :" className="da-mb-16"
-                    >
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
+                        placeholder="Select Type"
                         options={deps.types}
                     />
                 </Form.Item>
-                <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
-                    >
+
+                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
+                >
                     <Select
                         showSearch
-                        placeholder="Product Type"
-                        options={deps.typeB}
+                        placeholder="Select Substance"
+                        options={deps.substances}
                     />
                 </Form.Item>
-
-                <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
+                <Form.Item name="name" rules={rules.name} label="Add Substance Name" placeholder="Substance Name" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
+                    <Input />
+                </Form.Item>
+                <Form.Item name="cas_number" rules={rules.name} label="Add CAS Number" placeholder="CAS Number" className="da-mb-16"
                     {...getErrorProps(errors['name'])}>
                     <Input />
                 </Form.Item>
