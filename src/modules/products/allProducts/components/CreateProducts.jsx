@@ -1,8 +1,9 @@
+import React, { useEffect, useState } from "react";
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import React, { useEffect, useState } from "react";
 import { createProduct, getProductDependencies } from "./request";
+
 
 const formName = "createProduct";
 const CreateProduct = (props) => {

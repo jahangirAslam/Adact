@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
-import { Button, Col, Row, Tag } from "antd";
+import React, { useEffect, useState } from "react";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { TableComponent, ActionComponent, CreateButton, } from "@comps/components";
-import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
-import CreateFlavour from "../../../components/CreateFlavour";
-import { deleteFlavour, getFlavours } from "./request";
+import { ActionComponent, CreateButton, TableComponent } from "@comps/components";
+import { makeRequest, notify, removeById } from "@utils/helpers";
+import { Row } from "antd";
+import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
+import { deleteFlavour, getFlavours } from "./request";
 
 
 

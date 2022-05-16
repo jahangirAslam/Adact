@@ -21,3 +21,6 @@ export const deleteFlavour = (id) => {
 export const getFilters = () => {
     return get(`${api}/filters`);
 }
+export const getProductDependencies = () => {
+    return get(`${api}/dependencies`);
+}
