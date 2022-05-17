@@ -8,10 +8,10 @@ import { deleteProduct, getAllProducts, getFilters } from "./components/request"
 
 const pageConfig = {
     headers: {
-        title: "Products",
+        title: "Laboratory",
         breadcrumb: [
             {
-                name: "ALl Products",
+                name: "Laboratory",
             }
         ]
     }
