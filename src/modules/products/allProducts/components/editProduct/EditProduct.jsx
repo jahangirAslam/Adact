@@ -4,6 +4,7 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import Details from './Details'
 import { getProduct } from "../request";
+import Recipe from "./recipe/Recipe";
 
 const pageConfig = {
     headers: {
@@ -48,8 +49,12 @@ const EditProduct = () => {
 
     const tabs = [
         {
-            title: "Details",
+            title: "Product Identification",
             content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Recipe",
+            content: <Recipe data={data.object} dependencies={data.dependencies} />
         },
 
     ]
