@@ -16,6 +16,7 @@ const Recipe = () => {
 
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
+    const [flavourRecord, setFlavourRecord] = useState(undefined)
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
@@ -52,6 +53,7 @@ const Recipe = () => {
     ];
 
     const ActionComponentEx = (record) => {
+        setFlavourRecord(record);
         let icon = null;
         if (record) {
             if (record.is_active) {
@@ -62,14 +64,12 @@ const Recipe = () => {
         }
         return (
             <ActionComponent each={record} onEdit={onEdit} onDelete={onDelete}>
-                {/* <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button> */}
             </ActionComponent>
         );
     }
 
     useEffect(() => {
         getAllFlavours();
-        // eslint-disable-next-line
     }, [pagination]);
 
     const getAllFlavours = () => {
@@ -108,7 +108,7 @@ const Recipe = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated}  />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} flavourRecord={flavourRecord} />);
     }
 
     const onCreated = (each) => {
@@ -140,7 +140,7 @@ const Recipe = () => {
         < >
             {childComponent}
             <Row justify="end" className="da-pb-24" >
-                <CreateButton onClick={onCreate}   />
+                <CreateButton onClick={onCreate} />
             </Row>
 
             <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />

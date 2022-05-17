@@ -18,15 +18,15 @@ const CreateRecipe = (props) => {
 
 
     const onFinish = (data) => {
-        debugger
         let load = {
-            customer_id: 1,
+            flavour_id: 1,
             name: data.name,
-            type_id: 1,
-            category_id: 2
+            type: data.type,
+            cas_number: data.cas_number
+
+
         }
         let payload = { "object": load }
-        payload.object["type"] = "recipe";
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
@@ -104,6 +104,14 @@ const CreateRecipe = (props) => {
                 <Form.Item name="cas_number" rules={rules.name} label="Add CAS Number" placeholder="CAS Number" className="da-mb-16"
                     {...getErrorProps(errors['name'])}>
                     <Input />
+                </Form.Item>
+                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select Substance"
+                        options={deps.substances}
+                    />
                 </Form.Item>
 
 
