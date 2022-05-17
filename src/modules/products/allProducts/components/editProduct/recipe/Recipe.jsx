@@ -144,8 +144,8 @@ const Recipe = () => {
                 <CreateButton onClick={onCreate} />
             </Row>
             <Row>
-                <Col xs={6} >
-                    <Components/>
+                <Col xs={6} className="da-p-4" >
+                    <Components />
                 </Col>
                 <Col xs={18} >
                     <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
