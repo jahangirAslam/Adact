@@ -101,6 +101,21 @@ const navigation = [{
         ],
     },
     {
+        id: "laboratory",
+        title: "Laboratory",
+        icon: < MembershipIcon / > ,
+        uri: "/laboratory",
+        permissionKey: "hasChildren",
+        children: [{
+                id: "test",
+                title: "Tests",
+                uri: "/test",
+                permissionKey: "test_index",
+            },
+            
+        ],
+    },
+    {
         id: "userManagement",
         title: "User & Role",
         icon: < MembershipIcon / > ,

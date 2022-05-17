@@ -8,6 +8,7 @@ import DocumentModule from "./documentManagement/routes";
 import ThirdPartyModule from "./thirdPartyManagement/routes"
 import SubstanceModule from "./componentManagement/routes"
 import ProductRoutes from "./products/allProducts/route";
+import LaboratoryModule from "./Laboratory/routes";
 
 const ModuleRoutes = ({ match }) => (
   <Switch>
@@ -18,6 +19,7 @@ const ModuleRoutes = ({ match }) => (
     <Route path={ `${match.url}third-party` } component={ ThirdPartyModule } />
     <Route path={ `${match.url}products` } component={ ProductRoutes } />
     <Route path={ `${match.url}component-management` } component={ SubstanceModule } />
+    <Route path={ `${match.url}laboratory` } component={ LaboratoryModule } />
   </Switch>
 );
 
