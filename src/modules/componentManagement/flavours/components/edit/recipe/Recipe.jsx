@@ -1,22 +1,23 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Row } from "antd";
-import React, { useEffect, useState } from "react";
+import { Popconfirm, Row, Typography ,Form } from "antd";
+import { default as React,  useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
 import { deleteFlavour, getFlavours } from "./request";
-
+const originData = [];
 
 
 const Recipe = () => {
 
     const history = useHistory();
     const [loader, setLoader] = useState(false);
-
+    const [form] = Form.useForm();
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [flavourRecord, setFlavourRecord] = useState(undefined)
+    const [data, setData] = useState(originData);
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
@@ -25,48 +26,88 @@ const Recipe = () => {
     });
 
     const [childComponent, setChildComponent] = useState(null);
+    const [editingKey, setEditingKey] = useState('');
+
+    const isEditing = (record) => record.id === editingKey;
+
+    const edit = (record) => {
+        form.setFieldsValue({
+            ...record,
+        });
+        setEditingKey(record.id);
+
+    };
+
+    const cancel = () => {
+        setEditingKey('');
+    };
+    const save = async (key) => {
+        try {
+            const row = await form.validateFields();
+            const newData = [...data];
+            const index = newData.findIndex((item) => key === item.key);
+
+            if (index > -1) {
+                const item = newData[index];
+                newData.splice(index, 1, { ...item, ...row });
+                setData(newData);
+                setEditingKey('');
+            } else {
+                newData.push(row);
+                setData(newData);
+                setEditingKey('');
+            }
+        } catch (errInfo) {
+            console.log('Validate Failed:', errInfo);
+        }
+    };
 
     const columns = [
         {
-            key: 'name',
-            title: 'Name',
+            title: 'name',
             dataIndex: 'name',
-            sorter: true,
+            width: '25%',
+            editable: false,
         },
         {
-            key: 'type',
-            title: 'Type',
+            title: 'type',
             dataIndex: 'type',
-            sorter: false,
+            width: '15%',
+            editable: false,
         },
         {
-            key: 'cas_number',
-            title: 'Cas Number',
+            title: 'cas_number',
             dataIndex: 'cas_number',
-            sorter: false,
+            width: '40%',
+            editable: true,
         },
         {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
+            title: 'operation',
+            dataIndex: 'operation',
+            render: (_, record) => {
+                const editable = isEditing(record);
+                return editable ? (
+                    <span>
+                        <Typography.Link
+                            onClick={() => save(record.key)}
+                            style={{
+                                marginRight: 8,
+                            }}
+                        >
+                            Save
+                        </Typography.Link>
+                        <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
+                            <a>Cancel</a>
+                        </Popconfirm>
+                    </span>
+                ) : (
+                    <ActionComponent each={record} onEdit={edit} onDelete={onDelete} >
+                    </ActionComponent>
+                );
+            },
         },
     ];
 
-    const ActionComponentEx = (record) => {
-        setFlavourRecord(record);
-        let icon = null;
-        if (record) {
-            if (record.is_active) {
-                icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
-            } else {
-                icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
-            }
-        }
-        return (
-            <ActionComponent each={record} onEdit={onEdit} onDelete={onDelete}>
-            </ActionComponent>
-        );
-    }
 
     useEffect(() => {
         getAllFlavours();
@@ -143,7 +184,7 @@ const Recipe = () => {
                 <CreateButton onClick={onCreate} />
             </Row>
 
-            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} />
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel}  />
         </>
     );
 }
