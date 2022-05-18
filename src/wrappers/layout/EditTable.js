@@ -48,7 +48,7 @@ const EditableCell = ({
 };
 
 const EditableTable = (props) => {
-  let {  loader, ...otherProps } = props;
+  let {  loader } = props;
 
   const [form] = Form.useForm();
   const [data, setData] = useState(originData);
@@ -58,13 +58,9 @@ const EditableTable = (props) => {
 
   const edit = (record) => {
     form.setFieldsValue({
-      name: '',
-      age: '',
-      address: '',
       ...record,
     });
     setEditingKey(record.id);
-    debugger
 
   };
 
@@ -98,13 +94,13 @@ const EditableTable = (props) => {
       title: 'name',
       dataIndex: 'name',
       width: '25%',
-      editable: true,
+      editable: false,
     },
     {
       title: 'type',
       dataIndex: 'type',
       width: '15%',
-      editable: true,
+      editable: false,
     },
     {
       title: 'cas_number',
@@ -142,7 +138,7 @@ const EditableTable = (props) => {
     if (!col.editable) {
       return col;
     }
-
+debugger
     return {
       ...col,
       onCell: (record) => ({
