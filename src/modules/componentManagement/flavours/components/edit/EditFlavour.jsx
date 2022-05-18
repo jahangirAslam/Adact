@@ -55,7 +55,7 @@ const EditFlavour = () => {
         },
         {
             title: "Recipe",
-            content: <Recipe  />
+            content: <Recipe flavourId={id} />
         },
 
     ]

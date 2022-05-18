@@ -5,11 +5,11 @@ import { Popconfirm, Row, Typography ,Form } from "antd";
 import { default as React,  useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
-import { deleteFlavour, getFlavours } from "./request";
+import { deleteFlavour, getFlavours, updateSubstance } from "./request";
 const originData = [];
 
 
-const Recipe = () => {
+const Recipe = (props) => {
 
     const history = useHistory();
     const [loader, setLoader] = useState(false);
@@ -44,6 +44,13 @@ const Recipe = () => {
         try {
             const row = await form.validateFields();
             const newData = [...data];
+             let payload ={
+                 id:props.flavourId,
+                 flavour_id:id,
+                 name:"xyz"
+
+            }
+            makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
@@ -54,7 +61,7 @@ const Recipe = () => {
             title: 'name',
             dataIndex: 'name',
             width: '25%',
-            editable: false,
+            editable: true,
         },
         {
             title: 'type',
@@ -66,7 +73,7 @@ const Recipe = () => {
             title: 'cas_number',
             dataIndex: 'cas_number',
             width: '40%',
-            editable: true,
+            editable: false,
         },
         {
             title: 'operation',
@@ -144,10 +151,6 @@ const Recipe = () => {
             setChildComponent(null);
         }
         setDataSource([...dataSource, each.object]);
-    }
-
-    const onEdit = (record) => {
-        history.push(`/component-management/users/edit/${record.id}`);
     }
 
     const onDelete = (record) => {
