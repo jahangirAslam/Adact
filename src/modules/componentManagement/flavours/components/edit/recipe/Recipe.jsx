@@ -35,28 +35,15 @@ const Recipe = () => {
             ...record,
         });
         setEditingKey(record.id);
-
     };
 
     const cancel = () => {
         setEditingKey('');
     };
-    const save = async (key) => {
+    const save = async (id) => {
         try {
             const row = await form.validateFields();
             const newData = [...data];
-            const index = newData.findIndex((item) => key === item.key);
-
-            if (index > -1) {
-                const item = newData[index];
-                newData.splice(index, 1, { ...item, ...row });
-                setData(newData);
-                setEditingKey('');
-            } else {
-                newData.push(row);
-                setData(newData);
-                setEditingKey('');
-            }
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
@@ -89,7 +76,7 @@ const Recipe = () => {
                 return editable ? (
                     <span>
                         <Typography.Link
-                            onClick={() => save(record.key)}
+                            onClick={() => save(record.id)}
                             style={{
                                 marginRight: 8,
                             }}
