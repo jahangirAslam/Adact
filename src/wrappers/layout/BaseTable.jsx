@@ -1,8 +1,9 @@
-import React, { useMemo } from "react";
 import { Table } from "antd";
+import React, { useMemo } from "react";
 
 
 const BaseTable = (props) => {
+  debugger
   let { columns, loader, ...otherProps } = props;
 
   const tab = useMemo(() => <Table rowKey="id" size="small" {...otherProps} columns={columns} showSorterTooltip={false} tableLayout="fixed" loading={loader} />, [otherProps.dataSource, loader]);// eslint-disable-line react-hooks/exhaustive-deps

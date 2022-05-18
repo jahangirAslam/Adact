@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, CreateButton, TableComponent } from "@comps/components";
+import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Row } from "antd";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
 import { deleteFlavour, getFlavours } from "./request";
@@ -143,7 +143,7 @@ const Recipe = () => {
                 <CreateButton onClick={onCreate} />
             </Row>
 
-            <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} />
         </>
     );
 }

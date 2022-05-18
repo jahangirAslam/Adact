@@ -1,23 +1,24 @@
 // Layout
-import BaseHeader from "./layout/BaseHeader";
-import BaseBody from "./layout/BaseBody";
-import BaseTable from "./layout/BaseTable";
-import BaseAction from "./layout/BaseActions";
-import BaseModal from "./layout/BaseModal";
-import BaseTab from "./layout/BaseTab";
-import BaseGoogleMap from "./layout/BaseGoogleMap";
-import BaseTree from "./layout/BaseTree";
-import BaseDropzone from "./layout/BaseDropzone";
-import BaseEditor from "./layout/BaseEditor";
-// Filters
-import BaseFilter from "./filters/BaseFilter";
 // Buttons
 import BaseButton from "./buttons/BaseButton";
+import BaseCancel from "./buttons/BaseCancel";
 import BaseCreate from "./buttons/BaseCreate";
 import BaseImport from "./buttons/BaseImport";
-import BaseUpload from "./buttons/BaseUpload";
-import BaseCancel from "./buttons/BaseCancel";
 import BaseSave from "./buttons/BaseSave";
+import BaseUpload from "./buttons/BaseUpload";
+// Filters
+import BaseFilter from "./filters/BaseFilter";
+import BaseAction from "./layout/BaseActions";
+import BaseBody from "./layout/BaseBody";
+import BaseDropzone from "./layout/BaseDropzone";
+import BaseEditor from "./layout/BaseEditor";
+import BaseGoogleMap from "./layout/BaseGoogleMap";
+import BaseHeader from "./layout/BaseHeader";
+import BaseModal from "./layout/BaseModal";
+import BaseTab from "./layout/BaseTab";
+import BaseTable from "./layout/BaseTable";
+import BaseTree from "./layout/BaseTree";
+import EditTable from "./layout/EditTable";
 
 // Layout
 export const HeaderComponent = BaseHeader;
@@ -29,6 +30,7 @@ export const ActionComponent = BaseAction;
 export const ModalComponent = BaseModal;
 export const TabComponent = BaseTab;
 export const TreeComponent = BaseTree;
+export const EditAbleTable = EditTable;
 // Filters
 export const FilterComponent = BaseFilter;
 // Buttons

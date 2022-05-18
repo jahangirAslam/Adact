@@ -55,7 +55,7 @@ const EditFlavour = () => {
         },
         {
             title: "Recipe",
-            content: <Recipe data={data.object} dependencies={data.dependencies} />
+            content: <Recipe  />
         },
 
     ]
