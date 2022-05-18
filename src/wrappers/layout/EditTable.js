@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
+import { ActionComponent } from '../components';
 const originData = [];
 
 for (let i = 0; i < 100; i++) {
@@ -131,9 +132,8 @@ const EditableTable = (props) => {
             </Popconfirm>
           </span>
         ) : (
-          <Typography.Link disabled={editingKey !== ''} onClick={() => edit(record)}>
-            Edit
-          </Typography.Link>
+            <ActionComponent each={record} onEdit={edit} >
+            </ActionComponent>
         );
       },
     },
