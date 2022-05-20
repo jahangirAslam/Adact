@@ -12,9 +12,7 @@ export const getFlavour = (id) => {
     return get(`${api}/${id}`);
 }
 export const updateSubstance = (payload) => {
-    debugger
-    console.log(payload);
-    return put(`${api}/${payload.id}`, payload);
+    return put(`${api}/${payload.flavour_id}`, payload);
 };
 export const deleteFlavour = (id) => {
     return del(`${api}/${id}`);

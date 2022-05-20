@@ -44,6 +44,7 @@ const Recipe = (props) => {
         try {
             const row = await form.validateFields();
             const newData = [...data];
+            debugger
              let payload ={
                  id:props.flavourId,
                  flavour_id:id,
@@ -61,7 +62,7 @@ const Recipe = (props) => {
             title: 'name',
             dataIndex: 'name',
             width: '25%',
-            editable: true,
+            editable: false,
         },
         {
             title: 'type',
@@ -75,6 +76,19 @@ const Recipe = (props) => {
             width: '40%',
             editable: false,
         },
+        {
+            title: 'REF',
+            dataIndex: 'ref',
+            width: '40%',
+            editable: false,
+        },
+        {
+            title: 'Percentage',
+            dataIndex: 'percentage',
+            width: '40%',
+            editable: true,
+        },
+
         {
             title: 'operation',
             dataIndex: 'operation',
