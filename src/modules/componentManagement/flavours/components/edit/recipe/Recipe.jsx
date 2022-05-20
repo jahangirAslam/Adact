@@ -150,7 +150,7 @@ const Recipe = (props) => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated}  />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} />);
     }
 
     const onCreated = (each) => {
