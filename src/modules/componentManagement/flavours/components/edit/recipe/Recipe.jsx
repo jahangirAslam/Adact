@@ -1,8 +1,8 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Popconfirm, Row, Typography ,Form } from "antd";
-import { default as React,  useEffect, useState } from "react";
+import { Popconfirm, Row, Typography, Form } from "antd";
+import { default as React, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
 import { deleteFlavour, getFlavours, updateSubstance } from "./request";
@@ -35,20 +35,28 @@ const Recipe = (props) => {
             ...record,
         });
         setEditingKey(record.id);
+
+
+
+
+
+
+
+
     };
 
     const cancel = () => {
         setEditingKey('');
     };
     const save = async (id) => {
+
         try {
             const row = await form.validateFields();
             const newData = [...data];
-            debugger
-             let payload ={
-                 id:props.flavourId,
-                 flavour_id:id,
-                 name:"xyz"
+            let payload = {
+                id: props.flavourId,
+                flavour_id: id,
+                percentage: row.percentage,
 
             }
             makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
@@ -71,24 +79,17 @@ const Recipe = (props) => {
             editable: false,
         },
         {
-            title: 'cas_number',
-            dataIndex: 'cas_number',
-            width: '40%',
-            editable: false,
-        },
-        {
-            title: 'REF',
-            dataIndex: 'ref',
-            width: '40%',
+            title: 'RAF',
+            dataIndex: 'raf',
+            width: '15%',
             editable: false,
         },
         {
             title: 'Percentage',
             dataIndex: 'percentage',
-            width: '40%',
+            width: '25%',
             editable: true,
         },
-
         {
             title: 'operation',
             dataIndex: 'operation',
@@ -188,7 +189,7 @@ const Recipe = (props) => {
                 <CreateButton onClick={onCreate} />
             </Row>
 
-            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel}  />
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel} />
         </>
     );
 }

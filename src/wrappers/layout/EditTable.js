@@ -41,7 +41,7 @@ const EditableCell = ({
 };
 
 const EditableTable = (props) => {
-    let { columns, loader , isEditing , form , cancel } = props;
+    let { columns, loader, isEditing, form, cancel } = props;
 
 
     const mergedColumns = columns.map((col) => {
