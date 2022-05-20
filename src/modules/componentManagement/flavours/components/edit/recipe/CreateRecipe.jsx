@@ -25,7 +25,6 @@ const CreateRecipe = (props) => {
 
 
         }
-        debugger
         let payload = { "object": load }
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }

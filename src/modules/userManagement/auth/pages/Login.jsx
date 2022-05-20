@@ -8,7 +8,7 @@ import { ButtonComponent } from "@comps/components";
 
 import { signinUser } from "../authSlice";
 import AuthCommon from "../components/AuthCommon";
-import loginLogo from '../../../../assets/images/dasboard/loginLogo.png'
+import loginLogo from '../../../../assets/images/logo/logo.png'
 
 let credentials = {};
 
@@ -50,9 +50,8 @@ const Login = () => {
         layout="vertical"
         name="basic"
         initialValues={{ remember: true }}
-        className="da-mt-sm-16 da-mt-32"
+        className="da-mt-sm-16 da-mt-32 login-form"
         onFinish={handleLoginSubmit}
-        className="login-form "
       >
         <Form.Item name="email" rules={rules.email} label="Username" className="da-mb-16 login-form-item"
           {...getErrorProps(errors['email'])}>
