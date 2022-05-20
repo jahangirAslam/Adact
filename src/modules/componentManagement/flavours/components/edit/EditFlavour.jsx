@@ -67,7 +67,7 @@ const EditFlavour = () => {
     if (data.length === 0) {
         return "";
     }
-    return <TabComponent  headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
+    return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
 
 }
 

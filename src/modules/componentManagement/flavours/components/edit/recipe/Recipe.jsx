@@ -16,7 +16,6 @@ const Recipe = (props) => {
     const [form] = Form.useForm();
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
-    const [flavourRecord, setFlavourRecord] = useState(undefined)
     const [data, setData] = useState(originData);
     const [pagination, setPagination] = useState({
         current: 1,
@@ -35,13 +34,6 @@ const Recipe = (props) => {
             ...record,
         });
         setEditingKey(record.id);
-
-
-
-
-
-
-
 
     };
 
@@ -158,7 +150,7 @@ const Recipe = (props) => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} flavourRecord={flavourRecord} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated}  />);
     }
 
     const onCreated = (each) => {
