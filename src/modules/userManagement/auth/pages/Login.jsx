@@ -41,7 +41,7 @@ const Login = () => {
         <img src={loginLogo} alt="" />
       </Row>
       <Row justify="center" align="top" >
-        <p className=" da-mt-36 da-mb-48 da-text-color-black-60 login-note ">
+        <p className=" da-mt-36 da-mb-sm-48 da-text-color-black-60 login-note ">
           Welcome back, please login to your account.
         </p>
       </Row >

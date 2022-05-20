@@ -109,7 +109,7 @@ p {
 .login-note {
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 17px;
     line-height: 36px;
     color: #6A6A6A !important;
     font-family: 'Neo Sans W1G';
@@ -203,12 +203,6 @@ p {
     border-radius: 6px;
 }
 
-@media only screen and (max-width: 997px) {
-    .login-img {
-        display: none;
-    }
-}
-
 .ant-picker {
     width: 100%;
     height: 56px;
@@ -220,4 +214,14 @@ p {
 
 .chem-phy-from h4 {
     color: #0093CD;
+}
+
+@media only screen and (max-width: 997px) {
+    .login-img {
+        display: none;
+    }
+    .login-note {
+        margin-top: 10px !important;
+        margin-bottom: 0px!important;
+    }
 }
