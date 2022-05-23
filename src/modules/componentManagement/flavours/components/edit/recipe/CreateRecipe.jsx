@@ -1,5 +1,5 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
@@ -22,6 +22,7 @@ const CreateRecipe = (props) => {
             flavour_id: 1,
             name: data.name,
             type: data.type,
+            percentage:data.percentage
 
 
         }

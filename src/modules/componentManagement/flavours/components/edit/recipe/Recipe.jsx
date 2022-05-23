@@ -1,7 +1,6 @@
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Popconfirm, Row, Typography, Form } from "antd";
+import { Form, Popconfirm, Row, Typography } from "antd";
 import { default as React, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
@@ -51,7 +50,8 @@ const Recipe = (props) => {
                 percentage: row.percentage,
 
             }
-            makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
+            makeRequest(setLoader, updateSubstance, payload, getAllFlavours(), onError);
+            setEditingKey('');
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
