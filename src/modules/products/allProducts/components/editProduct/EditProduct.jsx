@@ -5,6 +5,7 @@ import { makeRequest } from "@utils/helpers";
 import Details from './Details'
 import { getProduct } from "../request";
 import Recipe from "./recipe/Recipe";
+import LabTest from "./labTest/LabTest";
 
 const pageConfig = {
     headers: {
@@ -55,6 +56,10 @@ const EditProduct = () => {
         {
             title: "Recipe",
             content: <Recipe data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Laboratory Test",
+            content: <LabTest data={data.object} dependencies={data.dependencies} />
         },
 
     ]
