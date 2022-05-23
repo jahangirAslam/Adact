@@ -11,13 +11,13 @@ const CreateProduct = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: [],
+        laboratory: [],
+        facility: [],
         types: [],
-        customers: [],
-        typeB:[]
-        
+        typeB: []
+
     });
-   
+
 
     const onFinish = (data) => {
         let load = {
@@ -47,13 +47,13 @@ const CreateProduct = (props) => {
 
     const onDependencySuccess = (data, res) => {
         setDeps({
-            countries: data.countries,
-            types: data.product_types,
-            customers: data.customers,
-            typeB:data.e_types,
+            laboratory: data.laboratory,
+            facility: data.facility,
+            types: data.types,
+            typeB: data.e_types,
 
         });
-      
+
 
     }
 
@@ -81,25 +81,25 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name"  label="Customer Name :" className="da-mb-16"
-                    >
+                <Form.Item name="ype" label="Select Type :" className="da-mb-16"
+                >
                     <Select
                         showSearch
-                        placeholder="Customer Name"
-                        options={deps.customers}
+                        placeholder="Type"
+                        options={deps.types}
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name"  label="Product Type :" className="da-mb-16"
-                    >
+                <Form.Item name="type_name" label="Product Type :" className="da-mb-16"
+                >
                     <Select
                         showSearch
                         placeholder="Product Type"
                         options={deps.types}
                     />
                 </Form.Item>
-                <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
-                    >
+                <Form.Item name="e_type" label="Product Type :" className="da-mb-16"
+                >
                     <Select
                         showSearch
                         placeholder="Product Type"

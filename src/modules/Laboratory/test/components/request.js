@@ -1,6 +1,6 @@
 import {get, post, del, put, postFd } from "@utils/axios";
 
-const api = "product-management/products";
+const api = "product-management/labtest";
 
 export const createProduct = (payload) => {
 

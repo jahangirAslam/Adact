@@ -237,3 +237,11 @@ p {
     padding-top: 90px!important;
     padding-bottom: 0px !important;
 }
+
+.ant-picker-cell-in-view.ant-picker-cell-today .ant-picker-cell-inner::before {
+    border: 1px solid #3c93cd;
+}
+
+.ant-picker-today-btn {
+    color: #0093CD;
+}

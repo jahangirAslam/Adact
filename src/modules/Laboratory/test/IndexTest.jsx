@@ -34,21 +34,45 @@ const IndexTest = () => {
 
     const columns = [
         {
-            key: 'name',
-            title: 'Name',
-            dataIndex: 'name',
+            key: 'laboratory_name',
+            title: 'laboratory_name',
+            dataIndex: 'laboratory_name',
             sorter: true,
         },
         {
-            key: 'category_name',
-            title: 'category_name',
-            dataIndex: 'category_name',
+            key: 'product_name',
+            title: 'product_name',
+            dataIndex: 'product_name',
             sorter: true,
         },
         {
-            key: 'category_id',
-            title: 'category_id',
-            dataIndex: 'name',
+            key: 'user_name',
+            title: 'user_name',
+            dataIndex: 'user_name',
+            sorter: true,
+        },
+        {
+            key: 'type',
+            title: 'type',
+            dataIndex: 'type',
+            sorter: true,
+        },
+        {
+            key: 'created_by',
+            title: 'created_by',
+            dataIndex: 'created_by',
+            sorter: true,
+        },
+        {
+            key: 'status',
+            title: 'status',
+            dataIndex: 'status',
+            sorter: true,
+        },
+        {
+            key: 'test_ref',
+            title: 'test_ref',
+            dataIndex: 'test_ref',
             sorter: true,
         },
 
@@ -184,14 +208,14 @@ const availableFilters = [
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
-        data_key:'withdrawn',
+        data_key: 'withdrawn',
     },
     {
         key: 'type',
         placeholder: 'Type',
         type: 'select',
-        data_key:'product_types',
-        
+        data_key: 'product_types',
+
     },
-   
+
 ];
