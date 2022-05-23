@@ -190,6 +190,8 @@ p {
 }
 
 .login-form span {
+    font-size: 16px;
+    font-weight: 600;
     padding: 0;
     background-image: none;
 }
@@ -197,10 +199,15 @@ p {
 .login-form-item span {
     background-color: #e8f0fe;
     border-radius: 6px;
+    padding-right: 5px;
+    padding-left: 15px;
+    border-color: #c1c1c1;
 }
 
 .login-form-item input {
+    font-weight: 100;
     border-radius: 6px;
+    letter-spacing: 1px;
 }
 
 .ant-picker {
@@ -224,4 +231,9 @@ p {
         margin-top: 10px !important;
         margin-bottom: 0px!important;
     }
+}
+
+.login-screen {
+    padding-top: 90px!important;
+    padding-bottom: 0px !important;
 }

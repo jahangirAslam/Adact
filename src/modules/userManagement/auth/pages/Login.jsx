@@ -35,7 +35,7 @@ const Login = () => {
   }
 
   const LoginForm = () => (
-    <>
+    <div className="" >
       <Row justify="center" align="top">
 
         <img src={loginLogo} alt="" />
@@ -93,7 +93,7 @@ const Login = () => {
           </ButtonComponent>
         </Form.Item>
       </Form>
-    </>
+    </div>
   );
 
   const OtpForm = () => (
@@ -131,14 +131,14 @@ const Login = () => {
     <AuthCommon />
 
     <Col lg={12} span={24} className="da-py-sm-0 da-py-md-64">
-      <Row className="da-h-100" align="middle" justify="center">
+      <Row className="da-h-100" align="" justify="center">
         <Col
           xxl={11}
           xl={15}
           lg={20}
           md={20}
           sm={24}
-          className="da-px-sm-8 da-pt-24 da-pb-48"
+          className="da-px-sm-8 da-pt-24 da-pb-48 login-screen"
         >
           {otpRequired ? <OtpForm /> : <LoginForm />}
         </Col>
