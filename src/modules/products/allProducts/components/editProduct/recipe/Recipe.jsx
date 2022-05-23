@@ -140,7 +140,10 @@ const Recipe = () => {
     return (
         < >
             {childComponent}
-            <Row justify="end" className="da-pb-24" >
+            <Row justify="space-between" className="da-pb-24" >
+                <Col className="inner-form-heading" >
+                 <h4>Recipe</h4>
+                </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
             <Row>

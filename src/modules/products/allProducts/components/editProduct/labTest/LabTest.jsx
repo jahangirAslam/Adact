@@ -139,7 +139,10 @@ const LabTest = () => {
     return (
         < >
             {childComponent}
-            <Row justify="end" className="da-pb-24" >
+            <Row justify="space-between" className="da-pb-24" >
+                <Col className="inner-form-heading" >
+                 <h4>Laboratory Test</h4>
+                </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
             <Row>

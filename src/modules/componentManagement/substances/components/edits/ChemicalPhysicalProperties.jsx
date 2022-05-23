@@ -39,7 +39,7 @@ const ChemicalPhysicalProperties = (props) => {
       // labelCol={{ span: 12 }}
       initialValues={props.data}
       onFinish={onFinish}
-      className="chem-phy-from"
+      className="inner-form-heading"
     >
       <Row gutter={[16, 24]}>
         <Col className=" gutter-row" span={24}>
