@@ -15,7 +15,7 @@ const EditableCell = ({
     children,
     ...restProps
 }) => {
-    const inputNode = inputType === 'number' ? <InputNumber /> : <Input />;
+    const inputNode = inputType === 'number' ? <InputNumber style={{width:"100%"}} /> : <Input />;
     return (
         <td {...restProps}>
             {editing ? (
@@ -52,7 +52,7 @@ const EditableTable = (props) => {
             ...col,
             onCell: (record) => ({
                 record,
-                inputType: col.dataIndex === 'age' ? 'number' : 'text',
+                inputType: col.dataIndex === 'percentage' ? 'number' : 'text',
                 dataIndex: col.dataIndex,
                 title: col.title,
                 editing: isEditing(record),

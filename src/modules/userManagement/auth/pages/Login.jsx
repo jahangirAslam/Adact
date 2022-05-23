@@ -62,7 +62,7 @@ const Login = () => {
 
           <Link
             className="da-button da-text-color-black-80 "
-            to="/forget-password"
+            to="/forget-username"
           >
             <p> Forgot your username?</p>
           </Link>
