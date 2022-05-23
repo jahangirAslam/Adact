@@ -188,7 +188,7 @@ const EditCompany = (props) => {
                 </Col>
               </Row>
 
-              <Divider orientation="left"><strong>CONTAC DETAIL</strong></Divider>
+              <Divider orientation="left"><strong>CONTACT DETAILS</strong></Divider>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={12}>
                   <Form.Item name="website" rules={rules.website} label="Website :" className="da-mb-16"

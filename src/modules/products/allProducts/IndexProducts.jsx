@@ -11,7 +11,7 @@ const pageConfig = {
         title: "Products",
         breadcrumb: [
             {
-                name: "ALl Products",
+                name: "All Products",
             }
         ]
     }

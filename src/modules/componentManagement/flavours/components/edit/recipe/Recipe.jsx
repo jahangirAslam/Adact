@@ -27,7 +27,7 @@ const Recipe = (props) => {
     const [childComponent, setChildComponent] = useState(null);
     const [editingKey, setEditingKey] = useState('');
 
-    const isEditing = (record) => record.id === editingKey;
+    const isEditing = (record) => record && record.id === editingKey;
 
     const edit = (record) => {
         form.setFieldsValue({
