@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Form, Input, Row, Col, Divider, Switch, Select, Radio } from "antd";
+import { Form, Input, Row, Col, Divider, Switch, Select, Radio, Upload, Button } from "antd";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { ButtonComponent } from "@comps/components";
 import { updateSubstance } from "../request";
+import { UploadOutlined } from '@ant-design/icons';
 
 const Details = (props) => {
     const [loader, setLoader] = useState("");
@@ -21,6 +22,15 @@ const Details = (props) => {
         let errorList = [];
         errorList["password"] = err;
         setErrors(errorList);
+    };
+    const normFile = (e) => {
+        console.log('Upload event:', e);
+
+        if (Array.isArray(e)) {
+            return e;
+        }
+
+        return e?.fileList;
     };
 
     // const onChange = (e) => {
@@ -59,6 +69,18 @@ const Details = (props) => {
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="category_id" label="category_id :">
                         <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item
+                        name="upload"
+                        label="Change Image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload name="logo" action="/upload.do" listType="picture">
+                            <Button icon={<UploadOutlined />}>Click to upload</Button>
+                        </Upload>
                     </Form.Item>
                 </Col>
 

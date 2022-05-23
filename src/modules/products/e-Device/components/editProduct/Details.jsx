@@ -61,7 +61,30 @@ const Details = (props) => {
                         <Input />
                     </Form.Item>
                 </Col>
-
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item
+                        name="upload"
+                        label="Change Image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload name="logo" action="/upload.do" listType="picture">
+                            <Button icon={<UploadOutlined />}>Click to upload</Button>
+                        </Upload>
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item
+                        name="upload"
+                        label="Change Image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload name="logo" action="/upload.do" listType="picture">
+                            <Button icon={<UploadOutlined />}>Click to upload</Button>
+                        </Upload>
+                    </Form.Item>
+                </Col>
 
             </Row>
 
