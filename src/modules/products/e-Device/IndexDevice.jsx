@@ -117,7 +117,7 @@ const IndexDevice = () => {
         if (!each) {
             setChildComponent(null);
         }
-        setDataSource([...dataSource, each.object]);
+        getProducts();
     }
     const onView = (record) => {
         history.push(`/products/product/view/${record.id}`);

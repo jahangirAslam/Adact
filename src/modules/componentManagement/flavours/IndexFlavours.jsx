@@ -138,7 +138,7 @@ const Flavours = () => {
     if (!each) {
       setChildComponent(null);
     }
-    setDataSource([...dataSource, each.object]);
+    getAllFlavours();
   }
 
   const onImport = () => {

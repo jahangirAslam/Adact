@@ -105,12 +105,12 @@ const IndexSubstance = () => {
     setChildComponent(<CreateSubstance onCreated={onCreated} />);
   };
 
-  const onCreated = (res) => {
-    if (res) {
-      history.push(`/third-party/substances/edit/${res.id}`);
+  const onCreated = (each) => {
+    if (!each) {
+      setChildComponent(null);
     }
-    setChildComponent(null);
-  };
+    getAllSubstances();
+  }
 
   const onEdit = (record) => {
     history.push(`/component-management/substances/edit/${record.id}`);

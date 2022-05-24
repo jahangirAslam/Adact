@@ -142,7 +142,6 @@ const IndexTest = () => {
             setChildComponent(null);
         }
         getProducts();
-    debugger
 
     }
     const onView = (record) => {

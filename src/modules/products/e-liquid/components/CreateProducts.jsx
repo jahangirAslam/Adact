@@ -14,17 +14,23 @@ const CreateProduct = (props) => {
         countries: [],
         types: [],
         customers: [],
-        typeB:[]
-        
+        typeB: []
+
     });
-   
+
 
     const onFinish = (data) => {
         let load = {
             customer_id: 1,
             name: data.name,
             type_id: 1,
-            category_id: 2
+            category_id: 2,
+            e_type: [{ "type": "E-Liquid" }],
+            ecid: "00000-19-11111",
+            mhra: "00000-19-11111",
+            withdrawn: 0,
+            on_market: "2022-04-06",
+            is_active: 1,
         }
         let payload = { "object": load }
         payload.object["type"] = "product";
@@ -50,10 +56,10 @@ const CreateProduct = (props) => {
             countries: data.countries,
             types: data.product_types,
             customers: data.customers,
-            typeB:data.e_types,
+            typeB: data.e_types,
 
         });
-      
+
 
     }
 
