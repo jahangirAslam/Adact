@@ -3,7 +3,7 @@ import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderCo
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import CreateProduct from "./components/CreateProducts";
+import CreateTest from "./components/CreateTest";
 import { deleteProduct, getAllProducts, getFilters } from "./components/request";
 
 const pageConfig = {
@@ -134,14 +134,16 @@ const IndexTest = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateProduct onCreated={onCreated} />)
+        setChildComponent(<CreateTest onCreated={onCreated} />)
     }
 
     const onCreated = (each) => {
         if (!each) {
             setChildComponent(null);
         }
-        setDataSource([...dataSource, each.object]);
+        getProducts();
+    debugger
+
     }
     const onView = (record) => {
         history.push(`/products/product/view/${record.id}`);
@@ -182,40 +184,12 @@ const IndexTest = () => {
 export default IndexTest;
 
 const availableFilters = [
-    {
-        key: 'prduct_id',
-        placeholder: 'Product ID',
-        type: 'text',
-    },
-    {
-        key: 'client',
-        placeholder: 'Client Name',
-        type: 'select',
-        data_key: 'customers',
-
-    },
+    
     {
         key: 'name',
         placeholder: 'Name',
         type: 'text',
     },
-    {
-        key: 'on_mark',
-        placeholder: 'On Mark',
-        type: 'text',
-    },
-    {
-        key: 'withdrawn',
-        placeholder: 'Withdrawn',
-        type: 'select',
-        data_key: 'withdrawn',
-    },
-    {
-        key: 'type',
-        placeholder: 'Type',
-        type: 'select',
-        data_key: 'product_types',
-
-    },
+    
 
 ];

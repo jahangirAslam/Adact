@@ -5,8 +5,8 @@ import { Form, Input, Select } from "antd";
 import { createProduct, getProductDependencies } from "./request";
 
 
-const formName = "createProduct";
-const CreateProduct = (props) => {
+const formName = "createTest";
+const CreateTest = (props) => {
 
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -22,17 +22,23 @@ const CreateProduct = (props) => {
     const onFinish = (data) => {
         let load = {
             customer_id: 1,
-            name: data.name,
-            type_id: 1,
-            category_id: 2
+            product_id: 48,
+            laboratory_id: 1,
+            facility_id: 1,
+            type: data.type,
+            batch_ref: null,
+            test_ref:data.test_ref,
+            created_by:1,
+            status:data.status,
+            tested_date:"2022-05-03",
         }
         let payload = { "object": load }
-        payload.object["type"] = "product";
+        payload.object["type"] = "labTest";
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Product Created", res.msg);
+        notify("Test Created", res.msg);
         props.onCreated(data.object);
     }
 
@@ -75,13 +81,13 @@ const CreateProduct = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Product" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="Create" subTitle="Lab Test" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="ype" label="Select Type :" className="da-mb-16"
+                <Form.Item name="type" label="Select Type :" className="da-mb-16"
                 >
                     <Select
                         showSearch
@@ -90,24 +96,16 @@ const CreateProduct = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name" label="Product Type :" className="da-mb-16"
+                <Form.Item name="test_ref" label="Test_Ref :" className="da-mb-16"
                 >
                     <Select
                         showSearch
-                        placeholder="Product Type"
+                        placeholder="Test Ref"
                         options={deps.types}
                     />
                 </Form.Item>
-                <Form.Item name="e_type" label="Product Type :" className="da-mb-16"
-                >
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.typeB}
-                    />
-                </Form.Item>
-
-                <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
+         
+                <Form.Item name="status" rules={rules.name} label="Status" placeholder="Status" className="da-mb-16"
                     {...getErrorProps(errors['name'])}>
                     <Input />
                 </Form.Item>
@@ -118,7 +116,7 @@ const CreateProduct = (props) => {
     );
 }
 
-export default CreateProduct
+export default CreateTest
 
 const rules = {
     name: [

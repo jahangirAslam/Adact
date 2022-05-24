@@ -245,3 +245,8 @@ p {
 .ant-picker-today-btn {
     color: #0093CD;
 }
+
+.ant-select-single .ant-select-selector .ant-select-selection-item,
+.ant-select-single .ant-select-selector .ant-select-selection-placeholder {
+    line-height: 57px
+}
