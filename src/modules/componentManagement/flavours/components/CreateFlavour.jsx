@@ -8,7 +8,7 @@ import { createFlavour } from "./request";
 
 const formName = "createFlavour";
 
-const CreateUser = (props) => {
+const CreateFlavour = (props) => {
 
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
@@ -98,6 +98,6 @@ const CreateUser = (props) => {
     );
 }
 
-export default CreateUser
+export default CreateFlavour
 
 

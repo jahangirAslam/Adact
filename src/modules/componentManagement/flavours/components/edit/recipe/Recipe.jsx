@@ -157,7 +157,7 @@ const Recipe = (props) => {
         if (!each) {
             setChildComponent(null);
         }
-        setDataSource([...dataSource, each.object]);
+        getAllFlavours();
     }
 
     const onDelete = (record) => {

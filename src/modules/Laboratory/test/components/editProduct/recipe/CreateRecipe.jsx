@@ -1,64 +1,56 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import React, { useEffect, useState } from "react";
-import { createFlavour, getProductDependencies } from "./request";
+import React, { useState } from "react";
+import { createFlavour } from "./request";
 
 
-const formName = "createFlavourRecipe";
-const CreateRecipe = (props) => {
+
+const formName = "createFlavour";
+
+const CreateFlavour = (props) => {
+
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        compounds: [],
-        substances: [],
-        types: [],
-
+        roles: [],
+        companies: [],
     });
 
+    // const getSelectFieldsData = () => {
+    //     makeRequestStateless( null, onDependencySuccess, null);
+    // }
+
+    // useEffect(() => {
+    //     getSelectFieldsData();
+    //     // eslint-disable-next-line
+    // }, []);
 
     const onFinish = (data) => {
-        let load = {
-            flavour_id: 1,
-            name: data.name,
-            type: data.type,
-            cas_number: data.cas_number
 
-
-        }
-        let payload = { "object": load }
+        let payload = { "object": data }
+        payload.object.is_active = false;
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Recipe Created", res.msg);
-        props.onCreated(data.object);
+        notify("Flavour Created", res.msg);
+        props.onCreated(data);
     }
-
-    const getSelectFieldsData = () => {
-        makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
-    }
-
-    useEffect(() => {
-        getSelectFieldsData();
-        // eslint-disable-next-line
-    }, []);
 
     const onDependencySuccess = (data, res) => {
-
         setDeps({
-            compounds: data.compounds,
-            substances: data.substances,
-            types: data.types,
-
+            roles: data.roles,
+            companies: data.companies
         });
-
-
     }
 
     const onError = (err) => {
         let errorList = [];
         errorList['name'] = err.name;
+        errorList['email'] = err.email;
+        errorList['role_id'] = err.role_id;
+        errorList['company_id'] = err.company_id;
         setErrors(errorList);
     }
 
