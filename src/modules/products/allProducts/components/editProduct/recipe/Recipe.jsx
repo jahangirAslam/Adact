@@ -41,9 +41,21 @@ const Recipe = () => {
             sorter: false,
         },
         {
-            key: 'cas_number',
-            title: 'Cas Number',
-            dataIndex: 'cas_number',
+            key: 'third_party',
+            title: 'Third Party',
+            dataIndex: 'third_party',
+            sorter: false,
+        },
+        {
+            key: 'ref',
+            title: 'Ref',
+            dataIndex: 'ref',
+            sorter: false,
+        },
+        {
+            key: 'percentage',
+            title: 'Percentage',
+            dataIndex: 'percentage',
             sorter: false,
         },
         {
@@ -142,17 +154,13 @@ const Recipe = () => {
             {childComponent}
             <Row justify="space-between" className="da-pb-24" >
                 <Col className="inner-form-heading" >
-                 <h4>Recipe</h4>
+                    <h4>Recipe</h4>
                 </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
             <Row>
-                <Col xs={6} className="da-p-4" >
-                    <Components />
-                </Col>
-                <Col xs={18} >
-                    <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
-                </Col>
+
+                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </Row>
         </>
     );

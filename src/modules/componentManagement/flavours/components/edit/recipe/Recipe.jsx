@@ -9,7 +9,6 @@ const originData = [];
 
 
 const Recipe = (props) => {
-
     const history = useHistory();
     const [loader, setLoader] = useState(false);
     const [form] = Form.useForm();
@@ -45,13 +44,14 @@ const Recipe = (props) => {
             const row = await form.validateFields();
             const newData = [...data];
             let payload = {
-                id: props.flavourId,
-                flavour_id: id,
+                id: id,
+                flavour_id: props.flavourId,
                 percentage: row.percentage,
 
             }
-            makeRequest(setLoader, updateSubstance, payload, getAllFlavours(), onError);
+            makeRequest(setLoader, updateSubstance, payload, onError);
             setEditingKey('');
+            getAllFlavours();
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
@@ -150,7 +150,7 @@ const Recipe = (props) => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} flavourID={props.flavourId} />);
     }
 
     const onCreated = (each) => {

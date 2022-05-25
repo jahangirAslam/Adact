@@ -1,6 +1,6 @@
 import {get, post, del, put, postFd } from "@utils/axios";
 
-const api = "component-management/flavourRecipie";
+const api = "component-management/productRecipe";
 
 export const createFlavour = (payload) => {
     return post(api, payload);

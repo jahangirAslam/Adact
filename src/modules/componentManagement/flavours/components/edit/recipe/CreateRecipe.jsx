@@ -7,6 +7,7 @@ import { createFlavour, getProductDependencies } from "./request";
 
 const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
+
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
@@ -19,10 +20,10 @@ const CreateRecipe = (props) => {
 
     const onFinish = (data) => {
         let load = {
-            flavour_id: 1,
+            flavour_id: props.flavourID,
             name: data.name,
             type: data.type,
-            percentage:data.percentage
+            percentage: data.percentage
 
 
         }
