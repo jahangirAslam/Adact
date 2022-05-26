@@ -59,7 +59,7 @@ const EditProduct = () => {
         },
         {
             title: "Laboratory Test",
-            content: <LabTest data={data.object} dependencies={data.dependencies} />
+            content: <LabTest product_id={id} />
         },
 
     ]

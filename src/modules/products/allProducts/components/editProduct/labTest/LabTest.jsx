@@ -9,14 +9,13 @@ import { deleteFlavour, getFlavours } from "./request";
 
 
 
-const LabTest = () => {
+const LabTest = (props) => {
 
     const history = useHistory();
     const [loader, setLoader] = useState(false);
 
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
-    const [flavourRecord, setFlavourRecord] = useState(undefined)
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
@@ -53,7 +52,6 @@ const LabTest = () => {
     ];
 
     const ActionComponentEx = (record) => {
-        setFlavourRecord(record);
         let icon = null;
         if (record) {
             if (record.is_active) {
@@ -108,7 +106,7 @@ const LabTest = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} flavourRecord={flavourRecord} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.product_id} />);
     }
 
     const onCreated = (each) => {
@@ -141,7 +139,7 @@ const LabTest = () => {
             {childComponent}
             <Row justify="space-between" className="da-pb-24" >
                 <Col className="inner-form-heading" >
-                 <h4>Laboratory Test</h4>
+                    <h4>Laboratory Test</h4>
                 </Col>
                 <CreateButton onClick={onCreate} />
             </Row>

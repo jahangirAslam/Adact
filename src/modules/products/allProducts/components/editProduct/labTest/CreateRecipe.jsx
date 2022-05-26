@@ -5,13 +5,13 @@ import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
 
 
-const formName = "createFlavourRecipe";
+const formName = "createProductRecipe";
 const CreateRecipe = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        compounds: [],
-        substances: [],
+        facility: [],
+        laboratory: [],
         types: [],
 
     });
@@ -19,19 +19,21 @@ const CreateRecipe = (props) => {
 
     const onFinish = (data) => {
         let load = {
-            flavour_id: 1,
-            name: data.name,
+            product_id: props.product_id,
+            laboratory_id: data.laboratory_id,
             type: data.type,
-            cas_number: data.cas_number
-
+            facility_id: data.facility_id,
+            created_by: 1,
+            status: "new",
 
         }
+
         let payload = { "object": load }
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Recipe Created", res.msg);
+        notify("Test Created", res.msg);
         props.onCreated(data.object);
     }
 
@@ -45,10 +47,9 @@ const CreateRecipe = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-
         setDeps({
-            compounds: data.compounds,
-            substances: data.substances,
+            facility: data.facility,
+            laboratory: data.laboratory,
             types: data.types,
 
         });
@@ -74,13 +75,30 @@ const CreateRecipe = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Component" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="Create" subTitle="Test" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="type" label="Component Type" className="da-mb-16"
+                <Form.Item name="laboratory_id" label="Laboratory" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select Laboratory"
+                        options={deps.laboratory}
+                    />
+                </Form.Item>
+
+                <Form.Item name="facility_id" label="Add Facility :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select Facility"
+                        options={deps.facility}
+                    />
+                </Form.Item>
+                <Form.Item name="type" label="Add Type :" className="da-mb-16"
                 >
                     <Select
                         showSearch
@@ -89,30 +107,6 @@ const CreateRecipe = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
-                >
-                    <Select
-                        showSearch
-                        placeholder="Select Substance"
-                        options={deps.substances}
-                    />
-                </Form.Item>
-                <Form.Item name="name" rules={rules.name} label="Add Substance Name" placeholder="Substance Name" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
-                    <Input />
-                </Form.Item>
-                <Form.Item name="cas_number" rules={rules.name} label="Add CAS Number" placeholder="CAS Number" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
-                    <Input />
-                </Form.Item>
-                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
-                >
-                    <Select
-                        showSearch
-                        placeholder="Select Substance"
-                        options={deps.substances}
-                    />
-                </Form.Item>
 
 
             </Form>
