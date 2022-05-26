@@ -89,11 +89,15 @@ const CreateRecipe = (props) => {
                         options={deps.types}
                     />
                 </Form.Item>
-
-                <Form.Item name="name" label="Add name" placeholder="name" className="da-mb-16"
+                <Form.Item name="name" label="Add Substance" className="da-mb-16"
                 >
-                    <Input />
+                    <Select
+                        showSearch
+                        placeholder="Select Component"
+                        options={deps.substances}
+                    />
                 </Form.Item>
+
                 <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
                 >
                     <Input type="number" />

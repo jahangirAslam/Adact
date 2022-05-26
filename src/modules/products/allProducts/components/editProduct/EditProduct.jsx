@@ -55,7 +55,7 @@ const EditProduct = () => {
         },
         {
             title: "Recipe",
-            content: <Recipe data={data.object} dependencies={data.dependencies} />
+            content: <Recipe product_id={id} />
         },
         {
             title: "Laboratory Test",
