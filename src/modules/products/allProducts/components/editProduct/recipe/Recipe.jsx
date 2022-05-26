@@ -1,23 +1,20 @@
-import React, { useEffect, useState } from "react";
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, CreateButton, TableComponent } from "@comps/components";
+import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Col, Row } from "antd";
+import { Form, Popconfirm, Row, Typography } from "antd";
+import { default as React, useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
-import { deleteFlavour, getFlavours } from "./request";
-import Components from "./Components";
+import { deleteFlavour, getFlavours, updateSubstance } from "./request";
+const originData = [];
 
 
-
-const Recipe = () => {
-
+const Recipe = (props) => {
     const history = useHistory();
     const [loader, setLoader] = useState(false);
-
+    const [form] = Form.useForm();
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
-    const [flavourRecord, setFlavourRecord] = useState(undefined)
+    const [data, setData] = useState(originData);
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
@@ -26,60 +23,92 @@ const Recipe = () => {
     });
 
     const [childComponent, setChildComponent] = useState(null);
+    const [editingKey, setEditingKey] = useState('');
+
+    const isEditing = (record) => record && record.id === editingKey;
+
+    const edit = (record) => {
+        form.setFieldsValue({
+            ...record,
+        });
+        setEditingKey(record.id);
+
+    };
+
+    const cancel = () => {
+        setEditingKey('');
+    };
+    const save = async (id) => {
+
+        try {
+            const row = await form.validateFields();
+            const newData = [...data];
+            let payload = {
+                id: id,
+                flavour_id: props.flavourId,
+                percentage: row.percentage,
+
+            }
+            makeRequest(setLoader, updateSubstance, payload, onError);
+            setEditingKey('');
+            getAllFlavours();
+        } catch (errInfo) {
+            console.log('Validate Failed:', errInfo);
+        }
+    };
 
     const columns = [
         {
-            key: 'name',
-            title: 'Name',
+            title: 'name',
             dataIndex: 'name',
-            sorter: true,
+            width: '25%',
+            editable: false,
         },
         {
-            key: 'type',
-            title: 'Type',
+            title: 'type',
             dataIndex: 'type',
-            sorter: false,
+            width: '15%',
+            editable: false,
         },
         {
-            key: 'third_party',
-            title: 'Third Party',
-            dataIndex: 'third_party',
-            sorter: false,
+            title: 'RAF',
+            dataIndex: 'raf',
+            width: '15%',
+            editable: false,
         },
         {
-            key: 'ref',
-            title: 'Ref',
-            dataIndex: 'ref',
-            sorter: false,
-        },
-        {
-            key: 'percentage',
             title: 'Percentage',
             dataIndex: 'percentage',
-            sorter: false,
+            width: '25%',
+            editable: true,
         },
         {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
+            title: 'operation',
+            dataIndex: 'operation',
+            render: (_, record) => {
+                const editable = isEditing(record);
+                return editable ? (
+                    <span>
+                        <Typography.Link
+                            onClick={() => save(record.id)}
+                            style={{
+                                marginRight: 8,
+                            }}
+                        >
+                            Save
+                        </Typography.Link>
+                        <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
+                            <a>Cancel</a>
+                        </Popconfirm>
+                    </span>
+                ) : (
+                    <ActionComponent each={record} onEdit={edit} onDelete={onDelete} >
+                    </ActionComponent>
+                );
+            },
         },
     ];
 
-    const ActionComponentEx = (record) => {
-        setFlavourRecord(record);
-        let icon = null;
-        if (record) {
-            if (record.is_active) {
-                icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
-            } else {
-                icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
-            }
-        }
-        return (
-            <ActionComponent each={record} onDelete={onDelete}>
-            </ActionComponent>
-        );
-    }
 
     useEffect(() => {
         getAllFlavours();
@@ -121,18 +150,14 @@ const Recipe = () => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} flavourRecord={flavourRecord} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.flavourId} />);
     }
 
     const onCreated = (each) => {
         if (!each) {
             setChildComponent(null);
         }
-        setDataSource([...dataSource, each.object]);
-    }
-
-    const onEdit = (record) => {
-        history.push(`/component-management/users/edit/${record.id}`);
+        getAllFlavours();
     }
 
     const onDelete = (record) => {
@@ -152,15 +177,11 @@ const Recipe = () => {
     return (
         < >
             {childComponent}
-            <Row justify="space-between" className="da-pb-24" >
-                <Col className="inner-form-heading" >
-                    <h4>Recipe</h4>
-                </Col>
+            <Row justify="end" className="da-pb-24" >
                 <CreateButton onClick={onCreate} />
             </Row>
-            <Row>
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
-            </Row>
+
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel} />
         </>
     );
 }

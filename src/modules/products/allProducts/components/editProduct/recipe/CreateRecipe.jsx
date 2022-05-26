@@ -1,5 +1,5 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
@@ -7,6 +7,7 @@ import { createFlavour, getProductDependencies } from "./request";
 
 const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
+
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
@@ -19,10 +20,10 @@ const CreateRecipe = (props) => {
 
     const onFinish = (data) => {
         let load = {
-            flavour_id: 1,
+            product_id: props.product_id,
             name: data.name,
             type: data.type,
-            cas_number: data.cas_number
+            percentage: data.percentage
 
 
         }
@@ -89,30 +90,15 @@ const CreateRecipe = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
+                <Form.Item name="name" label="Add name" placeholder="name" className="da-mb-16"
                 >
-                    <Select
-                        showSearch
-                        placeholder="Select Substance"
-                        options={deps.substances}
-                    />
-                </Form.Item>
-                <Form.Item name="name" rules={rules.name} label="Add Substance Name" placeholder="Substance Name" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="cas_number" rules={rules.name} label="Add CAS Number" placeholder="CAS Number" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
-                    <Input />
-                </Form.Item>
-                <Form.Item name="type_name" label="Add Substance :" className="da-mb-16"
+                <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
                 >
-                    <Select
-                        showSearch
-                        placeholder="Select Substance"
-                        options={deps.substances}
-                    />
+                    <Input type="number" />
                 </Form.Item>
+
 
 
             </Form>
