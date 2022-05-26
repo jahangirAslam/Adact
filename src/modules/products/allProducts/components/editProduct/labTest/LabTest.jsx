@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, CreateButton, TableComponent } from "@comps/components";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, TableComponent } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row } from "antd";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
-import { deleteFlavour, getFlavours } from "./request";
+import { deleteFlavour, getFilters, getFlavours } from "./request";
 
 
 
@@ -13,7 +13,7 @@ const LabTest = (props) => {
 
     const history = useHistory();
     const [loader, setLoader] = useState(false);
-
+    const [filters, setFilters] = useState({});
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -27,23 +27,39 @@ const LabTest = (props) => {
 
     const columns = [
         {
-            key: 'name',
-            title: 'Name',
-            dataIndex: 'name',
+            key: 'laboratory_name',
+            title: 'laboratory_name',
+            dataIndex: 'laboratory_name',
             sorter: true,
         },
         {
+            key: 'product_name',
+            title: 'product_name',
+            dataIndex: 'product_name',
+            sorter: true,
+        },
+
+        {
             key: 'type',
-            title: 'Type',
+            title: 'type',
             dataIndex: 'type',
-            sorter: false,
+            sorter: true,
         },
         {
-            key: 'cas_number',
-            title: 'Cas Number',
-            dataIndex: 'cas_number',
-            sorter: false,
+            key: 'created_by',
+            title: 'created_by',
+            dataIndex: 'created_by',
+            sorter: true,
         },
+        {
+            key: 'status',
+            title: 'status',
+            dataIndex: 'status',
+            sorter: true,
+        },
+
+
+
         {
             key: "actions",
             title: 'Actions',
@@ -68,7 +84,7 @@ const LabTest = (props) => {
 
     useEffect(() => {
         getAllFlavours();
-    }, [pagination]);
+    }, [pagination, filters]);
 
     const getAllFlavours = () => {
         let payload = {
@@ -76,6 +92,7 @@ const LabTest = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
+            filters: { "type": "LabTest" }
 
         };
         makeRequest(setLoader, getFlavours, payload, onSuccess, null);
@@ -113,7 +130,7 @@ const LabTest = (props) => {
         if (!each) {
             setChildComponent(null);
         }
-        setDataSource([...dataSource, each.object]);
+        getAllFlavours();
     }
 
     const onEdit = (record) => {
@@ -143,14 +160,21 @@ const LabTest = (props) => {
                 </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
-            <Row>
-
+            <BodyComponent>
+                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
-            </Row>
+            </BodyComponent>
         </>
     );
 }
 
 export default LabTest;
 
+const availableFilters = [
+    {
+        key: 'name',
+        placeholder: 'Name',
+        type: 'text',
+    },
+];
 

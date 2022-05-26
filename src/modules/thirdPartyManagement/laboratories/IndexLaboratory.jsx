@@ -1,9 +1,9 @@
-import React, { useState, useEffect } from "react";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
+import { formatCompleteDataTime, makeRequest, notify, removeById } from "@utils/helpers";
+import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
-import { getLaboratories, deleteLaboratory, getFilters } from "./requests";
 import CreateLaboratory from "./components/CreateLaboratory";
+import { deleteLaboratory, getFilters, getLaboratories } from "./requests";
 
 const pageConfig = {
     headers: {
@@ -125,7 +125,7 @@ const IndexLaboratory = () => {
             </HeaderComponent>
             <BodyComponent>
             <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
-                <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+            <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
         </>
     );
