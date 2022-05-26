@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import { Form, Input, Row, Col, Divider, Switch, Select, Radio } from "antd";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { ButtonComponent } from "@comps/components";
+import { getErrorProps, makeRequest, notify } from "@utils/helpers";
+import { Col, Form, Input, Row } from "antd";
+import React, { useState } from "react";
 import { updateSubstance } from "../request";
 
 const Details = (props) => {
@@ -38,7 +38,7 @@ const Details = (props) => {
             <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="name"
+                        name="type"
                         rules={rules.name}
                         label="Name :"
                         {...getErrorProps(errors["name"])}
@@ -47,17 +47,17 @@ const Details = (props) => {
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="id" label="id :">
+                    <Form.Item name="test_ref" label="Test_ref :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_name" label="category_name :">
+                    <Form.Item name="created_by" label="created_by :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_id" label="category_id :">
+                    <Form.Item name="status" label="status :">
                         <Input />
                     </Form.Item>
                 </Col>

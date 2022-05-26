@@ -159,7 +159,6 @@ const Recipe = () => {
                 <CreateButton onClick={onCreate} />
             </Row>
             <Row>
-
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </Row>
         </>

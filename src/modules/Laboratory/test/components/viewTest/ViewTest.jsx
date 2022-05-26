@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
-
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getProduct } from "../request";
 import ViewDetails from "./ViewDetails";
+
 
 
 
@@ -24,7 +24,7 @@ const pageConfig = {
 
 }
 
-const ViewAllProduct = () => {
+const ViewTest = () => {
     const { id } = useParams();
     const [loader, setLoader] = useState(true);
 
@@ -51,7 +51,7 @@ const ViewAllProduct = () => {
 
     const tabs = [
         {
-            title: "Product Details",
+            title: "Test Details",
             content: <ViewDetails data={data.object} dependencies={data.dependencies} disable={true} />
         },
 
@@ -67,4 +67,4 @@ const ViewAllProduct = () => {
     return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
 }
 
-export default ViewAllProduct;
+export default ViewTest;

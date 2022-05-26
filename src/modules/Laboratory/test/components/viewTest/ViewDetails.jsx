@@ -1,5 +1,5 @@
+import { Form, Input } from "antd";
 import React from "react";
-import { Form, Input, Select } from "antd";
 
 const ViewDetails = (props) => {
 
@@ -9,18 +9,20 @@ const ViewDetails = (props) => {
       labelCol={{ span: 5 }}
       initialValues={props.data}
     >
-      <Form.Item name="name" label="Name :" className="da-mb-16">
+      <Form.Item name="type" label="Type :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>
-      <Form.Item name="id" label="id :" className="da-mb-16">
+      <Form.Item name="test_ref" label="Rest REF :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>
-      <Form.Item name="category_name" label="category_name :" className="da-mb-16">
+      <Form.Item name="status" label="Status :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>
-      <Form.Item name="category_id" label="category_id :" className="da-mb-16">
+      <Form.Item name="tested_date" label="Tested Date :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>
+
+
     </Form>
   );
 }

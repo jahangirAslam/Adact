@@ -145,11 +145,11 @@ const IndexTest = () => {
 
     }
     const onView = (record) => {
-        history.push(`/products/product/view/${record.id}`);
+        history.push(`/laboratory/test/view/${record.id}`);
 
     }
     const onEdit = (record) => {
-        history.push(`/products/product/edit/${record.id}`);
+        history.push(`/laboratory/test/edit/${record.id}`);
     }
 
     const onDelete = (record) => {

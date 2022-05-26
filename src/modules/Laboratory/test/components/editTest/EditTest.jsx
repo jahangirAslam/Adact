@@ -1,17 +1,16 @@
-import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-import Details from './Details'
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getProduct } from "../request";
-import Recipe from "./recipe/Recipe";
+import Details from './Details';
 
 const pageConfig = {
     headers: {
-        title: "Edit Product",
+        title: "Laboratory Test",
         breadcrumb: [
             {
-                name: "Product",
+                name: "Laboratory Test",
                 path: "/products"
             },
             {
@@ -22,7 +21,7 @@ const pageConfig = {
 
 }
 
-const EditProduct = () => {
+const EditTest = () => {
     const { id } = useParams();
     const [loader, setLoader] = useState(true);
 
@@ -49,13 +48,10 @@ const EditProduct = () => {
 
     const tabs = [
         {
-            title: "Product Identification",
+            title: "Test Details",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
-        {
-            title: "Recipe",
-            content: <Recipe data={data.object} dependencies={data.dependencies} />
-        },
+       
 
     ]
 
@@ -70,4 +66,4 @@ const EditProduct = () => {
 
 }
 
-export default EditProduct;
+export default EditTest;
