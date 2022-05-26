@@ -51,7 +51,7 @@ const EditTest = () => {
             title: "Test Details",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
-       
+
 
     ]
 

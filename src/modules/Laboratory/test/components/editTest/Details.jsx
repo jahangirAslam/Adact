@@ -51,11 +51,7 @@ const Details = (props) => {
                         <Input />
                     </Form.Item>
                 </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="created_by" label="created_by :">
-                        <Input />
-                    </Form.Item>
-                </Col>
+
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="status" label="status :">
                         <Input />
