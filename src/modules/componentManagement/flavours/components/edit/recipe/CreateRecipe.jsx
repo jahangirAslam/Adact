@@ -1,13 +1,12 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
-import { Form, Input, Select } from "antd";
+import { Col, Form, Input, Row, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
 
 
 const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
-
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
@@ -79,6 +78,7 @@ const CreateRecipe = (props) => {
             <Form
                 layout="vertical"
                 name={formName}
+                initialValues={props.availblePercentage}
                 onFinish={onFinish}
             >
                 <Form.Item name="type" label="Component Type" className="da-mb-16"
@@ -94,10 +94,27 @@ const CreateRecipe = (props) => {
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
-                >
-                    <Input type="number" />
-                </Form.Item>
+                <Row justify="space-between" >
+                    <Col span="10" >
+
+                        <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
+                        >
+                            <Input type="number" />
+                        </Form.Item>
+                    </Col>
+                    <Col span="3" >
+                        <Row align="center" justify="" >
+                            <h1>/</h1>
+                        </Row>
+                    </Col>
+
+                    <Col span="10" >
+
+                        <Form.Item name="availValue" label="Available Percentage :" className="da-mb-16">
+                            <Input disabled={true} />
+                        </Form.Item>
+                    </Col>
+                </Row>
 
 
 
