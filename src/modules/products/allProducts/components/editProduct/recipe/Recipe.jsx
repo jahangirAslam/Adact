@@ -15,6 +15,7 @@ const Recipe = (props) => {
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [data, setData] = useState(originData);
+    const [availblePercentage, setAvailblePercentage] = useState([]);
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
@@ -130,6 +131,8 @@ const Recipe = (props) => {
     const onSuccess = (response) => {
         setTotalRecords(response.recordsTotal);
         setDataSource(response.data);
+        const some = { availValue: 100 - response.data.reduce((n, { percentage }) => n + percentage, 0) }
+        setAvailblePercentage(some);
     }
 
     const onImported = (res) => {
@@ -150,7 +153,7 @@ const Recipe = (props) => {
 
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.flavourId} />);
+        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.flavourId} availblePercentage={availblePercentage} />);
     }
 
     const onCreated = (each) => {
