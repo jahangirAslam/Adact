@@ -190,28 +190,33 @@ const availableFilters = [
     type: 'text',
   },
   {
-    key: 'created_at',
+    key: 'manufacturer_id',
     placeholder: 'Manufacturer name',
     type: 'select',
+    data_key:'manufacturers',
+
   },
   {
-    key: 'is_active',
+    key: 'manufacturer_ref',
     placeholder: 'Ref.(Manufacturer)',
     type: 'text',
+    
   },
   {
-    key: 'role_id',
+    key: 'fed_uuin',
     placeholder: 'FED UUIN',
     type: 'text',
   }, {
-    key: 'role_id',
+    key: 'composition',
     placeholder: 'Composition',
     type: 'select',
+    data_key:'composition'
   }
   , {
-    key: 'role_id',
+    key: 'is_active',
     placeholder: 'Status',
     type: 'select',
+    data_key:'Status'
   }
 
 ];
