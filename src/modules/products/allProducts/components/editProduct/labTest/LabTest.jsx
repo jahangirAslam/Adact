@@ -77,7 +77,7 @@ const LabTest = (props) => {
             }
         }
         return (
-            <ActionComponent each={record} onDelete={onDelete} onEdit={onEdit} >
+            <ActionComponent each={record} onDelete={onDelete} onEdit={onEdit} onView={onView} >
             </ActionComponent>
         );
     }
@@ -134,9 +134,12 @@ const LabTest = (props) => {
     }
 
     const onEdit = (record) => {
-        history.push(`/products/product-test/view/${record.id}`);
+        history.push(`/products/product-test/edit/${record.id}`);
     }
+    const onView = (record) => {
+        history.push(`/products/product-test/view/${record.id}`);
 
+    }
     const onDelete = (record) => {
         makeRequest(setLoader, deleteFlavour, record.id, onDeleteSuccess,
             onError)

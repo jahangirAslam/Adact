@@ -3,25 +3,28 @@ import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFlavour } from "../../request";
-import Details from './Details';
+import ViewDetails from "./ViewDetails";
+
+
+
 
 const pageConfig = {
     headers: {
-        title: "Laboratory Test",
+        title: "View Product",
         breadcrumb: [
             {
-                name: "Laboratory Test",
-                path: "/products"
+                name: "Products",
+                path: "/products/product"
             },
             {
-                name: "Edit",
+                name: "Product",
             }
         ]
     }
 
 }
 
-const EditTest = () => {
+const ViewTest = () => {
     const { id } = useParams();
     const [loader, setLoader] = useState(true);
 
@@ -49,9 +52,8 @@ const EditTest = () => {
     const tabs = [
         {
             title: "Test Details",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <ViewDetails data={data.object} dependencies={data.dependencies} disable={true} />
         },
-
 
     ]
 
@@ -63,7 +65,6 @@ const EditTest = () => {
         return "";
     }
     return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
-
 }
 
-export default EditTest;
+export default ViewTest;

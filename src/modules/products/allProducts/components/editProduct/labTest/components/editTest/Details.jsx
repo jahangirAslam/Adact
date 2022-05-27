@@ -2,7 +2,7 @@ import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
-import { updateSubstance } from "../request";
+import { updateSubstance } from "../../request";
 
 const Details = (props) => {
     const [loader, setLoader] = useState("");
