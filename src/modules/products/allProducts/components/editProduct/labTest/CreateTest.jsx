@@ -6,7 +6,7 @@ import { createFlavour, getProductDependencies } from "./request";
 
 
 const formName = "createProductRecipe";
-const CreateRecipe = (props) => {
+const CreateTest = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
@@ -114,7 +114,7 @@ const CreateRecipe = (props) => {
     );
 }
 
-export default CreateRecipe
+export default CreateTest
 
 const rules = {
     name: [

@@ -4,7 +4,7 @@ import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import CreateRecipe from "./CreateRecipe";
+import CreateRecipe from "./CreateTest";
 import { deleteFlavour, getFilters, getFlavours } from "./request";
 
 
@@ -77,7 +77,7 @@ const LabTest = (props) => {
             }
         }
         return (
-            <ActionComponent each={record} onDelete={onDelete}>
+            <ActionComponent each={record} onDelete={onDelete} onEdit={onEdit} >
             </ActionComponent>
         );
     }
@@ -134,7 +134,7 @@ const LabTest = (props) => {
     }
 
     const onEdit = (record) => {
-        history.push(`/component-management/users/edit/${record.id}`);
+        history.push(`/products/product-test/view/${record.id}`);
     }
 
     const onDelete = (record) => {
