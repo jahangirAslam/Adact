@@ -1,21 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { useHistory } from "react-router-dom";
 import {
-  HeaderComponent,
-  BodyComponent,
-  TableComponent,
-  ActionComponent,
-  CreateButton,
-  FilterComponent,
+  ActionComponent, BodyComponent, CreateButton,
+  FilterComponent, HeaderComponent, TableComponent
 } from "@comps/components";
 import {
-  makeRequest,
-  removeById,
-  formatCompleteDataTime,
-  notify,
+  formatCompleteDataTime, makeRequest, notify, removeById
 } from "@utils/helpers";
-import { getSubstances, deleteSubstance, getFilters } from "./requests";
+import React, { useEffect, useState } from "react";
+import { useHistory } from "react-router-dom";
 import CreateSubstance from "./components/CreateSubstance";
+import { deleteSubstance, getFilters, getSubstances } from "./requests";
 
 const pageConfig = {
   headers: {
@@ -52,6 +45,30 @@ const IndexSubstance = () => {
       sorter: true,
     },
     {
+      key: "cas_number",
+      title: "CAS Number",
+      dataIndex: "cas_number",
+      sorter: true,
+    },
+    {
+      key: "fema_number",
+      title: "FEMA",
+      dataIndex: "fema_number",
+      sorter: true,
+    },
+    {
+      key: "reach_number",
+      title: "Reach Number",
+      dataIndex: "reach_number",
+      sorter: true,
+    },
+    {
+      key: "status",
+      title: "Status",
+      dataIndex: "status",
+      sorter: true,
+    },
+    {
       key: "created_at",
       title: "Create At",
       dataIndex: "created_at",
@@ -64,7 +81,7 @@ const IndexSubstance = () => {
       key: "actions",
       title: "Actions",
       render: (record) =>
-        ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete }),
+        ActionComponent({ each: record,onView:onView , onEdit: onEdit, onDelete: onDelete }),
     },
   ];
 
@@ -115,6 +132,9 @@ const IndexSubstance = () => {
   const onEdit = (record) => {
     history.push(`/component-management/substances/edit/${record.id}`);
   };
+  const onView = (record) => {
+    history.push(`/component-management/substances/view/${record.id}`);
+  };
 
   const onDelete = (record) => {
     makeRequest(
@@ -162,6 +182,28 @@ const availableFilters = [
     key: "name",
     placeholder: "Name",
     type: "text",
+  },
+  {
+    key: "cas_number",
+    placeholder: "CAS Number",
+    type: "text",
+  },
+  {
+    key: "fema_number",
+    placeholder: "FEMA NO",
+    type: "text",
+  },
+  {
+    key: "reach_number",
+    placeholder: "Reach No",
+    type: "text",
+  },
+  {
+    key: "reach_registration",
+    placeholder: "Ingredient Status ",
+    type: "select",
+    data_key: 'ingredient_status_insights',
+
   },
 
 ];
