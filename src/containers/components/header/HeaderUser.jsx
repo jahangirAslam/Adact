@@ -5,16 +5,19 @@ import { Menu, Dropdown, Col, Avatar } from "antd";
 import { User, Logout } from "react-iconly";
 import { logout as logoutAction } from "@mods/userManagement/auth/authSlice";
 import Man from "@assets/images/menu/man.svg";
+import { useHistory } from "react-router-dom";
 
 const AvatarIcon = () => {
   return <img src={Man} alt="Avatar" />;
 };
 export default function HeaderUser() {
+  const history = useHistory();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.authUser);
 
   const logout = () => {
     dispatch({ type: logoutAction.type });
+    history.push('/');
   };
 
   const menu = (

@@ -19,7 +19,7 @@ const initialState = {
 
 export const signinUser = createAsyncThunk(
     `${sliceName}/signinUser`,
-    async (auth, thunkApi) => {
+    async(auth, thunkApi) => {
         const res = await login(auth);
         if (res.code === 200) {
             localStorage.setItem("user", JSON.stringify(res.data.user));
