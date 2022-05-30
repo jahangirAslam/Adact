@@ -1,6 +1,7 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
+import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
@@ -65,10 +66,17 @@ const IndexTest = () => {
         },
         {
             key: 'status',
-            title: 'status',
-            dataIndex: 'status',
+            title: 'Status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
         {
             key: 'test_ref',
             title: 'test_ref',

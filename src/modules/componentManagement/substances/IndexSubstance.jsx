@@ -5,6 +5,7 @@ import {
 import {
   formatCompleteDataTime, makeRequest, notify, removeById
 } from "@utils/helpers";
+import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateSubstance from "./components/CreateSubstance";
@@ -63,10 +64,17 @@ const IndexSubstance = () => {
       sorter: true,
     },
     {
-      key: "status",
-      title: "Status",
-      dataIndex: "status",
+      key: 'status',
+      title: 'Status',
+      dataIndex: 'is_active',
       sorter: true,
+      render: (is_active) => {
+        let color = is_active ? 'green' : 'red';
+        let text = is_active ? 'ACTIVE' : 'INACTIVE';
+        return (
+          <Tag color={color} >{text}</Tag>
+        );
+      }
     },
     {
       key: "created_at",

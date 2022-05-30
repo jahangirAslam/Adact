@@ -1,7 +1,7 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, TableComponent } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Col, Row } from "antd";
+import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateTest";
@@ -53,10 +53,17 @@ const LabTest = (props) => {
         },
         {
             key: 'status',
-            title: 'status',
-            dataIndex: 'status',
+            title: 'Status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
 
 
 
