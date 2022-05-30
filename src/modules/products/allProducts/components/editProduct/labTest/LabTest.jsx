@@ -94,7 +94,7 @@ const LabTest = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "LabTest" }
+            filters
 
         };
         makeRequest(setLoader, getFlavours, payload, onSuccess, null);
@@ -176,10 +176,48 @@ const LabTest = (props) => {
 export default LabTest;
 
 const availableFilters = [
+    
     {
-        key: 'name',
-        placeholder: 'Name',
+        key: 'laboratory_name',
+        placeholder: 'Laboratory Name',
+        type: 'select',
+        data_key:'laboratory'
+    },
+    {
+        key: 'customer_name',
+        placeholder: 'Customer Name',
+        type: 'select',
+        data_key:'customers'
+    },
+    {
+        key: 'product_name',
+        placeholder: 'Product Name',
+        type: 'select',
+        data_key:'product_name'
+    },
+    {
+        key: 'test_ref',
+        placeholder: 'Test REF',
         type: 'text',
     },
-];
+    {
+        key: 'type',
+        placeholder: 'Type',
+        type: 'select',
+        data_key:'types'
+    },
+    {
+        key: 'status',
+        placeholder: 'Status',
+        type: 'select',
+        data_key:'status'
+    },
+    {
+        key: 'current',
+        placeholder: 'current',
+        type: 'select',
+        data_key:'current'
+    },
+    
 
+];

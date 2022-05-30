@@ -185,9 +185,45 @@ export default IndexTest;
 const availableFilters = [
     
     {
-        key: 'name',
-        placeholder: 'Name',
+        key: 'laboratory_name',
+        placeholder: 'Laboratory Name',
+        type: 'select',
+        data_key:'laboratory'
+    },
+    {
+        key: 'customer_name',
+        placeholder: 'Customer Name',
+        type: 'select',
+        data_key:'customers'
+    },
+    {
+        key: 'product_name',
+        placeholder: 'Product Name',
+        type: 'select',
+        data_key:'product_name'
+    },
+    {
+        key: 'test_ref',
+        placeholder: 'Test REF',
         type: 'text',
+    },
+    {
+        key: 'type',
+        placeholder: 'Type',
+        type: 'select',
+        data_key:'types'
+    },
+    {
+        key: 'status',
+        placeholder: 'Status',
+        type: 'select',
+        data_key:'status'
+    },
+    {
+        key: 'current',
+        placeholder: 'current',
+        type: 'select',
+        data_key:'current'
     },
     
 
