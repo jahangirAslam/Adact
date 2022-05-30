@@ -84,7 +84,9 @@ const LabTest = (props) => {
 
     useEffect(() => {
         getAllFlavours();
+        // eslint-disable-next-line
     }, [pagination, filters]);
+
 
     const getAllFlavours = () => {
         let payload = {

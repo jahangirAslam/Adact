@@ -112,6 +112,7 @@ const Recipe = (props) => {
 
     useEffect(() => {
         getAllFlavours();
+        //eslint-disable-next-line
     }, [pagination]);
 
     const getAllFlavours = () => {
