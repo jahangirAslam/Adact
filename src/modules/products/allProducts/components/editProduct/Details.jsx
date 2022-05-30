@@ -50,19 +50,19 @@ const Details = (props) => {
                     <Form.Item
                         name="name"
                         rules={rules.name}
-                        label="Name :"
+                        label="Product Name :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="id" label="id :">
+                    <Form.Item name="type_id" label="Type ID :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_name" label="category_name :">
+                    <Form.Item name="ecid" label="EC_ID(EU) :">
                         <Input />
                     </Form.Item>
                 </Col>

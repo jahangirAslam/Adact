@@ -40,19 +40,19 @@ const Details = (props) => {
                     <Form.Item
                         name="name"
                         rules={rules.name}
-                        label="Name :"
+                        label="Product Name :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="id" label="id :">
+                    <Form.Item name="type_id" label="Type ID :">
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_name" label="category_name :">
+                    <Form.Item name="ecid" label="EC_ID(EU) :">
                         <Input />
                     </Form.Item>
                 </Col>
@@ -61,10 +61,21 @@ const Details = (props) => {
                         <Input />
                     </Form.Item>
                 </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item
+                        name="upload"
+                        label="Change Image"
+                        valuePropName="fileList"
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload name="logo" action="/upload.do" listType="picture">
+                            <Button icon={<UploadOutlined />}>Click to upload</Button>
+                        </Upload>
+                    </Form.Item>
+                </Col>
 
 
             </Row>
-
             <Form.Item style={{ textAlign: "end" }}>
                 <ButtonComponent
                     className="da-mr-10"

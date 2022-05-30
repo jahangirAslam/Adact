@@ -33,7 +33,21 @@ const IndexProducts = () => {
     });
 
     const columns = [
+       
         {
+            key: 'id',
+            title: 'Product ID',
+            dataIndex: 'id',
+            sorter: true,
+        },
+        {
+            key: 'customer_name',
+            title: 'Clinet Name',
+            dataIndex: 'customer_name',
+            sorter: true,
+        },
+        
+         {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
@@ -46,9 +60,9 @@ const IndexProducts = () => {
             sorter: true,
         },
         {
-            key: 'category_id',
-            title: 'category_id',
-            dataIndex: 'name',
+            key: 'withdrawn',
+            title: 'WithDrawn',
+            dataIndex: 'withdrawn',
             sorter: true,
         },
 
@@ -173,11 +187,6 @@ const availableFilters = [
     {
         key: 'name',
         placeholder: 'Name',
-        type: 'text',
-    },
-    {
-        key: 'on_mark',
-        placeholder: 'On Mark',
         type: 'text',
     },
     {
