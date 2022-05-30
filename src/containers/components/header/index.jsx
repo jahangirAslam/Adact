@@ -1,20 +1,18 @@
-import React, { useState, useContext } from "react";
-
-import { Layout, Button, Row, Col, Input } from "antd";
-import { RiMenuFill } from "react-icons/ri";
-
-import HeaderUser from "./HeaderUser";
-import HeaderNotifications from "./HeaderNotifications";
-import MenuLogo from "../menu/logo";
 import MenuButton from "@assets/images/menu/Vector.svg";
-
+import { Button, Col, Layout, Row } from "antd";
+import React, { useContext } from "react";
 import { AppContext } from "../../../utils/context";
-import { SearchOutlined } from "@ant-design/icons";
-
+import MenuLogo from "../menu/logo";
 import "./header-styles.css";
+import HeaderNotifications from "./HeaderNotifications";
+import HeaderUser from "./HeaderUser";
+
+
+
+
 
 const { Header } = Layout;
-const { Search } = Input;
+// const { Search } = Input;
 
 export default function MenuHeader(props) {
   const { setVisible } = props;

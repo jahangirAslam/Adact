@@ -2,14 +2,13 @@ import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components"
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Form, Popconfirm, Row, Typography } from "antd";
 import { default as React, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
 import { deleteFlavour, getFlavours, updateSubstance } from "./request";
 const originData = [];
 
 
 const Recipe = (props) => {
-    const history = useHistory();
+    // const history = useHistory();
     const [loader, setLoader] = useState(false);
     const [form] = Form.useForm();
     const [dataSource, setDataSource] = useState([]);
@@ -43,7 +42,7 @@ const Recipe = (props) => {
 
         try {
             const row = await form.validateFields();
-            const newData = [...data];
+            // const newData = [...data];
             let payload = {
                 id: id,
                 flavour_id: props.flavourId,
@@ -99,7 +98,7 @@ const Recipe = (props) => {
                             Save
                         </Typography.Link>
                         <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-                            <a>Cancel</a>
+                            <p>Cancel</p>
                         </Popconfirm>
                     </span>
                 ) : (
@@ -135,10 +134,10 @@ const Recipe = (props) => {
         setAvailblePercentage(some);
     }
 
-    const onImported = (res) => {
-        getAllFlavours();
-        setChildComponent(null);
-    }
+    // const onImported = (res) => {
+    //     getAllFlavours();
+    //     setChildComponent(null);
+    // }
 
     const handleTableChange = (page, fil, sorter) => {
         let payload = {

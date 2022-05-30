@@ -1,23 +1,21 @@
-import React, { useState, createElement, useMemo, useContext } from "react";
-import { useLocation, Link } from "react-router-dom";
-
-import { Layout, Drawer, Menu, Button, Row, Col } from "antd";
-
-import { RiMenuFoldLine, RiMenuUnfoldLine, RiCloseFill } from "react-icons/ri";
-
+import { hasPermission } from "@utils/helpers";
+import { Drawer, Layout, Menu } from "antd";
+import React, { useContext, useMemo } from "react";
+import { RiCloseFill } from "react-icons/ri";
+import { Link, useLocation } from "react-router-dom";
+import { AppContext } from "../../../utils/context";
 import MenuLogo from "./logo";
 import navigation from "./navigation";
-import { hasPermission } from "@utils/helpers";
-import { AppContext } from "../../../utils/context";
 
-// temp image
-import logoSmall from "../../../assets/images/logo/logo-small.svg";
+
+
+
 
 const { Sider } = Layout;
 
 export default function Sidebar(props) {
   const { visible, setVisible } = props;
-  const { collapsed, setCollapsed } = useContext(AppContext);
+  const { collapsed } = useContext(AppContext);
 
   // Location
   const location = useLocation();

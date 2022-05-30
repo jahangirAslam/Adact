@@ -1,8 +1,8 @@
-import React, { useState } from "react";
-import { Form, Input, Row, Col, Divider, Switch, Select, Radio } from "antd";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-import { updateSubstance } from "../../requests";
 import { ButtonComponent } from "@comps/components";
+import { getErrorProps, makeRequest, notify } from "@utils/helpers";
+import { Col, Divider, Form, Input, Row, Select, Switch } from "antd";
+import React, { useState } from "react";
+import { updateSubstance } from "../../requests";
 
 const BasicInformation = (props) => {
   const [loader, setLoader] = useState("");

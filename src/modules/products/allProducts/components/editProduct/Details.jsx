@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { Form, Input, Row, Col, Divider, Switch, Select, Radio, Upload, Button } from "antd";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-import { ButtonComponent } from "@comps/components";
-import { updateSubstance } from "../request";
 import { UploadOutlined } from '@ant-design/icons';
+import { ButtonComponent } from "@comps/components";
+import { getErrorProps, makeRequest, notify } from "@utils/helpers";
+import { Button, Col, Form, Input, Row, Upload } from "antd";
+import React, { useState } from "react";
+import { updateSubstance } from "../request";
 
 const Details = (props) => {
     const [loader, setLoader] = useState("");

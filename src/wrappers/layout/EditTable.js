@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
-import { Table, Input, InputNumber, Popconfirm, Form, Typography } from 'antd';
-import { ActionComponent } from '../components';
-const originData = [];
+import { Form, Input, InputNumber, Table } from 'antd';
+import React from 'react';
+// const originData = [];
 
 
 

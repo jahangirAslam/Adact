@@ -1,4 +1,4 @@
-import {get, post, del, put, postFd } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "component-management/flavourRecipie";
 

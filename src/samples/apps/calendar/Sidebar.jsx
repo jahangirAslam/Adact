@@ -1,9 +1,9 @@
+import { Button, Checkbox, Col, Row } from "antd";
 import React from "react";
-
-import { Col, Row, Button, Checkbox } from "antd";
-
 import { RiCalendarEventLine } from "react-icons/ri";
 import illustration from "../../../assets/images/apps/calendar/sidebar.svg";
+
+
 
 // Filters
 const filters = [

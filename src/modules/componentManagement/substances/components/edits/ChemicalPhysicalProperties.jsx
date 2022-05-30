@@ -1,37 +1,33 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  Row,
-  Col,
-  Divider,
-  Switch,
-  Select,
-  Typography,
-} from "antd";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-import { updateSubstance } from "../../requests";
 import { ButtonComponent } from "@comps/components";
+import { makeRequest, notify } from "@utils/helpers";
+import {
+  Col,
+  Divider, Form,
+  Input,
+  Row, Select, Switch, Typography
+} from "antd";
+import React, { useState } from "react";
+import { updateSubstance } from "../../requests";
 
 const ChemicalPhysicalProperties = (props) => {
   const { Title } = Typography;
   const [loader, setLoader] = useState("");
-  const [errors, setErrors] = useState([]);
+  // const [errors, setErrors] = useState([]);
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
-    makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
+    makeRequest(setLoader, updateSubstance, payload, onSuccess);
   };
 
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
   };
 
-  const onError = (err) => {
-    let errorList = [];
-    errorList["password"] = err;
-    setErrors(errorList);
-  };
+  // const onError = (err) => {
+  //   let errorList = [];
+  //   errorList["password"] = err;
+  //   setErrors(errorList);
+  // };
 
   return (
     <Form
@@ -288,12 +284,12 @@ const ChemicalPhysicalProperties = (props) => {
 
 export default ChemicalPhysicalProperties;
 
-const rules = {
-  name: [
-    { required: true, message: "Please input your password!" },
-    { min: 3, message: "Minimum password length is 3" },
-    { max: 100, message: "Maximum password length is 100" },
-  ],
-  role_id: [{ required: true, message: "Please select user role!" }],
-  company_id: [{ required: true, message: "Please select user third party!" }],
-};
+// const rules = {
+//   name: [
+//     { required: true, message: "Please input your password!" },
+//     { min: 3, message: "Minimum password length is 3" },
+//     { max: 100, message: "Maximum password length is 100" },
+//   ],
+//   role_id: [{ required: true, message: "Please select user role!" }],
+//   company_id: [{ required: true, message: "Please select user third party!" }],
+// };

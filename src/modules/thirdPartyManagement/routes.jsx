@@ -1,23 +1,22 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import IndexProducts from "../products/allProducts/IndexProducts";
-import IndexCustomer from "./customers/IndexCustomer";
-import EditCustomer from "./customers/components/EditCustomer";
-import IndexManufacturer from "./manufacturers/IndexManufacturer";
-import EditManufacturer from "./manufacturers/components/EditManufacturer";
-import IndexLaboratory from "./laboratories/IndexLaboratory";
-import EditLaboratory from "./laboratories/components/EditLaboratory";
-import IndexAllThirdParty from "./allthirdparties/IndexAllThirdParty";
-import EditAllThirdParty from "./allthirdparties/components/EditAllThirdParty";
-import IndexCompany from "./companies/IndexCompany";
-import CreateCompany from "./companies/components/CreateCompany";
-import EditCompany from "./companies/components/EditCompany";
-import IndexAgent from "./agents/IndexAgent";
 import CreateAgent from "./agents/components/CreateAgent";
 import EditAgent from "./agents/components/EditAgent";
-import IndexFacility from "./facilities/IndexFacility";
+import IndexAgent from "./agents/IndexAgent";
+import EditAllThirdParty from "./allthirdparties/components/EditAllThirdParty";
+import IndexAllThirdParty from "./allthirdparties/IndexAllThirdParty";
+import CreateCompany from "./companies/components/CreateCompany";
+import EditCompany from "./companies/components/EditCompany";
+import IndexCompany from "./companies/IndexCompany";
+import EditCustomer from "./customers/components/EditCustomer";
+import IndexCustomer from "./customers/IndexCustomer";
 import CreateFacility from "./facilities/components/CreateFacility";
 import EditFacility from "./facilities/components/EditFacility";
+import IndexFacility from "./facilities/IndexFacility";
+import EditLaboratory from "./laboratories/components/EditLaboratory";
+import IndexLaboratory from "./laboratories/IndexLaboratory";
+import EditManufacturer from "./manufacturers/components/EditManufacturer";
+import IndexManufacturer from "./manufacturers/IndexManufacturer";
 
 const ThirdPartyModule = ({ match }) => (
   <Switch>

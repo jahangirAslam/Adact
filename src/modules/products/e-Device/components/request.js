@@ -1,4 +1,4 @@
-import {get, post, del, put, postFd } from "@utils/axios";
+import { del, get, post, put } from "@utils/axios";
 
 const api = "/product-management/edevice";
 

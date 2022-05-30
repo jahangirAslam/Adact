@@ -38,12 +38,12 @@ const CreateFlavour = (props) => {
         props.onCreated(data);
     }
 
-    const onDependencySuccess = (data, res) => {
-        setDeps({
-            roles: data.roles,
-            companies: data.companies
-        });
-    }
+    // const onDependencySuccess = (data, res) => {
+    //     setDeps({
+    //         roles: data.roles,
+    //         companies: data.companies
+    //     });
+    // }
 
     const onError = (err) => {
         let errorList = [];

@@ -1,6 +1,6 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
-import { Form, Input, Select } from "antd";
+import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { Form, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { createFlavour, getProductDependencies } from "./request";
 
@@ -8,7 +8,7 @@ import { createFlavour, getProductDependencies } from "./request";
 const formName = "createProductRecipe";
 const CreateTest = (props) => {
     const [loader, setLoader] = useState(false);
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         facility: [],
         laboratory: [],
@@ -29,7 +29,7 @@ const CreateTest = (props) => {
         }
 
         let payload = { "object": load }
-        makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
+        makeRequest(setLoader, createFlavour, payload, onSuccess);
     }
 
     const onSuccess = (data, res) => {
@@ -57,11 +57,11 @@ const CreateTest = (props) => {
 
     }
 
-    const onError = (err) => {
-        let errorList = [];
-        errorList['name'] = err.name;
-        setErrors(errorList);
-    }
+    // const onError = (err) => {
+    //     let errorList = [];
+    //     errorList['name'] = err.name;
+    //     setErrors(errorList);
+    // }
 
     // ------------------------------------
     // Start footer buttons array
@@ -116,20 +116,20 @@ const CreateTest = (props) => {
 
 export default CreateTest
 
-const rules = {
-    name: [
-        { required: true, message: 'Please input your name!', },
-        { min: 3, message: 'Minimum name length is 3', },
-        { max: 100, message: 'Maximum name length is 100', },
-    ],
-    email: [
-        { type: "email", message: "The input is not valid email!" },
-        { required: true, message: "Please input your email!" },
-    ],
-    country: [
-        { required: true, message: 'Please select country!', },
-    ],
-};
+// const rules = {
+//     name: [
+//         { required: true, message: 'Please input your name!', },
+//         { min: 3, message: 'Minimum name length is 3', },
+//         { max: 100, message: 'Maximum name length is 100', },
+//     ],
+//     email: [
+//         { type: "email", message: "The input is not valid email!" },
+//         { required: true, message: "Please input your email!" },
+//     ],
+//     country: [
+//         { required: true, message: 'Please select country!', },
+//     ],
+// };
 
 
 

@@ -9,7 +9,7 @@ const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
 
     const [loader, setLoader] = useState(false);
-    const [errors, setErrors] = useState([]);
+    // const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         compounds: [],
         substances: [],
@@ -28,7 +28,7 @@ const CreateRecipe = (props) => {
 
         }
         let payload = { "object": load }
-        makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
+        makeRequest(setLoader, createFlavour, payload, onSuccess);
     }
 
     const onSuccess = (data, res) => {
@@ -57,11 +57,11 @@ const CreateRecipe = (props) => {
 
     }
 
-    const onError = (err) => {
-        let errorList = [];
-        errorList['name'] = err.name;
-        setErrors(errorList);
-    }
+    // const onError = (err) => {
+    //     let errorList = [];
+    //     errorList['name'] = err.name;
+    //     setErrors(errorList);
+    // }
 
     // ------------------------------------
     // Start footer buttons array
@@ -131,20 +131,20 @@ const CreateRecipe = (props) => {
 
 export default CreateRecipe
 
-const rules = {
-    name: [
-        { required: true, message: 'Please input your name!', },
-        { min: 3, message: 'Minimum name length is 3', },
-        { max: 100, message: 'Maximum name length is 100', },
-    ],
-    email: [
-        { type: "email", message: "The input is not valid email!" },
-        { required: true, message: "Please input your email!" },
-    ],
-    country: [
-        { required: true, message: 'Please select country!', },
-    ],
-};
+// const rules = {
+//     name: [
+//         { required: true, message: 'Please input your name!', },
+//         { min: 3, message: 'Minimum name length is 3', },
+//         { max: 100, message: 'Maximum name length is 100', },
+//     ],
+//     email: [
+//         { type: "email", message: "The input is not valid email!" },
+//         { required: true, message: "Please input your email!" },
+//     ],
+//     country: [
+//         { required: true, message: 'Please select country!', },
+//     ],
+// };
 
 
 

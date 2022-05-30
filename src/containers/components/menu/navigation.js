@@ -1,7 +1,6 @@
-import { CloseSquare } from "react-iconly";
-
 import DashboardIcon from "./icons/DashboardIcon";
 import MembershipIcon from "./icons/MembershipIcon";
+
 
 const navigation = [{
         id: "dashboard",
@@ -112,7 +111,7 @@ const navigation = [{
                 uri: "/test",
                 permissionKey: "test_index",
             },
-            
+
         ],
     },
     {

@@ -1,10 +1,8 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
-import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
+import { makeRequest, notify, removeById } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ImportUser from "../../userManagement/users/components/ImportUser";
-import { activateUserRequest } from "../../userManagement/users/requests";
 import CreateFlavour from "./components/CreateFlavour";
 import { deleteFlavour, getFilters, getFlavours } from "./components/request";
 
@@ -80,7 +78,6 @@ const Flavours = () => {
     }
     return (
       <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
-        {/* <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button> */}
       </ActionComponent>
     );
   }
@@ -101,23 +98,14 @@ const Flavours = () => {
     makeRequest(setLoader, getFlavours, payload, onSuccess, null);
   }
 
-  const activateDeactiveUser = (user) => {
-    makeRequest(setLoader, activateUserRequest, user, onActivateSuccess, onError);
-  }
-  const onActivateSuccess = (res, msg) => {
-    setDataSource(replaceById(dataSource, res));
-    notify(msg.msg)
-  }
+  
+ 
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
   }
 
-  const onImported = (res) => {
-    getAllFlavours();
-    setChildComponent(null);
-  }
-
+ 
   const handleTableChange = (page, fil, sorter) => {
     let payload = {
       ...pagination,
@@ -141,9 +129,7 @@ const Flavours = () => {
     getAllFlavours();
   }
 
-  const onImport = () => {
-    setChildComponent(<ImportUser onImported={onImported} />);
-  }
+ 
 
   const onView = (record) => {
     history.push(`/component-management/users/view/${record.id}`);

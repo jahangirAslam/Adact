@@ -105,10 +105,10 @@ const LabTest = (props) => {
         setDataSource(response.data);
     }
 
-    const onImported = (res) => {
-        getAllFlavours();
-        setChildComponent(null);
-    }
+    // const onImported = (res) => {
+    //     getAllFlavours();
+    //     setChildComponent(null);
+    // }
 
     const handleTableChange = (page, fil, sorter) => {
         let payload = {

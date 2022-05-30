@@ -1,13 +1,12 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-
-import IndexSubstance from "./substances/IndexSubstance";
-import EditSubstance from "./substances/components/EditSubstance";
-import Flavours from "./flavours/IndexFlavours";
-import ViewUser from "../userManagement/users/components/ViewUser";
-import ViewFlavour from "./flavours/components/ViewFlavour";
 import EditFlavour from "./flavours/components/edit/EditFlavour";
+import ViewFlavour from "./flavours/components/ViewFlavour";
+import Flavours from "./flavours/IndexFlavours";
+import EditSubstance from "./substances/components/EditSubstance";
 import ViewSubstances from "./substances/components/viewSubstances/ViewSubstances";
+import IndexSubstance from "./substances/IndexSubstance";
+
 
 const SubstanceModule = ({ match }) => (
   <Switch>
