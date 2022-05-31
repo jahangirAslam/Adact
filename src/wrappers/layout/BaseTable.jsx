@@ -1,33 +1,11 @@
-import React, { useMemo, useState } from 'react';
-import { Table, Radio, Divider } from 'antd';
+import { Table } from "antd";
+import React, { useMemo } from "react";
 
-const rowSelection = {
-  onChange: (selectedRowKeys, selectedRows) => {
-    console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
-  },
-  getCheckboxProps: (record) => ({
-    disabled: record.name === 'Disabled User',
-    // Column configuration not to be checked
-    name: record.name,
-  }),
-};
+
 const BaseTable = (props) => {
   let { columns, loader, ...otherProps } = props;
 
-  const tab = useMemo(() => <div>
-
-
-    <Table
-      rowKey="id" size="small" {...otherProps}
-      rowSelection={{
-
-        ...rowSelection,
-      }}
-      columns={columns}
-      dataSource={props.dataSource}
-      loading={loader}
-    />
-  </div>)
+  const tab = useMemo(() => <Table rowKey="id" size="small" {...otherProps} columns={columns} showSorterTooltip={false} tableLayout="fixed" loading={loader} />, [otherProps.dataSource, loader]);// eslint-disable-line react-hooks/exhaustive-deps
   return tab;
 };
 

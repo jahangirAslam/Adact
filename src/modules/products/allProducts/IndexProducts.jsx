@@ -1,5 +1,5 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
@@ -16,7 +16,12 @@ const pageConfig = {
         ]
     }
 }
-
+const rowSelection = {
+    onChange: (selectedRowKeys) => {
+        let delItems = [selectedRowKeys]
+        console.log(`delItems: ${delItems}`);
+    },
+};
 const IndexProducts = () => {
 
     const [loader, setLoader] = useState(false);
@@ -33,7 +38,7 @@ const IndexProducts = () => {
     });
 
     const columns = [
-       
+
         {
             key: 'id',
             title: 'Product ID',
@@ -46,8 +51,8 @@ const IndexProducts = () => {
             dataIndex: 'customer_name',
             sorter: true,
         },
-        
-         {
+
+        {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
@@ -163,7 +168,7 @@ const IndexProducts = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
@@ -193,14 +198,14 @@ const availableFilters = [
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
-        data_key:'withdrawn',
+        data_key: 'withdrawn',
     },
     {
         key: 'type',
         placeholder: 'Type',
         type: 'select',
-        data_key:'product_types',
-        
+        data_key: 'product_types',
+
     },
-   
+
 ];

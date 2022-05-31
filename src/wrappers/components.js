@@ -19,11 +19,13 @@ import BaseTab from "./layout/BaseTab";
 import BaseTable from "./layout/BaseTable";
 import BaseTree from "./layout/BaseTree";
 import EditTable from "./layout/EditTable";
+import MultiSelectTable from "./layout/MultiSelectTable";
 
 // Layout
 export const HeaderComponent = BaseHeader;
 export const BodyComponent = BaseBody;
 export const TableComponent = BaseTable;
+export const SelectionTable = MultiSelectTable;
 export const Dropzone = BaseDropzone;
 export const Editor = BaseEditor;
 export const ActionComponent = BaseAction;
