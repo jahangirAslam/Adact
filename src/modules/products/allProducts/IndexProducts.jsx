@@ -161,7 +161,7 @@ const IndexProducts = () => {
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getProducts();
         notify(msg.msg)
     }
 

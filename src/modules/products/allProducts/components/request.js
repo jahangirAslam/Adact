@@ -13,7 +13,7 @@ export const getProduct = (id) => {
     return get(`${api}/${id}`);
 }
 export const deleteProduct = (payload) => {
-    return delWithPayload(`${api}/bulkDelete`, payload);
+    return post(`${api}/bulkDelete`, payload);
 }
 export const getFilters = () => {
 

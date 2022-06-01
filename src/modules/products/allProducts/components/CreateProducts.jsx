@@ -81,7 +81,7 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name"  label="Customer Name :" className="da-mb-16"
+                <Form.Item name="customer_id"  label="Customer Name :" className="da-mb-16"
                     >
                     <Select
                         showSearch
