@@ -1,4 +1,4 @@
-import {get, post, del, put } from "@utils/axios";
+import {get, post, delWithPayload, put } from "@utils/axios";
 
 const api = "product-management/products";
 
@@ -12,8 +12,8 @@ export const getAllProducts = (payload) => {
 export const getProduct = (id) => {
     return get(`${api}/${id}`);
 }
-export const deleteProduct = (id) => {
-    return del(`${api}/${id}`);
+export const deleteProduct = (payload) => {
+    return delWithPayload(`${api}/bulkDelete`, payload);
 }
 export const getFilters = () => {
 

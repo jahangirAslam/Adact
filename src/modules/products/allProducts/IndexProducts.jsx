@@ -16,14 +16,9 @@ const pageConfig = {
         ]
     }
 }
-const rowSelection = {
-    onChange: (selectedRowKeys) => {
-        let delItems = [selectedRowKeys]
-        console.log(`delItems: ${delItems}`);
-    },
-};
-const IndexProducts = () => {
 
+const IndexProducts = () => {
+    var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const [filters, setFilters] = useState({});
@@ -127,6 +122,16 @@ const IndexProducts = () => {
         setPagination(payload);
     }
 
+    //deleted multi Items
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems=[]
+             delItems=selectedRowKeys
+        },
+    };
+
+
+
     // Create component modal
     const onCreate = () => {
         setChildComponent(<CreateProduct onCreated={onCreated} />)
@@ -147,8 +152,12 @@ const IndexProducts = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteProduct, record.id, onDeleteSuccess,
-            onError)
+        let index = delItems.findIndex(o => o === record.id);
+        if(index === -1){
+            delItems.push(record.id)
+        }
+         const payload = {"ids": delItems};
+         makeRequest(setLoader, deleteProduct, payload, onDeleteSuccess,onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
