@@ -1,6 +1,6 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
-import { makeRequest, notify, removeById } from "@utils/helpers";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
+import { makeRequest, notify } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getFilters } from "../allProducts/components/request";
@@ -19,6 +19,7 @@ const pageConfig = {
 }
 
 const IndexDevice = () => {
+    var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const [filters, setFilters] = useState({});
@@ -33,7 +34,7 @@ const IndexDevice = () => {
     });
 
     const columns = [
-       
+
         {
             key: 'id',
             title: 'Product ID',
@@ -46,8 +47,8 @@ const IndexDevice = () => {
             dataIndex: 'customer_name',
             sorter: true,
         },
-        
-         {
+
+        {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
@@ -73,7 +74,6 @@ const IndexDevice = () => {
             render: (record) => ActionComponentEx(record)
         },
     ];
-
 
     const ActionComponentEx = (record) => {
         let icon = null;
@@ -123,6 +123,16 @@ const IndexDevice = () => {
         setPagination(payload);
     }
 
+    //deleted multi Items
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems = []
+            delItems = selectedRowKeys
+        },
+    };
+
+
+
     // Create component modal
     const onCreate = () => {
         setChildComponent(<CreateProduct onCreated={onCreated} />)
@@ -143,12 +153,16 @@ const IndexDevice = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteProduct, record.id, onDeleteSuccess,
-            onError)
+        let index = delItems.findIndex(o => o === record.id);
+        if (index === -1) {
+            delItems.push(record.id)
+        }
+        const payload = { "ids": delItems };
+        makeRequest(setLoader, deleteProduct, payload, onDeleteSuccess, onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getProducts();
         notify(msg.msg)
     }
 
@@ -164,7 +178,7 @@ const IndexDevice = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
@@ -190,7 +204,7 @@ const availableFilters = [
         placeholder: 'Name',
         type: 'text',
     },
-  
+
     {
         key: 'withdrawn',
         placeholder: 'Withdrawn',
