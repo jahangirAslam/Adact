@@ -88,7 +88,7 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name" rules={rules.country} label="Customer Name :" className="da-mb-16"
+                <Form.Item name="customer_id" rules={rules.country} label="Customer Name :" className="da-mb-16"
                     {...getErrorProps(errors['country'])}>
                     <Select
                         showSearch
