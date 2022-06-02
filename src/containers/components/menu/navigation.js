@@ -135,6 +135,26 @@ const navigation = [{
         ],
     },
     {
+        id: "userManagement",
+        title: "User & Role",
+        icon: < MembershipIcon / > ,
+        uri: "/user-management",
+        permissionKey: "hasChildren",
+        children: [{
+                id: "users",
+                title: "Users",
+                uri: "/users",
+                permissionKey: "users_index",
+            },
+            {
+                id: "roles",
+                title: "Roles",
+                uri: "/roles",
+                permissionKey: "roles_index",
+            },
+        ],
+    },
+    {
         id: "documentManagement",
         title: "Documents",
         icon: < MembershipIcon / > ,
