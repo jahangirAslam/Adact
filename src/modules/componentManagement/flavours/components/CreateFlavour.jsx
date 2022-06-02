@@ -1,8 +1,8 @@
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, notify } from "@utils/helpers";
+import { getErrorProps, makeRequest, notify, makeRequestStateless } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import React, { useState } from "react";
-import { createFlavour } from "./request";
+import React, { useEffect, useState } from "react";
+import { createFlavour , getProductDependencies } from "./request";
 
 
 
@@ -13,44 +13,56 @@ const CreateFlavour = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        roles: [],
-        companies: [],
+        manufacturers: [],
+        types: [],
+        customers: [],
+        typeB: []
+
     });
 
-    // const getSelectFieldsData = () => {
-    //     makeRequestStateless( null, onDependencySuccess, null);
-    // }
-
-    // useEffect(() => {
-    //     getSelectFieldsData();
-    //     // eslint-disable-next-line
-    // }, []);
 
     const onFinish = (data) => {
-
-        let payload = { "object": data }
-        payload.object.is_active = false;
+        let load = {
+            customer_id: 1,
+            name: data.name,
+            type_id: 1,
+            category_id: 2
+        }
+        let payload = { "object": load }
+        payload.object["type"] = "product";
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Flavour Created", res.msg);
-        props.onCreated(data);
+        notify("Product Created", res.msg);
+        props.onCreated(data.object);
     }
 
-    // const onDependencySuccess = (data, res) => {
-    //     setDeps({
-    //         roles: data.roles,
-    //         companies: data.companies
-    //     });
-    // }
+    const getSelectFieldsData = () => {
+        makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
+    }
+
+    useEffect(() => {
+        getSelectFieldsData();
+        // eslint-disable-next-line
+    }, []);
+
+    const onDependencySuccess = (data, res) => {
+        debugger
+        setDeps({
+            countries: data.manufacturers,
+            types: data.product_types,
+            customers: data.customers,
+            typeB: data.e_types,
+
+        });
+
+
+    }
 
     const onError = (err) => {
         let errorList = [];
         errorList['name'] = err.name;
-        errorList['email'] = err.email;
-        errorList['role_id'] = err.role_id;
-        errorList['company_id'] = err.company_id;
         setErrors(errorList);
     }
 
@@ -64,6 +76,7 @@ const CreateFlavour = (props) => {
     // ------------------------------------
     // Eend footer buttons array
     // ------------------------------------
+
 
     return (
         <ModalComponent mainTitle="Create" subTitle="Flavour" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
@@ -82,8 +95,8 @@ const CreateFlavour = (props) => {
                 >
                     <Select
                         showSearch
-                        placeholder="Select a user role"
-                        options={deps.roles}
+                        placeholder="Select  Manufacturer"
+                        options={deps.manufacturers}
                     />
                 </Form.Item>
                 <Form.Item name="manufacturer_ref" label="Select Manufacturer refernece" className="da-mb-16"

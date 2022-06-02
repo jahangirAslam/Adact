@@ -5,7 +5,7 @@ import { Form, Input, Select } from "antd";
 import { createProduct, getProductDependencies } from "./request";
 
 
-const formName = "createProduct";
+const formName = "createFlavour";
 const CreateProduct = (props) => {
 
     const [loader, setLoader] = useState(false);
@@ -27,12 +27,12 @@ const CreateProduct = (props) => {
             category_id: 2
         }
         let payload = { "object": load }
-        payload.object["type"] = "product";
+        payload.object["type"] = "Flavour";
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
-        notify("Product Created", res.msg);
+        notify("Flavour Created", res.msg);
         props.onCreated(data.object);
     }
 
