@@ -5,20 +5,20 @@ import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
-import { deleteProduct, getAllProducts, getFilters } from "./components/request";
+import { deleteItems, getAllItems, getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {
-        title: "Laboratory",
+        title: "Your Business",
         breadcrumb: [
             {
-                name: "Laboratory",
+                name: "Business",
             }
         ]
     }
 }
 
-const IndexTest = () => {
+const IndexBusiness = () => {
     var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
@@ -121,7 +121,7 @@ const IndexTest = () => {
             sort_type: pagination.sortType,
             filters
         };
-        makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
+        makeRequest(setLoader, getAllItems, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
@@ -173,7 +173,7 @@ const IndexTest = () => {
             delItems.push(record.id)
         }
          const payload = {"ids": delItems};
-         makeRequest(setLoader, deleteProduct, payload, onDeleteSuccess,onError)
+         makeRequest(setLoader, deleteItems, payload, onDeleteSuccess,onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
@@ -199,7 +199,7 @@ const IndexTest = () => {
     );
 }
 
-export default IndexTest;
+export default IndexBusiness;
 
 const availableFilters = [
 

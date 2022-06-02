@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import { createProduct, getProductDependencies } from "./request";
+import { createItem, getDependencies } from "./request";
 
 
 const formName = "createTest";
@@ -34,7 +34,7 @@ const CreateTest = (props) => {
         }
         let payload = { "object": load }
         payload.object["type"] = "labTest";
-        makeRequest(setLoader, createProduct, payload, onSuccess, onError);
+        makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
 
     const onSuccess = (data, res) => {
@@ -43,7 +43,7 @@ const CreateTest = (props) => {
     }
 
     const getSelectFieldsData = () => {
-        makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
+        makeRequestStateless(getDependencies, null, onDependencySuccess, null);
     }
 
     useEffect(() => {

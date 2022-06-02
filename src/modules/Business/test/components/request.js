@@ -2,17 +2,17 @@ import {get, post, del, put } from "@utils/axios";
 
 const api = "laboratory-management/labtest";
 
-export const createProduct = (payload) => {
+export const createItem = (payload) => {
 
     return post(api, payload);
 }
-export const getAllProducts = (payload) => {
+export const getAllItems = (payload) => {
     return get(api, payload);
 }
-export const getProduct = (id) => {
+export const getItem = (id) => {
     return get(`${api}/${id}`);
 }
-export const deleteProduct = (payload) => {
+export const deleteItems = (payload) => {
     return post(`${api}/bulkDelete`, payload);
 }
 export const getFilters = () => {
@@ -24,6 +24,6 @@ export const updateSubstance = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 
 };
-export const getProductDependencies = () => {
+export const getDependencies = () => {
     return get(`${api}/dependencies`);
 }

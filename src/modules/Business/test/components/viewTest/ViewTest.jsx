@@ -2,7 +2,7 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getProduct } from "../request";
+import { getItem } from "../request";
 import ViewDetails from "./ViewDetails";
 
 
@@ -41,7 +41,7 @@ const ViewTest = () => {
     }, []);
 
     const getData = () => {
-        makeRequest(setLoader, getProduct, id, onSuccess, onError);
+        makeRequest(setLoader, getItem, id, onSuccess, onError);
     }
 
     const onSuccess = (res) => {
