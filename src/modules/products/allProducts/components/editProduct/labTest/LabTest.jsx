@@ -1,5 +1,5 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, BodyComponent, CreateButton, FilterComponent, TableComponent } from "@comps/components";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
@@ -10,7 +10,7 @@ import { deleteFlavour, getFilters, getFlavours } from "./request";
 
 
 const LabTest = (props) => {
-
+    var delItems = []
     const history = useHistory();
     const [loader, setLoader] = useState(false);
     const [filters, setFilters] = useState({});
@@ -57,13 +57,13 @@ const LabTest = (props) => {
             dataIndex: 'is_active',
             sorter: true,
             render: (is_active) => {
-              let color = is_active ? 'green' : 'red';
-              let text = is_active ? 'ACTIVE' : 'INACTIVE';
-              return (
-                <Tag color={color} >{text}</Tag>
-              );
+                let color = is_active ? 'green' : 'red';
+                let text = is_active ? 'ACTIVE' : 'INACTIVE';
+                return (
+                    <Tag color={color} >{text}</Tag>
+                );
             }
-          },
+        },
 
 
 
@@ -129,7 +129,13 @@ const LabTest = (props) => {
         };
         setPagination(payload);
     }
-
+    //deleted multi Items
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems = []
+            delItems = selectedRowKeys
+        },
+    };
     // Create component modal
     const onCreate = () => {
         setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.product_id} />);
@@ -150,12 +156,17 @@ const LabTest = (props) => {
 
     }
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteFlavour, record.id, onDeleteSuccess,
-            onError)
+        let index = delItems.findIndex(o => o === record.id);
+        if (index === -1) {
+            delItems.push(record.id)
+        }
+        const payload = { "ids": delItems };
+        makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getAllFlavours();
+        debugger
         notify(msg.msg)
     }
 
@@ -174,7 +185,7 @@ const LabTest = (props) => {
             </Row>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
@@ -183,24 +194,24 @@ const LabTest = (props) => {
 export default LabTest;
 
 const availableFilters = [
-    
+
     {
         key: 'laboratory_name',
         placeholder: 'Laboratory Name',
         type: 'select',
-        data_key:'laboratory'
+        data_key: 'laboratory'
     },
     {
         key: 'customer_name',
         placeholder: 'Customer Name',
         type: 'select',
-        data_key:'customers'
+        data_key: 'customers'
     },
     {
         key: 'product_name',
         placeholder: 'Product Name',
         type: 'select',
-        data_key:'product_name'
+        data_key: 'product_name'
     },
     {
         key: 'test_ref',
@@ -211,20 +222,20 @@ const availableFilters = [
         key: 'type',
         placeholder: 'Type',
         type: 'select',
-        data_key:'types'
+        data_key: 'types'
     },
     {
         key: 'status',
         placeholder: 'Status',
         type: 'select',
-        data_key:'status'
+        data_key: 'status'
     },
     {
         key: 'current',
         placeholder: 'current',
         type: 'select',
-        data_key:'current'
+        data_key: 'current'
     },
-    
+
 
 ];

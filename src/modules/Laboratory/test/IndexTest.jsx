@@ -1,5 +1,5 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
+import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
@@ -19,7 +19,7 @@ const pageConfig = {
 }
 
 const IndexTest = () => {
-
+    var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const [filters, setFilters] = useState({});
@@ -70,13 +70,13 @@ const IndexTest = () => {
             dataIndex: 'is_active',
             sorter: true,
             render: (is_active) => {
-              let color = is_active ? 'green' : 'red';
-              let text = is_active ? 'ACTIVE' : 'INACTIVE';
-              return (
-                <Tag color={color} >{text}</Tag>
-              );
+                let color = is_active ? 'green' : 'red';
+                let text = is_active ? 'ACTIVE' : 'INACTIVE';
+                return (
+                    <Tag color={color} >{text}</Tag>
+                );
             }
-          },
+        },
         {
             key: 'test_ref',
             title: 'test_ref',
@@ -139,6 +139,13 @@ const IndexTest = () => {
         };
         setPagination(payload);
     }
+    //deleted multi Items
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems = []
+            delItems = selectedRowKeys
+        },
+    };
 
     // Create component modal
     const onCreate = () => {
@@ -161,12 +168,16 @@ const IndexTest = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteProduct, record.id, onDeleteSuccess,
-            onError)
+        let index = delItems.findIndex(o => o === record.id);
+        if(index === -1){
+            delItems.push(record.id)
+        }
+         const payload = {"ids": delItems};
+         makeRequest(setLoader, deleteProduct, payload, onDeleteSuccess,onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getProducts()
         notify(msg.msg)
     }
 
@@ -182,7 +193,7 @@ const IndexTest = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
@@ -191,24 +202,24 @@ const IndexTest = () => {
 export default IndexTest;
 
 const availableFilters = [
-    
+
     {
         key: 'laboratory_name',
         placeholder: 'Laboratory Name',
         type: 'select',
-        data_key:'laboratory'
+        data_key: 'laboratory'
     },
     {
         key: 'customer_name',
         placeholder: 'Customer Name',
         type: 'select',
-        data_key:'customers'
+        data_key: 'customers'
     },
     {
         key: 'product_name',
         placeholder: 'Product Name',
         type: 'select',
-        data_key:'product_name'
+        data_key: 'product_name'
     },
     {
         key: 'test_ref',
@@ -219,20 +230,20 @@ const availableFilters = [
         key: 'type',
         placeholder: 'Type',
         type: 'select',
-        data_key:'types'
+        data_key: 'types'
     },
     {
         key: 'status',
         placeholder: 'Status',
         type: 'select',
-        data_key:'status'
+        data_key: 'status'
     },
     {
         key: 'current',
         placeholder: 'current',
         type: 'select',
-        data_key:'current'
+        data_key: 'current'
     },
-    
+
 
 ];
