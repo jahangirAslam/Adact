@@ -14,7 +14,7 @@ const EditableCell = ({
     children,
     ...restProps
 }) => {
-    const inputNode = inputType === 'number' ? <InputNumber style={{width:"100%"}} /> : <Input />;
+    const inputNode = inputType === 'number' ? <InputNumber style={{ width: "100%" }} /> : <Input />;
     return (
         <td {...restProps}>
             {editing ? (
@@ -40,7 +40,7 @@ const EditableCell = ({
 };
 
 const EditableTable = (props) => {
-    let { columns, loader, isEditing, form, cancel } = props;
+    let { columns, loader, isEditing, form, cancel, rowSelection ,  ...otherProps  } = props;
 
 
     const mergedColumns = columns.map((col) => {
@@ -61,6 +61,11 @@ const EditableTable = (props) => {
     return (
         <Form form={form} component={false}>
             <Table
+                rowKey="id" size="small" {...otherProps}
+                rowSelection={{
+
+                    ...rowSelection,
+                }}
                 components={{
                     body: {
                         cell: EditableCell,

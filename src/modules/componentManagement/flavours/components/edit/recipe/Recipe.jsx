@@ -8,7 +8,7 @@ const originData = [];
 
 
 const Recipe = (props) => {
-    // const history = useHistory();
+    var delItems = []
     const [loader, setLoader] = useState(false);
     const [form] = Form.useForm();
     const [dataSource, setDataSource] = useState([]);
@@ -150,7 +150,12 @@ const Recipe = (props) => {
         };
         setPagination(payload);
     }
-
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems=[]
+             delItems=selectedRowKeys
+        },
+    };
     // Create component modal
     const onCreate = () => {
         setChildComponent(<CreateRecipe onCreated={onCreated} flavourID={props.flavourId} availblePercentage={availblePercentage} />);
@@ -162,14 +167,18 @@ const Recipe = (props) => {
         }
         getAllFlavours();
     }
-
+   
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteFlavour, record.id, onDeleteSuccess,
-            onError)
+        let index = delItems.findIndex(o => o === record.id);
+        if(index === -1){
+            delItems.push(record.id)
+        }
+         const payload = {"ids": delItems};
+         makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess,onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getAllFlavours();
         notify(msg.msg)
     }
 
@@ -184,7 +193,7 @@ const Recipe = (props) => {
                 <CreateButton onClick={onCreate} />
             </Row>
 
-            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel} />
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel} rowSelection={rowSelection} />
         </>
     );
 }

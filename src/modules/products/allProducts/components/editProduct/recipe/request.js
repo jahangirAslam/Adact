@@ -15,8 +15,8 @@ export const updateSubstance = (payload) => {
     console.log(payload);
     return put(`${api}/${payload.id}`, payload);
 };
-export const deleteFlavour = (id) => {
-    return del(`${api}/${id}`);
+export const deleteFlavour = (payload) => {
+    return post(`${api}/bulkDelete`, payload);
 }
 export const getFilters = () => {
     return get(`${api}/filters`);
