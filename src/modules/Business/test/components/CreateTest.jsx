@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
 import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
-import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
+import React, { useEffect, useState } from "react";
 import { createItem, getDependencies } from "./request";
 
 
@@ -11,29 +11,20 @@ const CreateTest = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        laboratory: [],
-        facility: [],
-        types: [],
-        typeB: []
+        countries: [],
 
     });
 
 
     const onFinish = (data) => {
         let load = {
-            customer_id: 1,
-            product_id: 48,
-            laboratory_id: 1,
-            facility_id: 1,
-            type: data.type,
-            batch_ref: null,
-            test_ref:data.test_ref,
-            created_by:1,
-            status:data.status,
-            tested_date:"2022-05-03",
+            name: data.name,
+            trading_name: data.trading_name,
+            email: data.email,
+            country_id: data.country,
+            updated_by: 1,
         }
         let payload = { "object": load }
-        payload.object["type"] = "labTest";
         makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
 
@@ -53,10 +44,8 @@ const CreateTest = (props) => {
 
     const onDependencySuccess = (data, res) => {
         setDeps({
-            laboratory: data.laboratory,
-            facility: data.facility,
-            types: data.types,
-            typeB: data.e_types,
+
+            countries: data.countries,
 
         });
 
@@ -87,28 +76,29 @@ const CreateTest = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="type" label="Select Type :" className="da-mb-16"
+                <Form.Item name="name" label="Name :" className="da-mb-16"
                 >
-                    <Select
-                        showSearch
-                        placeholder="Type"
-                        options={deps.types}
-                    />
+                    <Input />
+                </Form.Item>
+                <Form.Item name="email" label="Email :" className="da-mb-16"
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item name="trading_name" label="Trading Name :" className="da-mb-16"
+                >
+                    <Input />
                 </Form.Item>
 
-                <Form.Item name="test_ref" label="Test_Ref :" className="da-mb-16"
+                <Form.Item name="country" label="Country :" className="da-mb-16"
                 >
                     <Select
                         showSearch
                         placeholder="Test Ref"
-                        options={deps.types}
+                        options={deps.countries}
                     />
                 </Form.Item>
-         
-                <Form.Item name="status" rules={rules.name} label="Status" placeholder="Status" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
-                    <Input />
-                </Form.Item>
+
+
 
 
             </Form>

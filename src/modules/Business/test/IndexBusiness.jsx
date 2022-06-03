@@ -1,7 +1,6 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
-import { makeRequest, notify, removeById } from "@utils/helpers";
-import { Tag } from "antd";
+import { makeRequest, notify } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
@@ -34,7 +33,7 @@ const IndexBusiness = () => {
     });
 
     const columns = [
-      
+
         {
             key: 'name',
             title: 'name',
@@ -65,7 +64,7 @@ const IndexBusiness = () => {
             dataIndex: 'status',
             sorter: true,
         },
-     
+
 
 
         {
@@ -152,11 +151,11 @@ const IndexBusiness = () => {
 
     const onDelete = (record) => {
         let index = delItems.findIndex(o => o === record.id);
-        if(index === -1){
+        if (index === -1) {
             delItems.push(record.id)
         }
-         const payload = {"ids": delItems};
-         makeRequest(setLoader, deleteItems, payload, onDeleteSuccess,onError)
+        const payload = { "ids": delItems };
+        makeRequest(setLoader, deleteItems, payload, onDeleteSuccess, onError)
     }
 
     const onDeleteSuccess = (response, msg) => {
