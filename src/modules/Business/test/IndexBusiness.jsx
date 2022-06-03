@@ -34,10 +34,17 @@ const IndexBusiness = () => {
     });
 
     const columns = [
+      
         {
             key: 'name',
             title: 'name',
             dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'country_id',
+            title: 'Country',
+            dataIndex: 'country_id',
             sorter: true,
         },
         {
@@ -50,6 +57,12 @@ const IndexBusiness = () => {
             key: 'trading_name',
             title: 'trading_name',
             dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'status',
+            title: 'status',
+            dataIndex: 'status',
             sorter: true,
         },
      
@@ -175,44 +188,21 @@ const availableFilters = [
 
     {
         key: 'name',
-        placeholder: 'Laboratory Name',
-        type: 'select',
-        data_key: 'laboratory'
+        placeholder: 'Third Party Name',
+        type: 'text',
+        data_key: 'name'
     },
     {
-        key: 'customer_name',
-        placeholder: 'Customer Name',
+        key: 'country_id',
+        placeholder: 'Country Name',
         type: 'select',
-        data_key: 'customers'
+        data_key: 'country_id'
     },
     {
         key: 'email',
         placeholder: 'Product Name',
-        type: 'select',
-        data_key: 'email'
-    },
-    {
-        key: 'test_ref',
-        placeholder: 'Test REF',
         type: 'text',
-    },
-    {
-        key: 'type',
-        placeholder: 'Type',
-        type: 'select',
-        data_key: 'types'
-    },
-    {
-        key: 'status',
-        placeholder: 'Status',
-        type: 'select',
-        data_key: 'status'
-    },
-    {
-        key: 'current',
-        placeholder: 'current',
-        type: 'select',
-        data_key: 'current'
+        data_key: 'email'
     },
 
 
