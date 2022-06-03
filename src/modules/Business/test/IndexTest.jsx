@@ -35,54 +35,24 @@ const IndexBusiness = () => {
 
     const columns = [
         {
-            key: 'laboratory_name',
-            title: 'laboratory_name',
-            dataIndex: 'laboratory_name',
+            key: 'name',
+            title: 'name',
+            dataIndex: 'name',
             sorter: true,
         },
         {
-            key: 'product_name',
-            title: 'product_name',
-            dataIndex: 'product_name',
+            key: 'email',
+            title: 'email',
+            dataIndex: 'email',
             sorter: true,
         },
         {
-            key: 'user_name',
-            title: 'user_name',
-            dataIndex: 'user_name',
+            key: 'trading_name',
+            title: 'trading_name',
+            dataIndex: 'trading_name',
             sorter: true,
         },
-        {
-            key: 'type',
-            title: 'type',
-            dataIndex: 'type',
-            sorter: true,
-        },
-        {
-            key: 'created_by',
-            title: 'created_by',
-            dataIndex: 'created_by',
-            sorter: true,
-        },
-        {
-            key: 'status',
-            title: 'Status',
-            dataIndex: 'is_active',
-            sorter: true,
-            render: (is_active) => {
-                let color = is_active ? 'green' : 'red';
-                let text = is_active ? 'ACTIVE' : 'INACTIVE';
-                return (
-                    <Tag color={color} >{text}</Tag>
-                );
-            }
-        },
-        {
-            key: 'test_ref',
-            title: 'test_ref',
-            dataIndex: 'test_ref',
-            sorter: true,
-        },
+     
 
 
         {
@@ -204,7 +174,7 @@ export default IndexBusiness;
 const availableFilters = [
 
     {
-        key: 'laboratory_name',
+        key: 'name',
         placeholder: 'Laboratory Name',
         type: 'select',
         data_key: 'laboratory'
@@ -216,10 +186,10 @@ const availableFilters = [
         data_key: 'customers'
     },
     {
-        key: 'product_name',
+        key: 'email',
         placeholder: 'Product Name',
         type: 'select',
-        data_key: 'product_name'
+        data_key: 'email'
     },
     {
         key: 'test_ref',
