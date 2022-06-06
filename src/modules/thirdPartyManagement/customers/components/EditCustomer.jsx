@@ -7,6 +7,8 @@ import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
 import  IndexBrand  from "@mods/commons/brands/IndexBrand";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
+import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
+import LocationIcon from "../../../../containers/components/menu/icons/LocationIcon";
 
 const pageConfig = {
   headers: {
@@ -30,10 +32,12 @@ const EditCustomer = () => {
   const tabs = [
     {
       title: "Summary",
+      icon: <SummaryIcon />,
       content: <EditCompany id={ id } />
     },
     {
       title: "Locations",
+      icon:<LocationIcon/>,
       content: <LocationIndex id={ id } type="customers" />
     },
     {

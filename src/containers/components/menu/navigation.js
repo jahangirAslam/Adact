@@ -13,7 +13,7 @@ const navigation = [{
         id: "dashboard",
         title: "Dashboard",
         icon: < DashboardIcon / > ,
-        uri: "/",
+        uri: "",
         permissionKey: "always",
     },
     {
