@@ -1,5 +1,12 @@
+import ComponentsIcon from "./icons/ComponentsIcon";
 import DashboardIcon from "./icons/DashboardIcon";
-import MembershipIcon from "./icons/MembershipIcon";
+import DocumentsIcon from "./icons/DocumentsIcon";
+import LaboratoryIcon from "./icons/LaboratoryIcon";
+import ProductsIcon from "./icons/ProductsIcon";
+import MembershipIcon from "./icons/ProductsIcon";
+import SettingsIcon from "./icons/SettingsIcon";
+import ThirdPartyIcon from "./icons/ThirdPartyIcon";
+import UsersIcon from "./icons/UsersIcon";
 
 
 const navigation = [{
@@ -12,7 +19,7 @@ const navigation = [{
     {
         id: "products",
         title: "Products",
-        icon: < MembershipIcon / > ,
+        icon: < ProductsIcon / > ,
         uri: "/products",
         permissionKey: "hasChildren",
         children: [{
@@ -38,7 +45,7 @@ const navigation = [{
     }, {
         id: "thirdparty",
         title: "Third Party",
-        icon: < MembershipIcon / > ,
+        icon: < ThirdPartyIcon / > ,
         uri: "/third-party",
         permissionKey: "hasChildren",
         children: [{
@@ -82,7 +89,7 @@ const navigation = [{
     {
         id: "componentManagement",
         title: "Components",
-        icon: < MembershipIcon / > ,
+        icon: < ComponentsIcon / > ,
         uri: "/component-management",
         permissionKey: "hasChildren",
         children: [{
@@ -102,7 +109,7 @@ const navigation = [{
     {
         id: "laboratory",
         title: "Laboratory",
-        icon: < MembershipIcon / > ,
+        icon: < LaboratoryIcon / > ,
         uri: "/laboratory",
         permissionKey: "hasChildren",
         children: [{
@@ -117,7 +124,7 @@ const navigation = [{
     {
         id: "settings",
         title: "Settings",
-        icon: < MembershipIcon / > ,
+        icon: < SettingsIcon / > ,
         uri: "/settings",
         permissionKey: "hasChildren",
         children: [{
@@ -130,7 +137,7 @@ const navigation = [{
     {
         id: "userManagement",
         title: "User & Role",
-        icon: < MembershipIcon / > ,
+        icon: < UsersIcon / > ,
         uri: "/user-management",
         permissionKey: "hasChildren",
         children: [{
@@ -150,7 +157,7 @@ const navigation = [{
     {
         id: "documentManagement",
         title: "Documents",
-        icon: < MembershipIcon / > ,
+        icon: < DocumentsIcon / > ,
         uri: "document-management/documents",
         permissionKey: "document_index",
     },
