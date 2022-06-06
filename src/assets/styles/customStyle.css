@@ -67,6 +67,12 @@ p {
     border-color: #0093CD;
 }
 
+.ant-input,
+.ant-select-selector {
+    height: 50px !important;
+    border-radius: 7px;
+}
+
 .ant-input:hover {
     border-color: #0093CD;
 }
@@ -248,7 +254,7 @@ p {
 
 .ant-select-single .ant-select-selector .ant-select-selection-item,
 .ant-select-single .ant-select-selector .ant-select-selection-placeholder {
-    line-height: 57px
+    line-height: 50px
 }
 
 .ant-form-item-control-input-content .ant-btn {

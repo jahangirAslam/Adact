@@ -14,7 +14,7 @@ const BaseHeader = (props) => {
   };
 
   return (
-    <div className="da-px-32 da-pt-24 da-pb-24 page-header">
+    <div className="da-px-32 da-pt-6 da-pb-6 page-header">
       <PageHeader
         className="site-page-header da-p-0"
         title={headers.title}
