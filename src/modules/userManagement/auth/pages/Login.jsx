@@ -127,7 +127,7 @@ const Login = () => {
     </>
   );
 
-  return <Row gutter={[32, 0]} className="da-authentication-page"  >
+  return <Row gutter={[32, 0]} className="da-authentication-page login-page"  >
     <AuthCommon />
 
     <Col lg={12} span={24} className="da-py-sm-0 da-py-md-64">
