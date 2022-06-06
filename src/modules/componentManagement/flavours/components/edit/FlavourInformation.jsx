@@ -95,7 +95,7 @@ const FlavourInformation = (props) => {
           htmlType="submit"
           state={loader}
         >
-          Save Update
+          Save 
         </ButtonComponent>
       </Form.Item>
     </Form>

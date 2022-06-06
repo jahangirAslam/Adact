@@ -69,7 +69,7 @@ p {
 
 .ant-input,
 .ant-select-selector {
-    height: 50px !important;
+    height: 58px !important;
     border-radius: 7px;
 }
 
@@ -258,10 +258,14 @@ p {
 }
 
 .ant-form-item-control-input-content .ant-btn {
-    height: 58px !important;
+    height: 66px !important;
     border: 1px solid #c1c1c1;
 }
 
 .login-page {
     max-height: 100vh !important;
+}
+
+.ant-modal-close-x {
+    display: none;
 }

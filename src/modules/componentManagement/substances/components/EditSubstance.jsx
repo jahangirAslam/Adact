@@ -2,7 +2,9 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import Chemical from "../../../../containers/components/menu/icons/Chemical";
 import DashboardIcon from "../../../../containers/components/menu/icons/DashboardIcon";
+import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
 import { getSubstance } from "./../requests";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
@@ -38,12 +40,12 @@ const EditSubstance = () => {
   const tabs = [
     {
       title: "Summary",
-      icon: <DashboardIcon />,
+      icon: <SummaryIcon />,
       content: <BasicInformation id={id} data={data} />,
     },
     {
       title: "Chemical and Physical Properties",
-      icon: <DashboardIcon />,
+      icon: <Chemical />,
       content: <ChemicalPhysicalProperties id={id} data={data} />,
     },
   ];

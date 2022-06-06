@@ -2,6 +2,8 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import DocumentsIcon from "../../../../../containers/components/menu/icons/DocumentsIcon";
+import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
 import { getFlavour } from "../request";
 import FlavourInformation from "./FlavourInformation";
 import Recipe from "./recipe/Recipe";
@@ -51,10 +53,13 @@ const EditFlavour = () => {
     const tabs = [
         {
             title: "Summary",
+            icon: <SummaryIcon />,
+
             content: <FlavourInformation data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Recipe",
+            icon: <DocumentsIcon />,
             content: <Recipe flavourId={id} />
         },
 

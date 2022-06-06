@@ -6,6 +6,9 @@ import Details from './Details'
 import { getProduct } from "../request";
 import Recipe from "./recipe/Recipe";
 import LabTest from "./labTest/LabTest";
+import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
+import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
+import ProductIdentification from "../../../../../containers/components/menu/icons/ProductIdentification";
 
 const pageConfig = {
     headers: {
@@ -51,14 +54,18 @@ const EditProduct = () => {
     const tabs = [
         {
             title: "Product Identification",
+            icon: <ProductIdentification />,
+
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Recipe",
+            icon: <SummaryIcon />,
             content: <Recipe product_id={id} />
         },
         {
             title: "Laboratory Test",
+            icon: <LaboratoryIcon />,
             content: <LabTest product_id={id} />
         },
 
