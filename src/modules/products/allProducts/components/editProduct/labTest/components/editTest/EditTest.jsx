@@ -2,6 +2,7 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import LaboratoryIcon from "../../../../../../../../containers/components/menu/icons/LaboratoryIcon";
 import { getFlavour } from "../../request";
 import Details from './Details';
 
@@ -49,6 +50,7 @@ const EditTest = () => {
     const tabs = [
         {
             title: "Test Details",
+            icon: <LaboratoryIcon />,
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
 
