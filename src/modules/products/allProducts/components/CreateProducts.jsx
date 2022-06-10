@@ -90,20 +90,20 @@ const CreateProduct = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="type_name"  label="Product Type :" className="da-mb-16"
-                    >
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.types}
-                    />
-                </Form.Item>
                 <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
                     >
                     <Select
                         showSearch
                         placeholder="Product Type"
                         options={deps.typeB}
+                    />
+                </Form.Item>
+                <Form.Item name="type_name"  label="Product category :" className="da-mb-16"
+                    >
+                    <Select
+                        showSearch
+                        placeholder="Product category   "
+                        options={deps.types}
                     />
                 </Form.Item>
 
