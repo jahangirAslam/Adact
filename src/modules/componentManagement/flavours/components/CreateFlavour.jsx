@@ -48,7 +48,6 @@ const CreateFlavour = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-        debugger
         setDeps({
             countries: data.manufacturers,
             types: data.product_types,

@@ -337,3 +337,13 @@ a {
 .ant-checkbox-indeterminate .ant-checkbox-inner::after {
     background-color: #0093CD;
 }
+
+.ap-d h1 {
+    color: #0093CD;
+    padding-top: 38px;
+    font-weight: 100;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) {
+    color: #0093CD;
+}

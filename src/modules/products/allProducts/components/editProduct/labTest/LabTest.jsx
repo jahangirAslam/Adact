@@ -166,7 +166,6 @@ const LabTest = (props) => {
 
     const onDeleteSuccess = (response, msg) => {
         getAllFlavours();
-        debugger
         notify(msg.msg)
     }
 

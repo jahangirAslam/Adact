@@ -60,7 +60,6 @@ const CreateRecipe = (props) => {
     }
     const selectedType = (value) => {
         setType(value)
-        debugger
     }
     // const onError = (err) => {
     //     let errorList = [];
@@ -111,11 +110,11 @@ const CreateRecipe = (props) => {
 
                         <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
                         >
-                            <Input type="number" />
+                            <Input type="number" max={props.availblePercentage.availValue}/>
                         </Form.Item>
                     </Col>
-                    <Col span="3" >
-                        <Row align="center" justify="" >
+                    <Col span="3"  >
+                        <Row align="center" justify="" className="ap-d" >
                             <h1>/</h1>
                         </Row>
                     </Col>
