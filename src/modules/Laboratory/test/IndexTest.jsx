@@ -36,19 +36,19 @@ const IndexTest = () => {
     const columns = [
         {
             key: 'laboratory_name',
-            title: 'laboratory_name',
+            title: 'Laboratory name',
             dataIndex: 'laboratory_name',
             sorter: true,
         },
         {
             key: 'product_name',
-            title: 'product_name',
+            title: 'Product name',
             dataIndex: 'product_name',
             sorter: true,
         },
         {
             key: 'user_name',
-            title: 'user_name',
+            title: 'User name',
             dataIndex: 'user_name',
             sorter: true,
         },
@@ -60,7 +60,7 @@ const IndexTest = () => {
         },
         {
             key: 'created_by',
-            title: 'created_by',
+            title: 'Created by',
             dataIndex: 'created_by',
             sorter: true,
         },
@@ -79,7 +79,7 @@ const IndexTest = () => {
         },
         {
             key: 'test_ref',
-            title: 'test_ref',
+            title: 'Test ref',
             dataIndex: 'test_ref',
             sorter: true,
         },

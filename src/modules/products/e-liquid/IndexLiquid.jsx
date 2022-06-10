@@ -43,7 +43,7 @@ const IndexLiquid = () => {
         },
         {
             key: 'customer_name',
-            title: 'Clinet Name',
+            title: 'Client Name',
             dataIndex: 'customer_name',
             sorter: true,
         },
@@ -56,7 +56,7 @@ const IndexLiquid = () => {
         },
         {
             key: 'category_name',
-            title: 'category_name',
+            title: 'Category Name',
             dataIndex: 'category_name',
             sorter: true,
         },

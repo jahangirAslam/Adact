@@ -28,7 +28,7 @@ export default function ExpensesCard() {
           enabled: false,
         },
       },
-      colors: ["#0010F7", "#55B1F3", "#1BE7FF"],
+      colors: ["##0093cd", "#55B1F3", "#1BE7FF"],
 
       labels: ["Marketing", "Payments", "Bills"],
 

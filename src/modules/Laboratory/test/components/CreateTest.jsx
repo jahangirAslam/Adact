@@ -96,7 +96,7 @@ const CreateTest = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="test_ref" label="Test_Ref :" className="da-mb-16"
+                <Form.Item name="test_ref" label="Test Ref :" className="da-mb-16"
                 >
                     <Select
                         showSearch
