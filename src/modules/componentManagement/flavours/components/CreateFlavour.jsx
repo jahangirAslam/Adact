@@ -35,7 +35,7 @@ const CreateFlavour = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Product Created", res.msg);
-        props.onCreated(data.object);
+        props.onCreated(false);
     }
 
     const getSelectFieldsData = () => {

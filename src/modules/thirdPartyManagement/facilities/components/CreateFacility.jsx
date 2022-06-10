@@ -22,7 +22,7 @@ const CreateFacility = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Facilitys Created", res.msg);
-    props.onCreated(data.object);
+    props.onCreated(false);
   }
 
   const getSelectFieldsData = () => {

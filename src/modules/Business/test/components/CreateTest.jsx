@@ -30,7 +30,7 @@ const CreateTest = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Test Created", res.msg);
-        props.onCreated(data.object);
+        props.onCreated(false);
     }
 
     const getSelectFieldsData = () => {

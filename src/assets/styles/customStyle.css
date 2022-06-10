@@ -265,7 +265,3 @@ p {
 .login-page {
     max-height: 100vh !important;
 }
-
-.ant-modal-close-x {
-    display: none;
-}

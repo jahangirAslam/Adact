@@ -39,7 +39,7 @@ const CreateProduct = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Product Created", res.msg);
-        props.onCreated(data.object);
+        props.onCreated(false);
     }
 
     const getSelectFieldsData = () => {
@@ -73,8 +73,8 @@ const CreateProduct = (props) => {
     // Start footer buttons array
     // ------------------------------------
     const footer = [
-        <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
-        <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
+        <SaveButton form={formName} key="create_button" htmlType="submit" state={loader}  />,
+        // <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
     ];
     // ------------------------------------
     // Eend footer buttons array
@@ -82,45 +82,45 @@ const CreateProduct = (props) => {
 
     return (
         <ModalComponent mainTitle="Create" subTitle="Product" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
-            <Form
-                layout="vertical"
-                name={formName}
-                onFinish={onFinish}
-            >
-                <Form.Item name="customer_id" rules={rules.country} label="Customer Name :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                        showSearch
-                        placeholder="Customer Name"
-                        options={deps.customers}
-                    />
-                </Form.Item>
+        <Form
+            layout="vertical"
+            name={formName}
+            onFinish={onFinish}
+        >
+            <Form.Item name="customer_id"  label="Customer Name :" className="da-mb-16"
+                >
+                <Select
+                    showSearch
+                    placeholder="Customer Name"
+                    options={deps.customers}
+                />
+            </Form.Item>
 
-                <Form.Item name="type_name" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.types}
-                    />
-                </Form.Item>
-                <Form.Item name="e_type" rules={rules.country} label="Product Type :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                        showSearch
-                        placeholder="Product Type"
-                        options={deps.typeB}
-                    />
-                </Form.Item>
+            <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
+                >
+                <Select
+                    showSearch
+                    placeholder="Product Type"
+                    options={deps.typeB}
+                />
+            </Form.Item>
+            <Form.Item name="type_name"  label="Product category :" className="da-mb-16"
+                >
+                <Select
+                    showSearch
+                    placeholder="Product category   "
+                    options={deps.types}
+                />
+            </Form.Item>
 
-                <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
-                    <Input />
-                </Form.Item>
+            <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
+                {...getErrorProps(errors['name'])}>
+                <Input />
+            </Form.Item>
 
 
-            </Form>
-        </ModalComponent>
+        </Form>
+    </ModalComponent>
     );
 }
 

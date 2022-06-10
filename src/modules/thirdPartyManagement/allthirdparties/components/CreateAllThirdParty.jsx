@@ -22,7 +22,7 @@ const CreateAllThirdParty = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Third Party Created", res.msg);
-    props.onCreated(data.object);
+    props.onCreated(false);
   }
 
   const getSelectFieldsData = () => {
@@ -51,7 +51,7 @@ const onDependencySuccess = (data, res) => {
   // ------------------------------------
   const footer = [
     <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
-    <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
+    // <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
   ];
   // ------------------------------------
   // Eend footer buttons array

@@ -21,7 +21,7 @@ const CreateRole = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Role Created", res.msg);
-    props.onCreated(data.object);
+    props.onCreated(false);
   }
 
   const onError = (err) => {
