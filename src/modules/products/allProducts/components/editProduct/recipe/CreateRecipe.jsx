@@ -9,11 +9,13 @@ const formName = "createFlavourRecipe";
 const CreateRecipe = (props) => {
 
     const [loader, setLoader] = useState(false);
-    // const [errors, setErrors] = useState([]);
+    const [type, setType] = useState("compound");
     const [deps, setDeps] = useState({
         compounds: [],
         substances: [],
         types: [],
+        flavours: [],
+
 
     });
 
@@ -46,17 +48,20 @@ const CreateRecipe = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-
         setDeps({
             compounds: data.compounds,
             substances: data.substances,
             types: data.types,
+            flavours: data.flavours,
 
         });
 
 
     }
-
+    const selectedType = (value) => {
+        setType(value)
+        debugger
+    }
     // const onError = (err) => {
     //     let errorList = [];
     //     errorList['name'] = err.name;
@@ -89,14 +94,15 @@ const CreateRecipe = (props) => {
                         showSearch
                         placeholder="Select Type"
                         options={deps.types}
+                        onChange={(event) => selectedType(event)}
                     />
                 </Form.Item>
-                <Form.Item name="name" label="Add Substance" className="da-mb-16"
+                <Form.Item name="name" label={`Add ${type}`} className="da-mb-16"
                 >
                     <Select
                         showSearch
-                        placeholder="Select Component"
-                        options={deps.substances}
+                        placeholder={`Select ${type}`}
+                        options={type === "substance" ? deps.substances : type === "compound" ? deps.compounds : deps.flavours}
                     />
                 </Form.Item>
 
