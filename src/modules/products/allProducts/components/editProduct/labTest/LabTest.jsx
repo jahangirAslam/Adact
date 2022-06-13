@@ -28,13 +28,13 @@ const LabTest = (props) => {
     const columns = [
         {
             key: 'laboratory_name',
-            title: 'laboratory_name',
+            title: 'Laboratory name',
             dataIndex: 'laboratory_name',
             sorter: true,
         },
         {
             key: 'product_name',
-            title: 'product_name',
+            title: 'Product name',
             dataIndex: 'product_name',
             sorter: true,
         },
@@ -47,7 +47,7 @@ const LabTest = (props) => {
         },
         {
             key: 'created_by',
-            title: 'created_by',
+            title: 'Created by',
             dataIndex: 'created_by',
             sorter: true,
         },

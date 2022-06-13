@@ -46,12 +46,7 @@ const IndexTest = () => {
             dataIndex: 'product_name',
             sorter: true,
         },
-        {
-            key: 'user_name',
-            title: 'User name',
-            dataIndex: 'user_name',
-            sorter: true,
-        },
+
         {
             key: 'type',
             title: 'type',
@@ -77,12 +72,7 @@ const IndexTest = () => {
                 );
             }
         },
-        {
-            key: 'test_ref',
-            title: 'Test ref',
-            dataIndex: 'test_ref',
-            sorter: true,
-        },
+
 
 
         {
@@ -91,7 +81,6 @@ const IndexTest = () => {
             render: (record) => ActionComponentEx(record)
         },
     ];
-
     const ActionComponentEx = (record) => {
         let icon = null;
         if (record) {

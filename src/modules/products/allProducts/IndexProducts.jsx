@@ -213,7 +213,7 @@ const availableFilters = [
         key: 'type',
         placeholder: 'Type',
         type: 'select',
-        data_key: 'product_types',
+        data_key: 'type',
 
     },
 
