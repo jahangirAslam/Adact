@@ -41,7 +41,7 @@ const LabTest = (props) => {
 
         {
             key: 'type',
-            title: 'type',
+            title: 'Type',
             dataIndex: 'type',
             sorter: true,
         },
@@ -231,7 +231,7 @@ const availableFilters = [
     },
     {
         key: 'current',
-        placeholder: 'current',
+        placeholder: 'Current',
         type: 'select',
         data_key: 'current'
     },

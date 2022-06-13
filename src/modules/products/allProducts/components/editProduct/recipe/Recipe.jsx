@@ -59,13 +59,13 @@ const Recipe = (props) => {
 
     const columns = [
         {
-            title: 'name',
+            title: 'Name',
             dataIndex: 'name',
             width: '25%',
             editable: false,
         },
         {
-            title: 'type',
+            title: 'Type',
             dataIndex: 'type',
             width: '15%',
             editable: false,
@@ -83,7 +83,7 @@ const Recipe = (props) => {
             editable: true,
         },
         {
-            title: 'operation',
+            title: 'Actions',
             dataIndex: 'operation',
             render: (_, record) => {
                 const editable = isEditing(record);
