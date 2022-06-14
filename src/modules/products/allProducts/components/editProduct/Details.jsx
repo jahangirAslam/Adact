@@ -1,11 +1,12 @@
 import { UploadOutlined } from '@ant-design/icons';
 import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Button, Col, Form, Input, Row, Upload } from "antd";
+import { Button, Col, Form, Input, Row, Select, Upload } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
 
 const Details = (props) => {
+    debugger
     const [loader, setLoader] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -68,10 +69,14 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="category_id" label="category_id :">
-                        <Input />
+                        <Select
+                            showSearch
+                            placeholder="Product category   "
+                            options={props.dependencies.product_categories}
+                        />
                     </Form.Item>
                 </Col>
-           
+
 
 
             </Row>
@@ -83,7 +88,7 @@ const Details = (props) => {
                     htmlType="submit"
                     state={loader}
                 >
-                    Save 
+                    Save
                 </ButtonComponent>
             </Form.Item>
         </Form>
