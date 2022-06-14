@@ -18,7 +18,8 @@ const MultiSelectTable = (props) => {
             dataSource={props.dataSource}
             loading={loader}
         />
-    </div>)
+
+    </div>, [otherProps.dataSource, loader])
     return tab;
 };
 

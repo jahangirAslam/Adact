@@ -6,7 +6,6 @@ import React, { useState } from "react";
 import { updateSubstance } from "../request";
 
 const Details = (props) => {
-    debugger
     const [loader, setLoader] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -59,7 +58,11 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="type_id" label="Type ID :">
-                        <Input />
+                        <Select
+                            showSearch
+                            placeholder="Product category   "
+                            options={props.dependencies.e_types}
+                        />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>

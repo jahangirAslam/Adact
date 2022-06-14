@@ -39,32 +39,38 @@ const IndexDevice = () => {
             key: 'id',
             title: 'Product ID',
             dataIndex: 'id',
-            sorter: true,
+            sorter: {
+                compare: (a, b) => a.id - b.id,
+            },
+
         },
         {
             key: 'customer_name',
             title: 'Client Name',
             dataIndex: 'customer_name',
-            sorter: true,
+            sorter: (a, b) => a.customer_name.length - b.customer_name.length,
         },
 
         {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
-            sorter: true,
+            sorter: (a, b) => a.name.length - b.name.length,
+            
         },
         {
             key: 'category_name',
             title: 'Category Name',
             dataIndex: 'category_name',
-            sorter: true,
+            sorter: (a, b) => a.category_name.length - b.category_name.length,
+
         },
         {
             key: 'withdrawn',
             title: 'WithDrawn',
             dataIndex: 'withdrawn',
-            sorter: true,
+            sorter: (a, b)  =>  a.withdrawn.length - b.withdrawn.length,
+
         },
 
 
@@ -112,16 +118,7 @@ const IndexDevice = () => {
         setDataSource(response.data);
     }
 
-    const handleTableChange = (page, fil, sorter) => {
-        let payload = {
-            ...pagination,
-            current: page.current,
-            pageSize: page.pageSize,
-            sortName: sorter.field || 'id',
-            sortType: sorter.order === 'ascend' ? 'asc' : 'desc',
-        };
-        setPagination(payload);
-    }
+   
 
     //deleted multi Items
     const rowSelection = {
@@ -178,7 +175,7 @@ const IndexDevice = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
