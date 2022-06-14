@@ -39,9 +39,7 @@ const IndexLiquid = () => {
             key: 'id',
             title: 'Product ID',
             dataIndex: 'id',
-            sorter: {
-                compare: (a, b) => a.id - b.id,
-            },
+            sorter: {compare: (a, b) => a.id - b.id}
 
         },
         {
