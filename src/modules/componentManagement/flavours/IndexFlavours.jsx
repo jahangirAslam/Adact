@@ -39,25 +39,29 @@ const Flavours = () => {
       key: 'name',
       title: 'Name',
       dataIndex: 'name',
-      sorter: true,
+      sorter: (a, b) => a&&a.name.length - b&&b.name.length,
+
+
     },
     {
       key: 'manufacturer_id',
       title: 'Manufacturer name',
       dataIndex: 'manufacturer_id',
-      sorter: false,
+      sorter: (a, b) => a&&a.manufacturer_id.length - b&&b.manufacturer_id.length,
+
     },
     {
       key: 'manufacturer_ref',
       title: 'Ref.(Manufacturer)',
       dataIndex: 'manufacturer_ref',
-      sorter: false,
+      sorter: (a, b) => a&&a.manufacturer_ref.length - b&&b.manufacturer_ref.length,
     },
     {
       key: 'fed_uuin',
       title: 'FED UUIN',
       dataIndex: 'fed_uuin',
-      sorter: false,
+      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+
     },
     {
       key: "actions",
@@ -97,14 +101,14 @@ const Flavours = () => {
     makeRequest(setLoader, getFlavours, payload, onSuccess, null);
   }
 
-  
- 
+
+
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
   }
 
- 
+
   const handleTableChange = (page, fil, sorter) => {
     let payload = {
       ...pagination,
@@ -116,12 +120,12 @@ const Flavours = () => {
     setPagination(payload);
   }
 
-    //deleted multi Items
-    const rowSelection = {
-      onChange: (selectedRowKeys) => {
-          delItems=[]
-           delItems=selectedRowKeys
-      },
+  //deleted multi Items
+  const rowSelection = {
+    onChange: (selectedRowKeys) => {
+      delItems = []
+      delItems = selectedRowKeys
+    },
   };
   // Create component modal
   const onCreate = () => {
@@ -135,7 +139,7 @@ const Flavours = () => {
     getAllFlavours();
   }
 
- 
+
 
   const onView = (record) => {
     history.push(`/component-management/users/view/${record.id}`);
@@ -147,12 +151,12 @@ const Flavours = () => {
 
   const onDelete = (record) => {
     let index = delItems.findIndex(o => o === record.id);
-    if(index === -1){
-        delItems.push(record.id)
+    if (index === -1) {
+      delItems.push(record.id)
     }
-     const payload = {"ids": delItems};
-     makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess,onError)
-}
+    const payload = { "ids": delItems };
+    makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError)
+  }
   const onDeleteSuccess = (response, msg) => {
     getAllFlavours()
     notify(msg.msg)
@@ -160,7 +164,7 @@ const Flavours = () => {
 
   const onError = (error, msg) => {
     notify(msg.message)
-}
+  }
   return (
     <>
       {childComponent}
@@ -169,7 +173,7 @@ const Flavours = () => {
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-        <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} rowSelection={rowSelection} />
+        <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }}  rowSelection={rowSelection} />
       </BodyComponent>
     </>
   );
@@ -187,14 +191,14 @@ const availableFilters = [
     key: 'manufacturer_id',
     placeholder: 'Manufacturer name',
     type: 'select',
-    data_key:'manufacturers',
+    data_key: 'manufacturers',
 
   },
   {
     key: 'manufacturer_ref',
     placeholder: 'Ref.(Manufacturer)',
     type: 'text',
-    
+
   },
   {
     key: 'fed_uuin',
@@ -204,13 +208,13 @@ const availableFilters = [
     key: 'composition',
     placeholder: 'Composition',
     type: 'select',
-    data_key:'composition'
+    data_key: 'composition'
   }
   , {
     key: 'is_active',
     placeholder: 'Status',
     type: 'select',
-    data_key:'Status'
+    data_key: 'Status'
   }
 
 ];

@@ -43,31 +43,36 @@ const IndexSubstance = () => {
       key: "name",
       title: "Name",
       dataIndex: "name",
-      sorter: true,
+      sorter: (a, b) => a && a.name.length - b && b.name.length,
+
     },
     {
       key: "cas_number",
       title: "CAS Number",
       dataIndex: "cas_number",
-      sorter: true,
+      sorter: (a, b) => a && a.cas_number.length - b && b.cas_number.length,
+
     },
     {
       key: "fema_number",
       title: "FEMA",
       dataIndex: "fema_number",
-      sorter: true,
+      sorter: {compare: (a, b) => a.fema_number - b.fema_number}
+
     },
     {
       key: "reach_number",
       title: "Reach Number",
       dataIndex: "reach_number",
-      sorter: true,
+      sorter: {compare: (a, b) => a.reach_number - b.reach_number}
+
     },
     {
       key: 'status',
       title: 'Status',
       dataIndex: 'is_active',
-      sorter: true,
+      sorter: (a, b) => a && a.status.length - b && b.status.length,
+
       render: (is_active) => {
         let color = is_active ? 'green' : 'red';
         let text = is_active ? 'ACTIVE' : 'INACTIVE';
@@ -81,14 +86,14 @@ const IndexSubstance = () => {
       key: "actions",
       title: "Actions",
       render: (record) =>
-        ActionComponent({ each: record,onView:onView , onEdit: onEdit, onDelete: onDelete }),
+        ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete }),
     },
   ];
 
   useEffect(() => {
     getAllSubstances();
     // eslint-disable-next-line
-  }, [pagination , filters ]);
+  }, [pagination, filters]);
 
   const getAllSubstances = () => {
     let payload = {
@@ -106,16 +111,7 @@ const IndexSubstance = () => {
     setDataSource(response.data);
   };
 
-  const handleTableChange = (page, fil, sorter) => {
-    let payload = {
-      ...pagination,
-      current: page.current,
-      pageSize: page.pageSize,
-      sortName: sorter.field || "id",
-      sortType: sorter.order === "ascend" ? "asc" : "desc",
-    };
-    setPagination(payload);
-  };
+  
 
   // Create component modal
   const onCreate = () => {
@@ -168,7 +164,6 @@ const IndexSubstance = () => {
           columns={columns}
           dataSource={dataSource}
           pagination={{ ...pagination, total: totalRecords }}
-          onChange={handleTableChange}
         />
       </BodyComponent>
     </>
