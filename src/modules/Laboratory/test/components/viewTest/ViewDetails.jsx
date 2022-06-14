@@ -1,13 +1,15 @@
 import { Form, Input } from "antd";
 import React from "react";
+import { formatCompleteData } from "@utils/helpers";
 
-const ViewDetails = (props) => {
+const ViewDetails = ({data}) => {
+  let dataSource = { ...data, tested_date: formatCompleteData(data.tested_date) }
 
   return (
     <Form
       layout="horizontal"
       labelCol={{ span: 5 }}
-      initialValues={props.data}
+      initialValues={dataSource}
     >
       <Form.Item name="type" label="Type :" className="da-mb-16">
         <Input disabled={true} />

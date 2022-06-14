@@ -30,7 +30,7 @@ const CreateTest = (props) => {
             test_ref:data.test_ref,
             created_by:1,
             status:data.status,
-            tested_date:"2022-05-03",
+            tested_date:"2022-08-03",
         }
         let payload = { "object": load }
         payload.object["type"] = "labTest";
