@@ -29,33 +29,33 @@ const LabTest = (props) => {
         {
             key: 'laboratory_name',
             title: 'Laboratory name',
+            sorter:true,
             dataIndex: 'laboratory_name',
-            sorter: (a, b) => a.laboratory_name.length - b.laboratory_name.length,
         },
         {
             key: 'product_name',
             title: 'Product name',
+            sorter:true,
             dataIndex: 'product_name',
-                        sorter: (a, b) => a.product_name.length - b.product_name.length,
         },
 
         {
             key: 'type',
             title: 'Type',
+            sorter:true,
             dataIndex: 'type',
-                        sorter: (a, b) => a.type.length - b.type.length,
         },
         {
             key: 'created_by',
             title: 'Created by',
+            sorter:true,
             dataIndex: 'created_by',
-                        sorter: (a, b) => a.created_by.length - b.created_by.length,
         },
         {
             key: 'status',
             title: 'Status',
+            sorter:true,
             dataIndex: 'is_active',
-                        sorter: (a, b) => a.status.length - b.status.length,
             render: (is_active) => {
                 let color = is_active ? 'green' : 'red';
                 let text = is_active ? 'ACTIVE' : 'INACTIVE';
@@ -119,7 +119,7 @@ const LabTest = (props) => {
     //     setChildComponent(null);
     // }
 
-  
+
     //deleted multi Items
     const rowSelection = {
         onChange: (selectedRowKeys) => {
@@ -154,7 +154,16 @@ const LabTest = (props) => {
         const payload = { "ids": delItems };
         makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError)
     }
-
+    const handleTableChange = (page, fil, sorter) => {
+        let payload = {
+            ...pagination,
+            current: page.current,
+            pageSize: page.pageSize,
+            sortName: sorter.field || 'id',
+            sortType: sorter.order === 'ascend' ? 'asc' : 'desc',
+        };
+        setPagination(payload);
+    }
     const onDeleteSuccess = (response, msg) => {
         getAllFlavours();
         notify(msg.msg)
@@ -175,7 +184,7 @@ const LabTest = (props) => {
             </Row>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }}  rowSelection={rowSelection} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );

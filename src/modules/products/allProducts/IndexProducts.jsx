@@ -38,38 +38,32 @@ const IndexProducts = () => {
             key: 'id',
             title: 'Product ID',
             dataIndex: 'id',
-            sorter: {
-                compare: (a, b) => a.id - b.id,
-            },
-
+            sorter: true,
         },
         {
             key: 'customer_name',
             title: 'Client Name',
             dataIndex: 'customer_name',
-            sorter: (a, b) => a.customer_name.length - b.customer_name.length,
+            sorter: true,
         },
 
         {
             key: 'name',
             title: 'Name',
             dataIndex: 'name',
-            sorter: (a, b) => a.name.length - b.name.length,
-            
+            sorter: true,
         },
         {
             key: 'category_name',
             title: 'Category Name',
             dataIndex: 'category_name',
-            sorter: (a, b) => a.category_name.length - b.category_name.length,
-
+            sorter: true,
         },
         {
             key: 'withdrawn',
             title: 'WithDrawn',
             dataIndex: 'withdrawn',
-            sorter: (a, b)  =>  a.withdrawn.length - b.withdrawn.length,
-
+            sorter: true,
         },
 
 
@@ -116,7 +110,16 @@ const IndexProducts = () => {
         setTotalRecords(response.recordsTotal);
         setDataSource(response.data);
     }
-
+    const handleTableChange = (page, fil, sorter) => {
+        let payload = {
+            ...pagination,
+            current: page.current,
+            pageSize: page.pageSize,
+            sortName: sorter.field || 'id',
+            sortType: sorter.order === 'ascend' ? 'asc' : 'desc',
+        };
+        setPagination(payload);
+    }
 
     //deleted multi Items
     const rowSelection = {
@@ -172,8 +175,8 @@ const IndexProducts = () => {
                 <CreateButton onClick={onCreate} />
             </HeaderComponent>
             <BodyComponent>
-                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} rowSelection={rowSelection} />
+                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters}  />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} rowSelection={rowSelection} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );
