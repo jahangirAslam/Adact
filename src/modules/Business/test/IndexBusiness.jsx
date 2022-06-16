@@ -1,6 +1,7 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify } from "@utils/helpers";
+import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
@@ -36,7 +37,7 @@ const IndexBusiness = () => {
 
         {
             key: 'name',
-            title: 'name',
+            title: 'Third Party Name ',
             dataIndex: 'name',
             sorter: true,
         },
@@ -52,19 +53,25 @@ const IndexBusiness = () => {
             dataIndex: 'email',
             sorter: true,
         },
-        {
-            key: 'trading_name',
-            title: 'Trading Name',
-            dataIndex: 'trading_name',
-            sorter: true,
-        },
+        // {
+        //     key: 'trading_name',
+        //     title: 'Trading Name',
+        //     dataIndex: 'trading_name',
+        //     sorter: true,
+        // },
         {
             key: 'status',
-            title: 'status',
-            dataIndex: 'status',
-            sorter: true,
+            title: 'Status',
+            sorter:true,
+            dataIndex: 'is_active',
+            render: (is_active) => {
+                let color = is_active ? 'green' : 'red';
+                let text = is_active ? 'ACTIVE' : 'INACTIVE';
+                return (
+                    <Tag color={color} >{text}</Tag>
+                );
+            }
         },
-
 
 
         {
