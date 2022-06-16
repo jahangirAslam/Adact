@@ -27,18 +27,17 @@ const LabTest = (props) => {
 
     const columns = [
         {
-            key: 'laboratory_name',
-            title: 'Laboratory name',
+            key: 'batch_ref',
+            title: 'Batch Ref',
             sorter:true,
-            dataIndex: 'laboratory_name',
+            dataIndex: 'batch_ref',
         },
         {
-            key: 'product_name',
-            title: 'Product name',
+            key: 'test_ref',
+            title: 'Test Ref',
             sorter:true,
-            dataIndex: 'product_name',
+            dataIndex: 'test_ref',
         },
-
         {
             key: 'type',
             title: 'Type',
@@ -64,6 +63,31 @@ const LabTest = (props) => {
                 );
             }
         },
+        {
+            key: 'tested_date',
+            title: 'xyz',
+            sorter:true,
+            dataIndex: 'tested_date',
+        },
+        {
+            key: 'laboratory_name',
+            title: 'Laboratory name',
+            sorter:true,
+            dataIndex: 'laboratory_name',
+        },
+
+        
+        // {
+        //     key: 'product_name',
+        //     title: 'Product name',
+        //     sorter:true,
+        //     dataIndex: 'product_name',
+        // },
+
+        
+        
+       
+       
 
 
 
