@@ -99,6 +99,12 @@ const navigation = [{
                 permissionKey: "substances_index",
             },
             {
+                id: "compound",
+                title: "Chemical compounds",
+                uri: "/compounds",
+                permissionKey: "compounds_index",
+            },
+            {
                 id: "flavours",
                 title: "Flavours",
                 uri: "/flavours",
