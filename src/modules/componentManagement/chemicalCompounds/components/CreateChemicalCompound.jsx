@@ -17,7 +17,7 @@ const CreateChemicalCompound = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Chemical Compound Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const onError = (err) => {

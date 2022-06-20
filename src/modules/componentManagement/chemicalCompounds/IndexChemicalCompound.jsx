@@ -119,13 +119,13 @@ const IndexChemicalCompound = () => {
 
     const onCreated = (res) => {
         if(res){
-            history.push(`/component-management/chemical-compounds/edit/${res.id}`);
+            history.push(`/component-management/compounds/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }
 
     const onEdit = (record) => {
-        history.push(`/component-management/chemical-compounds/edit/${record.id}`);
+      history.push(`/component-management/compounds/edit/${record.id}`);
     }
 
     const onDelete = (record) => {

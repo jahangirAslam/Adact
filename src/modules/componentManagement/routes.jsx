@@ -1,5 +1,6 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
+import EditChemicalCompound from "./chemicalCompounds/components/EditChemicalCompound";
 import IndexChemicalCompound from "./chemicalCompounds/IndexChemicalCompound";
 import EditFlavour from "./flavours/components/edit/EditFlavour";
 import ViewFlavour from "./flavours/components/ViewFlavour";
@@ -18,6 +19,7 @@ const SubstanceModule = ({ match }) => (
 
     {/* Chemical compound Rautes */}
     <Route exact path={`${match.url}/compounds`} component={IndexChemicalCompound} />
+    <Route exact path={`${match.url}/compounds/edit/:id`} component={EditChemicalCompound} />
 
     {/* Flavours Rautes */}
     <Route exact path={`${match.url}/flavours`} component={Flavours} />
