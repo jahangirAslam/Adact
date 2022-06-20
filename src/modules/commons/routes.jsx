@@ -12,6 +12,8 @@ import ViewContact from "./contacts/components/ViewContact";
 import IndexAttachment from "./attachments/IndexAttachment";
 
 import IndexBrand from "./brands/IndexBrand";
+import Business from "./Business/Business";
+
 import CreateBrand from "./brands/components/CreateBrand";
 import EditBrand from "./brands/components/EditBrand";
 import ViewBrand from "./brands/components/ViewBrand";
@@ -21,6 +23,7 @@ const CommonModule = ({ match }) => (
     <Route exact path={ `${match.url}/locations` } component={ IndexLocation } />
     <Route exact path={ `${match.url}/locations/edit/:id` } component={ EditLocation } />
     <Route exact path={ `${match.url}/locations/view/:id` } component={ ViewLocation } />
+    <Route exact path={ `${match.url}/business` } component={ Business }></Route>
     <Route exact path={ `${match.url}/contacts` } component={ IndexContact } />
     <Route exact path={ `${match.url}/contacts/edit/:id` } component={ EditContact } />
     <Route exact path={ `${match.url}/contacts/view/:id` } component={ ViewContact } />

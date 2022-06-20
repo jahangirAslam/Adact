@@ -2,6 +2,7 @@ import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
+
 import LocationIndex from "@mods/commons/locations/IndexLocation";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
@@ -12,7 +13,7 @@ import LocationIcon from "../../../../containers/components/menu/icons/LocationI
 import ContactIcon from "../../../../containers/components/menu/icons/ContactIcon";
 import SettingsIcon from "../../../../containers/components/menu/icons/SettingsIcon";
 import ProductsIcon from "../../../../containers/components/menu/icons/ProductsIcon";
-
+import Business from "../../../commons/Business/Business";
 const pageConfig = {
   headers: {
     title: "Manage Customer",
@@ -37,6 +38,11 @@ const EditCustomer = () => {
       title: "Summary",
       icon: <SummaryIcon />,
       content: <EditCompany id={id} />
+    },
+    {
+      title: "Business Details",
+      icon: <SummaryIcon />,
+      content: <Business id={id} />
     },
     {
       title: "Locations",
