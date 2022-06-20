@@ -132,12 +132,12 @@ const Flavours = () => {
     setChildComponent(<CreateFlavour onCreated={onCreated} />);
   }
 
-  const onCreated = (each) => {
-    if (!each) {
-      setChildComponent(null);
+  const onCreated = (res) => {
+    if(res){
+        history.push(`/component-management/users/edit/${res.data.object.id}`);
     }
-    getAllFlavours();
-  }
+    setChildComponent(null);
+}
 
 
 

@@ -35,7 +35,7 @@ const CreateFlavour = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Product Created", res.msg);
-        props.onCreated(false);
+        props.onCreated(res);
     }
 
     const getSelectFieldsData = () => {
@@ -70,7 +70,6 @@ const CreateFlavour = (props) => {
     // ------------------------------------
     const footer = [
         <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
-        <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
     ];
     // ------------------------------------
     // Eend footer buttons array
