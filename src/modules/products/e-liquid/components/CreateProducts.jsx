@@ -39,7 +39,7 @@ const CreateProduct = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Product Created", res.msg);
-        props.onCreated(false);
+        props.onCreated(res);
     }
 
     const getSelectFieldsData = () => {

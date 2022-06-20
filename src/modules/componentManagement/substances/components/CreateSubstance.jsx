@@ -17,7 +17,7 @@ const CreateSubstance = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Substance Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const onError = (err) => {

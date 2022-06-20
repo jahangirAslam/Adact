@@ -139,11 +139,11 @@ const IndexDevice = () => {
         setChildComponent(<CreateProduct onCreated={onCreated} />)
     }
 
-    const onCreated = (each) => {
-        if (!each) {
-            setChildComponent(null);
+    const onCreated = (res) => {
+        if(res){
+            history.push(`/products/product/edit/${res.data.object.id}`);
         }
-        getProducts();
+        setChildComponent(null);
     }
     const onView = (record) => {
         history.push(`/products/product/view/${record.id}`);
