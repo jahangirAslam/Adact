@@ -156,11 +156,11 @@ const LabTest = (props) => {
         setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.product_id} />);
     }
 
-    const onCreated = (each) => {
-        if (!each) {
-            setChildComponent(null);
+    const onCreated = (res) => {
+        if(res){
+            history.push(`/products/product-test/edit/${res.data.object.id}`);
         }
-        getAllFlavours();
+        setChildComponent(null);
     }
 
     const onEdit = (record) => {
