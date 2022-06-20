@@ -144,16 +144,16 @@ const IndexBusiness = () => {
     const onCreated = (res) => {
         debugger
         if(res){
-            history.push(`/laboratory/test/edit/${res.data.object.id}`);
+            history.push(`/settings/business/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }
     const onView = (record) => {
-        history.push(`/laboratory/test/view/${record.id}`);
+        history.push(`/settings/business/view/${record.id}`);
 
     }
     const onEdit = (record) => {
-        history.push(`/laboratory/test/edit/${record.id}`);
+        history.push(`/settings/business/edit/${record.id}`);
     }
 
     const onDelete = (record) => {

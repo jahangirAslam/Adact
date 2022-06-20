@@ -6,10 +6,11 @@ import IndexBusiness from "./test/IndexBusiness";
 
 
 const SettingsModule = ({ match }) => (
+
   <Switch>
     <Route exact path={`${match.url}/business`} component={IndexBusiness} />
-    <Route exact path={`${match.url}/test/edit/:id`} component={EditTest} />
-    <Route exact path={`${match.url}/test/view/:id`} component={ViewTest} />
+    <Route exact path={`${match.url}/business/edit/:id`} component={EditTest} />
+    <Route exact path={`${match.url}/business/view/:id`} component={ViewTest} />
   </Switch>
 );
 
