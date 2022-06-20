@@ -100,9 +100,9 @@ const navigation = [{
             },
             {
                 id: "compound",
-                title: "Chemical compound",
-                uri: "/chemical-compound",
-                permissionKey: "compound_index",
+                title: "Chemical compounds",
+                uri: "/compounds",
+                permissionKey: "compounds_index",
             },
             {
                 id: "flavours",

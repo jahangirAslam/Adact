@@ -16,8 +16,8 @@ const SubstanceModule = ({ match }) => (
     <Route exact path={`${match.url}/substances/edit/:id`} component={EditSubstance} />
     <Route exact path={`${match.url}/substances/view/:id`} component={ViewSubstances} />
 
-    {/* Chemical substances Rautes */}
-    <Route exact path={`${match.url}/chemical-compound`} component={IndexChemicalCompound} />
+    {/* Chemical compound Rautes */}
+    <Route exact path={`${match.url}/compounds`} component={IndexChemicalCompound} />
 
     {/* Flavours Rautes */}
     <Route exact path={`${match.url}/flavours`} component={Flavours} />
