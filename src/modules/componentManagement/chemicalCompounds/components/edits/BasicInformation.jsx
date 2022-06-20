@@ -24,7 +24,7 @@ const BasicInformation = (props) => {
 
   return (
     <Form
-      layout="horizontal"
+      layout="vertical"
       labelCol={{ span: 7 }}
       initialValues={props.data}
       onFinish={onFinish}
@@ -79,14 +79,14 @@ const BasicInformation = (props) => {
         </Col>
       </Row>
       <Divider orientation="left" />
-      <Form.Item wrapperCol={{ offset: 5 }}>
+      <Form.Item wrapperCol={{ offset: 18 }}>
         <ButtonComponent
           className="da-mr-10"
           type="primary"
           htmlType="submit"
           state={loader}
         >
-          Save 
+          Save
         </ButtonComponent>
       </Form.Item>
     </Form>
