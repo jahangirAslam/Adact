@@ -3,6 +3,7 @@ import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
+import adact from '../../../../../assets/images/adact.png'
 
 const Details = (props) => {
   const [loader, setLoader] = useState("");
@@ -78,6 +79,10 @@ const Details = (props) => {
                 </Col>
               </Row>
             </Col>
+
+            <Col className="gutter-row" xs={24} md={12} lg={12}>
+            <img src={adact} alt="Logo" />;
+            </Col>
           </Row>
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" xs={24} md={11}>
@@ -111,7 +116,7 @@ const Details = (props) => {
             </Col>
           </Row>
 
-          <Col className="gutter-row" xs={24} md={12} lg={12}></Col>
+          
 
           <Form.Item style={{ textAlign: "end" }}>
             <ButtonComponent

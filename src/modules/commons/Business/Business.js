@@ -9,10 +9,44 @@ import { useEffect } from "react";
 import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
 import { updateContact } from "@mods/commons/contacts/requests";
 import Title from "antd/lib/skeleton/Title";
+import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 
+
+
+const containerStyle = {
+  width: '400px',
+  height: '400px'
+};
+
+const center = {
+  lat: -3.745,
+  lng: -38.523
+};
 
 const formName = "editCompany";
 const Business = (props) => {
+
+  // for map
+
+  const { isLoaded } = useJsApiLoader({
+    id: 'google-map-script',
+    googleMapsApiKey: "AIzaSyCEpFt_-vILimIlSXObiiEeUI5VdWyCXy8"
+  })
+
+  const [map, setMap] = React.useState(null)
+
+  const onLoad = React.useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+    setMap(map)
+  }, [])
+
+  const onUnmount = React.useCallback(function callback(map) {
+    setMap(null)
+  }, [])
+
+
+
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
@@ -88,7 +122,7 @@ const Business = (props) => {
     return <Skeleton />
   }
 
-  return (
+  return  (
     <>
       <div className="da-p-32">
             <h4 className="headerLocation">HEAD OFFICE LOCATION</h4>
@@ -157,6 +191,20 @@ const Business = (props) => {
                 {...getErrorProps(errors['trade_name'])}>
                 <Input />
               </Form.Item>
+              {/* Map  */}
+             
+              {isLoaded && <GoogleMap
+                mapContainerStyle={containerStyle}
+                 center={center}
+                 zoom={10}
+                 onLoad={onLoad}
+                 onUnmount={onUnmount}
+      >
+        { /* Child components, such as markers, info windows, etc. */ }
+                     <></>
+               </GoogleMap>}
+              
+            
             </Col>
             
           </Row>
@@ -168,10 +216,11 @@ const Business = (props) => {
       </div>
     </>
   );
+  
 }
 
-export default Business
 
+export default Business;
 const rules = {
   name: [
     // { required: true, message: 'Please input name!', },
