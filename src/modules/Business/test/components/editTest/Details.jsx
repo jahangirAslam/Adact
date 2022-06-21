@@ -81,8 +81,14 @@ const Details = (props) => {
             </Col>
 
             <Col className="gutter-row" xs={24} md={12} lg={12}>
-            <img src={adact} alt="Logo" />;
-            <button>Change</button>
+            <div className="logoAdact">
+            <img src={adact} alt="Logo"  />
+            </div>
+            <div>
+            <input type="file" id="actual-btn" hidden/>
+            <label for="actual-btn" className="label">Change</label>
+            </div>
+
             </Col>
           </Row>
           <Row gutter={[16, 24]}>

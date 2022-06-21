@@ -363,3 +363,23 @@ select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
 }
+
+.logoAdact {
+    margin-bottom: 12px;
+}
+
+.logoAdact img {
+    height: 350px!important;
+}
+
+.label {
+    background-color: indigo;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 26px!important;
+    border-radius: 8px!important;
+}

@@ -4,6 +4,7 @@ import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Button, Col, Form, Input, Row, Select, Upload } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
+import adact1 from '../../../../../assets/images/adact1.png'
 
 const Details = (props) => {
     const [loader, setLoader] = useState("");
@@ -78,6 +79,17 @@ const Details = (props) => {
                             options={props.dependencies.product_categories}
                         />
                     </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                <div className="logoAdact">
+            <img src={adact1} alt="Logo"  />
+            </div>
+            <div>
+            <input type="file" id="actual-btn" hidden/>
+            <label for="actual-btn" className="label">Change</label>
+            </div>
+
+                    
                 </Col>
 
 
