@@ -1,6 +1,6 @@
 import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Col, Form, Input, Row } from "antd";
+import { Button, Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
 import adact from '../../../../../assets/images/adact.png'
@@ -82,6 +82,7 @@ const Details = (props) => {
 
             <Col className="gutter-row" xs={24} md={12} lg={12}>
             <img src={adact} alt="Logo" />;
+            <button>Change</button>
             </Col>
           </Row>
           <Row gutter={[16, 24]}>
