@@ -3,6 +3,7 @@ import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItem } from "../request";
+import IndexSubmission from "../submission/IndexSubmission";
 import Details from './Details';
 
 const pageConfig = {
@@ -71,7 +72,7 @@ const EditTest = () => {
         },
         {
             title: "Submission ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+             content: <IndexSubmission />
         },
         {
             title: "Activity logs ",

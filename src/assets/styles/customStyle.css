@@ -383,3 +383,7 @@ select:-webkit-autofill:focus {
     font-size: 26px!important;
     border-radius: 8px!important;
 }
+
+.submissionHeader {
+    padding: 8px;
+}
