@@ -16,7 +16,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Product",
-                path: "/products"
+                path: "/products/e-liquid"
             },
             {
                 name: "Edit",

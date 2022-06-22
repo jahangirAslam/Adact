@@ -11,7 +11,7 @@ const pageConfig = {
     breadcrumb: [
       {
         name: "ChemicalCompounds",
-        path: "/component-management/chemical-compounds"
+        path: "/component-management/compounds"
       },
       {
         name: "Manage",

@@ -12,7 +12,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Laboratory Test",
-                path: "/products"
+                path: "/laboratory/test"
             },
             {
                 name: "Edit",

@@ -12,7 +12,7 @@ const pageConfig = {
           
             {
                 name: "Your Business",
-                path: "/products"
+                path: "/settings/business"
 
             },
             {
