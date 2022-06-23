@@ -68,6 +68,11 @@ const EditProduct = () => {
             icon: <LaboratoryIcon />,
             content: <LabTest product_id={id} />
         },
+        {
+            title: "Design",
+            icon: <LaboratoryIcon />,
+            content: <LabTest product_id={id} />
+        },
 
     ]
 
