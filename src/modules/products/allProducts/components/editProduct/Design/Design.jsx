@@ -6,10 +6,13 @@ import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateTest";
 import { deleteFlavour, getFilters, getFlavours } from "./request";
+import { InputNumber, Space } from 'antd';
+import TextArea from "antd/lib/input/TextArea";
 
-
-
-const LabTest = (props) => {
+const onChange = (value) => {
+  console.log('changed', value);
+};
+const Design = (props) => {
     var delItems = []
     const history = useHistory();
     const [loader, setLoader] = useState(false);
@@ -24,80 +27,6 @@ const LabTest = (props) => {
     });
 
     const [childComponent, setChildComponent] = useState(null);
-
-    const columns = [
-        {
-            key: 'batch_ref',
-            title: 'Batch Ref',
-            sorter:true,
-            dataIndex: 'batch_ref',
-        },
-        {
-            key: 'test_ref',
-            title: 'Test Ref',
-            sorter:true,
-            dataIndex: 'test_ref',
-        },
-        {
-            key: 'type',
-            title: 'Type',
-            sorter:true,
-            dataIndex: 'type',
-        },
-        {
-            key: 'created_by',
-            title: 'Created by',
-            sorter:true,
-            dataIndex: 'created_by',
-        },
-        {
-            key: 'status',
-            title: 'Status',
-            sorter:true,
-            dataIndex: 'is_active',
-            render: (is_active) => {
-                let color = is_active ? 'green' : 'red';
-                let text = is_active ? 'ACTIVE' : 'INACTIVE';
-                return (
-                    <Tag color={color} >{text}</Tag>
-                );
-            }
-        },
-        {
-            key: 'tested_date',
-            title: 'xyz',
-            sorter:true,
-            dataIndex: 'tested_date',
-        },
-        {
-            key: 'laboratory_name',
-            title: 'Laboratory name',
-            sorter:true,
-            dataIndex: 'laboratory_name',
-        },
-
-        
-        // {
-        //     key: 'product_name',
-        //     title: 'Product name',
-        //     sorter:true,
-        //     dataIndex: 'product_name',
-        // },
-
-        
-        
-       
-       
-
-
-
-        {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
-        },
-    ];
-
     const ActionComponentEx = (record) => {
         let icon = null;
         if (record) {
@@ -138,10 +67,7 @@ const LabTest = (props) => {
         setDataSource(response.data);
     }
 
-    // const onImported = (res) => {
-    //     getAllFlavours();
-    //     setChildComponent(null);
-    // }
+    
 
 
     //deleted multi Items
@@ -202,60 +128,124 @@ const LabTest = (props) => {
             {childComponent}
             <Row justify="space-between" className="da-pb-24" >
                 <Col className="inner-form-heading" >
-                    <h4>Laboratory Test</h4>
+                    <h4>Product Design</h4>
                 </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
-            <BodyComponent>
+            <BodyComponent>            
+            <Row justify="space-between" gutter={[16, 24]} >
+            <Col className="gutter-row discription" span={11} >
+                <h5 className="headerHeadings">Product Description</h5>
+            <TextArea rows={100} placeholder="Discription" maxLength={1000} />
+            </Col>
+                <Col className="gutter-row" span={11} >
+                <h5 className="headerHeadings">Product Dimensions</h5>
+                <div>
+            <InputNumber className="dimensions" size="large" min={1} placeholder="Length mm" max={100000} defaultValue={3} onChange={onChange} />
+            <InputNumber className="dimensions" size="large" min={1} placeholder="Width mm" max={100000} defaultValue={3} onChange={onChange} />
+            <InputNumber className="dimensions" size="large" min={1} placeholder="Height mm" max={100000} defaultValue={3} onChange={onChange} />
+            </div> 
+                </Col>
+
+                <Col className="gutter-row discription" span={11} >
+            </Col>
+
+                <Col className="gutter-row" span={11} >
+                <h5 className="headerHeadings">E-Liquid</h5>
+                <h5 className="headerHeadings">Liquid volume capacity Nicotine</h5>
+                <div>
+            <InputNumber className="dimensions" size="large" min={1} placeholder="" max={100000} defaultValue={3} onChange={onChange} />
+            <InputNumber className="dimensions" size="large" min={1} placeholder="" max={100000} defaultValue={3} onChange={onChange} />
+            </div> 
+                </Col>
+                
+            </Row>
+            <Row justify="space-between" className="da-pb-24" >
+                <Col className="inner-form-heading" >
+                    <h5>Electric Product </h5>
+                </Col>
+            </Row>
+
+
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} onChange={handleTableChange} />
+                {/* <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} onChange={handleTableChange} /> */}
             </BodyComponent>
         </>
     );
 }
 
-export default LabTest;
+export default Design;
 
 const availableFilters = [
 
     {
         key: 'laboratory_name',
-        placeholder: 'Laboratory Name',
+        placeholder: ' Battery Type ',
         type: 'select',
         data_key: 'laboratory'
     },
     {
         key: 'customer_name',
-        placeholder: 'Customer Name',
+        placeholder: 'Battery Capacity',
         type: 'select',
         data_key: 'customers'
     },
     {
         key: 'product_name',
-        placeholder: 'Product Name',
+        placeholder: 'Volt Watt adjustable',
         type: 'select',
         data_key: 'product_name'
     },
     {
         key: 'test_ref',
-        placeholder: 'Test REF',
+        placeholder: 'e-cig device ID',
         type: 'text',
     },
     {
         key: 'type',
-        placeholder: 'Type',
+        placeholder: 'Voltage',
         type: 'select',
         data_key: 'types'
     },
     {
         key: 'status',
-        placeholder: 'Status',
+        placeholder: 'Voltage Upper Range',
         type: 'select',
         data_key: 'status'
     },
     {
         key: 'current',
-        placeholder: 'Current',
+        placeholder: 'Voltage lower Range',
+        type: 'select',
+        data_key: 'current'
+    },
+    {
+        key: 'current',
+        placeholder: 'Coil Resistance',
+        type: 'select',
+        data_key: 'current'
+    },
+    {
+        key: 'current',
+        placeholder: 'Wattage',
+        type: 'select',
+        data_key: 'current'
+    },
+    {
+        key: 'status',
+        placeholder: 'Voltage Upper Range',
+        type: 'select',
+        data_key: 'status'
+    },
+    {
+        key: 'current',
+        placeholder: 'Voltage lower Range',
+        type: 'select',
+        data_key: 'current'
+    },
+    {
+        key: 'current',
+        placeholder: 'Coil Composition',
         type: 'select',
         data_key: 'current'
     },

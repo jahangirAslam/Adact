@@ -387,3 +387,14 @@ select:-webkit-autofill:focus {
 .submissionHeader {
     padding: 8px;
 }
+
+.discription textarea {
+    min-height: 200px!important;
+    padding-top: 6px;
+    padding-bottom: 12px;
+}
+
+.dimensions {
+    min-width: 170px!important;
+    margin: 8px;
+}

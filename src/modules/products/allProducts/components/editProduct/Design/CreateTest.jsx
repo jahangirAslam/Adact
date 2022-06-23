@@ -10,6 +10,7 @@ const CreateTest = (props) => {
     const [loader, setLoader] = useState(false);
     // const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
+
         facility: [],
         laboratory: [],
         types: [],
@@ -47,6 +48,7 @@ const CreateTest = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
+        debugger
         setDeps({
             facility: data.facility,
             laboratory: data.laboratory,
@@ -81,30 +83,186 @@ const CreateTest = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="laboratory_id" label="Laboratory" className="da-mb-16"
+                <Form.Item name="product_id" label="Laboratory" className="da-mb-16"
                 >
                     <Select
                         showSearch
-                        placeholder="Select Laboratory"
-                        options={deps.laboratory}
-                    />
-                </Form.Item>
-
-                <Form.Item name="facility_id" label="Add Facility :" className="da-mb-16"
-                >
-                    <Select
-                        showSearch
-                        placeholder="Select Facility"
-                        options={deps.facility}
-                    />
-                </Form.Item>
-                <Form.Item name="type" label="Add Type :" className="da-mb-16"
-                >
-                    <Select
-                        showSearch
-                        placeholder="Select Type"
+                        placeholder="Select id"
                         options={deps.types}
                     />
+                   
+                </Form.Item>
+
+                <Form.Item name="description" label="Add Facility :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="description"
+                        options={deps.types}
+                    />
+                    
+                </Form.Item>
+                <Form.Item name=" product_length" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select length"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" product_width" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select width"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" product_height" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select height"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" battery_type" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Battery type"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" battery_type_capacity" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select battery type capacity"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" volt_watt_adjustable" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select volt_watt_adjustable"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" e_cig_device_id" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select Te_cig_device_idype"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" wick_changeable" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select wick_changeable"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" voltage" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select voltage"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" voltage_lower_range_v" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select voltage_lower_range_v"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" voltage_upper_range_v" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select voltage_upper_range_v"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" coil_resistance" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select coil_resistance"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" microprocessor" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select microprocessor"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" wattage" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select wattage"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" voltage_lower_range_w" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select voltage_lower_range_w"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" coil_composition" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select coil_composition"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" airflow_adjustable" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select airflow_adjustable"
+                        options={deps.types}
+                    />
+                   
+                </Form.Item>
+                <Form.Item name=" id" label="Add Type :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Select id"
+                        options={deps.types}
+                    />
+                   
                 </Form.Item>
 
 

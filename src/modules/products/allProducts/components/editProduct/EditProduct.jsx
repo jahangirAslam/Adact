@@ -9,6 +9,7 @@ import LabTest from "./labTest/LabTest";
 import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import ProductIdentification from "../../../../../containers/components/menu/icons/ProductIdentification";
+import Design from "./Design/Design";
 
 const pageConfig = {
     headers: {
@@ -71,7 +72,7 @@ const EditProduct = () => {
         {
             title: "Design",
             icon: <LaboratoryIcon />,
-            content: <LabTest product_id={id} />
+            content: <Design product_id={id} />
         },
 
     ]
