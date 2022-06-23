@@ -141,6 +141,19 @@ const navigation = [{
         }, ],
     },
     {
+        id: "settings",
+        title: "Product Brands",
+        icon: < SettingsIcon / > ,
+        uri: "/settings",
+        permissionKey: "hasChildren",
+        children: [{
+            id: "business",
+            title: "Your business",
+            uri: "/business",
+            permissionKey: "business_index",
+        }, ],
+    },
+    {
         id: "userManagement",
         title: "User & Role",
         icon: < UsersIcon / > ,
