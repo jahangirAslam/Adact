@@ -51,36 +51,18 @@ const EditTest = () => {
 
     const tabs = [
         {
-            title: "Summary ",
+            title: "Details ",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         {
-            title: "Contact Details  ",
+            title: "Brands Withdrawal  ",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         {
-            title: "Locations ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
-        },
-        {
-            title: "Contacts ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
-        },
-        {
-            title: "Acount Setting  ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
-        },
-        {
-            title: "Submission ",
-             content: <IndexSubmission />
-        },
-        {
-            title: "Activity logs ",
+            title: "Annual Data ",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         
-        
-
 
     ]
 
