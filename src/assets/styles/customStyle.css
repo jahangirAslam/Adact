@@ -230,7 +230,7 @@ a {
 }
 
 .sign-in-btn button :hover {
-    background-color: red;
+    /* background-color: red; */
 }
 
 .inner-form-heading h4 {
