@@ -8,16 +8,16 @@ import Details from './Details';
 
 const pageConfig = {
     headers: {
-        title: "Adact Medical",
+        title: "Adact Brands ",
         breadcrumb: [
           
             {
-                name: "Your Business",
-                path: "/settings/business"
+                name: "Your Brands",
+                path: "/product/brands"
 
             },
             {
-                name: "Adact Medical",
+                name: "Edit",
             }
         ]
     }
