@@ -69,26 +69,37 @@ const CreateTest = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Lab Test" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="ADD A BRANDS"  visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="name" label="Name :" className="da-mb-16"
+                <Form.Item name="country" label="Customer :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Test Ref"
+                        options={deps.countries}
+                    />
+                </Form.Item>
+                <Form.Item name="country" label="Product :" className="da-mb-16"
+                >
+                    <Select
+                        showSearch
+                        placeholder="Test Ref"
+                        options={deps.countries}
+                    />
+                </Form.Item>
+                <Form.Item name="name" label="Brand Name :" className="da-mb-16"
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="email" label="Email :" className="da-mb-16"
+                <Form.Item name="email" label="Sub-Brand Name :" className="da-mb-16"
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="trading_name" label="Trading Name :" className="da-mb-16"
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item name="country" label="Country :" className="da-mb-16"
+                <Form.Item name="country" label="Markit :" className="da-mb-16"
                 >
                     <Select
                         showSearch
