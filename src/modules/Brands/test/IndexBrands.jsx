@@ -5,11 +5,12 @@ import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
+// import { deleteItems, getAllItems, getFilters } from "./components/request";
 import { deleteItems, getAllItems, getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {
-        title: "Your Business",
+        title: "Your Bus",
         breadcrumb: [
             {
                 name: "Business",
@@ -18,7 +19,7 @@ const pageConfig = {
     }
 }
 
-const IndexBusiness = () => {
+const IndexBrands = () => {
     var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
@@ -188,7 +189,7 @@ const IndexBusiness = () => {
     );
 }
 
-export default IndexBusiness;
+export default IndexBrands;
 
 const availableFilters = [
 
