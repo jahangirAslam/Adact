@@ -5,7 +5,9 @@ import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "../CreateTest";
-import { deleteFlavour,getFilters, getFlavours } from "../../../../products/allProducts/components/editProduct/labTest/request";
+import { deleteFlavour, getFilters, getFlavours } from "../../../../products/allProducts/components/editProduct/labTest/request";
+import { deleteItems, getAllItems, getItem } from "./components/request";
+import Create from "./components/Create";
 
 
 
@@ -27,25 +29,30 @@ const IndexSubmission = (props) => {
 
     const columns = [
         {
-            key: 'batch_ref',
+            key: 'submission_target',
             title: 'SUBMISSION Target',
-            sorter:true,
-            dataIndex: 'batch_ref',
+            sorter: true,
+            dataIndex: 'submission_target',
         },
         {
-            key: 'test_ref',
+            key: 'submitted_products',
             title: 'SUBMISSION STATUS',
-            sorter:true,
-            dataIndex: 'test_ref',
+            sorter: true,
+            dataIndex: 'submitted_products',
         },
-        
+
         {
-            key: 'created_by',
+            key: 'date_of_request',
             title: 'DATE OF REQUEST',
-            sorter:true,
-            dataIndex: 'created_by',
+            sorter: true,
+            dataIndex: 'date_of_request',
         },
-        
+        {
+            key: "actions",
+            title: 'Actions',
+            render: (record) => ActionComponentEx(record)
+        },
+
     ];
 
     const ActionComponentEx = (record) => {
@@ -58,7 +65,7 @@ const IndexSubmission = (props) => {
             }
         }
         return (
-            <ActionComponent each={record} onDelete={onDelete} onEdit={onEdit} onView={onView} >
+            <ActionComponent each={record} onDelete={onDelete} onEdit={onEdit}  >
             </ActionComponent>
         );
     }
@@ -78,7 +85,7 @@ const IndexSubmission = (props) => {
             filters
 
         };
-        makeRequest(setLoader, getFlavours, payload, onSuccess, null);
+        makeRequest(setLoader, getAllItems, payload, onSuccess, null);
     }
 
 
@@ -103,18 +110,18 @@ const IndexSubmission = (props) => {
     };
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.product_id} />);
+        setChildComponent(<Create onCreated={onCreated} product_id={props.product_id} />);
     }
 
     const onCreated = (res) => {
-        if(res){
-            history.push(`/products/product-test/edit/${res.data.object.id}`);
+        if (res) {
+            history.push(`/settings/business/submission/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }
 
     const onEdit = (record) => {
-        history.push(`/products/product-test/edit/${record.id}`);
+        history.push(`/settings/business/submission/edit/${record.id}`);
     }
     const onView = (record) => {
         history.push(`/products/product-test/view/${record.id}`);
@@ -126,7 +133,7 @@ const IndexSubmission = (props) => {
             delItems.push(record.id)
         }
         const payload = { "ids": delItems };
-        makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError)
+        makeRequest(setLoader, deleteItems, payload, onDeleteSuccess, onError)
     }
     const handleTableChange = (page, fil, sorter) => {
         let payload = {
