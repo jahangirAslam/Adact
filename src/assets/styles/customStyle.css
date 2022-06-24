@@ -373,7 +373,7 @@ select:-webkit-autofill:focus {
 }
 
 .label {
-    background-color: indigo;
+    background-color: #0093cd;
     color: white;
     padding: 0.5rem;
     font-family: sans-serif;
@@ -397,4 +397,19 @@ select:-webkit-autofill:focus {
 .dimensions {
     min-width: 170px!important;
     margin: 8px;
+}
+
+.discription-area textarea {
+    min-height: 300px!important;
+    min-width: 200px!important;
+}
+
+.electric-substance {
+    margin-top: 8px!important;
+    padding-top: 6px;
+}
+
+.electric-substance h5 {
+    margin-top: 8px!important;
+    padding-top: 6px;
 }

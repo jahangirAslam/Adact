@@ -116,8 +116,8 @@ const Details = (props) => {
             <input type="file" id="actual-btn" hidden/>
             <label for="actual-btn" className="label">Change</label>
             </div>
-            <Col className="gutter-row discription" span={11} >
-                <h5 className="headerHeadings">Product Description</h5>
+            <Col className="gutter-row discription-details" span={11} >
+                <h5 className="headerHeadings-details">Product Description</h5>
             <TextArea rows={100} placeholder="Discription" maxLength={1000} />
             </Col>
 
