@@ -6,7 +6,7 @@ import {
   FilterComponent,
   SelectionTable,
 } from "@comps/components";
-import { makeRequest, notify, removeById } from "@utils/helpers";
+import { makeRequest, notify, makeRequestStateless } from "@utils/helpers";
 import { ButtonComponent } from "@comps/components";
 import { Col, Form, Input, Row, Select, Switch, Tag } from "antd";
 import React, { useEffect, useState } from "react";
@@ -15,6 +15,7 @@ import CreateRecipe from "./CreateTest";
 import {
   createFlavour,
   deleteFlavour,
+  getProductDependencies,
   getFilters,
   getFlavours,
 } from "./request";
@@ -37,7 +38,10 @@ const Design = (props) => {
     sortName: "id",
     sortType: "desc",
   });
+  const [deps, setDeps] = useState({
+    volt: [],
 
+});
   const [childComponent, setChildComponent] = useState(null);
   const ActionComponentEx = (record) => {
     let icon = null;
@@ -57,7 +61,23 @@ const Design = (props) => {
       ></ActionComponent>
     );
   };
+  const getSelectFieldsData = () => {
+    makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
+}
+const onDependencySuccess = (data, res) => {
+  debugger
+  setDeps({
 
+    // volt: data.Volt-Walt-Adjustable,
+
+  });
+
+
+}
+  useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+}, []);
   useEffect(() => {
     getAllFlavours();
     // eslint-disable-next-line
@@ -237,7 +257,11 @@ const Design = (props) => {
                   name="volt_watt_adjustable"
                   label="Volt Watt Adjustable"
                 >
-                  <Input />
+                  <Select
+                        showSearch
+                        placeholder="Adjustable"
+                        options={deps.volt}
+                    />
                 </Form.Item>
               </Col>
               <Col
@@ -389,7 +413,7 @@ const Design = (props) => {
               htmlType="submit"
               state={loader}
             >
-              Save
+              Apply
             </ButtonComponent>
           </Form.Item>
         </Form>
