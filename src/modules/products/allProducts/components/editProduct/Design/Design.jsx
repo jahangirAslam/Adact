@@ -8,7 +8,7 @@ import {
 } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { ButtonComponent } from "@comps/components";
-import { Col, Form, Input, Row, Select, Tag } from "antd";
+import { Col, Form, Input, Row, Select, Switch, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateTest";
@@ -133,16 +133,11 @@ const Design = (props) => {
     //
   };
   const onFinish = (data) => {
-    debugger;
     let load = {
       product_id: props.product_id,
-      laboratory_id: data.laboratory_id,
-      type: data.type,
-      facility_id: data.facility_id,
-      created_by: 1,
-      status: "new",
+      ...data,
     };
-
+    debugger;
     let payload = { object: load };
     makeRequest(setLoader, createFlavour, payload, onSuccess);
   };
@@ -156,152 +151,247 @@ const Design = (props) => {
         <CreateButton onClick={onCreate} />
       </Row>
       <BodyComponent>
-      <Form
-            layout="vertical"
-            // labelCol={{ span: 7 }}
-            initialValues={props.data}
-            onFinish={onFinish}
+        <Form
+          layout="vertical"
+          // labelCol={{ span: 7 }}
+          initialValues={props.data}
+          onFinish={onFinish}
         >
-            <Row gutter={[16, 24]}>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={8} >
-                    <h5 className="discription-details">Product Description</h5>
-                <Form.Item
-                        name="description"
-                        label="Description :"
-                    >
-                <TextArea rows={100} placeholder="maxLength is 6" maxLength={1000} />
-
-                        
-                    </Form.Item>
-                </Col>
-            <Col className="gutter-row" xs={24} md={12} lg={16} >
-                <h5>Product Dimensions</h5>
-            <Row gutter={[16, 24]}>
-                <Col className="gutter-row" xs={24} md={12} lg={8} >
-                    <Form.Item
-                        name="product_length"
-                        label="Length mm :"
-                    >
-                        <Input />
-                    </Form.Item>
-                    </Col>
-                    <Col className="gutter-row" xs={24} md={12} lg={8} >
-
-                    <Form.Item name="product_width" label="Width   mm :">
-                    <Input />
-                    </Form.Item>
-                    </Col>                
-                
+          <Row gutter={[16, 24]}>
+            <Col className="gutter-row discription-area" xs={24} md={12} lg={8}>
+              <h5 className="discription-details">Product Description</h5>
+              <Form.Item name="description" label="Description :">
+                <TextArea
+                  rows={100}
+                  placeholder="maxLength is 6"
+                  maxLength={1000}
+                />
+              </Form.Item>
+            </Col>
+            <Col className="gutter-row" xs={24} md={12} lg={16}>
+              <h5>Product Dimensions</h5>
+              <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                <Form.Item name="product_height" label="Height   mm">
-                        <Input />
-                    </Form.Item>
+                  <Form.Item name="product_length" label="Length mm :">
+                    <Input />
+                  </Form.Item>
                 </Col>
-                </Row>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                  <Form.Item name="product_width" label="Width   mm :">
+                    <Input />
+                  </Form.Item>
                 </Col>
-            </Row>
 
-            {/* nEW rOW  */}
-            <Row gutter={[16, 24]}>
-            <Col className="gutter-row electric-substance " xs={24} md={12} lg={24} >
-                <div className="electric-substance">
-                <h5>Electric Products</h5>
-                </div>
-            </Col>
-            <Row gutter={[16, 24]}>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="battery_type" label="Battery Type ">
-                        <Input />
-                    </Form.Item>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                  <Form.Item name="product_height" label="Height   mm">
+                    <Input />
+                  </Form.Item>
                 </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="battery_type_capacity" label="Battery Type Capacity">
-                        <Input />
-                    </Form.Item>
+              </Row>
             </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="volt_watt_adjustable" label="Volt Watt Adjustable">
-                        <Input />
-                    </Form.Item>
+          </Row>
+
+          {/* nEW rOW  */}
+          <Row gutter={[16, 24]}>
+            <Col
+              className="gutter-row electric-substance "
+              xs={24}
+              md={12}
+              lg={24}
+            >
+              <div className="electric-substance">
+                <h5>Electric Products</h5>
+              </div>
             </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="e_cig_device_idcid" label="E-Cig Device ID">
-                        <Input />
-                    </Form.Item>
-            </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={4} >
-             
-            </Col>
+            <Row gutter={[16, 24]}>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="battery_type" label="Battery Type ">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item
+                  name="battery_type_capacity"
+                  label="Battery Type Capacity"
+                >
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item
+                  name="volt_watt_adjustable"
+                  label="Volt Watt Adjustable"
+                >
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="e_cig_device_idcid" label="E-Cig Device ID">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={4}
+              >
+                <Form.Item name="wick_changeable" label="wick_changeable :">
+                  <Switch />
+                </Form.Item>
+              </Col>
             </Row>
 
             {/* new Row */}
             <Row gutter={[16, 24]}>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="voltage" label=" Voltage(V) ">
-                        <Input />
-                    </Form.Item>
-                </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="voltage_lower_range_v" label="Voltage Lower Range (v)">
-                        <Input />
-                    </Form.Item>
-            </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="voltage_upper_range_v" label="Voltage upper Range (v)">
-                        <Input />
-                    </Form.Item>
-            </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="coil_resistance" label="Coil Resistance">
-                        <Input />
-                    </Form.Item>
-            </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={4} >
-             
-            </Col>
-
-            </Row>
-                {/* new Row */}
-            <Row gutter={[16, 24]}>
-
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="wattage" label=" Wattage (W) ">
-                        <Input />
-                    </Form.Item>
-                </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="voltage_lower_range_w" label="Voltage Lower Range (W)">
-                        <Input />
-                    </Form.Item>
-            </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-            <Form.Item name="ecid" label="Voltage upper Range (W)">
-                        <Input />
-                    </Form.Item>
-            </Col>
-             <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             <Form.Item name="coil_composition" label="Coil Composition">
-                        <Input />
-                    </Form.Item>
-            </Col>
-            <Col className="gutter-row discription-area" xs={24} md={12} lg={5} >
-             
-            </Col>
-            </Row>
-            </Row>
-
-
-
-            <Form.Item style={{ textAlign: "end" }}>
-                <ButtonComponent
-                    className="da-mr-10"
-                    type="primary"
-                    htmlType="submit"
-                     state={loader}
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="voltage" label=" Voltage(V) ">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item
+                  name="voltage_lower_range_v"
+                  label="Voltage Lower Range (v)"
                 >
-                    Save
-                </ButtonComponent>
-            </Form.Item>
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item
+                  name="voltage_upper_range_v"
+                  label="Voltage upper Range (v)"
+                >
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="coil_resistance" label="Coil Resistance">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={4}
+              >
+                <Form.Item name="microprocessor" label="Microprocessor :">
+                  <Switch />
+                </Form.Item>
+              </Col>
+            </Row>
+            {/* new Row */}
+            <Row gutter={[16, 24]}>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="wattage" label=" Wattage (W) ">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item
+                  name="voltage_lower_range_w"
+                  label="Voltage Lower Range (W)"
+                >
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="ecid" label="Voltage upper Range (W)">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={5}
+              >
+                <Form.Item name="coil_composition" label="Coil Composition">
+                  <Input />
+                </Form.Item>
+              </Col>
+              <Col
+                className="gutter-row discription-area"
+                xs={24}
+                md={12}
+                lg={4}
+              >
+                <Form.Item
+                  name=" airflow_adjustable"
+                  label="airflow_adjustable :"
+                >
+                  <Switch />
+                </Form.Item>
+              </Col>
+            </Row>
+          </Row>
+
+          <Form.Item style={{ textAlign: "end" }}>
+            <ButtonComponent
+              className="da-mr-10"
+              type="primary"
+              htmlType="submit"
+              state={loader}
+            >
+              Save
+            </ButtonComponent>
+          </Form.Item>
         </Form>
       </BodyComponent>
     </>
