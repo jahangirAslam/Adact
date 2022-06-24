@@ -413,3 +413,7 @@ select:-webkit-autofill:focus {
     margin-top: 8px!important;
     padding-top: 6px;
 }
+
+.replication button {
+    align-items: flex-end;
+}
