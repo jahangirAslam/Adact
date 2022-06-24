@@ -2,27 +2,29 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
-import { getProduct } from "../request";
-import Details from './Details';
+import { getItem } from "../request";
+import ViewDetails from "./ViewDetails";
+
+
+
 
 const pageConfig = {
     headers: {
-        title: "Laboratory Test",
+        title: "View Product",
         breadcrumb: [
             {
-                name: "Laboratory Test",
-                path: "/laboratory/test"
+                name: "Products",
+                path: "/products/product"
             },
             {
-                name: "Edit",
+                name: "Product",
             }
         ]
     }
 
 }
 
-const EditTest = () => {
+const ViewTest = () => {
     const { id } = useParams();
     const [loader, setLoader] = useState(true);
 
@@ -39,7 +41,7 @@ const EditTest = () => {
     }, []);
 
     const getData = () => {
-        makeRequest(setLoader, getProduct, id, onSuccess, onError);
+        makeRequest(setLoader, getItem, id, onSuccess, onError);
     }
 
     const onSuccess = (res) => {
@@ -50,10 +52,8 @@ const EditTest = () => {
     const tabs = [
         {
             title: "Test Details",
-            icon: <LaboratoryIcon />,
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <ViewDetails data={data.object} dependencies={data.dependencies} disable={true} />
         },
-
 
     ]
 
@@ -65,7 +65,6 @@ const EditTest = () => {
         return "";
     }
     return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
-
 }
 
-export default EditTest;
+export default ViewTest;

@@ -4,12 +4,12 @@ import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import CreateRecipe from "./CreateTest";
-import { deleteFlavour, getFilters, getFlavours } from "./request";
+import CreateRecipe from "../CreateTest";
+import { deleteFlavour,getFilters, getFlavours } from "../../../../products/allProducts/components/editProduct/labTest/request";
 
 
 
-const LabTest = (props) => {
+const IndexSubmission = (props) => {
     var delItems = []
     const history = useHistory();
     const [loader, setLoader] = useState(false);
@@ -28,74 +28,24 @@ const LabTest = (props) => {
     const columns = [
         {
             key: 'batch_ref',
-            title: 'Batch Ref',
+            title: 'SUBMISSION Target',
             sorter:true,
             dataIndex: 'batch_ref',
         },
         {
             key: 'test_ref',
-            title: 'Test Ref',
+            title: 'SUBMISSION STATUS',
             sorter:true,
             dataIndex: 'test_ref',
         },
-        {
-            key: 'type',
-            title: 'Type',
-            sorter:true,
-            dataIndex: 'type',
-        },
+        
         {
             key: 'created_by',
-            title: 'Created by',
+            title: 'DATE OF REQUEST',
             sorter:true,
             dataIndex: 'created_by',
         },
-        {
-            key: 'status',
-            title: 'Status',
-            sorter:true,
-            dataIndex: 'is_active',
-            render: (is_active) => {
-                let color = is_active ? 'green' : 'red';
-                let text = is_active ? 'ACTIVE' : 'INACTIVE';
-                return (
-                    <Tag color={color} >{text}</Tag>
-                );
-            }
-        },
-        {
-            key: 'tested_date',
-            title: 'xyz',
-            sorter:true,
-            dataIndex: 'tested_date',
-        },
-        {
-            key: 'laboratory_name',
-            title: 'Laboratory name',
-            sorter:true,
-            dataIndex: 'laboratory_name',
-        },
-
         
-        // {
-        //     key: 'product_name',
-        //     title: 'Product name',
-        //     sorter:true,
-        //     dataIndex: 'product_name',
-        // },
-
-        
-        
-       
-       
-
-
-
-        {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
-        },
     ];
 
     const ActionComponentEx = (record) => {
@@ -202,19 +152,19 @@ const LabTest = (props) => {
             {childComponent}
             <Row justify="space-between" className="da-pb-24" >
                 <Col className="inner-form-heading" >
-                    <h4>Laboratory Test</h4>
+                    <h4>Submission</h4>
                 </Col>
                 <CreateButton onClick={onCreate} />
             </Row>
             <BodyComponent>
-                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
+                {/* <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} /> */}
                 <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );
 }
 
-export default LabTest;
+export default IndexSubmission;
 
 const availableFilters = [
 

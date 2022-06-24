@@ -230,7 +230,7 @@ a {
 }
 
 .sign-in-btn button :hover {
-    background-color: red;
+    /* background-color: red; */
 }
 
 .inner-form-heading h4 {
@@ -362,4 +362,39 @@ select:-webkit-autofill,
 select:-webkit-autofill:hover,
 select:-webkit-autofill:focus {
     -webkit-box-shadow: 0 0 0px 1000px #fff inset;
+}
+
+.logoAdact {
+    margin-bottom: 12px;
+}
+
+.logoAdact img {
+    height: 350px!important;
+}
+
+.label {
+    background-color: indigo;
+    color: white;
+    padding: 0.5rem;
+    font-family: sans-serif;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    font-size: 26px!important;
+    border-radius: 8px!important;
+}
+
+.submissionHeader {
+    padding: 8px;
+}
+
+.discription textarea {
+    min-height: 200px!important;
+    padding-top: 6px;
+    padding-bottom: 12px;
+}
+
+.dimensions {
+    min-width: 170px!important;
+    margin: 8px;
 }

@@ -2,8 +2,8 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
-import { getProduct } from "../request";
+import LaboratoryIcon from "../../../../../../../../containers/components/menu/icons/LaboratoryIcon";
+import { getFlavour } from "../../request";
 import Details from './Details';
 
 const pageConfig = {
@@ -12,7 +12,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Laboratory Test",
-                path: "/laboratory/test"
+                path: "/products"
             },
             {
                 name: "Edit",
@@ -39,7 +39,7 @@ const EditTest = () => {
     }, []);
 
     const getData = () => {
-        makeRequest(setLoader, getProduct, id, onSuccess, onError);
+        makeRequest(setLoader, getFlavour, id, onSuccess, onError);
     }
 
     const onSuccess = (res) => {

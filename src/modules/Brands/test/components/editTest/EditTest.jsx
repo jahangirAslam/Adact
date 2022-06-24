@@ -2,17 +2,19 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
-import { getProduct } from "../request";
+import { getItem } from "../request";
+import IndexSubmission from "../submission/IndexSubmission";
 import Details from './Details';
 
 const pageConfig = {
     headers: {
-        title: "Laboratory Test",
+        title: "Adact Brands ",
         breadcrumb: [
+          
             {
-                name: "Laboratory Test",
-                path: "/laboratory/test"
+                name: "Your Brands",
+                path: "/product/brands"
+
             },
             {
                 name: "Edit",
@@ -39,7 +41,7 @@ const EditTest = () => {
     }, []);
 
     const getData = () => {
-        makeRequest(setLoader, getProduct, id, onSuccess, onError);
+        makeRequest(setLoader, getItem, id, onSuccess, onError);
     }
 
     const onSuccess = (res) => {
@@ -49,11 +51,18 @@ const EditTest = () => {
 
     const tabs = [
         {
-            title: "Test Details",
-            icon: <LaboratoryIcon />,
+            title: "Details ",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
-
+        {
+            title: "Brands Withdrawal  ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Annual Data ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        
 
     ]
 

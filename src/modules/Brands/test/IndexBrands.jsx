@@ -5,20 +5,20 @@ import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateTest from "./components/CreateTest";
+// import { deleteItems, getAllItems, getFilters } from "./components/request";
 import { deleteItems, getAllItems, getFilters } from "./components/request";
-
 const pageConfig = {
     headers: {
-        title: "Your Business",
+        title: "Manage Brands",
         breadcrumb: [
             {
-                name: "Business",
+                name: "Brands",
             }
         ]
     }
 }
 
-const IndexBusiness = () => {
+const IndexBrands = () => {
     var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
@@ -37,28 +37,34 @@ const IndexBusiness = () => {
 
         {
             key: 'name',
-            title: 'Third Party Name ',
+            title: 'Customer Product ',
             dataIndex: 'name',
             sorter: true,
         },
         {
             key: 'country_id',
-            title: 'Country',
+            title: 'Brand Na ',
             dataIndex: 'country_id',
             sorter: true,
         },
         {
             key: 'email',
-            title: 'email',
+            title: 'Sub Brand ',
             dataIndex: 'email',
             sorter: true,
         },
-        // {
-        //     key: 'trading_name',
-        //     title: 'Trading Name',
-        //     dataIndex: 'trading_name',
-        //     sorter: true,
-        // },
+        {
+            key: 'trading_name',
+            title: 'With Draw',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'Launch Date',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
         {
             key: 'status',
             title: 'Status',
@@ -71,6 +77,24 @@ const IndexBusiness = () => {
                     <Tag color={color} >{text}</Tag>
                 );
             }
+        },
+        {
+            key: 'trading_name',
+            title: 'Units',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'Market',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'ID',
+            dataIndex: 'trading_name',
+            sorter: true,
         },
 
 
@@ -144,16 +168,16 @@ const IndexBusiness = () => {
     const onCreated = (res) => {
         debugger
         if(res){
-            history.push(`/settings/business/edit/${res.data.object.id}`);
+            history.push(`/product/brands/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }
     const onView = (record) => {
-        history.push(`/settings/business/view/${record.id}`);
+        history.push(`/product/brands/view/${record.id}`);
 
     }
     const onEdit = (record) => {
-        history.push(`/settings/business/edit/${record.id}`);
+        history.push(`/product/brands/edit/${record.id}`);
     }
 
     const onDelete = (record) => {
@@ -188,28 +212,72 @@ const IndexBusiness = () => {
     );
 }
 
-export default IndexBusiness;
+export default IndexBrands;
 
 const availableFilters = [
 
     {
         key: 'name',
-        placeholder: 'Third Party Name',
+        placeholder: 'Customer Product',
         type: 'text',
         data_key: 'name'
     },
     {
         key: 'country_id',
-        placeholder: 'Country Name',
+        placeholder: 'Brand Na',
         type: 'select',
         data_key: 'country_id'
     },
     {
         key: 'email',
-        placeholder: 'Product Name',
+        placeholder: 'Sub Brand',
         type: 'text',
         data_key: 'email'
     },
+    {
+        key: 'email',
+        placeholder: 'With Draw',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Launch Date',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: ' Status',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Units',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Markit',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'ID',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Action',
+        type: 'text',
+        data_key: 'email'
+    },
+    
+
 
 
 ];

@@ -9,6 +9,7 @@ import LabTest from "./labTest/LabTest";
 import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import ProductIdentification from "../../../../../containers/components/menu/icons/ProductIdentification";
+import Design from "./Design/Design";
 
 const pageConfig = {
     headers: {
@@ -16,7 +17,7 @@ const pageConfig = {
         breadcrumb: [
             {
                 name: "Product",
-                path: "/products"
+                path: "/products/all_products"
             },
             {
                 name: "Edit",
@@ -67,6 +68,11 @@ const EditProduct = () => {
             title: "Laboratory Test",
             icon: <LaboratoryIcon />,
             content: <LabTest product_id={id} />
+        },
+        {
+            title: "Design",
+            icon: <LaboratoryIcon />,
+            content: <Design product_id={id} />
         },
 
     ]

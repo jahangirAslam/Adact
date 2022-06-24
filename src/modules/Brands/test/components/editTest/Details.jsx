@@ -4,6 +4,7 @@ import { Button, Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
 import adact from '../../../../../assets/images/adact.png'
+import TextArea from "antd/lib/input/TextArea";
 
 const Details = (props) => {
   const [loader, setLoader] = useState("");
@@ -32,7 +33,7 @@ const Details = (props) => {
   return (
     <>
       <div className="da-p-32">
-        <h4 className="headerLocation">Summary </h4>
+        <h4 className="headerLocation">Details </h4>
         <Form
           layout="vertical"
           // labelCol={{ span: 7 }}
@@ -44,43 +45,70 @@ const Details = (props) => {
               <Form.Item
                 name="name"
                 rules={rules.name}
-                label="Name :"
+                label="Brand Name  :"
                 {...getErrorProps(errors["name"])}
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="trading_name" label="Test_ref :">
+              <Form.Item name="trading_name" label="Sub-Brand Name :">
                 <Input />
               </Form.Item>
 
-              <h5>Identification</h5>
+              <h5>Markit</h5>
+              <Form.Item name="trading_name" label="Markit :">
+                <Input />
+              </Form.Item>
+              <h5>Agent</h5>
+              <Form.Item name="trading_name" label="Representative :">
+                <Input />
+              </Form.Item>
+             
+
+              <h5> Brand Identification</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="short_name_code" label="ADC :">
+                  <Form.Item name="short_name_code" label="Product ID :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="VAT Number :">
+                  <Form.Item name="vat_number" label="Custom ID :">
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                  <Form.Item name="vat_number" label="UPC-A :">
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                  <Form.Item name="vat_number" label="EAN :">
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                  <Form.Item name="vat_number" label="GTIN :">
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                  <Form.Item name="vat_number" label="SKU :">
                     <Input />
                   </Form.Item>
                 </Col>
               </Row>
-              <Row gutter={[16, 24]}>
-                <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="d_u_n_s_number" label="D-U-N-S Number :">
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="fda_number" label="FDA Esteblishment Id  :">
-                    <Input />
-                  </Form.Item>
-                </Col>
-              </Row>
+              
             </Col>
 
             <Col className="gutter-row" xs={24} md={12} lg={12}>
+            <h5>Status</h5>
+              <Form.Item name="trading_name" label="Representative :">
+                <Input />
+              </Form.Item>
+              <h5>published Date</h5>
+              <Form.Item name="trading_name" label="Published Date :">
+                <Input />
+              </Form.Item>
             <div className="logoAdact">
             <img src={adact} alt="Logo"  />
             </div>
@@ -88,43 +116,13 @@ const Details = (props) => {
             <input type="file" id="actual-btn" hidden/>
             <label for="actual-btn" className="label">Change</label>
             </div>
-
-            </Col>
-          </Row>
-          <Row gutter={[16, 24]}>
-            <Col className="gutter-row" xs={24} md={11}>
-              <div>
-                <h5>TPD Setting</h5>
-              </div>
-              <Form.Item name="tpd_submitter" label="TPD Submitter Id  :">
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col className="gutter-row" xs={24} md={11}>
-              <h5> Agent/Representattive</h5>
-
-              <Form.Item name="agent" label="Agent/Representattive  :">
-                <Input />
-              </Form.Item>
+            <Col className="gutter-row discription" span={11} >
+                <h5 className="headerHeadings">Product Description</h5>
+            <TextArea rows={100} placeholder="Discription" maxLength={1000} />
             </Col>
 
-            <Col className="gutter-row" xs={24} md={11}>
-              <h5> Last update on</h5>
-              <Form.Item name="fda_number" label="last Update on  :">
-                <Input />
-              </Form.Item>
             </Col>
-            {/* <h5>Last Update</h5> */}
-            <Col className="gutter-row" xs={24} md={11}>
-              <h5> Last update by</h5>
-              <Form.Item name="updated_by" label="last Update by  :">
-                <Input />
-              </Form.Item>
-            </Col>
-          </Row>
-
-          
-
+          </Row> 
           <Form.Item style={{ textAlign: "end" }}>
             <ButtonComponent
               className="da-mr-10"

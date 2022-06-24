@@ -1,10 +1,8 @@
-import { UploadOutlined } from '@ant-design/icons';
 import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Button, Col, Form, Input, Row, Select, Upload } from "antd";
+import { Col, Form, Input, Row } from "antd";
 import React, { useState } from "react";
-import { updateSubstance } from "../request";
-import adact1 from '../../../../../assets/images/adact1.png'
+import { updateSubstance } from "../../request";
 
 const Details = (props) => {
     const [loader, setLoader] = useState("");
@@ -24,15 +22,6 @@ const Details = (props) => {
         errorList["password"] = err;
         setErrors(errorList);
     };
-    const normFile = (e) => {
-        console.log('Upload event:', e);
-
-        if (Array.isArray(e)) {
-            return e;
-        }
-
-        return e?.fileList;
-    };
 
     // const onChange = (e) => {
     //   console.log("radio checked", e.target.value);
@@ -49,49 +38,25 @@ const Details = (props) => {
             <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="name"
+                        name="type"
                         rules={rules.name}
-                        label="Product Name :"
+                        label="Name :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="type_id" label="Type ID :">
-                        <Select
-                            showSearch
-                            placeholder="Product category   "
-                            options={props.dependencies.e_types}
-                        />
-                    </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="ecid" label="EC_ID(EU) :">
+                    <Form.Item name="test_ref" label="Test_ref :">
                         <Input />
                     </Form.Item>
                 </Col>
+
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_id" label="category_id :">
-                        <Select
-                            showSearch
-                            placeholder="Product category   "
-                            options={props.dependencies.product_categories}
-                        />
+                    <Form.Item name="status" label="status :">
+                        <Input />
                     </Form.Item>
                 </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
-                <div className="logoAdact">
-            <img src={adact1} alt="Logo"  />
-            </div>
-            <div>
-            <input type="file" id="actual-btn" hidden/>
-            <label for="actual-btn" className="label">Change</label>
-            </div>
-
-                    
-                </Col>
-
 
 
             </Row>
@@ -103,7 +68,7 @@ const Details = (props) => {
                     htmlType="submit"
                     state={loader}
                 >
-                    Save
+                    Save 
                 </ButtonComponent>
             </Form.Item>
         </Form>

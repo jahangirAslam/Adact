@@ -3,18 +3,21 @@ import { makeRequest } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItem } from "../request";
+import IndexSubmission from "../submission/IndexSubmission";
 import Details from './Details';
 
 const pageConfig = {
     headers: {
-        title: "Laboratory Test",
+        title: "Adact Medical",
         breadcrumb: [
+          
             {
-                name: "Laboratory Test",
-                path: "/products"
+                name: "Your Business",
+                path: "/settings/business"
+
             },
             {
-                name: "Edit",
+                name: "Adact Medical",
             }
         ]
     }
@@ -48,9 +51,35 @@ const EditTest = () => {
 
     const tabs = [
         {
-            title: "Test Details",
+            title: "Summary ",
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
+        {
+            title: "Contact Details  ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Locations ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Contacts ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Acount Setting  ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Submission ",
+             content: <IndexSubmission />
+        },
+        {
+            title: "Activity logs ",
+            content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        
+        
 
 
     ]
