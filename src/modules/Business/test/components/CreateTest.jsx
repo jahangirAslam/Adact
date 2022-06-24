@@ -92,7 +92,7 @@ const CreateTest = (props) => {
                 >
                     <Select
                         showSearch
-                        placeholder="Test Ref"
+                        placeholder="Select Country"
                         options={deps.countries}
                     />
                 </Form.Item>
