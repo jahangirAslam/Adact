@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import { getProduct } from "../request";
 import Details from './Details';
+import Replication from "./Replication";
 
 const pageConfig = {
     headers: {
@@ -49,9 +50,14 @@ const EditTest = () => {
 
     const tabs = [
         {
-            title: "Test Details",
+            title: "Summary",
             icon: <LaboratoryIcon />,
             content: <Details data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Test Replications",
+            icon: <LaboratoryIcon />,
+            content: <Replication data={data.object} dependencies={data.dependencies} />
         },
 
 

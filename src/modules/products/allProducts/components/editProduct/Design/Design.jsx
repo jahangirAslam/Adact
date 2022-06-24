@@ -21,11 +21,14 @@ import {
 } from "./request";
 import { InputNumber, Space } from "antd";
 import TextArea from "antd/lib/input/TextArea";
-
 const onChange = (value) => {
   console.log("changed", value);
 };
 const Design = (props) => {
+  const [disabled, setDisabled] = useState(true);
+  const toggle = () => {
+    setDisabled(!disabled);
+  };
   var delItems = [];
   const history = useHistory();
   const [loader, setLoader] = useState(false);
@@ -208,6 +211,20 @@ const onDependencySuccess = (data, res) => {
                   </Form.Item>
                 </Col>
               </Row>
+              <h5>E-Liquid</h5>
+              <Row gutter={[16, 24]}>
+              <Col className="gutter-row" xs={24} md={12} lg={10}>
+                  <Form.Item name="product_width" label="Liquid Volume Capacity" >
+                    <Input  disabled={disabled}/>
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={10}>
+                  <Form.Item name="product_width" label="Nicotine Concentration" >
+                    <Input disabled={disabled} />
+                  </Form.Item>
+                </Col>
+              </Row>
+
             </Col>
           </Row>
 
