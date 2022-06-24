@@ -1,6 +1,6 @@
 import {get, post, del, put } from "@utils/axios";
 
-const api = "setting/business";
+const api = "common/brands";
 
 export const createItem = (payload) => {
 

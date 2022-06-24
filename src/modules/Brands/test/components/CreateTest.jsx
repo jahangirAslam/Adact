@@ -34,6 +34,7 @@ const CreateTest = (props) => {
     }
 
     const getSelectFieldsData = () => {
+    
         makeRequestStateless(getDependencies, null, onDependencySuccess, null);
     }
 
