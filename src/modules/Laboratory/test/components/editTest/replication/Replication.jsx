@@ -4,9 +4,10 @@ import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
- import CreateRecipe from "../../../../Laboratory/test/components/editTest/Replication";
+//  import CreateRecipe from "./Replication";
+import CreateReplication from "./CreateReplications";
 // import { deleteFlavour, getFilters, getFlavours } from "./request";
-import { deleteFlavour, getFilters, getFlavours } from "../../../../products/allProducts/components/editProduct/labTest/request";
+import { deleteItems, getFilters, getAllItems } from "./component/request";
 
 
 
@@ -104,7 +105,7 @@ const Replication = (props) => {
             filters
 
         };
-        makeRequest(setLoader, getFlavours, payload, onSuccess, null);
+        makeRequest(setLoader, getAllItems, payload, onSuccess, null);
     }
 
 
@@ -126,7 +127,7 @@ const Replication = (props) => {
     };
     // Create component modal
     const onCreate = () => {
-        setChildComponent(<CreateRecipe onCreated={onCreated} product_id={props.product_id} />);
+        setChildComponent(<CreateReplication onCreated={onCreated} product_id={props.product_id} />);
     }
 
     const onCreated = (res) => {
@@ -149,7 +150,7 @@ const Replication = (props) => {
             delItems.push(record.id)
         }
         const payload = { "ids": delItems };
-        makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError)
+        makeRequest(setLoader, deleteItems, payload, onDeleteSuccess, onError)
     }
     const handleTableChange = (page, fil, sorter) => {
         let payload = {

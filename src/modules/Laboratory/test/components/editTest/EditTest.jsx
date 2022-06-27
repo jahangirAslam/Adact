@@ -5,7 +5,7 @@ import { useParams } from "react-router-dom";
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import { getProduct } from "../request";
 import Details from './Details';
-import Replication from "./Replication";
+import Replication from "./replication/Replication";
 
 const pageConfig = {
     headers: {
