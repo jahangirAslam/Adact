@@ -144,7 +144,7 @@ const Replication = (props) => {
     }
 
     const onEdit = (record) => {
-        history.push(`/products/product-test/edit/${record.id}`);
+        history.push(`/laboratory/test/replication/edit/${record.id}`);
     }
     const onView = (record) => {
         history.push(`/products/product-test/view/${record.id}`);
