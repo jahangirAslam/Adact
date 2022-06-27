@@ -28,23 +28,24 @@ const Replication = (props) => {
     const [childComponent, setChildComponent] = useState(null);
 
     const columns = [
+
         {
-            key: 'batch_ref',
+            key: 'replication_no',
             title: 'Replication No',
             sorter:true,
-            dataIndex: 'batch_ref',
+            dataIndex: 'replication_no',
         },
         {
-            key: 'test_ref',
+            key: 'sub_replication_no',
             title: 'Sub-Replication No',
             sorter:true,
-            dataIndex: 'test_ref',
+            dataIndex: 'sub_replication_no',
         },
         {
-            key: 'type',
+            key: 'created_by',
             title: 'Created',
             sorter:true,
-            dataIndex: 'type',
+            dataIndex: 'created_by',
         },
         
         {
@@ -61,17 +62,22 @@ const Replication = (props) => {
             }
         },
         {
-            key: 'created_by',
-            title: 'Tested Date',
-            sorter:true,
-            dataIndex: 'created_by',
-        },
-        {
             key: 'tested_date',
-            title: 'Authorised',
+            title: 'Tested Date',
             sorter:true,
             dataIndex: 'tested_date',
         },
+        {
+            key: 'authorised_date',
+            title: 'Authorised',
+            sorter:true,
+            dataIndex: 'authorised_date',
+        },
+        {
+            key: "actions",
+            title: 'Actions',
+            render: (record) => ActionComponentEx(record)
+          },
         
     ];
 
@@ -193,36 +199,36 @@ export default Replication;
 const availableFilters = [
 
     {
-        key: 'laboratory_name',
+        key: 'replication_no',
         placeholder: 'Replication No',
         type: 'select',
-        data_key: 'laboratory'
+        data_key: 'replication_no'
     },
     {
-        key: 'customer_name',
+        key: 'sub_replication_no',
         placeholder: 'Sub-Replication No',
         type: 'select',
-        data_key: 'customers'
+        data_key: 'sub_replication_no'
     },
     {
-        key: 'product_name',
+        key: 'created_by',
         placeholder: 'Created',
         type: 'select',
-        data_key: 'product_name'
+        data_key: 'created_by'
     },
     {
-        key: 'test_ref',
+        key: 'status',
         placeholder: 'Status',
         type: 'text',
     },
     {
-        key: 'type',
+        key: 'tested_date',
         placeholder: 'Tested Date',
         type: 'select',
         data_key: 'types'
     },
     {
-        key: 'status',
+        key: 'authorised_date',
         placeholder: 'Authorised',
         type: 'select',
         data_key: 'status'
