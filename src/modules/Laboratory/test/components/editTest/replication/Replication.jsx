@@ -201,36 +201,36 @@ const availableFilters = [
     {
         key: 'replication_no',
         placeholder: 'Replication No',
-        type: 'select',
+        type: 'text',
         data_key: 'replication_no'
     },
     {
         key: 'sub_replication_no',
         placeholder: 'Sub-Replication No',
-        type: 'select',
+        type: 'text',
         data_key: 'sub_replication_no'
     },
     {
         key: 'created_by',
         placeholder: 'Created',
-        type: 'select',
+        type: 'text',
         data_key: 'created_by'
     },
     {
         key: 'status',
         placeholder: 'Status',
-        type: 'text',
+        type: 'select',
     },
     {
         key: 'tested_date',
         placeholder: 'Tested Date',
-        type: 'select',
+        type: 'text',
         data_key: 'types'
     },
     {
         key: 'authorised_date',
         placeholder: 'Authorised',
-        type: 'select',
+        type: 'text',
         data_key: 'status'
     },
     
