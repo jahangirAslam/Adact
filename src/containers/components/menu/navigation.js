@@ -17,32 +17,6 @@ const navigation = [{
         permissionKey: "always",
     },
     {
-        id: "products",
-        title: "Products",
-        icon: < ProductsIcon / > ,
-        uri: "/products",
-        permissionKey: "hasChildren",
-        children: [{
-                id: "e-liquid",
-                title: "eLiquid products",
-                uri: "/e-liquid",
-                permissionKey: "eDevice_index",
-            },
-            {
-                id: "e-Device",
-                title: "eDevice products",
-                uri: "/e-device",
-                permissionKey: "e-liquid_index",
-            },
-            {
-                id: "all_products",
-                title: "All Products",
-                uri: "/all_products",
-                permissionKey: "customers_index",
-            }
-
-        ],
-    }, {
         id: "thirdparty",
         title: "Third Party",
         icon: < ThirdPartyIcon / > ,
@@ -87,6 +61,49 @@ const navigation = [{
         ],
     },
     {
+        id: "products",
+        title: "Products",
+        icon: < ProductsIcon / > ,
+        uri: "/products",
+        permissionKey: "hasChildren",
+        children: [{
+                id: "e-liquid",
+                title: "eLiquid products",
+                uri: "/e-liquid",
+                permissionKey: "eDevice_index",
+            },
+            {
+                id: "e-Device",
+                title: "eDevice products",
+                uri: "/e-device",
+                permissionKey: "e-liquid_index",
+            },
+            {
+                id: "all_products",
+                title: "All Products",
+                uri: "/all_products",
+                permissionKey: "customers_index",
+            }
+
+        ],
+    },
+    {
+        id: "settings",
+        title: "Product Brands",
+        icon: < SettingsIcon / > ,
+        uri: "/product",
+        permissionKey: "hasChildren",
+        children: [{
+            id: "business",
+            title: "Brands",
+            uri: "/brands",
+            permissionKey: "business_index",
+        }, ],
+    },
+
+
+
+    {
         id: "componentManagement",
         title: "Components",
         icon: < ComponentsIcon / > ,
@@ -128,6 +145,13 @@ const navigation = [{
         ],
     },
     {
+        id: "documentManagement",
+        title: "Documents",
+        icon: < DocumentsIcon / > ,
+        uri: "document-management/documents",
+        permissionKey: "document_index",
+    },
+    {
         id: "settings",
         title: "Settings",
         icon: < SettingsIcon / > ,
@@ -140,19 +164,7 @@ const navigation = [{
             permissionKey: "business_index",
         }, ],
     },
-    {
-        id: "settings",
-        title: "Product Brands",
-        icon: < SettingsIcon / > ,
-        uri: "/product",
-        permissionKey: "hasChildren",
-        children: [{
-            id: "business",
-            title: "Brands",
-            uri: "/brands",
-            permissionKey: "business_index",
-        }, ],
-    },
+
     {
         id: "userManagement",
         title: "User & Role",
@@ -173,13 +185,7 @@ const navigation = [{
             },
         ],
     },
-    {
-        id: "documentManagement",
-        title: "Documents",
-        icon: < DocumentsIcon / > ,
-        uri: "document-management/documents",
-        permissionKey: "document_index",
-    },
+
 
 ];
 

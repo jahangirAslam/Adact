@@ -1,3 +1,4 @@
+import { Col, Row } from 'antd';
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
@@ -177,7 +178,11 @@ const IndexProducts = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters}  />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} rowSelection={rowSelection} onChange={handleTableChange} />
+                <Row>
+                <Col md={24}>
+                <SelectionTable className="table-show" loader={loader} columns={columns} dataSource={dataSource} rowSelection={rowSelection} onChange={handleTableChange} />
+                </Col>
+                </Row>
             </BodyComponent>
         </>
     );

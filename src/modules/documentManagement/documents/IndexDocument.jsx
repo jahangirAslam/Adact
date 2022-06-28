@@ -158,7 +158,7 @@ const IndexDocument = () => {
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
-        <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+        <TableComponent  className="table-show" loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
       </BodyComponent>
     </>
   );
