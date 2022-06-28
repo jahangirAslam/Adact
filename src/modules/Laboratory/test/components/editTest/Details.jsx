@@ -35,49 +35,32 @@ const Details = (props) => {
             initialValues={props.data}
             onFinish={onFinish}
         >
-            <Row gutter={[16, 24]}>
-            <Col className="gutter-row" xs={24} md={24} >
-                <h5>Replication 1</h5>
-            </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={10} >
+             <Row gutter={[16, 24]}>
+                <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="replication_no"
+                        name="type"
                         rules={rules.name}
-                        label="Replication No :"
+                        label="Name :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
-                    <Form.Item name="sub_replication_no" label="Sub-Replication No:">
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item name="test_ref" label="Test_ref :">
                         <Input />
                     </Form.Item>
                 </Col>
 
-                <Col className="gutter-row" xs={24} md={12} lg={10}>
-                    <Form.Item name="created_by" label="Created :">
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
-                    <Form.Item name="status" label="Status :">
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={10} >
-                    <Form.Item name="tested_date" label="Tested Date :">
-                        <Input />
-                    </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
-                    <Form.Item name="authorised_date" label="Authorised Date :">
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item name="status" label="status :">
                         <Input />
                     </Form.Item>
                 </Col>
 
 
-            </Row>
+            </Row> 
+
 
             <Form.Item style={{ textAlign: "end" }}>
                 <ButtonComponent

@@ -208,7 +208,7 @@ const availableFilters = [
         key: 'product_name',
         placeholder: 'Product Name',
         type: 'select',
-        data_key: 'product_name'
+        data_key: 'product'
     },
     {
         key: 'test_ref',

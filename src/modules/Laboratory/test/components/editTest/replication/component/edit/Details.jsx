@@ -35,25 +35,44 @@ const Details = (props) => {
             initialValues={props.data}
             onFinish={onFinish}
         >
-            <Row gutter={[16, 24]}>
-                <Col className="gutter-row" xs={24} md={12} lg={8} >
+            
+        <Row gutter={[16, 24]}>
+            <Col className="gutter-row" xs={24} md={24} >
+                <h5>Replication 1</h5>
+            </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={10} >
                     <Form.Item
-                        name="type"
+                        name="replication_no"
                         rules={rules.name}
-                        label="Name :"
+                        label="Replication No :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="test_ref" label="Test_ref :">
+                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
+                    <Form.Item name="sub_replication_no" label="Sub-Replication No:">
                         <Input />
                     </Form.Item>
                 </Col>
 
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="status" label="status :">
+                <Col className="gutter-row" xs={24} md={12} lg={10}>
+                    <Form.Item name="created_by" label="Created :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
+                    <Form.Item name="status" label="Status :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={10} >
+                    <Form.Item name="tested_date" label="Tested Date :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={10} offset={2}>
+                    <Form.Item name="authorised_date" label="Authorised Date :">
                         <Input />
                     </Form.Item>
                 </Col>
