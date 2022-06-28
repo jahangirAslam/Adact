@@ -10,8 +10,8 @@ const pageConfig = {
         title: "Laboratory Test",
         breadcrumb: [
             {
-                name: "Laboratory Test",
-                path: "/products"
+                name: "Test Replication",
+                path: "/laboratory/test/edit/45"
             },
             {
                 name: "Edit",
@@ -48,7 +48,7 @@ const Edit = () => {
 
     const tabs = [
         {
-            title: "Test Details",
+            title: "Test Result",
             icon: <LaboratoryIcon />,
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
@@ -63,7 +63,8 @@ const Edit = () => {
     if (data.length === 0) {
         return "";
     }
-    return  <>hello</>
+    return <TabComponent headers={pageConfig.headers} tabs={tabs} loader={loader}></TabComponent>;
+
 
 }
 

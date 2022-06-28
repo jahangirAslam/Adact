@@ -71,8 +71,8 @@ const Recipe = (props) => {
             editable: false,
         },
         {
-            title: 'RAF',
-            dataIndex: 'raf',
+            title: 'REF',
+            dataIndex: 'ref',
             width: '15%',
             editable: false,
         },
