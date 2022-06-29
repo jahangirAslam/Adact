@@ -71,8 +71,14 @@ const Recipe = (props) => {
             editable: false,
         },
         {
-            title: 'RAF',
-            dataIndex: 'raf',
+            title: 'CAS number',
+            dataIndex: 'cas_number',
+            width: '15%',
+            editable: false,
+        },
+        {
+            title: 'ReF',
+            dataIndex: 'ref',
             width: '15%',
             editable: false,
         },
@@ -81,6 +87,12 @@ const Recipe = (props) => {
             dataIndex: 'percentage',
             width: '25%',
             editable: true,
+        },
+        {
+            title: 'Insight',
+            dataIndex: 'insights',
+            width: '15%',
+            editable: false,
         },
         {
             title: 'operation',
