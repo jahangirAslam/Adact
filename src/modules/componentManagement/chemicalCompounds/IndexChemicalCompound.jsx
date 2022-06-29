@@ -171,12 +171,12 @@ export default IndexChemicalCompound;
 const availableFilters = [
   {
     key: "name",
-    placeholder: "Name",
+    placeholder: "Compound Name",
     type: "text",
   },
   {
     key: "reference",
-    placeholder: "Reference",
+    placeholder: "Compound Reference",
     type: "text",
   },
   {

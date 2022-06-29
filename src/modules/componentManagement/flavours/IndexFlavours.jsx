@@ -64,6 +64,20 @@ const Flavours = () => {
 
     },
     {
+      key: 'composition',
+      title: 'Composition',
+      dataIndex: 'composition',
+      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+
+    },
+    {
+      key: 'status',
+      title: 'Status',
+      dataIndex: 'status',
+      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+
+    },
+    {
       key: "actions",
       title: 'Actions',
       render: (record) => ActionComponentEx(record)

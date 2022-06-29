@@ -68,7 +68,11 @@ const BasicInformation = (props) => {
         </Col>
         <Col className="gutter-row" xs={24} md={12} >
           <Form.Item name="reach_registration" label="Reach Registration :">
-            <Input />
+          <Select
+              showSearch
+              placeholder="Select"
+              
+            />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12} >
