@@ -46,6 +46,18 @@ const IndexTest = () => {
             sorter:true,
             dataIndex: 'product_name',
         },
+        {
+            key: 'customer_name',
+            title: 'Customer Name ',
+            sorter:true,
+            dataIndex: 'customer_name',
+        },
+        {
+            key: 'test_ref',
+            title: 'Test Ref',
+            sorter:true,
+            dataIndex: 'test_ref',
+        },
 
         {
             key: 'type',

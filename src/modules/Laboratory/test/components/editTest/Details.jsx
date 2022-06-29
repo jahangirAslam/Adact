@@ -36,24 +36,114 @@ const Details = (props) => {
             onFinish={onFinish}
         >
              <Row gutter={[16, 24]}>
+             <Col className="gutter-row" xs={24} md={24} >
+                <h5>Summary</h5>
+            </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
                         name="type"
                         rules={rules.name}
-                        label="Name :"
+                        label="Manufacturer :"
                         {...getErrorProps(errors["name"])}
                     >
                         <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="test_ref" label="Test_ref :">
+                
+                    <Form.Item name="test_ref" label="Product :">
                         <Input />
                     </Form.Item>
                 </Col>
 
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="status" label="status :">
+                    <Form.Item name="status" label="Test Type :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+
+
+            </Row> 
+
+            <Row gutter={[16, 24]}>
+            <Col className="gutter-row" xs={24} md={24} >
+                <h5>Testing</h5>
+            </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8} >
+                    <Form.Item
+                        name="type"
+                        rules={rules.name}
+                        label="Laboratory :"
+                        {...getErrorProps(errors["name"])}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                
+                    <Form.Item name="test_ref" label="Faculty :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                   
+                </Col>
+
+
+            </Row> 
+            <Row gutter={[16, 24]}>
+            <Col className="gutter-row" xs={24} md={24} >
+                <h5>Status</h5>
+            </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8} >
+                    <Form.Item
+                        name="type"
+                        rules={rules.name}
+                        label="Created On :"
+                        {...getErrorProps(errors["name"])}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                
+                    <Form.Item name="test_ref" label="Created By :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                </Col>
+
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                {/* <Form.Item name="test_ref" label="Faculty :">
+                        <Input />
+                    </Form.Item> */}
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8} >
+                    <Form.Item
+                        name="type"
+                        rules={rules.name}
+                        label="Authorised on :"
+                        {...getErrorProps(errors["name"])}
+                    >
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                
+                    <Form.Item name="test_ref" label="Authorised By :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                <Form.Item name="test_ref" label="Last Update On  :">
+                        <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                <Form.Item name="test_ref" label="Last Update By :">
                         <Input />
                     </Form.Item>
                 </Col>
