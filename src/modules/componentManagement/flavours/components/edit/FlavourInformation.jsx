@@ -71,6 +71,11 @@ const FlavourInformation = (props) => {
             <Input disabled={true} />
           </Form.Item>
         </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="is_valid_manufacturer" label="Recipe is valid">
+            <Input disabled={true} />
+          </Form.Item>
+        </Col>
       </Row>
       <Divider orientation="left" />
       <Row gutter={[16, 24]}>

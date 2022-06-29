@@ -30,11 +30,14 @@ const BasicInformation = (props) => {
       onFinish={onFinish}
     >
       <Row gutter={[16, 24]} className="">
+      <Col className="gutter-row" span={24}>
+       <h5> Summary</h5>
+        </Col>
         <Col className="gutter-row" span={12}>
           <Form.Item
             name="name"
             rules={rules.name}
-            label="Name :"
+            label=" Compound Name :"
             className="da-mb-16"
             {...getErrorProps(errors["name"])}
           >
@@ -43,7 +46,7 @@ const BasicInformation = (props) => {
           <Form.Item
             name="reference"
             rules={rules.reference}
-            label="Reference :"
+            label=" Compound Reference :"
             className="da-mb-16"
             {...getErrorProps(errors["reference"])}
           >
@@ -66,6 +69,67 @@ const BasicInformation = (props) => {
           </Form.Item>
         </Col>
       </Row>
+
+      <Row gutter={[16, 24]} className="">
+      <Col className="gutter-row" span={24}>
+       <h5>Status</h5>
+        </Col>
+        <Col className="gutter-row" span={12}>
+          <Form.Item
+            name="name"
+            rules={rules.name}
+            label=" Created On :"
+            className="da-mb-16"
+            {...getErrorProps(errors["name"])}
+          >
+           
+            <Input  disabled  />
+          </Form.Item>
+          <Form.Item
+            name="reference"
+            rules={rules.reference}
+            label=" Updated On :"
+            className="da-mb-16"
+            {...getErrorProps(errors["reference"])}
+          >
+            <Input  disabled  />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" span={12}>
+          <Form.Item
+            name="customer_id"
+            label="Created By :"
+            rules={rules.customer_id}
+            className="da-mb-8"
+            {...getErrorProps(errors["customer_id"])}
+          >
+            <Input  disabled  />
+          </Form.Item>
+          <Form.Item
+            name="customer_id"
+            label="Updated :"
+            rules={rules.customer_id}
+            className="da-mb-8"
+            {...getErrorProps(errors["customer_id"])}
+          >
+            <Input  disabled  />
+          </Form.Item>
+          <Form.Item
+            name="customer_id"
+            label="Formolation :"
+            rules={rules.customer_id}
+            className="da-mb-8"
+            {...getErrorProps(errors["customer_id"])}
+          >
+            <Select
+              showSearch
+              placeholder="Select a Customer"
+              options={props.dependencies.customers}
+            />
+          </Form.Item>
+        </Col>
+      </Row>
+
       <Row gutter={[16, 24]} className="da-m-64">
         <Col className="gutter-row" span={12}>
           <Form.Item name="is_active" label="Status :" className="da-mb-16">
