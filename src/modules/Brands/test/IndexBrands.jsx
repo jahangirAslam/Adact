@@ -9,7 +9,7 @@ import CreateTest from "./components/CreateTest";
 import { deleteItems, getAllItems, getFilters } from "./components/request";
 const pageConfig = {
     headers: {
-        title: "Manage Brandsss",
+        title: "Manage Brands",
         breadcrumb: [
             {
                 name: "Brands",
