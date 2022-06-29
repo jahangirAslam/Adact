@@ -53,12 +53,24 @@ const IndexBusiness = () => {
             dataIndex: 'email',
             sorter: true,
         },
-        // {
-        //     key: 'trading_name',
-        //     title: 'Trading Name',
-        //     dataIndex: 'trading_name',
-        //     sorter: true,
-        // },
+        {
+            key: 'trading_name',
+            title: 'Adress',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'Contact',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'Acount',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
         {
             key: 'status',
             title: 'Status',
@@ -199,16 +211,22 @@ const availableFilters = [
         data_key: 'name'
     },
     {
-        key: 'country_id',
+        key: 'countries',
         placeholder: 'Country Name',
         type: 'select',
-        data_key: 'country_id'
+        data_key: 'countries'
     },
     {
         key: 'email',
-        placeholder: 'Product Name',
+        placeholder: 'Email',
         type: 'text',
         data_key: 'email'
+    },
+    {
+        key: 'status',
+        placeholder: 'Status',
+        type: 'select',
+        data_key: 'status'
     },
 
 
