@@ -8,6 +8,7 @@ import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIco
 import { getSubstance } from "./../requests";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
+import Clp from "./edits/Clp";
 
 const pageConfig = {
   headers: {
@@ -47,6 +48,11 @@ const EditSubstance = () => {
       title: "Chemical and Physical Properties",
       icon: <Chemical />,
       content: <ChemicalPhysicalProperties id={id} data={data} />,
+    },
+    {
+      title: "CLP",
+      icon: <Chemical />,
+      content: <Clp id={id} data={data} />,
     },
   ];
 
