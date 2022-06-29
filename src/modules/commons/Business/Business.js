@@ -208,6 +208,20 @@ const Business = (props) => {
             </Col>
             
           </Row>
+          <Row gutter={[16, 24]}>
+                <Col className="gutter-row" span={12}>
+                <Form.Item name="name" rules={rules.name} label="Last Update On" className="da-mb-16"
+                {...getErrorProps(errors['name'])}>
+                <Input />
+              </Form.Item>
+                </Col>
+                <Col className="gutter-row" span={12}>
+                <Form.Item name="name" rules={rules.name} label="Last Updated By" className="da-mb-16"
+                {...getErrorProps(errors['name'])}>
+                <Input />
+              </Form.Item>
+                </Col>
+              </Row>
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />

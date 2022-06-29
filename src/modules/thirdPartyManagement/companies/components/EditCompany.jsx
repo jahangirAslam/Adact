@@ -7,8 +7,6 @@ import { getCompany, updateCompany } from "../requests";
 import { useEffect } from "react";
 import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
 import { updateContact } from "@mods/commons/contacts/requests";
-
-
 const formName = "editCompany";
 const EditCompany = (props) => {
   const history = useHistory();
@@ -129,13 +127,27 @@ const EditCompany = (props) => {
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={12}>
+                  <h5>TPD Setting</h5>
                   <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
                     {...getErrorProps(errors['tpd_setting'])}>
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={12}>
+                <h5>Agent/Representative</h5>
                   <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
+                    {...getErrorProps(errors['agent_id'])}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" span={12}>
+                  <Form.Item name="agent_id" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
+                    {...getErrorProps(errors['agent_id'])}>
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" span={12}>
+                  <Form.Item name="agent_id" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
                     <Input />
                   </Form.Item>
@@ -143,7 +155,7 @@ const EditCompany = (props) => {
               </Row>
             </Col>
             <Col className="gutter-row" span={2}></Col>
-            <Col className="gutter-row" span={11}>
+            {/* <Col className="gutter-row" span={11}>
               <Divider orientation="left"><strong>LOCATION</strong></Divider>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={12}>
@@ -215,7 +227,7 @@ const EditCompany = (props) => {
                   </Form.Item>
                 </Col>
               </Row>
-            </Col>
+            </Col> */}
           </Row>
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
