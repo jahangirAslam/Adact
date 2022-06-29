@@ -55,6 +55,12 @@ const IndexLiquid = () => {
             sorter: true,
         },
         {
+            key: 'name',
+            title: 'On Marki',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
             key: 'category_name',
             title: 'Category Name',
             dataIndex: 'category_name',
@@ -64,6 +70,36 @@ const IndexLiquid = () => {
             key: 'withdrawn',
             title: 'WithDrawn',
             dataIndex: 'withdrawn',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'PG/VG',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Nicotine',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Type',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Sub-Type',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'insights',
+            title: 'Insight',
+            dataIndex: 'insights',
             sorter: true,
         },
 
@@ -206,16 +242,46 @@ const availableFilters = [
         type: 'text',
     },
     {
+        key: 'name',
+        placeholder: 'On Marki',
+        type: 'text',
+    },
+    {
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
         data_key: 'withdrawn',
     },
     {
+        key: 'name',
+        placeholder: 'PG/VG',
+        type: 'text',
+    },
+    {
+        key: 'name',
+        placeholder: 'Nicotine',
+        type: 'text',
+    },
+
+    {
         key: 'type',
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
+
+    },
+    {
+        key: 'type',
+        placeholder: 'Sub-Type',
+        type: 'select',
+        data_key: 'type',
+
+    },
+    {
+        key: 'insights',
+        placeholder: 'Insight',
+        type: 'select',
+        data_key: 'insights',
 
     },
 

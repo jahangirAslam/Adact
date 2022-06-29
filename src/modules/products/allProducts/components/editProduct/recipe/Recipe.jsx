@@ -83,6 +83,24 @@ const Recipe = (props) => {
             editable: true,
         },
         {
+            title: 'ML',
+            dataIndex: 'percentage',
+            width: '25%',
+            editable: true,
+        },
+        {
+            title: 'MG/ML',
+            dataIndex: 'percentage',
+            width: '25%',
+            editable: true,
+        },
+        {
+            title: 'Insight',
+            dataIndex: 'percentage',
+            width: '25%',
+            editable: true,
+        },
+        {
             title: 'Actions',
             dataIndex: 'operation',
             render: (_, record) => {

@@ -171,7 +171,7 @@ const onDependencySuccess = (data, res) => {
         <Col className="inner-form-heading">
           <h4>Product Design</h4>
         </Col>
-        <CreateButton onClick={onCreate} />
+        {/* <CreateButton onClick={onCreate} /> */}
       </Row>
       <BodyComponent>
         <Form

@@ -65,7 +65,7 @@ const LabTest = (props) => {
         },
         {
             key: 'tested_date',
-            title: 'xyz',
+            title: 'Tested_date',
             sorter:true,
             dataIndex: 'tested_date',
         },
@@ -75,21 +75,6 @@ const LabTest = (props) => {
             sorter:true,
             dataIndex: 'laboratory_name',
         },
-
-        
-        // {
-        //     key: 'product_name',
-        //     title: 'Product name',
-        //     sorter:true,
-        //     dataIndex: 'product_name',
-        // },
-
-        
-        
-       
-       
-
-
 
         {
             key: "actions",

@@ -81,6 +81,20 @@ const Details = (props) => {
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item name="category_id" label="Tobaco Product No :">
+                    <Input />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                    <Form.Item name="category_id" label="Agent :">
+                        <Select
+                            showSearch
+                            placeholder="Product category   "
+                            options={props.dependencies.product_categories}
+                        />
+                    </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={8}>
                 <div className="logoAdact">
             <img src={adact1} alt="Logo"  />
             </div>
