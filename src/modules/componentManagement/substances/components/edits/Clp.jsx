@@ -1,14 +1,14 @@
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getDependencies, getDependenciesClp } from "../../requests";
 import { ButtonComponent } from "@comps/components";
 import { makeRequest,makeRequestStateless, notify } from "@utils/helpers";
-
 import {
   Col,
   Divider, Form,
   Input,
   Row, Select, Switch, Typography
 } from "antd";
-import React, { useEffect, useState } from "react";
-import { updateSubstance,getDependencies, getDependenciesClp } from "../../requests";
+const { TextArea } = Input;
 const Clp = (props) => {
   const [deps, setDeps] = useState({
     // countries: [],
@@ -260,8 +260,18 @@ const onDependencySuccess = (data, res) => {
               options={deps.Clp_Stot}
             />
           </Form.Item>
+        </Col>      
+      </Row>
+      <Row>
+      <Col className="gutter-row" xs={24} md={12}  >
+          <Form.Item
+            name="description"
+            label="Description"
+            className="da-mb-16 discription"
+          >
+                <TextArea rows={200} placeholder="Add description Here" maxLength={2000} />
+          </Form.Item>
         </Col>
-        
       </Row>
      
       <Form.Item style={{ textAlign: "end" }}>
@@ -271,7 +281,7 @@ const onDependencySuccess = (data, res) => {
           htmlType="submit"
           state={loader}
         >
-          Save 
+          Apply 
         </ButtonComponent>
       </Form.Item>
     </Form>
