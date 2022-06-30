@@ -1,15 +1,38 @@
 import { ButtonComponent } from "@comps/components";
-import { makeRequest, notify } from "@utils/helpers";
+import { makeRequest,makeRequestStateless, notify } from "@utils/helpers";
+
 import {
   Col,
   Divider, Form,
   Input,
   Row, Select, Switch, Typography
 } from "antd";
-import React, { useState } from "react";
-import { updateSubstance } from "../../requests";
-
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getDependencies, getDependenciesClp } from "../../requests";
 const Clp = (props) => {
+  const [deps, setDeps] = useState({
+    // countries: [],
+    Clp_Whether_Classification:[],
+    Clp_Oral:[],
+    Clp_Inhalation:[],
+    Clp_Eye:[],
+    Clp_Skin_Sensitisation:[],
+    Clp_Carcinogenity:[],
+    Clp_Stot:[],
+    Clp_Dermal:[],
+    Clp_Corrosive:[],
+    Clp_Respiratory_Sensitisation:[],
+    Clp_Mutagen_Genotox:[],
+    Clp_Reproductive_Tox:[],
+    Clp_Ingredient_Toxicity:[],
+
+
+    
+
+
+
+});
+
   const { Title } = Typography;
   const [loader, setLoader] = useState("");
   // const [errors, setErrors] = useState([]);
@@ -22,6 +45,40 @@ const Clp = (props) => {
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
   };
+
+
+  const getSelectFieldsData = () => {
+    
+    makeRequestStateless(getDependenciesClp, null, onDependencySuccess, null);
+}
+
+useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+}, []);
+
+const onDependencySuccess = (data, res) => {
+  
+    setDeps({
+
+        Clp_Whether_Classification:data.Clp_Whether_Classification,
+        Clp_Oral: data.Clp_Oral,
+        Clp_Inhalation: data.Clp_Inhalation,
+        Clp_Eye: data.Clp_Eye,
+        Clp_Skin_Sensitisation: data.Clp_Skin_Sensitisation,
+        Clp_Carcinogenity:data.Clp_Carcinogenity,
+        Clp_Stot: data.Clp_Stot,
+        Clp_Dermal: data.Clp_Dermal,
+        Clp_Corrosive:data.Clp_Corrosive,
+        Clp_Respiratory_Sensitisation:data.Clp_Respiratory_Sensitisation,
+        Clp_Mutagen_Genotox:data.Clp_Mutagen_Genotox,
+        Clp_Reproductive_Tox:data.Clp_Reproductive_Tox,
+        Clp_Ingredient_Toxicity:data.Clp_Ingredient_Toxicity,
+    
+    });
+
+
+}
 
   return (
     <Form
@@ -44,7 +101,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-            //    options={dep.Clp_Whether_Classification}
+                options={deps.Clp_Whether_Classification}
             />
           </Form.Item>
         </Col>
@@ -57,10 +114,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Harmonised classification"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Dermal}
             />
           </Form.Item>
         </Col>
@@ -73,26 +127,20 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Solid", value: "solid" },
-                { label: "Powder", value: "powder" },
-              ]}
+              options={deps.Clp_Oral}
             />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12}  >
           <Form.Item
-            name="substanceCanonicalized"
+            name="Clp_Corrosive"
             label="CLP Corresive/irretent"
             className="da-mb-16"
           >
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Corrosive}
             />
           </Form.Item>
         </Col>
@@ -105,10 +153,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Inhalation}
             />
           </Form.Item>
         </Col>
@@ -121,10 +166,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Respiratory_Sensitisation}
             />
           </Form.Item>
         </Col>
@@ -137,10 +179,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Eye}
             />
           </Form.Item>
         </Col>
@@ -153,10 +192,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Mutagen_Genotox}
             />
           </Form.Item>
         </Col>
@@ -169,10 +205,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Skin_Sensitisation}
             />
           </Form.Item>
         </Col>
@@ -185,10 +218,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Reproductive_Tox}
             />
           </Form.Item>
         </Col>
@@ -201,10 +231,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Carcinogenity}
             />
           </Form.Item>
         </Col>
@@ -217,10 +244,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Ingredient_Toxicity}
             />
           </Form.Item>
         </Col>
@@ -233,10 +257,7 @@ const Clp = (props) => {
             <Select
               showSearch
               placeholder="Select"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Clp_Stot}
             />
           </Form.Item>
         </Col>
