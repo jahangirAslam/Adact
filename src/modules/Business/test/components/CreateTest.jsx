@@ -17,14 +17,8 @@ const CreateTest = (props) => {
 
 
     const onFinish = (data) => {
-        let load = {
-            name: data.name,
-            trading_name: data.trading_name,
-            email: data.email,
-            country_id: data.country,
-            updated_by: 1,
-        }
-        let payload = { "object": load }
+         debugger
+        let payload = { "object": data }
         makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
 
@@ -88,7 +82,7 @@ const CreateTest = (props) => {
                     <Input />
                 </Form.Item>
 
-                <Form.Item name="country" label="Country :" className="da-mb-16"
+                <Form.Item name="country_id" label="Country :" className="da-mb-16"
                 >
                     <Select
                         showSearch

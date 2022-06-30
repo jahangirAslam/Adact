@@ -14,21 +14,15 @@ const CreateFlavour = (props) => {
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         manufacturers: [],
-        types: [],
-        customers: [],
-        typeB: []
+      
 
     });
 
 
     const onFinish = (data) => {
-        let load = {
-            customer_id: 1,
-            name: data.name,
-            type_id: 1,
-            category_id: 2
-        }
-        let payload = { "object": load }
+        
+        debugger
+        let payload = { "object": data }
         payload.object["type"] = "product";
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
     }
@@ -49,10 +43,8 @@ const CreateFlavour = (props) => {
 
     const onDependencySuccess = (data, res) => {
         setDeps({
-            countries: data.manufacturers,
-            types: data.product_types,
-            customers: data.customers,
-            typeB: data.e_types,
+            manufacturers: data.manufacturers,
+         
 
         });
 

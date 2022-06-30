@@ -13,7 +13,7 @@ const LabTest = (props) => {
     var delItems = []
     const history = useHistory();
     const [loader, setLoader] = useState(false);
-    const [filters, setFilters] = useState({  filters : {product_id:props.product_id}  });
+    const [filters, setFilters] = useState({product_id:props.product_id});
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -110,7 +110,8 @@ const LabTest = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters
+            filters 
+
 
         };
         makeRequest(setLoader, getFlavours, payload, onSuccess, null);

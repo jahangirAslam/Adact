@@ -22,7 +22,6 @@ const CreateTest = (props) => {
     const onFinish = (data) => {
         let load = {
             product_id: id,
-            created_by: 1,
             ...data
         }
         let payload = { "object": load }
