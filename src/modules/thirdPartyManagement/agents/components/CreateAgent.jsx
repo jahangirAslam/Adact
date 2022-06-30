@@ -22,7 +22,7 @@ const CreateAgent = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Agents Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {

@@ -22,7 +22,7 @@ const CreateLaboratory = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Laboratory Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {

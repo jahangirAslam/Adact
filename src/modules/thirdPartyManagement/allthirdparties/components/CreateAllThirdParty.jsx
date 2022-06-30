@@ -22,7 +22,7 @@ const CreateAllThirdParty = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Third Party Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {
