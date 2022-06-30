@@ -13,16 +13,16 @@ const LabTest = (props) => {
     var delItems = []
     const history = useHistory();
     const [loader, setLoader] = useState(false);
-    const [filters, setFilters] = useState({});
+    const [filters, setFilters] = useState({  filters : {product_id:props.product_id}  });
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
         current: 1,
         pageSize: 10,
         sortName: 'id',
-        sortType: 'desc'
+        sortType: 'desc',
+      
     });
-
     const [childComponent, setChildComponent] = useState(null);
 
     const columns = [

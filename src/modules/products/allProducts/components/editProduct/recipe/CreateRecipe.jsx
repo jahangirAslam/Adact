@@ -29,7 +29,6 @@ const CreateRecipe = (props) => {
             type: data.type,
             percentage: data.percentage
         }
-         debugger
         let payload = { "object": load }
         makeRequest(setLoader, createFlavour, payload, onSuccess);
     }
