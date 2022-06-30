@@ -24,7 +24,6 @@ const CreateProduct = (props) => {
             ...data,
             e_type: [{ "type": "E-Device" }],
         }
-        debugger
         let payload = { "object": load }
         payload.object["type"] = "product";
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);

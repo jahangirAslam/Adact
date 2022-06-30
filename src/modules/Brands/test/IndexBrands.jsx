@@ -166,7 +166,6 @@ const IndexBrands = () => {
     }
 
     const onCreated = (res) => {
-        debugger
         if(res){
             history.push(`/product/brands/edit/${res.data.object.id}`);
         }

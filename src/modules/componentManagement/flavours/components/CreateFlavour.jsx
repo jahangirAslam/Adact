@@ -21,7 +21,7 @@ const CreateFlavour = (props) => {
 
     const onFinish = (data) => {
         
-        debugger
+        
         let payload = { "object": data }
         payload.object["type"] = "product";
         makeRequest(setLoader, createFlavour, payload, onSuccess, onError);

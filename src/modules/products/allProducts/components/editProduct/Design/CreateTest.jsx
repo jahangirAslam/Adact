@@ -48,7 +48,6 @@ const CreateTest = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-        debugger
         setDeps({
             facility: data.facility,
             laboratory: data.laboratory,

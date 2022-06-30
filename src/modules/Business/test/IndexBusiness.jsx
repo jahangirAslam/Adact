@@ -154,7 +154,6 @@ const IndexBusiness = () => {
     }
 
     const onCreated = (res) => {
-        debugger
         if(res){
             history.push(`/settings/business/edit/${res.data.object.id}`);
         }

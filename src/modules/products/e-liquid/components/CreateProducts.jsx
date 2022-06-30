@@ -1,7 +1,7 @@
-import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
+import { ModalComponent, SaveButton } from "@comps/components";
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getProductDependencies } from "../../allProducts/components/request";
 import { createProduct } from "./request";
 
@@ -11,7 +11,7 @@ const CreateProduct = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: [],
+        product_categories: [],
         types: [],
         customers: [],
         typeB: []
@@ -21,16 +21,8 @@ const CreateProduct = (props) => {
 
     const onFinish = (data) => {
         let load = {
-            customer_id: 1,
-            name: data.name,
-            type_id: 1,
-            category_id: 2,
+            ...data,
             e_type: [{ "type": "E-Liquid" }],
-            ecid: "00000-19-11111",
-            mhra: "00000-19-11111",
-            withdrawn: 0,
-            on_market: "2022-04-06",
-            is_active: 1,
         }
         let payload = { "object": load }
         payload.object["type"] = "product";
@@ -53,11 +45,10 @@ const CreateProduct = (props) => {
 
     const onDependencySuccess = (data, res) => {
         setDeps({
-            countries: data.countries,
+            product_categories: data.product_categories,
             types: data.product_types,
             customers: data.customers,
             typeB: data.e_types,
-
         });
 
 
@@ -73,7 +64,7 @@ const CreateProduct = (props) => {
     // Start footer buttons array
     // ------------------------------------
     const footer = [
-        <SaveButton form={formName} key="create_button" htmlType="submit" state={loader}  />,
+        <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
         // <CancelButton key="close_button" onClick={() => props.onCreated(false)} />
     ];
     // ------------------------------------
@@ -82,45 +73,45 @@ const CreateProduct = (props) => {
 
     return (
         <ModalComponent mainTitle="Create" subTitle="Product" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
-        <Form
-            layout="vertical"
-            name={formName}
-            onFinish={onFinish}
-        >
-            <Form.Item name="customer_id"  label="Customer Name :" className="da-mb-16"
+            <Form
+                layout="vertical"
+                name={formName}
+                onFinish={onFinish}
+            >
+                <Form.Item name="customer_id" label="Customer Name :" className="da-mb-16"
                 >
-                <Select
-                    showSearch
-                    placeholder="Customer Name"
-                    options={deps.customers}
-                />
-            </Form.Item>
+                    <Select
+                        showSearch
+                        placeholder="Customer Name"
+                        options={deps.customers}
+                    />
+                </Form.Item>
 
-            <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
+                <Form.Item name="category_id" label="Product category :" className="da-mb-16"
                 >
-                <Select
-                    showSearch
-                    placeholder="Product Type"
-                    options={deps.typeB}
-                />
-            </Form.Item>
-            <Form.Item name="type_name"  label="Product category :" className="da-mb-16"
+                    <Select
+                        showSearch
+                        placeholder="Product category"
+                        options={deps.product_categories}
+                    />
+                </Form.Item>
+                <Form.Item name="type_id" label="Product type :" className="da-mb-16"
                 >
-                <Select
-                    showSearch
-                    placeholder="Product category   "
-                    options={deps.types}
-                />
-            </Form.Item>
+                    <Select
+                        showSearch
+                        placeholder="Product type   "
+                        options={deps.types}
+                    />
+                </Form.Item>
 
-            <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
-                {...getErrorProps(errors['name'])}>
-                <Input />
-            </Form.Item>
+                <Form.Item name="name" rules={rules.name} label="Product Name" placeholder="Product Name" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
+                    <Input />
+                </Form.Item>
 
 
-        </Form>
-    </ModalComponent>
+            </Form>
+        </ModalComponent>
     );
 }
 

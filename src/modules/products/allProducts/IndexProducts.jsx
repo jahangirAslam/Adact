@@ -138,7 +138,6 @@ const IndexProducts = () => {
     }
 
     const onCreated = (res) => {
-        debugger
         if(res){
             history.push(`/products/product/edit/${res.data.object.id}`);
         }

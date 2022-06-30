@@ -17,7 +17,6 @@ const CreateTest = (props) => {
 
 
     const onFinish = (data) => {
-         debugger
         let payload = { "object": data }
         makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
