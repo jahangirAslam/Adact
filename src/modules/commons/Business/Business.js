@@ -1,15 +1,12 @@
-import React, { useState } from "react";
-import { Typography } from 'antd';
-import { Form, Input, Skeleton, Row, Col, Divider, Select } from "antd";
-import { useHistory, useParams } from "react-router-dom";
 import { CancelButton, SaveButton } from "@comps/components";
-import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
-import { getCompany, updateCompany } from "../../thirdPartyManagement/companies/requests";
-import { useEffect } from "react";
-import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
 import { updateContact } from "@mods/commons/contacts/requests";
-import Title from "antd/lib/skeleton/Title";
+import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { Col, Form, Input, Row, Skeleton } from "antd";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { getCompany, updateCompany } from "../../thirdPartyManagement/companies/requests";
 
 
 
@@ -122,10 +119,10 @@ const Business = (props) => {
     return <Skeleton />
   }
 
-  return  (
+  return (
     <>
       <div className="da-p-32">
-            <h4 className="headerLocation">HEAD OFFICE LOCATION</h4>
+        <h4 className="headerLocation">HEAD OFFICE LOCATION</h4>
         <Form
           layout="vertical"
           name={formName}
@@ -149,31 +146,31 @@ const Business = (props) => {
               <h5 className="headerHeadings">Contact Details</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                <Form.Item name="name" rules={rules.name} label="Website" className="da-mb-16"
-                {...getErrorProps(errors['name'])}>
-                <Input />
-              </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Landline  :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
-                <Input />
-              </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Phone :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
-                <Input />
-              </Form.Item>
+                  <Form.Item name="name" rules={rules.name} label="Website" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
+                    <Input />
+                  </Form.Item>
+                  <Form.Item name="trade_name" rules={rules.trade_name} label="Landline  :" className="da-mb-16"
+                    {...getErrorProps(errors['trade_name'])}>
+                    <Input />
+                  </Form.Item>
+                  <Form.Item name="trade_name" rules={rules.trade_name} label="Phone :" className="da-mb-16"
+                    {...getErrorProps(errors['trade_name'])}>
+                    <Input />
+                  </Form.Item>
                 </Col>
               </Row>
 
               <h5 className="headerHeadings">Email</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                <Form.Item name="name" rules={rules.name} label="Email" className="da-mb-16"
-                {...getErrorProps(errors['name'])}>
-                <Input />
-              </Form.Item>
+                  <Form.Item name="name" rules={rules.name} label="Email" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
+                    <Input />
+                  </Form.Item>
                 </Col>
               </Row>
-              
+
             </Col>
             <Col className="gutter-row" span={2}></Col>
 
@@ -192,36 +189,36 @@ const Business = (props) => {
                 <Input />
               </Form.Item>
               {/* Map  */}
-             
+
               {isLoaded && <GoogleMap
                 mapContainerStyle={containerStyle}
-                 center={center}
-                 zoom={10}
-                 onLoad={onLoad}
-                 onUnmount={onUnmount}
-      >
-        { /* Child components, such as markers, info windows, etc. */ }
-                     <></>
-               </GoogleMap>}
-              
-            
+                center={center}
+                zoom={10}
+                onLoad={onLoad}
+                onUnmount={onUnmount}
+              >
+                { /* Child components, such as markers, info windows, etc. */}
+                <></>
+              </GoogleMap>}
+
+
             </Col>
-            
+
           </Row>
           <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12}>
-                <Form.Item name="name" rules={rules.name} label="Last Update On" className="da-mb-16"
+            <Col className="gutter-row" span={12}>
+              <Form.Item name="name" rules={rules.name} label="Last Update On" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                <Form.Item name="name" rules={rules.name} label="Last Updated By" className="da-mb-16"
+            </Col>
+            <Col className="gutter-row" span={12}>
+              <Form.Item name="name" rules={rules.name} label="Last Updated By" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-                </Col>
-              </Row>
+            </Col>
+          </Row>
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
@@ -230,7 +227,7 @@ const Business = (props) => {
       </div>
     </>
   );
-  
+
 }
 
 
