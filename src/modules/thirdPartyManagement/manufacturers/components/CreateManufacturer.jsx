@@ -22,7 +22,7 @@ const CreateManufacturer = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Manufacturer Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {

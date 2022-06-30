@@ -55,7 +55,6 @@ const CreateLocation = (props) => {
     // ------------------------------------
     const footer = [
         <SaveButton form={ formName } key="create_button" htmlType="submit" state={ loader } />,
-        <CancelButton key="close_button" onClick={ () => props.onCreated(false) } />
     ];
     // ------------------------------------
     // Eend footer buttons array

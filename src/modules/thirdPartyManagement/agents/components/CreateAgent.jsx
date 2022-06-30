@@ -22,7 +22,7 @@ const CreateAgent = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Agents Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {
@@ -51,7 +51,6 @@ const CreateAgent = (props) => {
   // ------------------------------------
   const footer = [
     <SaveButton form={ formName } key="create_button" htmlType="submit" state={ loader } />,
-    <CancelButton key="close_button" onClick={ () => props.onCreated(false) } />
   ];
   // ------------------------------------
   // Eend footer buttons array
@@ -64,7 +63,7 @@ const CreateAgent = (props) => {
         name={ formName }
         onFinish={ onFinish }
       >
-        <Form.Item name="name" rules={ rules.name } label="Name :" className="da-mb-16"
+        <Form.Item name="name" rules={ rules.name } label=" Third Party Name :" className="da-mb-16"
           { ...getErrorProps(errors['name']) }
         >
           <Input />

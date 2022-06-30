@@ -1,6 +1,7 @@
 import {get, post, del, put } from "@utils/axios";
 
 const api = "component-management/substances";
+const clp = "component-management/substances/clp";
 
 export const getFilters = () => {
     return get(`${api}/filters`);
@@ -26,3 +27,9 @@ export const updateSubstance = (payload) => {
 export const deleteSubstance = (id) => {
     return del(`${api}/${id}`);
 };
+export const getDependencies = () => {
+    return get(`${api}/dependencies`);
+}
+export const getDependenciesClp = () => {
+    return get(`${clp}/dependencies`);
+}

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { BodyComponent, TableComponent, ActionComponent, CreateButton,FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getLocations, deleteLocation } from "./requests";
+import { getLocations, deleteLocation,getFilters } from "./requests";
 import CreateLocation from "./components/CreateLocation.jsx";
 import EditLocation from "./components/EditLocation.jsx";
 import ViewLocation from "./components/ViewLocation.jsx";
@@ -10,7 +10,7 @@ import ViewLocation from "./components/ViewLocation.jsx";
 const IndexLocation = (props) => {
 
     const [loader, setLoader] = useState(false);
-
+    const [filters, setFilters] = useState({});
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -30,20 +30,39 @@ const IndexLocation = (props) => {
             sorter: true,
         },
         {
+            key: 'first_address',
+            title: 'Adress',
+            dataIndex: 'first_address',
+            sorter: true,
+        },
+        
+        {
             key: 'city',
-            title: 'City',
+            title: 'Town/City',
             dataIndex: 'city',
             sorter: true,
         },
         {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
+            key: 'country_id',
+            title: 'Country',
+            dataIndex: 'country_id',
             sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
         },
+        {
+            key: 'zipcode',
+            title: 'Post Code',
+            dataIndex: 'zipcode',
+            sorter: true,
+        },
+        // {
+        //     key: 'created_at',
+        //     title: 'Create At',
+        //     dataIndex: 'created_at',
+        //     sorter: true,
+        //     render: (created_at) => {
+        //         return formatCompleteDataTime(created_at);
+        //     }
+        // },
         {
             key: "actions",
             title: 'Actions',
@@ -54,7 +73,7 @@ const IndexLocation = (props) => {
     useEffect(() => {
         getAllLocations();
         // eslint-disable-next-line
-    }, [pagination]);
+    }, [pagination, filters]);
 
     const getAllLocations = () => {
         let payload = {
@@ -129,6 +148,7 @@ const IndexLocation = (props) => {
             {childComponent}
             <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
+            <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </BodyComponent>
         </>
@@ -136,3 +156,26 @@ const IndexLocation = (props) => {
 }
 
 export default IndexLocation;
+
+const availableFilters = [
+    {
+      key: 'name',
+      placeholder: 'Name',
+      type: 'select',
+    },
+    // {
+    //     key: 'name',
+    //     placeholder: 'Country ',
+    //     type: 'select',
+    //   },
+    //   {
+    //     key: 'name',
+    //     placeholder: 'Email ',
+    //     type: 'select',
+    //   },
+    //   {
+    //     key: 'name',
+    //     placeholder: 'Status ',
+    //     type: 'select',
+    //   },
+  ];

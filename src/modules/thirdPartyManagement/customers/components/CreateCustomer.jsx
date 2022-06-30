@@ -22,7 +22,7 @@ const CreateCustomer = (props) => {
 
   const onSuccess = (data, res) => {
     notify("Customer Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const getSelectFieldsData = () => {
