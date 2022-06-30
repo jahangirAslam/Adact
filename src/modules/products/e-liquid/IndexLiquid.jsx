@@ -145,6 +145,7 @@ const IndexLiquid = () => {
     }
 
     const onSuccess = (response) => {
+        debugger
         setTotalRecords(response.recordsTotal);
         setDataSource(response.data);
     }
