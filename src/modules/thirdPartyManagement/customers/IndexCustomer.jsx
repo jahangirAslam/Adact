@@ -130,7 +130,7 @@ const IndexCustomer = () => {
 
     const onCreated = (res) => {
         if(res){
-            history.push(`/third-party/customers/edit/${res.id}`);
+            history.push(`/third-party/customers/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }
