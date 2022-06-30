@@ -130,7 +130,7 @@ const IndexAgent = () => {
 
     const onCreated = (res) => {
         if (res) {
-            history.push(`/third-party/agents/edit/${res.id}`);
+            history.push(`/third-party/agents/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }

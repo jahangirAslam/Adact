@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BodyComponent, TableComponent, ActionComponent, CreateButton,FilterComponent } from "@comps/components";
+import { BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getLocations, deleteLocation,getFilters } from "./requests";
+import { getLocations, deleteLocation, getFilters } from "./requests";
 import CreateLocation from "./components/CreateLocation.jsx";
 import EditLocation from "./components/EditLocation.jsx";
 import ViewLocation from "./components/ViewLocation.jsx";
@@ -35,7 +35,7 @@ const IndexLocation = (props) => {
             dataIndex: 'first_address',
             sorter: true,
         },
-        
+
         {
             key: 'city',
             title: 'Town/City',
@@ -107,8 +107,10 @@ const IndexLocation = (props) => {
         setChildComponent(<CreateLocation onCreated={onCreated} type={props.type} />);
     }
     const onCreated = (res) => {
+       
         if (res) {
-            setDataSource([...dataSource, res]);
+
+            getAllLocations()
         }
         setChildComponent(null);
     }
@@ -148,7 +150,7 @@ const IndexLocation = (props) => {
             {childComponent}
             <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
-            <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
+                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </BodyComponent>
         </>
@@ -159,9 +161,9 @@ export default IndexLocation;
 
 const availableFilters = [
     {
-      key: 'name',
-      placeholder: 'Name',
-      type: 'select',
+        key: 'name',
+        placeholder: 'Name',
+        type: 'select',
     },
     // {
     //     key: 'name',
@@ -178,4 +180,4 @@ const availableFilters = [
     //     placeholder: 'Status ',
     //     type: 'select',
     //   },
-  ];
+];
