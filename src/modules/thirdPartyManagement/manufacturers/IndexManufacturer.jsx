@@ -40,14 +40,50 @@ const IndexManufacturer = () => {
             sorter: true,
         },
         {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
+            key: 'name',
+            title: 'Country',
+            dataIndex: 'name',
             sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
         },
+        {
+            key: 'name',
+            title: 'Email',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Adress',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Contact',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Acount',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Status',
+            dataIndex: 'name',
+            sorter: true,
+        },
+        // {
+        //     key: 'created_at',
+        //     title: 'Create At',
+        //     dataIndex: 'created_at',
+        //     sorter: true,
+        //     render: (created_at) => {
+        //         return formatCompleteDataTime(created_at);
+        //     }
+        // },
         {
             key: "actions",
             title: 'Actions',
@@ -137,7 +173,21 @@ const availableFilters = [
     {
       key: 'name',
       placeholder: 'Name',
-      type: 'text',
+      type: 'select',
     },
+    {
+        key: 'name',
+        placeholder: 'Country ',
+        type: 'select',
+      },
+      {
+        key: 'name',
+        placeholder: 'Email ',
+        type: 'select',
+      },
+      {
+        key: 'name',
+        placeholder: 'Status ',
+        type: 'select',
+      },
   ];
-  

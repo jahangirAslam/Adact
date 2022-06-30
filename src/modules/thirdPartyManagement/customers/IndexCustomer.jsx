@@ -75,15 +75,15 @@ const IndexCustomer = () => {
             dataIndex: 'name',
             sorter: true,
         },
-        {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
-            sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
-        },
+        // {
+        //     key: 'created_at',
+        //     title: 'Create At',
+        //     dataIndex: 'created_at',
+        //     sorter: true,
+        //     render: (created_at) => {
+        //         return formatCompleteDataTime(created_at);
+        //     }
+        // },
         {
             key: "actions",
             title: 'Actions',
