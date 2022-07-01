@@ -84,7 +84,7 @@ const Details = (props) => {
             <div className="logoAdact">
             <img src={adact} alt="Logo"  />
             </div>
-            <div>
+            <div className="changebtn">
             <input type="file" id="actual-btn" hidden/>
             <label for="actual-btn" className="label">Change</label>
             </div>

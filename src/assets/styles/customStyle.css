@@ -424,3 +424,7 @@ select:-webkit-autofill:focus {
         overflow: auto!important;
     }
 }
+
+.changebtn {
+    text-align-last: end!important;
+}
