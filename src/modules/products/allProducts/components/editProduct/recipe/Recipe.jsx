@@ -131,7 +131,7 @@ const Recipe = (props) => {
     useEffect(() => {
         getAllFlavours();
         //eslint-disable-next-line
-    }, [pagination]);
+    }, [pagination  ]);
 
     const getAllFlavours = () => {
         let payload = {
@@ -139,6 +139,7 @@ const Recipe = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
+            filters : {product_id:props.product_id}
 
         };
         makeRequest(setLoader, getFlavours, payload, onSuccess, null);

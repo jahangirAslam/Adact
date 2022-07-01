@@ -2,6 +2,7 @@ import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Col, Form, Input, Row, Select } from "antd";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { createFlavour, getProductDependencies } from "./request";
 
 
@@ -19,15 +20,14 @@ const CreateRecipe = (props) => {
 
     });
 
+    const { id } = useParams();
 
     const onFinish = (data) => {
         let load = {
-            product_id: props.product_id,
+            product_id: id,
             name: data.name,
             type: data.type,
             percentage: data.percentage
-
-
         }
         let payload = { "object": load }
         makeRequest(setLoader, createFlavour, payload, onSuccess);
@@ -110,7 +110,7 @@ const CreateRecipe = (props) => {
 
                         <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
                         >
-                            <Input type="number" max={props.availblePercentage.availValue}/>
+                            <Input type="number" max={props.availblePercentage.availValue} />
                         </Form.Item>
                     </Col>
                     <Col span="3"  >

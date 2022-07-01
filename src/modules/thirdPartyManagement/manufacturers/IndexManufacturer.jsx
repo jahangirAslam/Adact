@@ -130,7 +130,8 @@ const IndexManufacturer = () => {
 
     const onCreated = (res) => {
         if(res){
-            history.push(`/third-party/Manufacturers/edit/${res.id}`);
+            debugger
+            history.push(`/third-party/Manufacturers/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
     }

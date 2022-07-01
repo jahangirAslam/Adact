@@ -48,6 +48,25 @@ const IndexSubmission = (props) => {
             dataIndex: 'date_of_request',
         },
         {
+            key: 'submission_type',
+            title: 'Type',
+            sorter: true,
+            dataIndex: 'submission_type',
+        },
+        {
+            key: 'message',
+            title: 'Message',
+            sorter: true,
+            dataIndex: 'message',
+        },
+      
+        {
+            key: 'status_changes_at',
+            title: 'Status_changes_at',
+            sorter: true,
+            dataIndex: 'status_changes_at',
+        },
+        {
             key: "actions",
             title: 'Actions',
             render: (record) => ActionComponentEx(record)

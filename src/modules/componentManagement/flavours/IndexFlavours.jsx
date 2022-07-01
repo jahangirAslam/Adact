@@ -39,7 +39,7 @@ const Flavours = () => {
       key: 'name',
       title: 'Name',
       dataIndex: 'name',
-      sorter: (a, b) => a&&a.name.length - b&&b.name.length,
+      sorter: (a, b) => a && a.name.length - b && b.name.length,
 
 
     },
@@ -47,34 +47,34 @@ const Flavours = () => {
       key: 'manufacturer_id',
       title: 'Manufacturer name',
       dataIndex: 'manufacturer_id',
-      sorter: (a, b) => a&&a.manufacturer_id.length - b&&b.manufacturer_id.length,
+      sorter: (a, b) => a && a.manufacturer_id.length - b && b.manufacturer_id.length,
 
     },
     {
       key: 'manufacturer_ref',
       title: 'Ref.(Manufacturer)',
       dataIndex: 'manufacturer_ref',
-      sorter: (a, b) => a&&a.manufacturer_ref.length - b&&b.manufacturer_ref.length,
+      sorter: (a, b) => a && a.manufacturer_ref.length - b && b.manufacturer_ref.length,
     },
     {
       key: 'fed_uuin',
       title: 'FED UUIN',
       dataIndex: 'fed_uuin',
-      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+      sorter: { compare: (a, b) => a.fed_uuin - b.fed_uuin }
 
     },
     {
       key: 'composition',
       title: 'Composition',
       dataIndex: 'composition',
-      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+      sorter: { compare: (a, b) => a.fed_uuin - b.fed_uuin }
 
     },
     {
       key: 'status',
       title: 'Status',
       dataIndex: 'status',
-      sorter: {compare: (a, b) => a.fed_uuin - b.fed_uuin}
+      sorter: { compare: (a, b) => a.fed_uuin - b.fed_uuin }
 
     },
     {
@@ -147,11 +147,11 @@ const Flavours = () => {
   }
 
   const onCreated = (res) => {
-    if(res){
-        history.push(`/component-management/users/edit/${res.data.object.id}`);
+    if (res) {
+      history.push(`/component-management/users/edit/${res.data.object.id}`);
     }
     setChildComponent(null);
-}
+  }
 
 
 
@@ -187,7 +187,7 @@ const Flavours = () => {
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-        <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }}  rowSelection={rowSelection} />
+        <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
       </BodyComponent>
     </>
   );

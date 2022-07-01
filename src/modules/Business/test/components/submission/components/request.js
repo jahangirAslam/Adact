@@ -1,9 +1,8 @@
 import {get, post, del, put } from "@utils/axios";
 
-const api = "third-party/fda/submission";
+const api = "third-party/submission";
 
 export const createItem = (payload) => {
-    debugger
     return post(api, payload);
 }
 export const getAllItems = (payload) => {

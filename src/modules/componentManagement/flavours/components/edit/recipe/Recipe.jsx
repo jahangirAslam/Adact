@@ -2,6 +2,7 @@ import { ActionComponent, CreateButton, EditAbleTable } from "@comps/components"
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Form, Popconfirm, Row, Typography } from "antd";
 import { default as React, useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CreateRecipe from "./CreateRecipe";
 import { deleteFlavour, getFlavours, updateSubstance } from "./request";
 const originData = [];
@@ -126,13 +127,15 @@ const Recipe = (props) => {
         getAllFlavours();
         //eslint-disable-next-line
     }, [pagination]);
-
+    const {id} = useParams()
     const getAllFlavours = () => {
         let payload = {
             start: pagination.current - 1,
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
+            // filters : {flavours_id: id}
+            
 
         };
         makeRequest(setLoader, getFlavours, payload, onSuccess, null);

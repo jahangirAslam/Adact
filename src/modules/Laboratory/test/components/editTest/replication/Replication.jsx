@@ -4,9 +4,7 @@ import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Col, Row, Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-//  import CreateRecipe from "./Replication";
 import CreateReplication from "./CreateReplications";
-// import { deleteFlavour, getFilters, getFlavours } from "./request";
 import { deleteItems, getFilters, getAllItems } from "./component/request";
 
 

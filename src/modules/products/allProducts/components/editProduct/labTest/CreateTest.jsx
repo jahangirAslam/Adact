@@ -2,6 +2,7 @@ import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Select } from "antd";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { createFlavour, getProductDependencies } from "./request";
 
 
@@ -15,19 +16,14 @@ const CreateTest = (props) => {
         types: [],
 
     });
+    const { id } = useParams();
 
 
     const onFinish = (data) => {
         let load = {
-            product_id: props.product_id,
-            laboratory_id: data.laboratory_id,
-            type: data.type,
-            facility_id: data.facility_id,
-            created_by: 1,
-            status: "new",
-
+            product_id: id,
+            ...data
         }
-
         let payload = { "object": load }
         makeRequest(setLoader, createFlavour, payload, onSuccess);
     }

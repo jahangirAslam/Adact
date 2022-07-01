@@ -22,7 +22,7 @@ const CreateLocation = (props) => {
 
     const onSuccess = (data, res) => {
         notify("Contact Created", res.msg);
-        props.onCreated(false);
+        props.onCreated(res);
     }
 
     const getSelectFieldsData = () => {

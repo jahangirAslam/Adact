@@ -68,7 +68,6 @@ const Design = (props) => {
     makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
 }
 const onDependencySuccess = (data, res) => {
-  debugger
   setDeps({
 
     // volt: data.Volt-Walt-Adjustable,
@@ -160,7 +159,6 @@ const onDependencySuccess = (data, res) => {
       product_id: props.product_id,
       ...data,
     };
-    debugger;
     let payload = { object: load };
     makeRequest(setLoader, createFlavour, payload, onSuccess);
   };

@@ -11,24 +11,18 @@ const CreateProduct = (props) => {
     const [loader, setLoader] = useState(false);
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
-        countries: [],
+        product_categories: [],
         types: [],
         customers: [],
-        typeB:[]
-        
+        typeB: []
+
     });
-   
+
 
     const onFinish = (data) => {
-        let load = {
-            customer_id: 1,
-            name: data.name,
-            type_id: 1,
-            category_id: 2
-        }
-        let payload = { "object": load }
-        payload.object["type"] = "Flavour";
+        let payload = { "object": data }
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
+
     }
 
     const onSuccess = (data, res) => {
@@ -47,13 +41,13 @@ const CreateProduct = (props) => {
 
     const onDependencySuccess = (data, res) => {
         setDeps({
-            countries: data.countries,
+            product_categories: data.product_categories,
             types: data.product_types,
             customers: data.customers,
-            typeB:data.e_types,
+            typeB: data.e_types,
 
         });
-      
+
 
     }
 
@@ -81,8 +75,8 @@ const CreateProduct = (props) => {
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="customer_id"  label="Customer Name :" className="da-mb-16"
-                    >
+                <Form.Item name="customer_id" label="Customer Name :" className="da-mb-16"
+                >
                     <Select
                         showSearch
                         placeholder="Customer Name"
@@ -90,19 +84,19 @@ const CreateProduct = (props) => {
                     />
                 </Form.Item>
 
-                <Form.Item name="e_type"  label="Product Type :" className="da-mb-16"
-                    >
+                <Form.Item name="category_id" label="Product category :" className="da-mb-16"
+                >
                     <Select
                         showSearch
-                        placeholder="Product Type"
-                        options={deps.typeB}
+                        placeholder="Product category"
+                        options={deps.product_categories}
                     />
                 </Form.Item>
-                <Form.Item name="type_name"  label="Product category :" className="da-mb-16"
-                    >
+                <Form.Item name="type_id" label="Product type :" className="da-mb-16"
+                >
                     <Select
                         showSearch
-                        placeholder="Product category   "
+                        placeholder="Product type   "
                         options={deps.types}
                     />
                 </Form.Item>
