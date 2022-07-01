@@ -94,7 +94,7 @@ const EditCompany = (props) => {
           initialValues={data.object}
         >
           <Row gutter={[16, 24]}>
-            <Col className="gutter-row" span={11}>
+            <Col className="gutter-row" span={24}>
               <Divider orientation="left"><strong>SUMMARY</strong></Divider>
               <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
@@ -154,80 +154,7 @@ const EditCompany = (props) => {
                 </Col>
               </Row>
             </Col>
-            <Col className="gutter-row" span={2}></Col>
-            {/* <Col className="gutter-row" span={11}>
-              <Divider orientation="left"><strong>LOCATION</strong></Divider>
-              <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="first_address" rules={rules.first_address} label="Address :" className="da-mb-16"
-                    {...getErrorProps(errors['first_address'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="second_address" rules={rules.second_address} label="Address :" className="da-mb-16"
-                    {...getErrorProps(errors['second_address'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="state" rules={rules.state} label="State :" className="da-mb-16"
-                    {...getErrorProps(errors['state'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="zipcode" rules={rules.zipcode} label="Zip code :" className="da-mb-16"
-                    {...getErrorProps(errors['zipcode'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="country_id" rules={rules.country} label="Country :" className="da-mb-16"
-                    {...getErrorProps(errors['country'])}>
-                    <Select
-                      showSearch
-                      placeholder="Select a country"
-                      options={deps.countries}
-                    />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="city" rules={rules.city} label="City :" className="da-mb-16"
-                    {...getErrorProps(errors['city'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-              </Row>
-
-              <Divider orientation="left"><strong>CONTACT DETAILS</strong></Divider>
-              <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="website" rules={rules.website} label="Website :" className="da-mb-16"
-                    {...getErrorProps(errors['website'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="mobile" rules={rules.mobile} label="Mobile :" className="da-mb-16"
-                    {...getErrorProps(errors['mobile'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="landline" rules={rules.landline} label="Landline :" className="da-mb-16"
-                    {...getErrorProps(errors['landline'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
-                    {...getErrorProps(errors['email'])}>
-                    <Input />
-                  </Form.Item>
-                </Col>
-              </Row>
-            </Col> */}
+            
           </Row>
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
