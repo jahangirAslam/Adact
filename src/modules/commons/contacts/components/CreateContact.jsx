@@ -3,6 +3,7 @@ import { Form, Input, Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { createContact } from "../requests";
+import { useParams } from "react-router-dom";
 
 
 const formName = "createContact";
@@ -13,16 +14,20 @@ const CreateContact = (props) => {
   const [errors, setErrors] = useState([]);
 
 
-
+    const {id} = useParams()
   const onFinish = (data) => {
-    let payload = { "object": data }
+    const load = {
+      companies_id : id ,
+      ...data
+    }
+    let payload = { "object": load }
     payload.object["type"] = props.type;
     makeRequest(setLoader, createContact, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
     notify("Contact Created", res.msg);
-    props.onCreated(false);
+    props.onCreated(res);
   }
 
   const onError = (err) => {
@@ -39,7 +44,6 @@ const CreateContact = (props) => {
   // ------------------------------------
   const footer = [
     <SaveButton form={ formName } key="create_button" htmlType="submit" state={ loader } />,
-    <CancelButton key="close_button" onClick={ () => props.onCreated(false) } />
   ];
   // ------------------------------------
   // Eend footer buttons array
