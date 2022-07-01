@@ -1,26 +1,18 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import {
   ActionComponent,
-  BodyComponent,
-  CreateButton,
-  FilterComponent,
-  SelectionTable,
+  BodyComponent, ButtonComponent
 } from "@comps/components";
-import { makeRequest, notify, makeRequestStateless } from "@utils/helpers";
-import { ButtonComponent } from "@comps/components";
-import { Col, Form, Input, Row, Select, Switch, Tag } from "antd";
-import React, { useEffect, useState } from "react";
+import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { Col, Form, Input, Row, Select, Switch } from "antd";
+import TextArea from "antd/lib/input/TextArea";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateRecipe from "./CreateTest";
 import {
   createFlavour,
-  deleteFlavour,
-  getProductDependencies,
-  getFilters,
-  getFlavours,
+  deleteFlavour, getFlavours, getProductDependencies
 } from "./request";
-import { InputNumber, Space } from "antd";
-import TextArea from "antd/lib/input/TextArea";
 const onChange = (value) => {
   console.log("changed", value);
 };
