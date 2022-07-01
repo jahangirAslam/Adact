@@ -6,6 +6,7 @@ import DocumentsIcon from "../../../../../containers/components/menu/icons/Docum
 import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
 import { getFlavour } from "../request";
 import FlavourInformation from "./FlavourInformation";
+import ProductUseFlavour from "./ProductUseFlavour";
 import Recipe from "./recipe/Recipe";
 
 
@@ -61,6 +62,11 @@ const EditFlavour = () => {
             title: "Recipe",
             icon: <DocumentsIcon />,
             content: <Recipe flavourId={id} />
+        },
+        {
+            title: "List of Product which uses this flavour",
+            icon: <DocumentsIcon />,
+            content: <ProductUseFlavour flavourId={id} />
         },
 
     ]
