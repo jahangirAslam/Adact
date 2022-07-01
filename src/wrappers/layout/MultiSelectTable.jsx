@@ -1,5 +1,6 @@
 import { Button, Table } from 'antd';
 import React, { useMemo, useRef } from 'react';
+import { Col, Row } from 'antd';
 import { CSVLink } from "react-csv"
 import { useReactToPrint } from 'react-to-print';
 
@@ -14,14 +15,20 @@ const MultiSelectTable = (props) => {
     });
 
     const tab = useMemo(() => <div>
-        <Button onClick={handlePrint} type="primary" danger> Export to PDF </Button>
+        <Row>
+      <Col className='csvPdfBtn' span={24} md={24}>
+      <Button className='pdfBtn' onClick={handlePrint} type="primary" danger> Export to PDF </Button>
         <CSVLink
             filename={"Expense_Table.csv"}
             data={props.dataSource}
-            className="btn btn-primary"
+            className="csvBtn"
         >
             Export to CSV
         </CSVLink>
+      </Col>
+    </Row>
+
+        
         {props.dataSource &&
             <div ref={componentRef}>
                 <Table
