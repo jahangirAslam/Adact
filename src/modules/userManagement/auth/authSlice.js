@@ -24,6 +24,7 @@ export const signinUser = createAsyncThunk(
         if (res.code === 200) {
             localStorage.setItem("user", JSON.stringify(res.data.user));
             Cookies.set("token", res.data.access_token); // Set this to cookies
+            Cookies.set("userId", res.data.user.id); // Set this to cookies
             return res.data;
         } else if (res.code === 202) {
             let data = [];
