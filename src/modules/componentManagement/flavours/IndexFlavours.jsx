@@ -187,6 +187,8 @@ const Flavours = () => {
       </HeaderComponent>
       <BodyComponent>
         <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
+       
+        
         <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
       </BodyComponent>
     </>
