@@ -7,6 +7,7 @@ import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
 import  IndexBrand  from "@mods/commons/brands/IndexBrand";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
+import AcountSetting from "../../../commons/Account Setting/AcountSetting";
 
 const pageConfig = {
   headers: {
@@ -47,6 +48,10 @@ const EditAllThirdParty = () => {
     {
       title: "Attachments",
       content: <IndexAttachment type="AllThirdParties" />
+    },
+    {
+      title: "Account Setting",
+      content: <AcountSetting type="AllThirdParties" />
     },
     {
       title: "Products",
