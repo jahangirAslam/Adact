@@ -10,6 +10,9 @@ import SummaryIcon from "../../../../../containers/components/menu/icons/Summary
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import ProductIdentification from "../../../../../containers/components/menu/icons/ProductIdentification";
 import Design from "./Design/Design";
+import ProductDetails from "./product details/ProductDetails";
+import Submission from "./submission/recipe/Submission";
+import Mandatory from "./Mandatory/Mandatory";
 
 const pageConfig = {
     headers: {
@@ -60,6 +63,12 @@ const EditProduct = () => {
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         {
+            title: "Product Details",
+            icon: <ProductIdentification />,
+
+            content: <ProductDetails data={data.object} dependencies={data.dependencies} />
+        },
+        {
             title: "Recipe",
             icon: <SummaryIcon />,
             content: <Recipe product_id={id} />
@@ -74,6 +83,17 @@ const EditProduct = () => {
             icon: <LaboratoryIcon />,
             content: <Design product_id={id} />
         },
+        {
+            title: "Submission",
+            icon: <LaboratoryIcon />,
+            content: <Submission product_id={id} />
+        },
+        {
+            title: "Mandatory Declarations",
+            icon: <LaboratoryIcon />,
+            content: <Mandatory product_id={id} />
+        },
+
 
     ]
 
