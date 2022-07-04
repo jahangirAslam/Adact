@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
+import { HeaderComponent, BodyComponent, SelectionTable, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getCustomers, deleteCustomer, getFilters } from "./requests";
 import CreateCustomer from "./components/CreateCustomer";
@@ -18,7 +18,7 @@ const pageConfig = {
 }
 
 const IndexCustomer = () => {
-
+    var delItems = []
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const [filters, setFilters] = useState({});
@@ -152,6 +152,13 @@ const IndexCustomer = () => {
     const onError = (error, msg) => {
         notify(msg.message)
     }
+    ////
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+          delItems = []
+          delItems = selectedRowKeys
+        },
+      };
 
     return (
         <>
@@ -161,11 +168,12 @@ const IndexCustomer = () => {
             </HeaderComponent>
             <BodyComponent>
             <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
-                <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
+            <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
 }
+
 
 export default IndexCustomer;
 
