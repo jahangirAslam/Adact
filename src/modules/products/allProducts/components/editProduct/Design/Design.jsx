@@ -36,42 +36,25 @@ const Design = (props) => {
   const [deps, setDeps] = useState({
     volt: [],
 
-});
+  });
   const [childComponent, setChildComponent] = useState(null);
-  const ActionComponentEx = (record) => {
-    let icon = null;
-    if (record) {
-      if (record.is_active) {
-        icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
-      } else {
-        icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
-      }
-    }
-    return (
-      <ActionComponent
-        each={record}
-        onDelete={onDelete}
-        onEdit={onEdit}
-        onView={onView}
-      ></ActionComponent>
-    );
-  };
+
   const getSelectFieldsData = () => {
     makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
-}
-const onDependencySuccess = (data, res) => {
-  setDeps({
+  }
+  const onDependencySuccess = (data, res) => {
+    setDeps({
 
-    // volt: data.Volt-Walt-Adjustable,
+      volt: data.Volt_Walt_Adjustable,
 
-  });
+    });
 
 
-}
+  }
   useEffect(() => {
     getSelectFieldsData();
     // eslint-disable-next-line
-}, []);
+  }, []);
   useEffect(() => {
     getAllFlavours();
     // eslint-disable-next-line
@@ -91,7 +74,12 @@ const onDependencySuccess = (data, res) => {
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
+
   };
+  const onCreated = () => {
+    notify("Design created successfuly ");
+    history.push(`/products/all_products`)
+  }
 
   //deleted multi Items
   const rowSelection = {
@@ -101,58 +89,17 @@ const onDependencySuccess = (data, res) => {
     },
   };
   // Create component modal
-  const onCreate = () => {
-    setChildComponent(
-      <CreateRecipe onCreated={onCreated} product_id={props.product_id} />
-    );
-  };
 
-  const onCreated = (res) => {
-    if (res) {
-      history.push(`/products/product-test/edit/${res.data.object.id}`);
-    }
-    setChildComponent(null);
-  };
 
-  const onEdit = (record) => {
-    history.push(`/products/product-test/edit/${record.id}`);
-  };
-  const onView = (record) => {
-    history.push(`/products/product-test/view/${record.id}`);
-  };
-  const onDelete = (record) => {
-    let index = delItems.findIndex((o) => o === record.id);
-    if (index === -1) {
-      delItems.push(record.id);
-    }
-    const payload = { ids: delItems };
-    makeRequest(setLoader, deleteFlavour, payload, onDeleteSuccess, onError);
-  };
-  const handleTableChange = (page, fil, sorter) => {
-    let payload = {
-      ...pagination,
-      current: page.current,
-      pageSize: page.pageSize,
-      sortName: sorter.field || "id",
-      sortType: sorter.order === "ascend" ? "asc" : "desc",
-    };
-    setPagination(payload);
-  };
-  const onDeleteSuccess = (response, msg) => {
-    getAllFlavours();
-    notify(msg.msg);
-  };
 
-  const onError = (error, msg) => {
-    //
-  };
   const onFinish = (data) => {
     let load = {
       product_id: props.product_id,
       ...data,
     };
+    debugger
     let payload = { object: load };
-    makeRequest(setLoader, createFlavour, payload, onSuccess);
+    makeRequest(setLoader, createFlavour, payload, onCreated);
   };
   return (
     <>
@@ -203,9 +150,9 @@ const onDependencySuccess = (data, res) => {
               </Row>
               <h5>E-Liquid</h5>
               <Row gutter={[16, 24]}>
-              <Col className="gutter-row" xs={24} md={12} lg={10}>
+                <Col className="gutter-row" xs={24} md={12} lg={10}>
                   <Form.Item name="product_width" label="Liquid Volume Capacity" >
-                    <Input  disabled={disabled}/>
+                    <Input disabled={disabled} />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={10}>
@@ -265,10 +212,10 @@ const onDependencySuccess = (data, res) => {
                   label="Volt Watt Adjustable"
                 >
                   <Select
-                        showSearch
-                        placeholder="Adjustable"
-                        options={deps.volt}
-                    />
+                    showSearch
+                    placeholder="Adjustable"
+                    options={deps.volt}
+                  />
                 </Form.Item>
               </Col>
               <Col
@@ -431,76 +378,4 @@ const onDependencySuccess = (data, res) => {
 
 export default Design;
 
-const availableFilters = [
-  {
-    key: "laboratory_name",
-    placeholder: " Battery Type ",
-    type: "select",
-    data_key: "laboratory",
-  },
-  {
-    key: "customer_name",
-    placeholder: "Battery Capacity",
-    type: "select",
-    data_key: "customers",
-  },
-  {
-    key: "product_name",
-    placeholder: "Volt Watt adjustable",
-    type: "select",
-    data_key: "product_name",
-  },
-  {
-    key: "test_ref",
-    placeholder: "e-cig device ID",
-    type: "text",
-  },
-  {
-    key: "type",
-    placeholder: "Voltage",
-    type: "select",
-    data_key: "types",
-  },
-  {
-    key: "status",
-    placeholder: "Voltage Upper Range",
-    type: "select",
-    data_key: "status",
-  },
-  {
-    key: "current",
-    placeholder: "Voltage lower Range",
-    type: "select",
-    data_key: "current",
-  },
-  {
-    key: "current",
-    placeholder: "Coil Resistance",
-    type: "select",
-    data_key: "current",
-  },
-  {
-    key: "current",
-    placeholder: "Wattage",
-    type: "select",
-    data_key: "current",
-  },
-  {
-    key: "status",
-    placeholder: "Voltage Upper Range",
-    type: "select",
-    data_key: "status",
-  },
-  {
-    key: "current",
-    placeholder: "Voltage lower Range",
-    type: "select",
-    data_key: "current",
-  },
-  {
-    key: "current",
-    placeholder: "Coil Composition",
-    type: "select",
-    data_key: "current",
-  },
-];
+
