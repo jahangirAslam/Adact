@@ -4,6 +4,8 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import BasicInformation from "./edits/BasicInformation";
 import { getChemicalCompound } from "../requests";
+import ActivityLog from "./edits/ActivityLog";
+import Formulation from "./edits/Formulation";
 
 const pageConfig = {
   headers: {
@@ -43,6 +45,27 @@ const chemicalCompoundSuccess = (res) =>{
       title: "Summary",
       content: (
         <BasicInformation
+          id={id}
+          data={data.object}
+          dependencies={data.dependencies}
+        />
+      ),
+    },
+    {
+      title: "Formulation",
+      content: (
+        <Formulation
+          id={id}
+          data={data.object}
+          dependencies={data.dependencies}
+        />
+      ),
+    },
+    
+    {
+      title: "ActivityLog",
+      content: (
+        <ActivityLog
           id={id}
           data={data.object}
           dependencies={data.dependencies}

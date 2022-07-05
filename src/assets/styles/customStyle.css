@@ -429,6 +429,23 @@ select:-webkit-autofill:focus {
     text-align-last: end!important;
 }
 
+.formulationAdd {
+    width: 100%!important;
+    padding: 6px!important;
+    margin: 6px!important;
+}
+
+.productDetails {
+    font-size: 14px!important;
+    padding: 6px!important;
+}
+
+.productDetails strong {
+    color: red!important;
+    margin: 8px!important;
+    font-size: 20px!important;
+}
+
 .csvPdfBtn {
     text-align-last: end!important;
     padding: 8px;
@@ -446,7 +463,7 @@ select:-webkit-autofill:focus {
 .csvBtn {
     color: black!important;
     background-color: white;
-    padding: 10px;
+    padding: 12px;
     border: .2px solid gray;
     border-radius: 6px!important;
 }
@@ -466,4 +483,41 @@ select:-webkit-autofill:focus {
 
 .chart h4 {
     padding: 10px;
+}
+
+.Toxical {
+    padding: 8px!important;
+    margin: 6px!important;
+}
+
+.toxicalDescription h5 {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.toxicalDescription p {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.datasource {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.datasourceHeader {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
 }
