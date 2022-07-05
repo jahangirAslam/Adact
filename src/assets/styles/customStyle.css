@@ -455,3 +455,15 @@ select:-webkit-autofill:focus {
     color: #0093cd!important;
     border: .2px solid #0093cd;
 }
+
+.chart {
+    width: 90%;
+    height: 500px;
+    padding-left: 3%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.chart h4 {
+    padding: 10px;
+}

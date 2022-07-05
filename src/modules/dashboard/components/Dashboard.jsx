@@ -1,3 +1,4 @@
+import { Row } from "antd";
 import React from "react";
 import { Chart } from 'react-charts'
 
@@ -18,14 +19,21 @@ const Dashboard = () => {
   ]
 
   return (
-    <div
-      style={{
-        width: '100%',
-        height: '300px'
-      }}
-    >
-      <Chart data={data} axes={axes} />
-    </div>
+    <Row>
+      <Row
+        className="chart"
+      >
+        <h4>Products & Presentations</h4>
+        <Chart data={data} axes={axes} />
+      </Row>
+      <Row
+        className="chart da-pt-48"
+      >
+        <h4>Products & Presentations</h4>
+        <Chart data={data} axes={axes} />
+      </Row>
+    </Row>
+
   )
 }
 export default Dashboard;
