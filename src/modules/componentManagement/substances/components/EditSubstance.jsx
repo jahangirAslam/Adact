@@ -9,6 +9,7 @@ import { getSubstance } from "./../requests";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
 import Clp from "./edits/Clp";
+import DataSource from "./edits/DataSource";
 import Toxical from "./edits/Toxical";
 
 const pageConfig = {
@@ -59,6 +60,11 @@ const EditSubstance = () => {
       title: "Toxical",
       icon: <Chemical />,
       content: <Toxical id={id} data={data} />,
+    },
+    {
+      title: "Data Source",
+      icon: <Chemical />,
+      content: <DataSource id={id} data={data} />,
     },
   ];
 

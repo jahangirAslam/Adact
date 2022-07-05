@@ -493,3 +493,19 @@ select:-webkit-autofill:focus {
     margin-bottom: 6px;
     margin-left: 4px;
 }
+
+.datasource {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.datasourceHeader {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
