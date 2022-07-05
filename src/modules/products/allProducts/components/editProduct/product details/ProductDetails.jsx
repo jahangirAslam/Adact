@@ -104,7 +104,7 @@ const ProductDetails = (props) => {
 
             </Row>
             <Row>
-                <Col span={12}>
+                <Col span={12} className='productDetails'>
                     <p> <strong><WarningOutlined/></strong>This Product is invalid or contains invalid or missing elements</p>
                     <p> <strong><WarningOutlined/></strong>This Product hase invalid recepi</p>
                     <p> <strong><WarningOutlined/></strong>Product Recipe is incomplete Missing 10%</p>

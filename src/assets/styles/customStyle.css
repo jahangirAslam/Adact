@@ -429,29 +429,19 @@ select:-webkit-autofill:focus {
     text-align-last: end!important;
 }
 
-.csvPdfBtn {
-    text-align-last: end!important;
-    padding: 8px;
+.formulationAdd {
+    width: 100%!important;
+    padding: 6px!important;
+    margin: 6px!important;
 }
 
-.ant-btn-dangerous.ant-btn-primary {
-    color: #fff;
-    border-color: #0093cd!important;
-    background: #0093cd!important;
-    text-shadow: none;
-    box-shadow: none;
-    margin: 12px!important;
+.productDetails {
+    font-size: 14px!important;
+    padding: 6px!important;
 }
 
-.csvBtn {
-    color: black!important;
-    background-color: white;
-    padding: 10px;
-    border: .2px solid gray;
-    border-radius: 6px!important;
-}
-
-.csvBtn:hover {
-    color: #0093cd!important;
-    border: .2px solid #0093cd;
+.productDetails strong {
+    color: red!important;
+    margin: 8px!important;
+    font-size: 20px!important;
 }
