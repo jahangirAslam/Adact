@@ -36,21 +36,21 @@ const IndexBrands = () => {
     const columns = [
 
         {
-            key: 'name',
+            key: 'custom_id',
             title: 'Customer Product ',
+            dataIndex: 'custom_id',
+            sorter: true,
+        },
+        {
+            key: 'name',
+            title: 'Brand Na ',
             dataIndex: 'name',
             sorter: true,
         },
         {
-            key: 'country_id',
-            title: 'Brand Na ',
-            dataIndex: 'country_id',
-            sorter: true,
-        },
-        {
-            key: 'email',
+            key: 'sub_name',
             title: 'Sub Brand ',
-            dataIndex: 'email',
+            dataIndex: 'sub_name',
             sorter: true,
         },
         {
@@ -79,21 +79,21 @@ const IndexBrands = () => {
             }
         },
         {
-            key: 'trading_name',
+            key: 'units',
             title: 'Units',
-            dataIndex: 'trading_name',
+            dataIndex: 'units',
             sorter: true,
         },
         {
-            key: 'trading_name',
+            key: 'market',
             title: 'Market',
-            dataIndex: 'trading_name',
+            dataIndex: 'market',
             sorter: true,
         },
         {
-            key: 'trading_name',
+            key: 'id',
             title: 'ID',
-            dataIndex: 'trading_name',
+            dataIndex: 'id',
             sorter: true,
         },
 
