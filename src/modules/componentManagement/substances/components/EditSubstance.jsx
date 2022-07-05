@@ -9,6 +9,7 @@ import { getSubstance } from "./../requests";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
 import Clp from "./edits/Clp";
+import Toxical from "./edits/Toxical";
 
 const pageConfig = {
   headers: {
@@ -53,6 +54,11 @@ const EditSubstance = () => {
       title: "CLP",
       icon: <Chemical />,
       content: <Clp id={id} data={data} />,
+    },
+    {
+      title: "Toxical",
+      icon: <Chemical />,
+      content: <Toxical id={id} data={data} />,
     },
   ];
 

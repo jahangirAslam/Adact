@@ -445,3 +445,51 @@ select:-webkit-autofill:focus {
     margin: 8px!important;
     font-size: 20px!important;
 }
+
+.csvPdfBtn {
+    text-align-last: end!important;
+    padding: 8px;
+}
+
+.ant-btn-dangerous.ant-btn-primary {
+    color: #fff;
+    border-color: #0093cd!important;
+    background: #0093cd!important;
+    text-shadow: none;
+    box-shadow: none;
+    margin: 12px!important;
+}
+
+.csvBtn {
+    color: black!important;
+    background-color: white;
+    padding: 12px;
+    border: .2px solid gray;
+    border-radius: 6px!important;
+}
+
+.csvBtn:hover {
+    color: #0093cd!important;
+    border: .2px solid #0093cd;
+}
+
+.Toxical {
+    padding: 8px!important;
+    margin: 6px!important;
+}
+
+.toxicalDescription h5 {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
+
+.toxicalDescription p {
+    font-weight: 300!important;
+    padding: 8px!important;
+    margin-top: 6px;
+    margin-bottom: 6px;
+    margin-left: 4px;
+}
