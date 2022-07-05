@@ -47,9 +47,9 @@ const IndexChemicalCompound = () => {
         sorter: true,
       },
       {
-        key: "customer_id",
+        key: "customer_name",
         title: "Customer",
-        dataIndex: "customer_id",
+        dataIndex: "customer_name",
         sorter: true,
       },
       {

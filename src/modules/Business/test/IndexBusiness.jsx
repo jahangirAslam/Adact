@@ -42,9 +42,9 @@ const IndexBusiness = () => {
             sorter: true,
         },
         {
-            key: 'country_id',
+            key: 'country_name',
             title: 'Country',
-            dataIndex: 'country_id',
+            dataIndex: 'country_name',
             sorter: true,
         },
         {

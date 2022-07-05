@@ -16,19 +16,19 @@ const MultiSelectTable = (props) => {
 
     const tab = useMemo(() => <div>
         <Row>
-      <Col className='csvPdfBtn' span={24} md={24}>
-      <Button className='pdfBtn' onClick={handlePrint} type="primary" danger> Export to PDF </Button>
-        <CSVLink
-            filename={"Expense_Table.csv"}
-            data={props.dataSource}
-            className="csvBtn"
-        >
-            Export to CSV
-        </CSVLink>
-      </Col>
-    </Row>
+            <Col className='csvPdfBtn' span={24} md={24}>
+                <Button className='pdfBtn' onClick={handlePrint} type="primary" danger> Export to PDF </Button>
+                <CSVLink
+                    filename={"Expense_Table.csv"}
+                    data={props.dataSource}
+                    className="csvBtn"
+                >
+                    Export to CSV
+                </CSVLink>
+            </Col>
+        </Row>
 
-        
+
         {props.dataSource &&
             <div ref={componentRef}>
                 <Table

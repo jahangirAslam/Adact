@@ -44,10 +44,10 @@ const Flavours = () => {
 
     },
     {
-      key: 'manufacturer_id',
+      key: 'manufacture_name',
       title: 'Manufacturer name',
-      dataIndex: 'manufacturer_id',
-      sorter: (a, b) => a && a.manufacturer_id.length - b && b.manufacturer_id.length,
+      dataIndex: 'manufacture_name',
+      sorter: (a, b) => a && a.manufacture_name.length - b && b.manufacture_name.length,
 
     },
     {
