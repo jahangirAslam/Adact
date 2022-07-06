@@ -1,4 +1,4 @@
-import { Row } from "antd";
+import { Row,Col } from "antd";
 import React from "react";
 import { Chart } from 'react-charts'
 
@@ -23,13 +23,19 @@ const Dashboard = () => {
       <Row
         className="chart"
       >
+        <Col span={24}>
         <h4>Products & Presentations</h4>
+        </Col>
+        <Col span={24}>
         <Chart data={data} axes={axes} />
+        </Col>
       </Row>
       <Row
         className="chart da-pt-48"
       >
+        <Col span={24}>
         <h4>Products & Presentations</h4>
+        </Col>
         <Chart data={data} axes={axes} />
       </Row>
     </Row>
