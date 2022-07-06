@@ -99,7 +99,7 @@ const CreateRecipe = (props) => {
 
                         <Form.Item name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
                         >
-                            <Input type="number" />
+                            <Input type="number" max={props.availblePercentage.availValue} />
                         </Form.Item>
                     </Col>
                     <Col span="3" >
