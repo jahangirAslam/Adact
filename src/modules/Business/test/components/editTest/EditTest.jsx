@@ -4,7 +4,15 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItem } from "../request";
 import IndexSubmission from "../submission/IndexSubmission";
+import ContactDetails from "./ContactDetails";
 import Details from './Details';
+import LocationIndex from "@mods/commons/locations/IndexLocation";
+import ContactIndex from "@mods/commons/contacts/IndexContact";
+import AcountSetting from "../../../../commons/Account Setting/AcountSetting";
+import ActivityLog from "../../../../componentManagement/chemicalCompounds/components/edits/ActivityLog";
+
+
+
 
 const pageConfig = {
     headers: {
@@ -56,19 +64,19 @@ const EditTest = () => {
         },
         {
             title: "Contact Details  ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <ContactDetails data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Locations ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <LocationIndex data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Contacts ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <ContactIndex data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Acount Setting  ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <AcountSetting data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Submission ",
@@ -76,7 +84,7 @@ const EditTest = () => {
         },
         {
             title: "Activity logs ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <ActivityLog data={data.object} dependencies={data.dependencies} />
         },
         
         

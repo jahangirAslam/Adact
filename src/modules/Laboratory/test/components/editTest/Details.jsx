@@ -1,6 +1,6 @@
 import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Col, Form, Input, Row } from "antd";
+import { Col, Form, Input, Row, Switch } from "antd";
 import React, { useState } from "react";
 import { updateSubstance } from "../request";
 
@@ -22,11 +22,9 @@ const Details = (props) => {
         errorList["password"] = err;
         setErrors(errorList);
     };
-
-    // const onChange = (e) => {
-    //   console.log("radio checked", e.target.value);
-    //   setValue(e.target.value);
-    // };
+    const onChange = (checked) => {
+        console.log(`switch to ${checked}`);
+      };
 
     return (
         <Form
@@ -116,9 +114,10 @@ const Details = (props) => {
                 </Col>
 
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                {/* <Form.Item name="test_ref" label="Faculty :">
-                        <Input />
-                    </Form.Item> */}
+                { <Form.Item name="approved" label="Approved :">
+                       <Switch defaultChecked onChange={onChange} />;
+
+                    </Form.Item> }
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
