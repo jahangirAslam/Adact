@@ -536,3 +536,13 @@ select:-webkit-autofill:focus {
 .recipeBtn {
     color: #0093cd!important;
 }
+
+.chart {
+    margin-top: 12px!important;
+    margin-bottom: 12px!important;
+}
+
+.chart h4 {
+    color: #0093CD;
+    padding: 8px!important;
+}
