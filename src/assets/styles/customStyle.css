@@ -532,3 +532,7 @@ select:-webkit-autofill:focus {
     height: 300px!important;
     width: 100%!important;
 }
+
+.recipeBtn {
+    color: #0093cd!important;
+}

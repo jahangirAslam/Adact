@@ -84,21 +84,21 @@ const Recipe = (props) => {
         },
         {
             title: 'ML',
-            dataIndex: 'percentage',
+            dataIndex: 'ml',
             width: '25%',
-            editable: true,
+            editable: false,
         },
         {
             title: 'MG/ML',
-            dataIndex: 'percentage',
+            dataIndex: 'mg_1ml',
             width: '25%',
-            editable: true,
+            editable: false,
         },
         {
             title: 'Insight',
-            dataIndex: 'percentage',
+            dataIndex: 'insights',
             width: '25%',
-            editable: true,
+            editable: false,
         },
         {
             title: 'Actions',
@@ -107,16 +107,18 @@ const Recipe = (props) => {
                 const editable = isEditing(record);
                 return editable ? (
                     <span>
-                        <Typography.Link
+                        <Typography.Link 
+                        className="recipeBtn"
                             onClick={() => save(record.id)}
                             style={{
                                 marginRight: 8,
+                                
                             }}
                         >
                             Save
                         </Typography.Link>
                         <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-                            <p>Cancel</p>
+                            <p  className="recipeBtn">Cancel</p>
                         </Popconfirm>
                     </span>
                 ) : (
