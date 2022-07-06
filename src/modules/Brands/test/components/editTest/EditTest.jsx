@@ -4,6 +4,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getItem } from "../request";
 import IndexSubmission from "../submission/IndexSubmission";
+import AnnualData from "./AnnualData";
+import BrandWithDrawl from "./BrandWithDrawl";
 import Details from './Details';
 
 const pageConfig = {
@@ -56,11 +58,11 @@ const EditTest = () => {
         },
         {
             title: "Brands Withdrawal  ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <BrandWithDrawl data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Annual Data ",
-            content: <Details data={data.object} dependencies={data.dependencies} />
+            content: <AnnualData data={data.object} dependencies={data.dependencies} />
         },
         
 

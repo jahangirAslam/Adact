@@ -521,3 +521,14 @@ select:-webkit-autofill:focus {
     margin-bottom: 6px;
     margin-left: 4px;
 }
+
+.headerHeadings-details {
+    padding: 8px!important;
+    margin-top: 8px!important;
+    margin-bottom: 8px!important;
+}
+
+.discription-details textarea {
+    height: 300px!important;
+    width: 100%!important;
+}
