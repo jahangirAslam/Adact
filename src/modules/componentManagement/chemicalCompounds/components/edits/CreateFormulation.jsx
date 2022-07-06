@@ -1,18 +1,35 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Col, Form, Input, InputNumber, Row, Select, Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-import { createChemicalCompound } from "../../requests";
+import { makeRequest, getErrorProps, notify,makeRequestStateless } from "@utils/helpers";
+import { createFlavour,getProductDependencies } from "./components/request";
+import { useParams } from "react-router-dom";
+
 
 const formName = "createChemicalCompound";
 const CreateFormulation = (props) => {
 
   const [loader, setLoader] = useState(false);
   const [errors, setErrors] = useState([]);
+  // for dependancy
+  const [deps, setDeps] = useState({
 
+    compounds: [],
+    substances: [],
+    
+
+
+});
+const {id} = useParams()
   const onFinish = (data) => {
-    let payload = { "object": data }
-    makeRequest(setLoader, createChemicalCompound, payload, onSuccess, onError);
+    debugger
+    const load = {
+      substance_id: id,
+      type : "substance",
+      ...data
+    }
+    let payload = { "object": load }
+    makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
@@ -28,6 +45,27 @@ const CreateFormulation = (props) => {
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
+
+  //  for dependacy
+  const getSelectFieldsData = () => {
+    makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
+
+}
+useEffect(() => {
+  getSelectFieldsData();
+  // eslint-disable-next-line
+}, []);
+
+const onDependencySuccess = (data, res) => {
+  setDeps({
+      compounds: data.compounds,
+      substances: data.substances,
+      
+
+  });
+
+
+}
 
   // ------------------------------------
   // Start footer buttons array
@@ -47,37 +85,55 @@ const CreateFormulation = (props) => {
       footer={footer}
       onCancel={() => props.onCreated(false)}
     >
-      <Form layout="vertical" name={formName} onFinish={onFinish}>
+      <Form layout="vertical" 
+       initialValues={props.availblePercentage}
+      name={formName} onFinish={onFinish}>
         <Row>
             <Col span={24}>
-            <Form.Item name="customer_id" label="Select Components :" className="da-mb-16"
+            <Form.Item name="compound_id" label="Select Components :" className="da-mb-16"
                 >
                     <Select
                         showSearch
                         placeholder="Select Components"
+                        options={deps.compounds}
                     />
                 </Form.Item>
             </Col>
-            <Col span={12}>
-        <Form.Item
-         
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-             <InputNumber className="formulationAdd" defaultValue={5} />
+            
+            <Row justify="space-between" >
+                    <Col span="10" >
 
-        </Form.Item>
-        </Col>
-        <Col span={12}>
-        <Form.Item
-         
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-             <InputNumber  className="formulationAdd" disabled="true" />
+                        <Form.Item  name="percentage" label="Add Percentage" placeholder="Percentage" className="da-mb-16"
+                        >
+                            <Input type="number" />
+                        </Form.Item>
+                    </Col>
+                    <Col span="3"  >
+                        <Row align="center" justify="" className="ap-d" >
+                            <h1>/</h1>
+                        </Row>
+                    </Col>
 
-        </Form.Item>
-        </Col>
+                    <Col span="10" >
+
+                        <Form.Item label="Available Percentage :" className="da-mb-16">
+                            <Input disabled={true} />
+                        </Form.Item>
+                    </Col>
+                    <Col span="10" >
+
+                        <Form.Item label="Substance name  :" className="da-mb-16">
+                            <Input  />
+                        </Form.Item>
+                    </Col>
+                    <Col span="10" >
+
+                        <Form.Item label="CAS Number :" className="da-mb-16">
+                            <Input  />
+                        </Form.Item>
+                    </Col>
+
+                </Row>  
         <Col span={12}>
         <Form.Item
          label="After Adding Components"

@@ -1,17 +1,19 @@
 import React, { useState, useEffect } from "react";
-import { BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { BodyComponent, EditAbleTable, ActionComponent, CreateButton } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
 import { getFacilities,deleteFacility } from "../../../../commons/facilities/requests";
 import CreateFacility from "../../../../commons/facilities/components/CreateFacility";
 import EditFacility from "../../../../commons/facilities/components/EditFacility";
 import ViewFacility from "../../../../commons/facilities/components/ViewFacility";
 import CreateFormulation from "./CreateFormulation";
+import { Form, Popconfirm, Row, Typography } from "antd";
+import { getFlavours, updateSubstance } from "./components/request";
 
 
 const Formulation = (props) => {
-
+    var delItems = []
+    const [form] = Form.useForm();
     const [loader, setLoader] = useState(false);
-
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -22,6 +24,38 @@ const Formulation = (props) => {
     });
 
     const [childComponent, setChildComponent] = useState(null);
+    const [editingKey, setEditingKey] = useState('');
+    const isEditing = (record) => record && record.id === editingKey;
+    const edit = (record) => {
+        form.setFieldsValue({
+            ...record,
+        });
+        setEditingKey(record.id);
+
+    };
+
+    const cancel = () => {
+        setEditingKey('');
+    };
+    const save = async (id) => {
+
+        try {
+            const row = await form.validateFields();
+            // const newData = [...data];
+            let payload = {
+                id: id,
+                flavour_id: props.flavourId,
+                percentage: row.percentage,
+
+            }
+            makeRequest(setLoader, updateSubstance, payload, onError);
+            setEditingKey('');
+            getFlavours();
+        } catch (errInfo) {
+            console.log('Validate Failed:', errInfo);
+        }
+    };
+
 
     const columns = [
         {
@@ -29,18 +63,28 @@ const Formulation = (props) => {
             title: 'Chemical Substance ',
             dataIndex: 'chemical_substance',
             sorter: true,
+            editable: false,
         },
         {
             key: ' cas_number',
             title: 'CAS Number ',
             dataIndex: 'cas_number',
             sorter: true,
+            editable: false,
         },
         {
             key: 'type ',
             title: 'Type ',
             dataIndex: 'type',
             sorter: true,
+            editable: false,
+        },
+        {
+            key: 'percentage ',
+            title: 'Percentage ',
+            dataIndex: 'percentage',
+            sorter: true,
+            editable: true,
         },
         {
             key: 'insight ',
@@ -90,6 +134,12 @@ const Formulation = (props) => {
         };
         setPagination(payload);
     }
+    const rowSelection = {
+        onChange: (selectedRowKeys) => {
+            delItems=[]
+             delItems=selectedRowKeys
+        },
+    };
 
     // Create component modal
     const onCreate = () => {
@@ -137,7 +187,7 @@ const Formulation = (props) => {
            {childComponent}
             <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
-                <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
+            <EditAbleTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} isEditAble={true} isEditing={isEditing} form={form} cancel={cancel}  rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
