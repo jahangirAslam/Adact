@@ -17,6 +17,8 @@ const CreateReplication = (props) => {
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         vaping_machine: [],
+        heat_setting:[],
+        vaping_intensity: [],
         gcms_machine: [],
         icpms_machine: [],
         hplc_machine: [],
@@ -56,6 +58,8 @@ const CreateReplication = (props) => {
     const onDependencySuccess = (data, res) => {
         setDeps({
             vaping_machine: data.vaping_machine,
+            heat_setting: data.heat_setting,
+            vaping_intensity: data.vaping_intensity,
             gcms_machine: data.gcms_machine,
             icpms_machine: data.icpms_machine,
             hplc_machine: data.hplc_machine,
@@ -189,7 +193,7 @@ const CreateReplication = (props) => {
                             <Select
                                 showSearch
                                 placeholder="Select"
-                                options={deps.manufacturers}
+                                options={deps.vaping_intensity}
                             />
                         </Form.Item>
                     </Col>
@@ -200,7 +204,7 @@ const CreateReplication = (props) => {
                             <Select
                                 showSearch
                                 placeholder="Select "
-                                options={deps.manufacturers}
+                                options={deps.heat_setting}
                             />
                         </Form.Item>
                     </Col>

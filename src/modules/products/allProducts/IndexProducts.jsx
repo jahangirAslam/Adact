@@ -66,6 +66,18 @@ const IndexProducts = () => {
             dataIndex: 'withdrawn',
             sorter: true,
         },
+        {
+            key: 'withdrawn',
+            title: 'WithDrawn',
+            dataIndex: 'withdrawn',
+            sorter: true,
+        },
+        {
+            key: 'withdrawn',
+            title: 'WithDrawn',
+            dataIndex: 'withdrawn',
+            sorter: true,
+        },
 
 
         {
@@ -218,6 +230,14 @@ const availableFilters = [
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
+
+    },
+
+    {
+        key: 'insights',
+        placeholder: 'Insights',
+        type: 'select',
+        data_key: 'insights',
 
     },
 

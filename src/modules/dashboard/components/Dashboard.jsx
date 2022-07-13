@@ -6,7 +6,7 @@ const Dashboard = () => {
   const data = [
     {
       label: 'Series 1',
-      data: [[0, 1], [1, 2], [2, 4], [3, 2], [4, 7]]
+      data: [[0, 1], [1, 5], [2, 4], [3, 2], [4, 7]]
     },
     {
       label: 'Series 2',

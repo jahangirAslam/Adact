@@ -131,31 +131,31 @@ const Business = (props) => {
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={11}>
-              <Form.Item name="name" rules={rules.name} label="First Adress line :" className="da-mb-16"
+              <Form.Item name="first_address"  label="First Adress line :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Second Adress line :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
+              <Form.Item name="second_address"  label="Second Adress line :" className="da-mb-16"
+              >
                 <Input />
               </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Town/City :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
+              <Form.Item name="city"  label="Town/City :" className="da-mb-16"
+                >
                 <Input />
               </Form.Item>
               <h5 className="headerHeadings">Contact Details</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item name="name" rules={rules.name} label="Website" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
+                  <Form.Item name="website"  label="Website" className="da-mb-16"
+                  >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="trade_name" rules={rules.trade_name} label="Landline  :" className="da-mb-16"
-                    {...getErrorProps(errors['trade_name'])}>
+                  <Form.Item name="landline"  label="Landline  :" className="da-mb-16"
+                   >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="trade_name" rules={rules.trade_name} label="Phone :" className="da-mb-16"
-                    {...getErrorProps(errors['trade_name'])}>
+                  <Form.Item name="mobile"  label="Phone :" className="da-mb-16"
+                    >
                     <Input />
                   </Form.Item>
                 </Col>
@@ -164,8 +164,8 @@ const Business = (props) => {
               <h5 className="headerHeadings">Email</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item name="name" rules={rules.name} label="Email" className="da-mb-16"
-                    {...getErrorProps(errors['name'])}>
+                  <Form.Item name="email"  label="Email" className="da-mb-16"
+                    >
                     <Input />
                   </Form.Item>
                 </Col>
@@ -175,17 +175,17 @@ const Business = (props) => {
             <Col className="gutter-row" span={2}></Col>
 
             <Col className="gutter-row" span={11}>
-              <Form.Item name="name" rules={rules.name} label=" County" className="da-mb-16"
-                {...getErrorProps(errors['name'])}>
+              <Form.Item name="state" rules={rules.name} label="County" className="da-mb-16"
+               >
                 <Input />
               </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Postcode  :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
+              <Form.Item name="zipcode" rules={rules.trade_name} label="Postcode  :" className="da-mb-16"
+                >
                 <Input />
               </Form.Item>
               <h5 className="headerHeadings">Country</h5>
-              <Form.Item name="trade_name" rules={rules.trade_name} label=" country" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
+              <Form.Item name="country_id" rules={rules.trade_name} label=" country" className="da-mb-16"
+                >
                 <Input />
               </Form.Item>
               {/* Map  */}

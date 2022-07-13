@@ -40,39 +40,34 @@ const IndexCustomer = () => {
             sorter: true,
         },
         {
-            key: 'name',
+            key: 'location_name',
             title: 'Country',
-            dataIndex: 'name',
+            dataIndex: 'location_name',
             sorter: true,
         },
         {
-            key: 'name',
+            key: 'Email',
             title: 'Email',
-            dataIndex: 'name',
+            dataIndex: 'Email',
             sorter: true,
         },
         {
-            key: 'name',
+            key: 'first_address',
             title: 'Adress',
-            dataIndex: 'name',
+            dataIndex: 'first_address',
             sorter: true,
         },
         {
-            key: 'name',
+            key: 'Contact',
             title: 'Contact',
-            dataIndex: 'name',
+            dataIndex: 'Contact',
             sorter: true,
         },
+
         {
-            key: 'name',
-            title: 'Acount',
-            dataIndex: 'name',
-            sorter: true,
-        },
-        {
-            key: 'name',
+            key: 'status',
             title: 'Status',
-            dataIndex: 'name',
+            dataIndex: 'status',
             sorter: true,
         },
         // {
@@ -87,7 +82,7 @@ const IndexCustomer = () => {
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record,  onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete })
         },
     ];
 
@@ -102,7 +97,7 @@ const IndexCustomer = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": "customers"}
+            filters: { "type": "customers" }
         };
         makeRequest(setLoader, getCustomers, payload, onSuccess, null);
     }
@@ -125,11 +120,11 @@ const IndexCustomer = () => {
 
     // Create component modal
     const onCreate = () => {
-       setChildComponent(<CreateCustomer onCreated={onCreated} />)
+        setChildComponent(<CreateCustomer onCreated={onCreated} />)
     }
 
     const onCreated = (res) => {
-        if(res){
+        if (res) {
             history.push(`/third-party/customers/edit/${res.data.object.id}`);
         }
         setChildComponent(null);
@@ -155,20 +150,20 @@ const IndexCustomer = () => {
     ////
     const rowSelection = {
         onChange: (selectedRowKeys) => {
-          delItems = []
-          delItems = selectedRowKeys
+            delItems = []
+            delItems = selectedRowKeys
         },
-      };
+    };
 
     return (
         <>
-        { childComponent }
-            <HeaderComponent headers={ pageConfig.headers }>
-                <CreateButton onClick={ onCreate } />
+            {childComponent}
+            <HeaderComponent headers={pageConfig.headers}>
+                <CreateButton onClick={onCreate} />
             </HeaderComponent>
             <BodyComponent>
-            <FilterComponent filters={ availableFilters } onFilter={ setFilters } api={ getFilters } />
-            <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
+                <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
             </BodyComponent>
         </>
     );
@@ -179,24 +174,25 @@ export default IndexCustomer;
 
 const availableFilters = [
     {
-      key: 'name',
-      placeholder: 'Name',
-      type: 'select',
+        key: 'name',
+        placeholder: 'Name',
+        type: 'text',
     },
     {
         key: 'name',
         placeholder: 'Country ',
         type: 'select',
-      },
-      {
+        data_key:'country'
+    },
+    {
         key: 'name',
         placeholder: 'Email ',
-        type: 'select',
-      },
-      {
+        type: 'text',
+    },
+    {
         key: 'name',
         placeholder: 'Status ',
         type: 'select',
-      },
-  ];
-  
+        data_key:'status'
+    },
+];
