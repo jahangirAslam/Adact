@@ -166,6 +166,28 @@ const navigation = [{
     },
 
     {
+        id: "globalTemplate",
+        title: "Global Templates",
+        icon: < ComponentsIcon / > ,
+        uri: "/global-template",
+        permissionKey: "hasChildren",
+        children: [{
+                id: "manageGlobalTemplates",
+                title: "Manage Global Templates",
+                uri: "/manage-global-templates",
+                permissionKey: "substances_index",
+            },
+            {
+                id: "manageTemplateVariable",
+                title: "Manage Template Variables",
+                uri: "/manage-template-variable",
+                permissionKey: "compounds_index",
+            },
+
+        ],
+    },
+
+    {
         id: "userManagement",
         title: "User & Role",
         icon: < UsersIcon / > ,
