@@ -1,5 +1,6 @@
 import { Route, Switch } from "react-router-dom";
 import EditChemicalCompound from "../componentManagement/chemicalCompounds/components/EditChemicalCompound";
+import EditTemplate from "./manageGolabalTemplates/components/EditTemplate";
 import IndexManageGlobal from "./manageGolabalTemplates/indexManageGlobal";
 import IndexManageVariable from "./manageVariable/indexManageGlobal";
 // import EditSubstance from "./substances/components/EditSubstance";
@@ -16,7 +17,7 @@ const Templates = ({ match }) => (
 
     {/* Global Templates */}
     <Route exact path={`${match.url}/manage-global-templates`} component={IndexManageGlobal} />
-    <Route exact path={`${match.url}/manage-global-templates/edit/:id`} component={EditChemicalCompound} />
+    <Route exact path={`${match.url}/manage-global-templates/edit/:id`} component={EditTemplate} />
 
 
   </Switch>

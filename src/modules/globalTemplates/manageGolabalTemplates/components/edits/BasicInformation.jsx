@@ -4,16 +4,18 @@ import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { updateChemicalCompound } from "../../requests";
 import { ButtonComponent } from "@comps/components";
 
+
 const BasicInformation = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+
   const onFinish = (payload) => {
     payload.id = props.data.id;
     makeRequest(setLoader, updateChemicalCompound, payload, onSuccess, onError);
   };
 
   const onSuccess = (data, res) => {
-    notify("Chemical Compound", res.msg);
+    notify("Substance", res.msg);
   };
 
   const onError = (err) => {
@@ -22,135 +24,84 @@ const BasicInformation = (props) => {
     setErrors(errorList);
   };
 
+  // const onChange = (e) => {
+  //   console.log("radio checked", e.target.value);
+  //   setValue(e.target.value);
+  // };
+
   return (
     <Form
       layout="vertical"
-      labelCol={{ span: 7 }}
+      // labelCol={{ span: 7 }}
       initialValues={props.data}
       onFinish={onFinish}
     >
-      <Row gutter={[16, 24]} className="">
-      <Col className="gutter-row" span={24}>
-       <h5> Summary</h5>
-        </Col>
-        <Col className="gutter-row" span={12}>
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={24} md={12} lg={8} >
           <Form.Item
             name="name"
             rules={rules.name}
-            label=" Compound Name :"
-            className="da-mb-16"
+            label="Name :"
             {...getErrorProps(errors["name"])}
           >
             <Input />
           </Form.Item>
-          <Form.Item
-            name="reference"
-            rules={rules.reference}
-            label=" Compound Reference :"
-            className="da-mb-16"
-            {...getErrorProps(errors["reference"])}
-          >
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="fed_uuin" label="fed_uuin :">
             <Input />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" span={12}>
-          <Form.Item
-            name="customer_id"
-            label="Select Customer :"
-            rules={rules.customer_id}
-            className="da-mb-8"
-            {...getErrorProps(errors["customer_id"])}
-          >
-            <Select
-              showSearch
-              placeholder="Select a Customer"
-              options={props.dependencies.customers}
-            />
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="manufacturer_ref" label="Manufacturer Name :">
+            <Input />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="manufacturer_ref" label="manufacturer_ref :">
+            <Input />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="has_recipe" label="Has Recipe :">
+            <Input disabled={true} />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="is_valid_manufacturer" label="The manufacturer records are valid?">
+            <Input disabled={true} />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={8}>
+          <Form.Item name="is_valid_manufacturer" label="Recipe is valid">
+            <Input disabled={true} />
           </Form.Item>
         </Col>
       </Row>
+      <Divider orientation="left" />
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" span={8}>
+          <Form.Item name="is_active" label="Flavour status">
+            <Switch defaultChecked={props.data.is_safe} />
+          </Form.Item>
+        </Col>
 
-      <Row gutter={[16, 24]} className="">
-      <Col className="gutter-row" span={24}>
-       <h5>Status</h5>
-        </Col>
-        <Col className="gutter-row" span={12}>
-          <Form.Item
-            name="name"
-            rules={rules.name}
-            label=" Created On :"
-            className="da-mb-16"
-            {...getErrorProps(errors["name"])}
-          >
-           
-            <Input  disabled  />
-          </Form.Item>
-          <Form.Item
-            name="reference"
-            rules={rules.reference}
-            label=" Updated On :"
-            className="da-mb-16"
-            {...getErrorProps(errors["reference"])}
-          >
-            <Input  disabled  />
-          </Form.Item>
-        </Col>
-        <Col className="gutter-row" span={12}>
-          <Form.Item
-            name="customer_id"
-            label="Created By :"
-            rules={rules.customer_id}
-            className="da-mb-8"
-            {...getErrorProps(errors["customer_id"])}
-          >
-            <Input  disabled  />
-          </Form.Item>
-          <Form.Item
-            name="customer_id"
-            label="Updated :"
-            rules={rules.customer_id}
-            className="da-mb-8"
-            {...getErrorProps(errors["customer_id"])}
-          >
-            <Input  disabled  />
-          </Form.Item>
-          <Form.Item
-            name="customer_id"
-            label="Formolation :"
-            rules={rules.customer_id}
-            className="da-mb-8"
-            {...getErrorProps(errors["customer_id"])}
-          >
-            <Select
-              showSearch
-              placeholder="Select a Customer"
-              options={props.dependencies.customers}
-            />
-          </Form.Item>
-        </Col>
-      </Row>
-
-      <Row gutter={[16, 24]} className="da-m-64">
-        <Col className="gutter-row" span={12}>
-          <Form.Item name="is_active" label="Status :" className="da-mb-16">
-            <Switch defaultChecked={props.data.is_active} />
-          </Form.Item>
-        </Col>
-        <Col className="gutter-row" span={12}>
-          <Form.Item name="is_test" label="Test Mode :" className="da-mb-16">
+        <Col className="gutter-row" span={8}>
+          <Form.Item name="is_test" label="Test Mode :">
             <Switch defaultChecked={props.data.is_test} />
           </Form.Item>
         </Col>
       </Row>
       <Divider orientation="left" />
-      <Form.Item wrapperCol={{ offset: 18 }}>
+
+      <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent
           className="da-mr-10"
           type="primary"
           htmlType="submit"
           state={loader}
         >
-          Save
+          Save 
         </ButtonComponent>
       </Form.Item>
     </Form>

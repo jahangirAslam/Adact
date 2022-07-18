@@ -1,11 +1,9 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-import BasicInformation from "./edits/BasicInformation";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { getChemicalCompound } from "../requests";
-import ActivityLog from "./edits/ActivityLog";
-import Formulation from "./edits/Formulation";
+import BasicInformation from "./edits/BasicInformation";
 
 const pageConfig = {
   headers: {
@@ -24,7 +22,7 @@ const pageConfig = {
 }
 
 
-const EditChemicalCompound = () => {
+const EditTemplate = () => {
   const { id } = useParams();
   const [data, setData] = useState({
     object: {},
@@ -51,30 +49,12 @@ const chemicalCompoundSuccess = (res) =>{
         />
       ),
     },
-    {
-      title: "Formulation",
-      content: (
-        <Formulation
-          id={id}
-          data={data.object}
-          dependencies={data.dependencies}
-        />
-      ),
-    },
+   
     
-    {
-      title: "ActivityLog",
-      content: (
-        <ActivityLog
-          id={id}
-          data={data.object}
-          dependencies={data.dependencies}
-        />
-      ),
-    },
+   
   ];
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={loader}></TabComponent> ;
 }
 
-export default EditChemicalCompound;
+export default EditTemplate;
