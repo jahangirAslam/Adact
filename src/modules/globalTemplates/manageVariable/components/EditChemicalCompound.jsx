@@ -9,14 +9,14 @@ import Formulation from "./edits/Formulation";
 
 const pageConfig = {
   headers: {
-    title: "Test ",
+    title: "Manage Chemical Compound",
     breadcrumb: [
       {
-        name: "Manage Global Template ",
-        path: "/global-template/manage-global-templates"
+        name: "ChemicalCompounds",
+        path: "/component-management/compounds"
       },
       {
-        name: "Test",
+        name: "Manage",
       }
     ]
   }
@@ -42,7 +42,7 @@ const chemicalCompoundSuccess = (res) =>{
 
   const tabs = [
     {
-      title: "Subject",
+      title: "Summary",
       content: (
         <BasicInformation
           id={id}
@@ -52,7 +52,7 @@ const chemicalCompoundSuccess = (res) =>{
       ),
     },
     {
-      title: "Preview",
+      title: "Formulation",
       content: (
         <Formulation
           id={id}

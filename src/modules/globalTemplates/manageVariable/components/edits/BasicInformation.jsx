@@ -31,7 +31,7 @@ const BasicInformation = (props) => {
     >
       <Row gutter={[16, 24]} className="">
       <Col className="gutter-row" span={24}>
-       <h5> Subject</h5>
+       <h5> Summary</h5>
         </Col>
         <Col className="gutter-row" span={12}>
           <Form.Item
