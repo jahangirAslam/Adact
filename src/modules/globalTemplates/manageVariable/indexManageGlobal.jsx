@@ -1,11 +1,11 @@
 import { ActionComponent, BodyComponent, CreateButton, HeaderComponent, TableComponent } from "@comps/components";
-import { formatCompleteDataTime, notify, removeById , makeRequest } from "@utils/helpers";
+import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
 import CreateChemicalCompound from "./components/CreateChemicalCompound";
-import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
+import { getChemicalCompounds } from "./requests";
 const pageConfig = {
     headers: {
         title: "Manage Template Variables ",

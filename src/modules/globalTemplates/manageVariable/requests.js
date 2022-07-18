@@ -1,6 +1,6 @@
 import {get, post, del, put } from "@utils/axios";
 
-const api = "component-management/chemical-compounds";
+const api = "setting/template/variable";
 
 export const getFilters = () => {
     return get(`${api}/filters`);
