@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { BodyComponent, TableComponent, ActionComponent, CreateButton,  FilterComponent
+} from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getFacilities, deleteFacility } from "./requests";
+import { getFacilities, deleteFacility,getFilters } from "./requests";
 import CreateFacility from "./components/CreateFacility.jsx";
 import EditFacility from "./components/EditFacility.jsx";
 import ViewFacility from "./components/ViewFacility.jsx";
@@ -10,7 +11,7 @@ import ViewFacility from "./components/ViewFacility.jsx";
 const IndexFacility = (props) => {
 
     const [loader, setLoader] = useState(false);
-
+    const [filters, setFilters] = useState({});
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -30,20 +31,36 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
+            key: 'address',
+            title: 'Address',
+            dataIndex: 'address',
+            sorter: true,
+        },
+        {
             key: 'city',
-            title: 'City',
+            title: 'Town/City',
             dataIndex: 'city',
             sorter: true,
         },
         {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
+            key: 'county',
+            title: 'County',
+            dataIndex: 'county',
             sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
         },
+        {
+            key: 'country',
+            title: 'Country',
+            dataIndex: 'country',
+            sorter: true,
+        },
+        {
+            key: 'post_code',
+            title: 'Post Code',
+            dataIndex: 'post_code',
+            sorter: true,
+        },
+        
         {
             key: "actions",
             title: 'Actions',
@@ -129,6 +146,11 @@ const IndexFacility = (props) => {
             {childComponent}
             <div className="da-text-right da-mt-12 da-mb-12"><CreateButton onClick={onCreate} /></div>
             <BodyComponent>
+            <FilterComponent
+          filters={availableFilters}
+          onFilter={setFilters}
+          api={getFilters}
+        />
                 <TableComponent loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} onChange={handleTableChange} />
             </BodyComponent>
         </>
@@ -136,3 +158,11 @@ const IndexFacility = (props) => {
 }
 
 export default IndexFacility;
+const availableFilters = [
+    {
+      key: "name",
+      placeholder: "Name",
+      type: "text",
+    },
+  ];
+  

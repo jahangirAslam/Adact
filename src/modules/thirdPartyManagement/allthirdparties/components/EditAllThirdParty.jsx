@@ -8,6 +8,8 @@ import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
 import  IndexBrand  from "@mods/commons/brands/IndexBrand";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting";
+import IndexProduct from "../../../commons/product/IndexProduct";
+import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
 
 const pageConfig = {
   headers: {
@@ -41,17 +43,21 @@ const EditAllThirdParty = () => {
       title: "Contacts",
       content: <ContactIndex id={ id } type="AllThirdParties" />
     },
-    {
-      title: "Settings",
-      content: <GetSettings group="ThirdParties" />
-    },
-    {
-      title: "Attachments",
-      content: <IndexAttachment type="AllThirdParties" />
-    },
+    // {
+    //   title: "Settings",
+    //   content: <GetSettings group="ThirdParties" />
+    // },
+    // {
+    //   title: "Attachments",
+    //   content: <IndexAttachment type="AllThirdParties" />
+    // },
     {
       title: "Account Setting",
       content: <AcountSetting type="AllThirdParties" />
+    },
+    {
+      title: "Products",
+      content: <IndexProduct type="AllThirdParties" />
     },
     {
       title: "Products",
@@ -62,13 +68,13 @@ const EditAllThirdParty = () => {
       content: <IndexBrand type="customers" />
     },
     {
-      title: "Submissions",
-      content: "Submissions"
+      title: "Submissions",   
+      content: <Submission type="customers" />
     },
-    {
-      title: "Changes",
-      content: "Changes"
-    }
+    // {
+    //   title: "Changes",
+    //   content: "Changes"
+    // }
   ]
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;

@@ -5,6 +5,7 @@ import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCom
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
 import IndexFacility from "@mods/commons/facilities/IndexFacility";
+import Business from "../../../commons/Business/Business";
 
 const pageConfig = {
   headers: {
@@ -39,7 +40,11 @@ const EditLaboratory = () => {
       content: <ContactIndex id={ id } type="Laboratories" />
     },
     {
-      title: "Facility",
+      title: "Contact Details",
+      content: <Business id={id} type="Laboratories"/>
+    },
+    {
+      title: "Facilities",
       content: <IndexFacility />
     }
   ]
