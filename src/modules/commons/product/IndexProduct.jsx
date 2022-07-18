@@ -9,7 +9,7 @@ import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ViewBrand from "./components/ViewBrand.jsx";
+// import ViewBrand from "./components/ViewBrand.jsx";
 import { deleteBrand, getBrands, getFilters } from "./requests";
 
 // const pageConfig = {
@@ -24,7 +24,7 @@ import { deleteBrand, getBrands, getFilters } from "./requests";
 //     }
 // }
 
-const IndexBrand = () => {
+const IndexProduct = () => {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [dataSource, setDataSource] = useState([]);
@@ -42,32 +42,32 @@ const IndexBrand = () => {
   const columns = [
     {
       key: "custom_id",
-      title: "Customer Product ",
+      title: " Product ID ",
       dataIndex: "custom_id",
       sorter: true,
     },
     {
       key: "name",
-      title: "Brand Na ",
+      title: " Name ",
       dataIndex: "name",
       sorter: true,
     },
     {
-      key: "sub_name",
-      title: "Sub Brand ",
-      dataIndex: "sub_name",
+      key: "on_markit",
+      title: "On Markit ",
+      dataIndex: "on_markit",
       sorter: true,
     },
     {
-      key: "trading_name",
-      title: "With Draw",
-      dataIndex: "trading_name",
+      key: "withdrawn",
+      title: "Withdrawn",
+      dataIndex: "withdrawn",
       sorter: true,
     },
     {
-      key: "trading_name",
-      title: "Launch Date",
-      dataIndex: "trading_name",
+      key: "type",
+      title: " Type",
+      dataIndex: "type",
       sorter: true,
     },
     {
@@ -81,24 +81,8 @@ const IndexBrand = () => {
         return <Tag color={color}>{text}</Tag>;
       },
     },
-    {
-      key: "units",
-      title: "Units",
-      dataIndex: "units",
-      sorter: true,
-    },
-    {
-      key: "market",
-      title: "Market",
-      dataIndex: "market",
-      sorter: true,
-    },
-    {
-      key: "id",
-      title: "ID",
-      dataIndex: "id",
-      sorter: true,
-    },
+    
+    
 
     {
       key: "actions",
@@ -163,7 +147,7 @@ const IndexBrand = () => {
   };
 
   const onView = (record) => {
-    setChildComponent(<ViewBrand onUpdated={onUpdated} id={record.id} />);
+    // setChildComponent(<ViewBrand onUpdated={onUpdated} id={record.id} />);
   };
 
   const onEdit = (record) => {
@@ -215,67 +199,39 @@ const IndexBrand = () => {
   );
 };
 
-export default IndexBrand;
+export default IndexProduct;
 
 const availableFilters = [
   {
-    key: "name",
-    placeholder: "Customer Product",
+    key: "product_id",
+    placeholder: "Product ID",
     type: "text",
+    data_key: "product_id",
+  },
+  {
+    key: "name",
+    placeholder: " Name",
+    type: "select",
     data_key: "name",
   },
   {
-    key: "country_id",
-    placeholder: "Brand Na",
-    type: "select",
-    data_key: "country_id",
-  },
-  {
-    key: "email",
-    placeholder: "Sub Brand",
+    key: "on_markit",
+    placeholder: "On Markit",
     type: "text",
     data_key: "email",
   },
   {
-    key: "email",
-    placeholder: "With Draw",
+    key: "withdrawn",
+    placeholder: "With Drawn",
     type: "text",
-    data_key: "email",
+    data_key: "withdrawn",
   },
   {
-    key: "email",
-    placeholder: "Launch Date",
+    key: "type",
+    placeholder: "Type",
     type: "text",
-    data_key: "email",
+    data_key: "type",
   },
-  {
-    key: "email",
-    placeholder: " Status",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
-    placeholder: "Units",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
-    placeholder: "Markit",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
-    placeholder: "ID",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
-    placeholder: "Action",
-    type: "text",
-    data_key: "email",
-  },
+  
+  
 ];
