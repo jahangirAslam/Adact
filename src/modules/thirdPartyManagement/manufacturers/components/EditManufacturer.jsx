@@ -6,6 +6,7 @@ import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexDocument from "@mods/documentManagement/documents/IndexDocument";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting"
+import Business from "../../../commons/Business/Business";
 
 const pageConfig = {
   headers: {
@@ -40,17 +41,18 @@ const EditManufacturer = () => {
       content: <IndexDocument/>
     },
     {
-      title: "Settings",
-      content: <GetSettings group="manufacturers" />
+      title: "Contact Details",
+      content: <Business group="manufacturers" />
+      
     },
     {
       title: "Account Setting",
       content: <AcountSetting id={ id } />
     },
-    {
-      title: "Changes",
-      content: "Changes"
-    }
+    // {
+    //   title: "Changes",
+    //   content: "Changes"
+    // }
   ]
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;

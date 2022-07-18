@@ -1,6 +1,6 @@
 import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
-
+import AcountSetting from "../../../commons/Account Setting/AcountSetting"
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexDocument from "@mods/documentManagement/documents/IndexDocument";
@@ -38,9 +38,13 @@ const EditAgent = () => {
       content: <IndexDocument id={ id } type="Agent" />
     },
     {
-      title: "Changes",
-      content: "Changes"
+      title: "Account Setting",
+      content: <AcountSetting id={ id } type="Agent" />
     }
+    // {
+    //   title: "Changes",
+    //   content: "Changes"
+    // }
   ]
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs }></TabComponent>;
