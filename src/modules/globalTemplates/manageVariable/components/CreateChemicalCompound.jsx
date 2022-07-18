@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, Input } from "antd";
+import { Form, Input,Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 // import { createChemicalCompound } from "../requests";
@@ -25,6 +25,10 @@ const CreateChemicalCompound = (props) => {
     errorList['name'] = err.name;
     setErrors(errorList);
   }
+  const onChange = (checked) => {
+    console.log(`switch to ${checked}`);
+  };
+  
 
   // ------------------------------------
   // Start footer buttons array
@@ -39,16 +43,16 @@ const CreateChemicalCompound = (props) => {
   return (
     <ModalComponent
       mainTitle="Create"
-      subTitle="Chemical Compounds"
+      subTitle="Variables"
       visible={true}
       footer={footer}
       onCancel={() => props.onCreated(false)}
     >
       <Form layout="vertical" name={formName} onFinish={onFinish}>
         <Form.Item
-          name="name"
+          name="variable_name"
           rules={rules.name}
-          label="Compound Name :"
+          label="Variable Name  :"
           className="da-mb-16"
           {...getErrorProps(errors["name"])}
         >
@@ -57,11 +61,36 @@ const CreateChemicalCompound = (props) => {
         <Form.Item
           name="reference"
           rules={rules.reference}
-          label="Compound Reference :"
+          label="Tag To Use Inside Template  :"
           className="da-mb-16"
           {...getErrorProps(errors["reference"])}
         >
           <Input />
+        </Form.Item>
+        <Form.Item
+          name="reference"
+          rules={rules.reference}
+          label="Variable Discription  :"
+          className="da-mb-16"
+          {...getErrorProps(errors["reference"])}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+          name="reference"
+          rules={rules.reference}
+          label=" Code :"
+          className="da-mb-16"
+          {...getErrorProps(errors["reference"])}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item
+         label="Status"
+          className="da-mb-16"
+          {...getErrorProps(errors["name"])}
+        >
+            <Switch defaultChecked onChange={onChange}/>
         </Form.Item>
       </Form>
     </ModalComponent>
