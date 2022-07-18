@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton } from "@comps/components";
+import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton,FilterComponent } from "@comps/components";
 import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getBrands, deleteBrand } from "./requests";
+import { getBrands, deleteBrand,getFilters } from "./requests";
 import ViewBrand from "./components/ViewBrand.jsx";
+import { Tag } from "antd";
+import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
+
+
 
 
 // const pageConfig = {
@@ -23,6 +27,7 @@ const IndexBrand = () => {
     const [loader, setLoader] = useState(false);
     const history = useHistory();
     const [dataSource, setDataSource] = useState([]);
+    const [filters, setFilters] = useState({});
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
         current: 1,
@@ -34,10 +39,54 @@ const IndexBrand = () => {
     const [childComponent, setChildComponent] = useState(null);
 
     const columns = [
+
+        {
+            key: 'custom_id',
+            title: 'Customer Product ',
+            dataIndex: 'custom_id',
+            sorter: true,
+        },
         {
             key: 'name',
-            title: 'Name',
+            title: 'Brand Na ',
             dataIndex: 'name',
+            sorter: true,
+        },
+        {
+            key: 'sub_name',
+            title: 'Sub Brand ',
+            dataIndex: 'sub_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'With Draw',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'trading_name',
+            title: 'Launch Date',
+            dataIndex: 'trading_name',
+            sorter: true,
+        },
+        {
+            key: 'status',
+            title: 'Status',
+            sorter:true,
+            dataIndex: 'is_active',
+            render: (is_active) => {
+                let color = is_active ? 'green' : 'red';
+                let text = is_active ? 'ACTIVE' : 'INACTIVE';
+                return (
+                    <Tag color={color} >{text}</Tag>
+                );
+            }
+        },
+        {
+            key: 'units',
+            title: 'Units',
+            dataIndex: 'units',
             sorter: true,
         },
         {
@@ -47,20 +96,36 @@ const IndexBrand = () => {
             sorter: true,
         },
         {
-            key: 'created_at',
-            title: 'Create At',
-            dataIndex: 'created_at',
+            key: 'id',
+            title: 'ID',
+            dataIndex: 'id',
             sorter: true,
-            render: (created_at) => {
-                return formatCompleteDataTime(created_at);
-            }
         },
+
+
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponentEx(record)
+
         },
     ];
+
+    const ActionComponentEx = (record) => {
+        let icon = null;
+        if (record) {
+            if (record.is_active) {
+                icon = <CloseOutlined className="icon-style da-text-color-danger-1" />;
+            } else {
+                icon = <CheckOutlined className="icon-style da-text-color-success-1" />;
+            }
+        }
+        return (
+            <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+            </ActionComponent>
+        );
+    }
+
 
     useEffect(() => {
         getAllBrands();
@@ -133,9 +198,9 @@ const IndexBrand = () => {
             {/* <HeaderComponent headers={ pageConfig.headers }>
                 <CreateButton onClick={ onCreate } />
             </HeaderComponent> */}
-
+            
             <BodyComponent>
-            <CreateButton onClick={ onCreate } />
+            <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
                 <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
         </>
@@ -143,3 +208,72 @@ const IndexBrand = () => {
 }
 
 export default IndexBrand;
+
+const availableFilters = [
+
+    {
+        key: 'name',
+        placeholder: 'Customer Product',
+        type: 'text',
+        data_key: 'name'
+    },
+    {
+        key: 'country_id',
+        placeholder: 'Brand Na',
+        type: 'select',
+        data_key: 'country_id'
+    },
+    {
+        key: 'email',
+        placeholder: 'Sub Brand',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'With Draw',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Launch Date',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: ' Status',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Units',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Markit',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'ID',
+        type: 'text',
+        data_key: 'email'
+    },
+    {
+        key: 'email',
+        placeholder: 'Action',
+        type: 'text',
+        data_key: 'email'
+    },
+    
+
+
+
+];
+
