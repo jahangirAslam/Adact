@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Col, Form, Input,Row,Switch } from "antd";
+import { Col, Form, Input, Row, Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { createChemicalCompound } from "../requests";
@@ -11,7 +11,12 @@ const CreateChemicalCompound = (props) => {
   const [errors, setErrors] = useState([]);
 
   const onFinish = (data) => {
-    let payload = { "object": data }
+    const load = {
+      customer_id: 18,
+      ...data
+    }
+    debugger
+    let payload = { "object": load }
     makeRequest(setLoader, createChemicalCompound, payload, onSuccess, onError);
   }
 
@@ -28,7 +33,7 @@ const CreateChemicalCompound = (props) => {
   const onChange = (checked) => {
     console.log(`switch to ${checked}`);
   };
-  
+
 
   // ------------------------------------
   // Start footer buttons array
@@ -54,73 +59,81 @@ const CreateChemicalCompound = (props) => {
           rules={rules.name}
           label="Subject :"
           className="da-mb-16"
-          {...getErrorProps(errors["name"])}
+          
         >
           <Input />
         </Form.Item>
         <Row>
           <Col span={10}>
-          <h5>Document Type</h5>
-        <Form.Item
-         label="TPD Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="PMTA Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="MHRA Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="CBD Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        </Col>
-        <Col span={10} offset={4}>
-          <h5>Default For</h5>
-        <Form.Item
-         label="TPD Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="PMTA Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="MHRA Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        <Form.Item
-         label="CBD Document"
-          className="da-mb-16"
-          {...getErrorProps(errors["name"])}
-        >
-            <Switch defaultChecked onChange={onChange}/>
-        </Form.Item>
-        </Col>
+            <h5>Document Type</h5>
+            <Form.Item
+              name="tpd_document_type"
+              label="TPD Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              name="pmta_document_type"
+              label="PMTA Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              name="mhra_document_type"
+              label="MHRA Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              name="cbd_document_type"
+              label="CBD Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+          </Col>
+          <Col span={10} offset={4}>
+            <h5>Default For</h5>
+            <Form.Item
+              name="tpd_default_for"
+              label="TPD Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              name="mhra_default_for"
+              label="MHRA Document"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              label="FDA"
+              name="fda_default_for"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+            <Form.Item
+              name="cbd_default_for"
+              label="CBD"
+              className="da-mb-16"
+              
+            >
+              <Switch defaultChecked onChange={onChange} />
+            </Form.Item>
+          </Col>
         </Row>
       </Form>
     </ModalComponent>

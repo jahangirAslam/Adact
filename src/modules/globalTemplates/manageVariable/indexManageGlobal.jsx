@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from "react";
+import { ActionComponent, BodyComponent, CreateButton, HeaderComponent, TableComponent } from "@comps/components";
+import { formatCompleteDataTime, notify, removeById } from "@utils/helpers";
+import { Tag } from "antd";
+import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import {Tag } from "antd";
-import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, CreateButton, FilterComponent } from "@comps/components";
-import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 // import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
 import CreateChemicalCompound from "./components/CreateChemicalCompound";
 
@@ -129,10 +129,10 @@ const IndexManageVariable = () => {
     }
 
     const onDelete = (record) => {
-        // makeRequest(setLoader, deleteChemicalCompound, record.id, onDeleteSuccess,
-        //     onError)
+      //     onError)
     }
 
+      // makeRequest(setLoader, deleteChemicalCompound, record.id, onDeleteSuccess,
     const onDeleteSuccess = (response, msg) => {
         setDataSource(removeById(dataSource, response.id));
         notify(msg.msg)
@@ -149,11 +149,6 @@ const IndexManageVariable = () => {
           <CreateButton onClick={onCreate} />
         </HeaderComponent>
         <BodyComponent>
-          {/* <FilterComponent
-            filters={availableFilters}
-            onFilter={setFilters}
-            api={getFilters}
-          /> */}
           <TableComponent
             loader={loader}
             columns={columns}

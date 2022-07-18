@@ -181,15 +181,16 @@ const availableFilters = [
     type: "text",
   },
   {
-    key: "reference",
+    key: "Table_of_content",
     placeholder: "Table Of Content",
+    data_key:"Table_of_content",
     type: "select",
   },
   {
-    key: "is_active",
+    key: "status",
     placeholder: "Select Status",
     type: "select",
-    data_key: "actives",
+    data_key: "status",
   },
   {
     key: "last_updated_by",
