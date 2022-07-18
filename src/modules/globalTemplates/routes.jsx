@@ -11,14 +11,13 @@ import IndexManageVariable from "./manageVariable/indexManageGlobal";
 const Templates = ({ match }) => (
   <Switch>
     {/* Global Templates Rautes */}
-    <Route exact path={`${match.url}/manage-global-variable`} component={IndexManageVariable} />
+    <Route exact path={`${match.url}/manage-template-variable`} component={IndexManageVariable} />
     {/* <Route exact path={`${match.url}/manage-global-variable/edit/:id`} component={EditSubstance} />
     <Route exact path={`${match.url}/manage-global-variable/view/:id`} component={ViewSubstances} /> */}
 
     {/* Global Templates */}
     <Route exact path={`${match.url}/manage-global-templates`} component={IndexManageGlobal} />
     <Route exact path={`${match.url}/manage-global-templates/edit/:id`} component={EditTemplate} />
-
 
   </Switch>
 );

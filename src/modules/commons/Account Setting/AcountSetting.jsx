@@ -207,7 +207,7 @@ const AcountSetting = (props) => {
             htmlType="submit"
             state={loader}
           />
-          <CancelButton key="close_button" onClick={onCancel} />
+          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
         </Col>
       </div>
     </>

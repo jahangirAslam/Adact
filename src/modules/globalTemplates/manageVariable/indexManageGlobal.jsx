@@ -1,17 +1,17 @@
 import { ActionComponent, BodyComponent, CreateButton, HeaderComponent, TableComponent } from "@comps/components";
-import { formatCompleteDataTime, notify, removeById } from "@utils/helpers";
+import { formatCompleteDataTime, notify, removeById , makeRequest } from "@utils/helpers";
 import { Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
 import CreateChemicalCompound from "./components/CreateChemicalCompound";
-
+import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
 const pageConfig = {
     headers: {
-        title: "Chemical Compound",
+        title: "Manage Template Variables ",
         breadcrumb: [
             {
-                name: "Chemical Compounds",
+                name: "Manage Variables",
                 // path: "/component-management/chemical-compounds"
             }
         ]
@@ -41,17 +41,12 @@ const IndexManageVariable = () => {
         sorter: true,
       },
       {
-        key: "reference",
-        title: "Reference",
-        dataIndex: "reference",
+        key: "description",
+        title: "Description",
+        dataIndex: "description",
         sorter: true,
       },
-      {
-        key: "customer_name",
-        title: "Customer",
-        dataIndex: "customer_name",
-        sorter: true,
-      },
+      
       {
         key: "is_active",
         title: "status",
@@ -63,15 +58,7 @@ const IndexManageVariable = () => {
           return <Tag color={color}>{text}</Tag>;
         },
       },
-      {
-        key: "created_at",
-        title: "Create At",
-        dataIndex: "created_at",
-        sorter: true,
-        render: (created_at) => {
-          return formatCompleteDataTime(created_at);
-        },
-      },
+      
       {
         key: "actions",
         title: "Actions",
@@ -93,7 +80,7 @@ const IndexManageVariable = () => {
           sort_type: pagination.sortType,
           filters,
         };
-        // makeRequest(setLoader, getChemicalCompounds, payload, onSuccess, null);
+         makeRequest(setLoader, getChemicalCompounds, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
@@ -166,24 +153,8 @@ export default IndexManageVariable;
 const availableFilters = [
   {
     key: "name",
-    placeholder: "Compound Name",
+    placeholder: "Name",
     type: "text",
   },
-  {
-    key: "reference",
-    placeholder: "Compound Reference",
-    type: "text",
-  },
-  {
-    key: "is_active",
-    placeholder: "Select Status",
-    type: "select",
-    data_key: "actives",
-  },
-  {
-    key: "customer_id",
-    placeholder: "Select Customer",
-    type: "select",
-    data_key: "all_customers",
-  },
+  
 ];

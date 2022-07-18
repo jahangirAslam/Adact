@@ -556,3 +556,9 @@ select:-webkit-autofill:focus {
 .ReactChart {
     position: absolute!important;
 } */
+
+.createBrandsBtn {
+    text-align: end!important;
+    margin-bottom: 12px!important;
+    padding-bottom: 4px!important;
+}
