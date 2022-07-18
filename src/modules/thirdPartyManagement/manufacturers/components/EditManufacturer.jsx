@@ -5,6 +5,7 @@ import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCom
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexDocument from "@mods/documentManagement/documents/IndexDocument";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
+import AcountSetting from "../../../commons/Account Setting/AcountSetting"
 
 const pageConfig = {
   headers: {
@@ -41,6 +42,10 @@ const EditManufacturer = () => {
     {
       title: "Settings",
       content: <GetSettings group="manufacturers" />
+    },
+    {
+      title: "Account Setting",
+      content: <AcountSetting id={ id } />
     },
     {
       title: "Changes",

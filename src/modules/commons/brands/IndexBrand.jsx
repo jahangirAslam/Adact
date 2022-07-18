@@ -6,17 +6,17 @@ import { getBrands, deleteBrand } from "./requests";
 import ViewBrand from "./components/ViewBrand.jsx";
 
 
-const pageConfig = {
-    headers: {
-        title: "Brands",
-        breadcrumb: [
-            {
-                name: "Brands",
-                path: "/common/brands"
-            }
-        ]
-    }
-}
+// const pageConfig = {
+//     headers: {
+//         title: "Brands",
+//         breadcrumb: [
+//             {
+//                 name: "Brands",
+//                 path: "/common/brands"
+//             }
+//         ]
+//     }
+// }
 
 const IndexBrand = () => {
 
@@ -130,11 +130,12 @@ const IndexBrand = () => {
     return (
         <>
             { childComponent }
-            <HeaderComponent headers={ pageConfig.headers }>
+            {/* <HeaderComponent headers={ pageConfig.headers }>
                 <CreateButton onClick={ onCreate } />
-            </HeaderComponent>
+            </HeaderComponent> */}
 
             <BodyComponent>
+            <CreateButton onClick={ onCreate } />
                 <TableComponent loader={ loader } columns={ columns } dataSource={ dataSource } pagination={ { ...pagination, total: totalRecords } } onChange={ handleTableChange } />
             </BodyComponent>
         </>
