@@ -44,7 +44,7 @@ const BasicInformation = (props) => {
         <Col className="gutter-row" xs={24} md={12} lg={12}  >
           <h3 className="TemplateHeader">Subject </h3>
           <Form.Item
-            name="title"
+            name="subject"
             rules={rules.name}
             label="Test :"
             {...getErrorProps(errors["name"])}
@@ -52,7 +52,7 @@ const BasicInformation = (props) => {
             <Input />
           </Form.Item>
           <Form.Item
-            name="name"
+            name="description"
             rules={rules.name}
             label="Description :"
             {...getErrorProps(errors["name"])}
@@ -60,25 +60,25 @@ const BasicInformation = (props) => {
             <TextArea className="templateDiscription" rows={4} placeholder="Description" maxLength={200} />
           </Form.Item>
           <h5 className="TemplateHeader">Master File</h5>
-          <Form.Item name="fed_uuin" label="Assign to table of Content :">
+          <Form.Item name="master_file" label="Assign to table of Content :">
           <Select />
           </Form.Item>
           <h5 className="TemplateHeader">Content</h5>
           {/* text Editor */}
           <h3 className="TemplateHeader">Status </h3>
-          <Form.Item name="fed_uuin" label=" Update On:">
+          <Form.Item name="update_on" label=" Update On:">
             <Input disabled />
           </Form.Item>
-          <Form.Item name="fed_uuin" label=" Updated:">
+          <Form.Item name="updated_by" label=" Updated:">
             <Input disabled />
           </Form.Item>
-          <Form.Item name="fed_uuin" label="Validation Status :">
+          <Form.Item name="validation_status" label="Validation Status :">
           <Select />
           </Form.Item>
-          <Form.Item name="fed_uuin" label="Validate on :">
+          <Form.Item name="validated_on" label="Validate on :">
             <Input disabled />
           </Form.Item>
-          <Form.Item name="fed_uuin" label="Validated By :">
+          <Form.Item name="validated_by" label="Validated By :">
             <Input disabled />
           </Form.Item>
 
@@ -87,57 +87,57 @@ const BasicInformation = (props) => {
         </Col>
         <Col className="gutter-row" xs={24} md={12} lg={11} offset={1}>
         <h3 className="TemplateHeader">Report Level </h3>
-          <Form.Item name="fed_uuin" label="Overview :">
+          <Form.Item name="report_level" label="Overview :">
             <Input />
           </Form.Item>
           <h5 className="TemplateHeader">Apply This Templates To Specified Product Type</h5>
-          <Form.Item name="fed_uuin" label="Not Set :">
+          <Form.Item name="product_type" label="Not Set :">
             <Select />
           </Form.Item>
           <h5 className="TemplateHeader">Document Visibility</h5>
-          <Form.Item name="fed_uuin" label="Not Confidental :">
+          <Form.Item name="confidential_visibility" label="Not Confidental :">
           <Switch defaultChecked onChange={onChange} />;
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="Public :">
+          <Form.Item name="descrpublic_private_visibilityiption" label="Public :">
           <Switch defaultChecked onChange={onChange} />
           </Form.Item>
           <h5 className="TemplateHeader">Template For</h5>
-          <Form.Item name="fed_uuin" label="Specified Customers :">
+          <Form.Item name="template_for" label="Specified Customers :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
           <h5 className="TemplateHeader">Document Type</h5>
-          <Form.Item name="fed_uuin" label="TPD Document :">
+          <Form.Item name="tpd_document_type" label="TPD Document :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="PMTA Document :">
+          <Form.Item name="pmta_document_type" label="PMTA Document :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="MHRA Document :">
+          <Form.Item name="mhra_document_type" label="MHRA Document :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="CBD Document :">
+          <Form.Item name="cbd_document_type" label="CBD Document :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
           <h5 className="TemplateHeader">Default For</h5>
-          <Form.Item name="fed_uuin" label="TPD  :">
+          <Form.Item name="tpd_default_for" label="TPD  :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="PMTA  :">
+          <Form.Item name="fda_default_for" label="FDA  :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="MHRA  :">
+          <Form.Item name="mhra_default_for" label="MHRA  :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
-          <Form.Item name="fed_uuin" label="CBD  :">
+          <Form.Item name="cbd_default_for" label="CBD  :">
           <Switch defaultChecked onChange={onChange} />
 
           </Form.Item>
