@@ -14,10 +14,10 @@ const CreateContact = (props) => {
   const [errors, setErrors] = useState([]);
 
 
-    const {id} = useParams()
+  const { id } = useParams()
   const onFinish = (data) => {
     const load = {
-      companies_id : id ,
+      companies_id: id,
       ...data
     }
     let payload = { "object": load }
@@ -43,37 +43,37 @@ const CreateContact = (props) => {
   // Start footer buttons array
   // ------------------------------------
   const footer = [
-    <SaveButton form={ formName } key="create_button" htmlType="submit" state={ loader } />,
+    <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
   ];
   // ------------------------------------
   // Eend footer buttons array
   // ------------------------------------
 
   return (
-    <ModalComponent mainTitle="Create" subTitle="Contact" visible={ true } footer={ footer } onCancel={ () => props.onCreated(false) }>
+    <ModalComponent mainTitle="Create" subTitle="Contact" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
       <Form
         layout="vertical"
-        name={ formName }
-        onFinish={ onFinish }
+        name={formName}
+        onFinish={onFinish}
       >
-        <Form.Item name="first_name" rules={ rules.first_name } label="First Name :" className="da-mb-16"
-          { ...getErrorProps(errors['first_name']) }>
+        <Form.Item name="first_name" rules={rules.first_name} label="First Name :" className="da-mb-16"
+          {...getErrorProps(errors['first_name'])}>
           <Input />
         </Form.Item>
-        <Form.Item name="last_name" rules={ rules.last_name } label="Last Name :" className="da-mb-16"
-          { ...getErrorProps(errors['last_name']) }>
+        <Form.Item name="last_name" rules={rules.last_name} label="Last Name :" className="da-mb-16"
+          {...getErrorProps(errors['last_name'])}>
           <Input />
         </Form.Item>
-        <Form.Item name="email" rules={ rules.email } label="Email :" className="da-mb-16"
-          { ...getErrorProps(errors['email']) }>
+        <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
+          {...getErrorProps(errors['email'])}>
           <Input />
         </Form.Item>
-        <Form.Item name="landline" rules={ rules.landline } label="Landline :" className="da-mb-16"
-          { ...getErrorProps(errors['landline']) }>
+        <Form.Item name="landline" rules={rules.landline} label="Landline :" className="da-mb-16"
+          {...getErrorProps(errors['landline'])}>
           <Input />
         </Form.Item>
-        <Form.Item name="mobile" rules={ rules.mobile } label="Mobile :" className="da-mb-16"
-          { ...getErrorProps(errors['mobile']) }>
+        <Form.Item name="mobile" rules={rules.mobile} label="Mobile :" className="da-mb-16"
+          {...getErrorProps(errors['mobile'])}>
           <Input />
         </Form.Item>
         <Form.Item name="is_primary" label="Make it Primary :" className="da-mb-16">
