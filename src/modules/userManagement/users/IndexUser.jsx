@@ -45,9 +45,27 @@ const IndexUser = () => {
       sorter: true,
     },
     {
+      key: 'company',
+      title: 'Company',
+      dataIndex: 'company',
+      sorter: true,
+    },
+    {
+      key: 'User_name',
+      title: 'User Name',
+      dataIndex: 'User_name',
+      sorter: false,
+    },
+    {
       key: 'role_name',
       title: 'Role',
       dataIndex: 'role_name',
+      sorter: false,
+    },
+    {
+      key: 'email',
+      title: 'Email',
+      dataIndex: 'email',
       sorter: false,
     },
     {
@@ -64,8 +82,15 @@ const IndexUser = () => {
       }
     },
     {
+      key: 'live',
+      title: 'Live',
+      dataIndex: 'live',
+      sorter: true,
+      
+    },
+    {
       key: 'created_at',
-      title: 'Create At',
+      title: 'Last Seen',
       dataIndex: 'created_at',
       sorter: true,
       render: (created_at) => {
@@ -198,14 +223,29 @@ export default IndexUser;
 const availableFilters = [
   {
     key: 'name',
+    placeholder: ' Name',
+    type: 'text',
+  },
+  {
+    key: 'company',
+    placeholder: 'Company',
+    type: 'select',
+  },
+  {
+    key: 'name',
     placeholder: 'User Name',
     type: 'text',
   },
   {
-    key: 'created_at',
-    placeholder: 'Creation Date',
-    type: 'date',
+    key: 'email',
+    placeholder: 'Email',
+    type: 'text',
   },
+  // {
+  //   key: 'created_at',
+  //   placeholder: 'Creation Date',
+  //   type: 'date',
+  // },
   {
     key: 'is_active',
     placeholder: 'Select Status',
