@@ -77,9 +77,9 @@ const IndexBrands = () => {
           sorter: true,
         },
         {
-          key: "market",
+          key: "country_name",
           title: "Market",
-          dataIndex: "market",
+          dataIndex: "country_name",
           sorter: true,
         },
         {

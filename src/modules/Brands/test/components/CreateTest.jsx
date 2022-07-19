@@ -21,8 +21,9 @@ const CreateTest = (props) => {
 
     const { id } = useParams()
     const onFinish = (data) => {
-        const load  = {
-            selectedCountries:[data.market_id],
+        
+        const load = {
+            selectedCountries: [data.country_id],
             ...data
         }
         let payload = { "object": load }
@@ -45,7 +46,7 @@ const CreateTest = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
-        
+
         setDeps({
             countries: data.countries,
             customer: data.customer,
@@ -105,7 +106,7 @@ const CreateTest = (props) => {
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="market_id" label="Market :" className="da-mb-16"
+                <Form.Item name="country_id" label="Market :" className="da-mb-16"
                 >
                     <Select
                         showSearch
