@@ -562,3 +562,12 @@ select:-webkit-autofill:focus {
     margin-bottom: 12px!important;
     padding-bottom: 4px!important;
 }
+
+.templateDiscription {
+    height: 300px!important;
+}
+
+.TemplateHeader {
+    font-weight: 500!important;
+    padding: 10px;
+}

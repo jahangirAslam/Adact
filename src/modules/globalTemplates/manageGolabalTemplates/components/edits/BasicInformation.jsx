@@ -3,6 +3,7 @@ import { Form, Input, Row, Col, Divider, Switch, Select } from "antd";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
 import { updateChemicalCompound } from "../../requests";
 import { ButtonComponent } from "@comps/components";
+import TextArea from "antd/lib/input/TextArea";
 
 
 const BasicInformation = (props) => {
@@ -23,6 +24,9 @@ const BasicInformation = (props) => {
     errorList["password"] = err;
     setErrors(errorList);
   };
+  const onChange = (checked) => {
+    console.log(`switch to ${checked}`);
+  };
 
   // const onChange = (e) => {
   //   console.log("radio checked", e.target.value);
@@ -37,62 +41,110 @@ const BasicInformation = (props) => {
       onFinish={onFinish}
     >
       <Row gutter={[16, 24]}>
-        <Col className="gutter-row" xs={24} md={12} lg={8} >
+        <Col className="gutter-row" xs={24} md={12} lg={12}  >
+          <h3 className="TemplateHeader">Subject </h3>
           <Form.Item
-            name="name"
+            name="subject"
             rules={rules.name}
-            label="Name :"
+            label="Test :"
             {...getErrorProps(errors["name"])}
           >
             <Input />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="fed_uuin" label="fed_uuin :">
-            <Input />
+          <Form.Item
+            name="description"
+            rules={rules.name}
+            label="Description :"
+            {...getErrorProps(errors["name"])}
+          >
+            <TextArea className="templateDiscription" rows={4} placeholder="Description" maxLength={200} />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="manufacturer_ref" label="Manufacturer Name :">
-            <Input />
+          <h5 className="TemplateHeader">Master File</h5>
+          <Form.Item name="master_file" label="Assign to table of Content :">
+          <Select />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="manufacturer_ref" label="manufacturer_ref :">
-            <Input />
+          <h5 className="TemplateHeader">Content</h5>
+          {/* text Editor */}
+          <h3 className="TemplateHeader">Status </h3>
+          <Form.Item name="update_on" label=" Update On:">
+            <Input disabled />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="has_recipe" label="Has Recipe :">
-            <Input disabled={true} />
+          <Form.Item name="updated_by" label=" Updated:">
+            <Input disabled />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="is_valid_manufacturer" label="The manufacturer records are valid?">
-            <Input disabled={true} />
+          <Form.Item name="validation_status" label="Validation Status :">
+          <Select />
           </Form.Item>
-        </Col>
-        <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="is_valid_manufacturer" label="Recipe is valid">
-            <Input disabled={true} />
+          <Form.Item name="validated_on" label="Validate on :">
+            <Input disabled />
           </Form.Item>
-        </Col>
-      </Row>
-      <Divider orientation="left" />
-      <Row gutter={[16, 24]}>
-        <Col className="gutter-row" span={8}>
-          <Form.Item name="is_active" label="Flavour status">
-            <Switch defaultChecked={props.data.is_safe} />
+          <Form.Item name="validated_by" label="Validated By :">
+            <Input disabled />
           </Form.Item>
-        </Col>
 
-        <Col className="gutter-row" span={8}>
-          <Form.Item name="is_test" label="Test Mode :">
-            <Switch defaultChecked={props.data.is_test} />
+
+
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} lg={11} offset={1}>
+        <h3 className="TemplateHeader">Report Level </h3>
+          <Form.Item name="report_level" label="Overview :">
+            <Input />
+          </Form.Item>
+          <h5 className="TemplateHeader">Apply This Templates To Specified Product Type</h5>
+          <Form.Item name="product_type" label="Not Set :">
+            <Select />
+          </Form.Item>
+          <h5 className="TemplateHeader">Document Visibility</h5>
+          <Form.Item name="confidential_visibility" label="Not Confidental :">
+          <Switch defaultChecked onChange={onChange} />;
+
+          </Form.Item>
+          <Form.Item name="descrpublic_private_visibilityiption" label="Public :">
+          <Switch defaultChecked onChange={onChange} />
+          </Form.Item>
+          <h5 className="TemplateHeader">Template For</h5>
+          <Form.Item name="template_for" label="Specified Customers :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <h5 className="TemplateHeader">Document Type</h5>
+          <Form.Item name="tpd_document_type" label="TPD Document :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="pmta_document_type" label="PMTA Document :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="mhra_document_type" label="MHRA Document :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="cbd_document_type" label="CBD Document :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <h5 className="TemplateHeader">Default For</h5>
+          <Form.Item name="tpd_default_for" label="TPD  :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="fda_default_for" label="FDA  :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="mhra_default_for" label="MHRA  :">
+          <Switch defaultChecked onChange={onChange} />
+
+          </Form.Item>
+          <Form.Item name="cbd_default_for" label="CBD  :">
+          <Switch defaultChecked onChange={onChange} />
+
           </Form.Item>
         </Col>
+        
       </Row>
-      <Divider orientation="left" />
+      
 
       <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent

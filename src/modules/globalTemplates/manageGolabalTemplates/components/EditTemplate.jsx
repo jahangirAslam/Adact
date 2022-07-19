@@ -7,14 +7,14 @@ import BasicInformation from "./edits/BasicInformation";
 
 const pageConfig = {
   headers: {
-    title: "Manage Chemical Compound",
+    title: "Manage Global Templates",
     breadcrumb: [
       {
-        name: "ChemicalCompounds",
-        path: "/component-management/compounds"
+        name: " Global Templates",
+        path: "/global-template/manage-global-templates"
       },
       {
-        name: "Manage",
+        name: "Test",
       }
     ]
   }
@@ -40,7 +40,7 @@ const chemicalCompoundSuccess = (res) =>{
 
   const tabs = [
     {
-      title: "Summary",
+      title: "Subject",
       content: (
         <BasicInformation
           id={id}
