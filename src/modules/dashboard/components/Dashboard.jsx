@@ -1,8 +1,12 @@
-import { Row, Col } from "antd";
+import { Row, Col, Button, Switch } from "antd";
 import React from "react";
 import { CChart } from '@coreui/react-chartjs'
-
+import { useState } from 'react';
 const Dashboard = () => {
+  const [disabled, setDisabled] = useState(true);
+  const toggle = () => {
+    setDisabled(!disabled);
+  };
   const data = {
     labels: ["January", "February", "March", "April", "May", "June", "July"],
     datasets: [
@@ -25,11 +29,17 @@ const Dashboard = () => {
     ],
   }
   return (
+    <div>
+      <div className="dashboardBtn">
+      <Switch className="dashboardswitch" checkedChildren="Monthly" unCheckedChildren="Yearly" />
+
+      </div>
     <CChart
+    className="dashboardChart"
       type="line"
       data={data}
     />
-
+</div>
   )
 }
 export default Dashboard;

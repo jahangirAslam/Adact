@@ -571,3 +571,19 @@ select:-webkit-autofill:focus {
     font-weight: 500!important;
     padding: 10px;
 }
+
+.dashboardChart {
+    padding-left: 50px!important;
+    padding-right: 50px!important;
+    padding-top: 10px!important;
+}
+
+.dashboardBtn {
+    text-align: end!important;
+    padding-top: 12px!important;
+    padding-right: 10px!important;
+}
+
+.dashboardswitch {
+    /* height: 35px!important; */
+}
