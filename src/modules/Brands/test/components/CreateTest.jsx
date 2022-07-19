@@ -2,6 +2,7 @@ import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Input, Select } from "antd";
 import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import { createItem, getDependencies } from "./request";
 
 
@@ -12,19 +13,15 @@ const CreateTest = (props) => {
     const [errors, setErrors] = useState([]);
     const [deps, setDeps] = useState({
         countries: [],
+        customer: [],
+        agent: [],
+        product: []
 
     });
 
-
+    const { id } = useParams()
     const onFinish = (data) => {
-        let load = {
-            name: data.name,
-            trading_name: data.trading_name,
-            email: data.email,
-            country_id: data.country,
-            updated_by: 1,
-        }
-        let payload = { "object": load }
+        let payload = { "object": data }
         makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
 
@@ -34,7 +31,7 @@ const CreateTest = (props) => {
     }
 
     const getSelectFieldsData = () => {
-    
+
         makeRequestStateless(getDependencies, null, onDependencySuccess, null);
     }
 
@@ -44,9 +41,13 @@ const CreateTest = (props) => {
     }, []);
 
     const onDependencySuccess = (data, res) => {
+        
         setDeps({
-
             countries: data.countries,
+            customer: data.customer,
+            agent: data.agent,
+            product: data.product,
+
 
         });
 
@@ -70,37 +71,37 @@ const CreateTest = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="ADD A BRANDS"  visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="ADD A BRANDS" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}
                 onFinish={onFinish}
             >
-                <Form.Item name="country" label="Customer :" className="da-mb-16"
+                <Form.Item name="customer_id" label="Customer :" className="da-mb-16"
                 >
                     <Select
                         showSearch
                         placeholder="Test Ref"
-                        options={deps.countries}
+                        options={deps.customer}
                     />
                 </Form.Item>
-                <Form.Item name="country" label="Product :" className="da-mb-16"
+                <Form.Item name="product_id" label="Product :" className="da-mb-16"
                 >
                     <Select
                         showSearch
                         placeholder="Test Ref"
-                        options={deps.countries}
+                        options={deps.product}
                     />
                 </Form.Item>
                 <Form.Item name="name" label="Brand Name :" className="da-mb-16"
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="email" label="Sub-Brand Name :" className="da-mb-16"
+                <Form.Item name="sub_name" label="Sub-Brand Name :" className="da-mb-16"
                 >
                     <Input />
                 </Form.Item>
-                <Form.Item name="country" label="Markit :" className="da-mb-16"
+                <Form.Item name="market_id" label="Market :" className="da-mb-16"
                 >
                     <Select
                         showSearch
