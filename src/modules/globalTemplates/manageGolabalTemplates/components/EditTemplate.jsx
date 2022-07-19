@@ -2,8 +2,10 @@ import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import ActivityLog from "../../../componentManagement/chemicalCompounds/components/edits/ActivityLog"
 import { getChemicalCompound } from "../requests";
 import BasicInformation from "./edits/BasicInformation";
+import Preview from "./edits/Preview";
 
 const pageConfig = {
   headers: {
@@ -49,6 +51,27 @@ const chemicalCompoundSuccess = (res) =>{
         />
       ),
     },
+    {
+      title: "Preview",
+      content: (
+        <Preview
+          id={id}
+          data={data.object}
+          dependencies={data.dependencies}
+        />
+      ),
+    },
+    {
+      title: "Activity Logs",
+      content: (
+        <ActivityLog
+          id={id}
+          data={data.object}
+          dependencies={data.dependencies}
+        />
+      ),
+    },
+
    
     
    
