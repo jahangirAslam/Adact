@@ -21,7 +21,11 @@ const CreateTest = (props) => {
 
     const { id } = useParams()
     const onFinish = (data) => {
-        let payload = { "object": data }
+        const load  = {
+            selectedCountries:[data.market_id],
+            ...data
+        }
+        let payload = { "object": load }
         makeRequest(setLoader, createItem, payload, onSuccess, onError);
     }
 

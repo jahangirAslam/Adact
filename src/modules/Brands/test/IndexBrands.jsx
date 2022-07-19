@@ -42,7 +42,7 @@ const IndexBrands = () => {
         },
         {
           key: "name",
-          title: "Brand Na ",
+          title: "Brand Name",
           dataIndex: "name",
           sorter: true,
         },
