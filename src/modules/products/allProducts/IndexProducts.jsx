@@ -54,12 +54,7 @@ const IndexProducts = () => {
             dataIndex: 'name',
             sorter: true,
         },
-        {
-            key: 'category_name',
-            title: 'Category Name',
-            dataIndex: 'category_name',
-            sorter: true,
-        },
+     
         {
             key: 'withdrawn',
             title: 'WithDrawn',
@@ -67,17 +62,13 @@ const IndexProducts = () => {
             sorter: true,
         },
         {
-            key: 'withdrawn',
-            title: 'WithDrawn',
-            dataIndex: 'withdrawn',
-            sorter: true,
+            key: 'type',
+            title: 'Type',
+            dataIndex: 'type',
+            sorter: true,   
         },
-        {
-            key: 'withdrawn',
-            title: 'WithDrawn',
-            dataIndex: 'withdrawn',
-            sorter: true,
-        },
+      
+     
 
 
         {
