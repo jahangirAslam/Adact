@@ -208,7 +208,7 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'client',
+        key: 'customer_id',
         placeholder: 'Client Name',
         type: 'select',
         data_key: 'customers',
