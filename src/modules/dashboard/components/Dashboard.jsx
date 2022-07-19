@@ -1,7 +1,6 @@
-import { Row, Col, Button, Switch } from "antd";
-import React from "react";
-import { CChart } from '@coreui/react-chartjs'
-import { useState } from 'react';
+import { CChart } from '@coreui/react-chartjs';
+import { Switch } from "antd";
+import React, { useState } from "react";
 const Dashboard = () => {
   const [disabled, setDisabled] = useState(true);
   const toggle = () => {
