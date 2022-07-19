@@ -50,12 +50,12 @@ const Details = (props) => {
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="trading_name" label="Sub-Brand Name :">
+              <Form.Item name="sub_name" label="Sub-Brand Name :">
                 <Input />
               </Form.Item>
 
               <h5>Markit</h5>
-              <Form.Item name="trading_name" label="Markit :">
+              <Form.Item name="market" label="Market :">
                 <Input />
               </Form.Item>
               <h5>Agent</h5>
