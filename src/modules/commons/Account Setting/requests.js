@@ -1,6 +1,7 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "third-party/companies";
+const accountSettings = "third-party/account/setting";
 
 export const getFilters = () => {
     return get(`${api}/filters`);
@@ -24,4 +25,8 @@ export const updateCompany = (payload) => {
 
 export const deleteCompany = (id) => {
     return del(`${api}/${id}`);
+}
+
+export const addAcSettings = (payload) => {
+    return post(accountSettings, payload);
 }

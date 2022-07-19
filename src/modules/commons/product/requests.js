@@ -1,6 +1,6 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
-const api = "common/brands";
+const api = "product-management/products";
 
 export const getFilters = () => {
     return get(`${api}/filters`);

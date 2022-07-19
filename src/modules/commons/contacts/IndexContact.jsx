@@ -6,13 +6,15 @@ import {
 } from "@comps/components";
 import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import CreateContact from "./components/CreateContact.jsx";
 import EditContact from "./components/EditContact.jsx";
 import ViewContact from "./components/ViewContact.jsx";
 import { deleteContact, getContacts, getFilters } from "./requests";
 
 const IndexContact = (props) => {
-  const [filters, setFilters] = useState({});
+  const { id } = useParams()
+  const [filters, setFilters] = useState({ companies_id: id });
   const [loader, setLoader] = useState(false);
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
@@ -84,6 +86,7 @@ const IndexContact = (props) => {
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
       filters: { type: props.type },
+      filters
     };
     makeRequest(setLoader, getContacts, payload, onSuccess, null);
   };
@@ -112,8 +115,8 @@ const IndexContact = (props) => {
   };
   const onCreated = (res) => {
     if (res) {
-        getAllContacts();
-    //   setDataSource([...dataSource, res]);
+      getAllContacts();
+      //   setDataSource([...dataSource, res]);
     }
     setChildComponent(null);
   };
@@ -174,7 +177,7 @@ export default IndexContact;
 
 const availableFilters = [
   {
-    key: "name",
+    key: "first_name",
     placeholder: "Name",
     type: "text",
   },

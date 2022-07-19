@@ -8,7 +8,7 @@ import {
 import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 // import ViewBrand from "./components/ViewBrand.jsx";
 import { deleteBrand, getBrands, getFilters } from "./requests";
 
@@ -25,10 +25,11 @@ import { deleteBrand, getBrands, getFilters } from "./requests";
 // }
 
 const IndexProduct = () => {
+  const {id}  = useParams ()
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [dataSource, setDataSource] = useState([]);
-  const [filters, setFilters] = useState({});
+  const [filters, setFilters] = useState({customer_id:id});
   const [totalRecords, setTotalRecords] = useState(0);
   const [pagination, setPagination] = useState({
     current: 1,
@@ -41,9 +42,9 @@ const IndexProduct = () => {
 
   const columns = [
     {
-      key: "custom_id",
+      key: "id",
       title: " Product ID ",
-      dataIndex: "custom_id",
+      dataIndex: "id",
       sorter: true,
     },
     {
@@ -53,9 +54,9 @@ const IndexProduct = () => {
       sorter: true,
     },
     {
-      key: "on_markit",
+      key: "on_market",
       title: "On Markit ",
-      dataIndex: "on_markit",
+      dataIndex: "on_market",
       sorter: true,
     },
     {
@@ -121,6 +122,7 @@ const IndexProduct = () => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
+      filters
     };
     makeRequest(setLoader, getBrands, payload, onSuccess, null);
   };

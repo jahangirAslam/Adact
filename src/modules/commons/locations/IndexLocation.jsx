@@ -5,12 +5,13 @@ import { getLocations, deleteLocation, getFilters } from "./requests";
 import CreateLocation from "./components/CreateLocation.jsx";
 import EditLocation from "./components/EditLocation.jsx";
 import ViewLocation from "./components/ViewLocation.jsx";
+import { useParams } from "react-router-dom";
 
 
 const IndexLocation = (props) => {
-
+    const { id } = useParams()
     const [loader, setLoader] = useState(false);
-    const [filters, setFilters] = useState({});
+    const [filters, setFilters] = useState({ companies_id: id });
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -43,9 +44,9 @@ const IndexLocation = (props) => {
             sorter: true,
         },
         {
-            key: 'country_id',
+            key: 'country_name',
             title: 'Country',
-            dataIndex: 'country_id',
+            dataIndex: 'country_name',
             sorter: true,
         },
         {
@@ -66,7 +67,7 @@ const IndexLocation = (props) => {
         {
             key: "actions",
             title: 'Actions',
-            render: (record) => ActionComponent({ each: record, onView: onView, onEdit: onEdit, onDelete: onDelete })
+            render: (record) => ActionComponent({ each: record,  onEdit: onEdit, onDelete: onDelete })
         },
     ];
 
@@ -81,7 +82,8 @@ const IndexLocation = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": props.type }
+            filters: { "type": props.type },
+            filters
         };
         makeRequest(setLoader, getLocations, payload, onSuccess, null);
     }
@@ -107,7 +109,7 @@ const IndexLocation = (props) => {
         setChildComponent(<CreateLocation onCreated={onCreated} type={props.type} />);
     }
     const onCreated = (res) => {
-       
+
         if (res) {
 
             getAllLocations()
@@ -163,7 +165,7 @@ const availableFilters = [
     {
         key: 'name',
         placeholder: 'Name',
-        type: 'select',
+        type: 'text',
     },
     // {
     //     key: 'name',

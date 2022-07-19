@@ -3,6 +3,7 @@ import { Form, Input, Select } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
 import { createLocation, getLocationDependencies } from "../requests";
+import { useParams } from "react-router-dom";
 
 
 const formName = "createLocation";
@@ -14,8 +15,14 @@ const CreateLocation = (props) => {
     const [deps, setDeps] = useState({
         countries: []
     });
+    const { id } = useParams()
     const onFinish = (data) => {
-        let payload = { "object": data }
+        const load = {
+            companies_id: id,
+            ...data
+        }
+        let payload = { "object": load }
+        debugger
         payload.object["type"] = props.type;
         makeRequest(setLoader, createLocation, payload, onSuccess, onError);
     }
@@ -54,49 +61,49 @@ const CreateLocation = (props) => {
     // Start footer buttons array
     // ------------------------------------
     const footer = [
-        <SaveButton form={ formName } key="create_button" htmlType="submit" state={ loader } />,
+        <SaveButton form={formName} key="create_button" htmlType="submit" state={loader} />,
     ];
     // ------------------------------------
     // Eend footer buttons array
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Location" visible={ true } footer={ footer } onCancel={ () => props.onCreated(false) }>
+        <ModalComponent mainTitle="Create" subTitle="Location" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
-                name={ formName }
-                onFinish={ onFinish }
+                name={formName}
+                onFinish={onFinish}
             >
-                <Form.Item name="name" rules={ rules.name } label="Location Name :" className="da-mb-16"
-                    { ...getErrorProps(errors['name']) }>
+                <Form.Item name="name" rules={rules.name} label="Location Name :" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="first_address" rules={ rules.first_address } label="Address :" className="da-mb-16"
-                    { ...getErrorProps(errors['first_address']) }>
+                <Form.Item name="first_address" rules={rules.first_address} label="Address :" className="da-mb-16"
+                    {...getErrorProps(errors['first_address'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="second_address" rules={ rules.second_address } label="Address :" className="da-mb-16"
-                    { ...getErrorProps(errors['second_address']) }>
+                <Form.Item name="second_address" rules={rules.second_address} label="Address :" className="da-mb-16"
+                    {...getErrorProps(errors['second_address'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="state" rules={ rules.state } label="State :" className="da-mb-16"
-                    { ...getErrorProps(errors['state']) }>
+                <Form.Item name="state" rules={rules.state} label="State :" className="da-mb-16"
+                    {...getErrorProps(errors['state'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="zipcode" rules={ rules.zipcode } label="Zip code :" className="da-mb-16"
-                    { ...getErrorProps(errors['zipcode']) }>
+                <Form.Item name="zipcode" rules={rules.zipcode} label="Zip code :" className="da-mb-16"
+                    {...getErrorProps(errors['zipcode'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="country_id" rules={ rules.country } label="Country :" className="da-mb-16"
-                    { ...getErrorProps(errors['country']) }>
+                <Form.Item name="country_id" rules={rules.country} label="Country :" className="da-mb-16"
+                    {...getErrorProps(errors['country'])}>
                     <Select
                         showSearch
                         placeholder="Select a country"
-                        options={ deps.countries }
+                        options={deps.countries}
                     />
                 </Form.Item>
-                <Form.Item name="city" rules={ rules.city } label="City :" className="da-mb-16"
-                    { ...getErrorProps(errors['city']) }>
+                <Form.Item name="city" rules={rules.city} label="City :" className="da-mb-16"
+                    {...getErrorProps(errors['city'])}>
                     <Input />
                 </Form.Item>
             </Form>
