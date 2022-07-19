@@ -41,9 +41,9 @@ const IndexBrand = () => {
 
   const columns = [
     {
-      key: "custom_id",
+      key: "customer_name",
       title: "Customer Product ",
-      dataIndex: "custom_id",
+      dataIndex: "customer_name",
       sorter: true,
     },
     {
@@ -59,17 +59,12 @@ const IndexBrand = () => {
       sorter: true,
     },
     {
-      key: "trading_name",
-      title: "With Draw",
-      dataIndex: "trading_name",
+      key: "brand_withdraw",
+      title: "WithDraw",
+      dataIndex: "brand_withdraw",
       sorter: true,
     },
-    {
-      key: "trading_name",
-      title: "Launch Date",
-      dataIndex: "trading_name",
-      sorter: true,
-    },
+  
     {
       key: "status",
       title: "Status",
@@ -218,64 +213,42 @@ const IndexBrand = () => {
 export default IndexBrand;
 
 const availableFilters = [
+ 
   {
     key: "name",
-    placeholder: "Customer Product",
-    type: "text",
-    data_key: "name",
-  },
-  {
-    key: "country_id",
     placeholder: "Brand Na",
-    type: "select",
-    data_key: "country_id",
+    type: "text",
+ 
   },
   {
-    key: "email",
+    key: "sub_name",
     placeholder: "Sub Brand",
     type: "text",
-    data_key: "email",
+    
   },
   {
-    key: "email",
-    placeholder: "With Draw",
-    type: "text",
-    data_key: "email",
+    key: "brand_withdraw",
+    placeholder: "WithDraw",
+    type: "select",
+    data_key: "withdrawn",
   },
   {
-    key: "email",
-    placeholder: "Launch Date",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
-    placeholder: " Status",
-    type: "text",
-    data_key: "email",
-  },
-  {
-    key: "email",
+    key: "units",
     placeholder: "Units",
     type: "text",
-    data_key: "email",
+ 
   },
   {
-    key: "email",
-    placeholder: "Markit",
+    key: "market",
+    placeholder: "Maret",
     type: "text",
-    data_key: "email",
+ 
   },
   {
-    key: "email",
+    key: "id",
     placeholder: "ID",
     type: "text",
-    data_key: "email",
+
   },
-  {
-    key: "email",
-    placeholder: "Action",
-    type: "text",
-    data_key: "email",
-  },
+ 
 ];

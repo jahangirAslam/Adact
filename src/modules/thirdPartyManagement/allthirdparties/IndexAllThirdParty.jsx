@@ -97,8 +97,8 @@ const IndexAllThirdParty = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": "AllThirdParties"}
-        };
+            filters    
+            };
         makeRequest(setLoader, getAllThirdParties, payload, onSuccess, null);
     }
 

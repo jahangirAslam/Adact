@@ -213,7 +213,7 @@ const availableFilters = [
   {
     key: "name",
     placeholder: " Name",
-    type: "select",
+    type: "text",
     data_key: "name",
   },
   {
