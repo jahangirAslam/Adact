@@ -153,7 +153,7 @@ const IndexProduct = () => {
   };
 
   const onEdit = (record) => {
-    history.push(`/common/brands/edit/${record.id}`);
+    history.push(`/products/product/edit/${record.id}`);
   };
 
   const onUpdated = (res) => {
