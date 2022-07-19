@@ -7,7 +7,7 @@ import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Col, Form, Input, Row, Select, Switch } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import CreateRecipe from "./CreateTest";
 import {
   createFlavour,
@@ -78,7 +78,6 @@ const Design = (props) => {
   };
   const onCreated = () => {
     notify("Design created successfuly ");
-    history.push(`/products/all_products`)
   }
 
   //deleted multi Items
@@ -91,10 +90,10 @@ const Design = (props) => {
   // Create component modal
 
 
-
+ const {id} = useParams()
   const onFinish = (data) => {
     let load = {
-      product_id: props.product_id,
+      product_id: id,
       ...data,
     };
     debugger
@@ -151,12 +150,12 @@ const Design = (props) => {
               <h5>E-Liquid</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={10}>
-                  <Form.Item name="product_width" label="Liquid Volume Capacity" >
+                  <Form.Item name="" label="Liquid Volume Capacity" >
                     <Input disabled={disabled} />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={10}>
-                  <Form.Item name="product_width" label="Nicotine Concentration" >
+                  <Form.Item name="" label="Nicotine Concentration" >
                     <Input disabled={disabled} />
                   </Form.Item>
                 </Col>
@@ -224,7 +223,7 @@ const Design = (props) => {
                 md={12}
                 lg={5}
               >
-                <Form.Item name="e_cig_device_idcid" label="E-Cig Device ID">
+                <Form.Item name="e_cig_device_id" label="E-Cig Device ID">
                   <Input />
                 </Form.Item>
               </Col>

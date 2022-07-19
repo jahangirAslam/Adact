@@ -34,76 +34,68 @@ const IndexBrands = () => {
     });
 
     const columns = [
-
         {
-            key: 'custom_id',
-            title: 'Customer Product ',
-            dataIndex: 'custom_id',
-            sorter: true,
+          key: "customer_name",
+          title: "Customer Product ",
+          dataIndex: "customer_name",
+          sorter: true,
         },
         {
-            key: 'name',
-            title: 'Brand Na ',
-            dataIndex: 'name',
-            sorter: true,
+          key: "name",
+          title: "Brand Na ",
+          dataIndex: "name",
+          sorter: true,
         },
         {
-            key: 'sub_name',
-            title: 'Sub Brand ',
-            dataIndex: 'sub_name',
-            sorter: true,
+          key: "sub_name",
+          title: "Sub Brand ",
+          dataIndex: "sub_name",
+          sorter: true,
         },
         {
-            key: 'trading_name',
-            title: 'With Draw',
-            dataIndex: 'trading_name',
-            sorter: true,
+          key: "brand_withdraw",
+          title: "WithDraw",
+          dataIndex: "brand_withdraw",
+          sorter: true,
+        },
+      
+        {
+          key: "status",
+          title: "Status",
+          sorter: true,
+          dataIndex: "is_active",
+          render: (is_active) => {
+            let color = is_active ? "green" : "red";
+            let text = is_active ? "ACTIVE" : "INACTIVE";
+            return <Tag color={color}>{text}</Tag>;
+          },
         },
         {
-            key: 'trading_name',
-            title: 'Launch Date',
-            dataIndex: 'trading_name',
-            sorter: true,
+          key: "units",
+          title: "Units",
+          dataIndex: "units",
+          sorter: true,
         },
         {
-            key: 'status',
-            title: 'Status',
-            sorter:true,
-            dataIndex: 'is_active',
-            render: (is_active) => {
-                let color = is_active ? 'green' : 'red';
-                let text = is_active ? 'ACTIVE' : 'INACTIVE';
-                return (
-                    <Tag color={color} >{text}</Tag>
-                );
-            }
+          key: "market",
+          title: "Market",
+          dataIndex: "market",
+          sorter: true,
         },
         {
-            key: 'units',
-            title: 'Units',
-            dataIndex: 'units',
-            sorter: true,
+          key: "id",
+          title: "ID",
+          dataIndex: "id",
+          sorter: true,
         },
+    
         {
-            key: 'market',
-            title: 'Market',
-            dataIndex: 'market',
-            sorter: true,
+          key: "actions",
+          title: "Actions",
+          render: (record) => ActionComponentEx(record),
         },
-        {
-            key: 'id',
-            title: 'ID',
-            dataIndex: 'id',
-            sorter: true,
-        },
-
-
-        {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
-        },
-    ];
+      ];
+    
 
     const ActionComponentEx = (record) => {
         let icon = null;
@@ -214,69 +206,42 @@ const IndexBrands = () => {
 export default IndexBrands;
 
 const availableFilters = [
-
+ 
     {
-        key: 'name',
-        placeholder: 'Customer Product',
-        type: 'text',
-        data_key: 'name'
+      key: "name",
+      placeholder: "Brand Name",
+      type: "text",
+   
     },
     {
-        key: 'country_id',
-        placeholder: 'Brand Na',
-        type: 'select',
-        data_key: 'country_id'
+      key: "sub_name",
+      placeholder: "Sub Brand",
+      type: "text",
+      
     },
     {
-        key: 'email',
-        placeholder: 'Sub Brand',
-        type: 'text',
-        data_key: 'email'
+      key: "brand_withdraw",
+      placeholder: "WithDraw",
+      type: "select",
+      data_key: "withdrawn",
     },
     {
-        key: 'email',
-        placeholder: 'With Draw',
-        type: 'text',
-        data_key: 'email'
+      key: "units",
+      placeholder: "Units",
+      type: "text",
+   
     },
     {
-        key: 'email',
-        placeholder: 'Launch Date',
-        type: 'text',
-        data_key: 'email'
+      key: "market",
+      placeholder: "Maret",
+      type: "text",
+   
     },
     {
-        key: 'email',
-        placeholder: ' Status',
-        type: 'text',
-        data_key: 'email'
+      key: "id",
+      placeholder: "ID",
+      type: "text",
+  
     },
-    {
-        key: 'email',
-        placeholder: 'Units',
-        type: 'text',
-        data_key: 'email'
-    },
-    {
-        key: 'email',
-        placeholder: 'Markit',
-        type: 'text',
-        data_key: 'email'
-    },
-    {
-        key: 'email',
-        placeholder: 'ID',
-        type: 'text',
-        data_key: 'email'
-    },
-    {
-        key: 'email',
-        placeholder: 'Action',
-        type: 'text',
-        data_key: 'email'
-    },
-    
-
-
-
-];
+   
+  ];

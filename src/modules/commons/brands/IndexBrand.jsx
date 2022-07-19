@@ -216,7 +216,7 @@ const availableFilters = [
  
   {
     key: "name",
-    placeholder: "Brand Na",
+    placeholder: "Brand Name",
     type: "text",
  
   },

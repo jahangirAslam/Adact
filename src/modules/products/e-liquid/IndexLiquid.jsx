@@ -1,6 +1,7 @@
 import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, SelectionTable } from "@comps/components";
 import { makeRequest, notify } from "@utils/helpers";
+import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import { getFilters } from "../allProducts/components/request";
@@ -34,82 +35,56 @@ const IndexLiquid = () => {
     });
 
     const columns = [
-
         {
-            key: 'id',
-            title: 'Product ID',
-            dataIndex: 'id',
-            sorter: true,
+          key: "id",
+          title: " Product ID ",
+          dataIndex: "id",
+          sorter: true,
         },
         {
-            key: 'customer_name',
-            title: 'customer_name ',
-            dataIndex: 'customer_name',
-            sorter: true,
-        },
-
-        {
-            key: 'name',
-            title: 'Name',
-            dataIndex: 'name',
-            sorter: true,
+          key: "name",
+          title: " Name ",
+          dataIndex: "name",
+          sorter: true,
         },
         {
-            key: 'name',
-            title: 'On Marki',
-            dataIndex: 'name',
-            sorter: true,
+          key: "on_market",
+          title: "On Market ",
+          dataIndex: "on_market",
+          sorter: true,
         },
         {
-            key: 'category_name',
-            title: 'Category Name',
-            dataIndex: 'category_name',
-            sorter: true,
+          key: "withdrawn",
+          title: "Withdrawn",
+          dataIndex: "withdrawn",
+          sorter: true,
         },
         {
-            key: 'withdrawn',
-            title: 'WithDrawn',
-            dataIndex: 'withdrawn',
-            sorter: true,
+          key: "type",
+          title: " Type",
+          dataIndex: "type",
+          sorter: true,
         },
         {
-            key: 'name',
-            title: 'PG/VG',
-            dataIndex: 'name',
-            sorter: true,
+          key: "status",
+          title: "Status",
+          sorter: true,
+          dataIndex: "is_active",
+          render: (is_active) => {
+            let color = is_active ? "green" : "red";
+            let text = is_active ? "ACTIVE" : "INACTIVE";
+            return <Tag color={color}>{text}</Tag>;
+          },
         },
+        
+        
+    
         {
-            key: 'name',
-            title: 'Nicotine',
-            dataIndex: 'name',
-            sorter: true,
+          key: "actions",
+          title: "Actions",
+          render: (record) => ActionComponentEx(record),
         },
-        {
-            key: 'name',
-            title: 'Type',
-            dataIndex: 'name',
-            sorter: true,
-        },
-        {
-            key: 'name',
-            title: 'Sub-Type',
-            dataIndex: 'name',
-            sorter: true,
-        },
-        {
-            key: 'insights',
-            title: 'Insight',
-            dataIndex: 'insights',
-            sorter: true,
-        },
-
-
-        {
-            key: "actions",
-            title: 'Actions',
-            render: (record) => ActionComponentEx(record)
-        },
-    ];
+      ];
 
 
     const ActionComponentEx = (record) => {

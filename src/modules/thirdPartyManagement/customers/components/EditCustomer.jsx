@@ -15,6 +15,7 @@ import Business from "../../../commons/Business/Business";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting"
 import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
 import IndexProduct from "../../../commons/product/IndexProduct";
+
 const pageConfig = {
   headers: {
     title: "Manage Customer",
