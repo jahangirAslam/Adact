@@ -1,14 +1,20 @@
 import { ButtonComponent } from "@comps/components";
-import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Button, Col, Form, Input, Row } from "antd";
-import React, { useState } from "react";
-import { updateSubstance } from "../request";
+import { getErrorProps, makeRequest,makeRequestStateless, notify } from "@utils/helpers";
+import { Button, Col, Form, Input, Row, Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getDependencies } from "../request";
 import adact from '../../../../../assets/images/adact.png'
 import TextArea from "antd/lib/input/TextArea";
 
 const Details = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+  const [deps, setDeps] = useState({
+    countries: [],
+    agent:[],
+    Product_id_notified_to_tpd:[],
+
+});
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
@@ -29,6 +35,26 @@ const Details = (props) => {
   //   console.log("radio checked", e.target.value);
   //   setValue(e.target.value);
   // };
+  const getSelectFieldsData = () => {
+
+    makeRequestStateless(getDependencies, null, onDependencySuccess, null);
+}
+
+useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+}, []);
+  const onDependencySuccess = (data, res) => {
+
+    setDeps({
+        countries: data.countries,
+        agent: data.agent,
+        Product_id_notified_to_tpd:data.Product_id_notified_to_tpd,
+        
+    });
+
+
+}
 
   return (
     <>
@@ -54,21 +80,33 @@ const Details = (props) => {
                 <Input />
               </Form.Item>
 
-              <h5>Markit</h5>
-              <Form.Item name="market" label="Market :">
-                <Input />
+              <h5>Market</h5>
+              <Form.Item name="markit" label="Markit :">
+              <Select
+                        showSearch
+                        placeholder="Markit"
+                        options={deps.countries}
+                    />
               </Form.Item>
               <h5>Agent</h5>
-              <Form.Item name="trading_name" label="Representative :">
-                <Input />
+              <Form.Item name="agent" label="Representative :">
+              <Select
+                        showSearch
+                        placeholder="agent"
+                        options={deps.agent}
+                    />
               </Form.Item>
              
 
               <h5> Brand Identification</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="short_name_code" label="Product ID :">
-                    <Input />
+                  <Form.Item name="Product_id_notified_to_tpd" label="Product ID :">
+                  <Select
+                        showSearch
+                        placeholder="Product Id"
+                        options={deps.Product_id_notified_to_tpd}
+                    />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
