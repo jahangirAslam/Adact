@@ -57,7 +57,7 @@ const IndexProducts = () => {
      
         {
             key: 'withdrawn',
-            title: 'WithDrawn',
+            title: 'Withdrawn',
             dataIndex: 'withdrawn',
             sorter: true,
         },

@@ -95,7 +95,7 @@ const EditCompany = (props) => {
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={24}>
-              <Divider orientation="left"><strong>SUMMARY</strong></Divider>
+              <h5>Summary</h5>
               <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
@@ -104,7 +104,7 @@ const EditCompany = (props) => {
                 {...getErrorProps(errors['trade_name'])}>
                 <Input />
               </Form.Item>
-              <Divider orientation="left"><strong>IDENTYFICATION</strong></Divider>
+              <h5>Summary</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={12}>
                   <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"

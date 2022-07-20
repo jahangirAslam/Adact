@@ -55,7 +55,7 @@ const IndexProduct = () => {
     },
     {
       key: "on_market",
-      title: "On Markit ",
+      title: "On Market ",
       dataIndex: "on_market",
       sorter: true,
     },

@@ -55,7 +55,7 @@ const IndexBusiness = () => {
         },
         {
             key: 'trading_name',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'trading_name',
             sorter: true,
         },

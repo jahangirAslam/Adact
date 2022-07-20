@@ -48,7 +48,7 @@ const IndexBrand = () => {
     },
     {
       key: "name",
-      title: "Brand Na ",
+      title: "Brand Name ",
       dataIndex: "name",
       sorter: true,
     },
@@ -60,7 +60,7 @@ const IndexBrand = () => {
     },
     {
       key: "brand_withdraw",
-      title: "WithDraw",
+      title: "Withdraw",
       dataIndex: "brand_withdraw",
       sorter: true,
     },

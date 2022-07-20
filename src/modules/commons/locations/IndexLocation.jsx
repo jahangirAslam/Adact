@@ -32,7 +32,7 @@ const IndexLocation = (props) => {
         },
         {
             key: 'first_address',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'first_address',
             sorter: true,
         },
