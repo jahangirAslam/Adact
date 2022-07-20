@@ -1,21 +1,18 @@
-import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
-import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
-import LocationIndex from "@mods/commons/locations/IndexLocation";
-import ContactIndex from "@mods/commons/contacts/IndexContact";
-import IndexAttachment from "@mods/commons/attachments/IndexAttachment";
 import IndexBrand from "@mods/commons/brands/IndexBrand";
-import { GetSettings } from "@mods/commons/settings/GetSettings";
-import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
-import LocationIcon from "../../../../containers/components/menu/icons/LocationIcon";
+import ContactIndex from "@mods/commons/contacts/IndexContact";
+import LocationIndex from "@mods/commons/locations/IndexLocation";
+import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
+import { useParams } from "react-router-dom";
 import ContactIcon from "../../../../containers/components/menu/icons/ContactIcon";
-import SettingsIcon from "../../../../containers/components/menu/icons/SettingsIcon";
+import LocationIcon from "../../../../containers/components/menu/icons/LocationIcon";
 import ProductsIcon from "../../../../containers/components/menu/icons/ProductsIcon";
-import Business from "../../../commons/Business/Business";
-import AcountSetting from "../../../commons/Account Setting/AcountSetting"
-import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
-import IndexProduct from "../../../commons/product/IndexProduct";
+import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
 import ThirdPartyIcon from "../../../../containers/components/menu/icons/ThirdPartyIcon";
+import AcountSetting from "../../../commons/Account Setting/AcountSetting";
+import Business from "../../../commons/Business/Business";
+import IndexProduct from "../../../commons/product/IndexProduct";
+import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
 
 const pageConfig = {
   headers: {

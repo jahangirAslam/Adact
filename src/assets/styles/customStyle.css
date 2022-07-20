@@ -601,3 +601,11 @@ select:-webkit-autofill:focus {
 .dashboardswitch {
     /* height: 35px!important; */
 }
+
+.headerHeadings {
+    color: #0093CD;
+}
+
+.headerLocation {
+    color: #0093CD;
+}
