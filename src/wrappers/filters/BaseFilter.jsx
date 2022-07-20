@@ -77,7 +77,7 @@ const BaseFilter = (props) => {
                 {filters.map((value, index) => FilterField(value, index))}
             </Row>
             <Row gutter={[16]}>
-                <Col className="gutter-row" span={2.5} offset={8}>
+                <Col className="gutter-row filterBtn" span={2.5}>
                     <Button type="primary" onClick={onSubmit} state={loader}>Apply Filter</Button>
                 </Col>
                 <Col className="gutter-row" span={2.5}>

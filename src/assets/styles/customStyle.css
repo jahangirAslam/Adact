@@ -468,6 +468,19 @@ select:-webkit-autofill:focus {
     border-radius: 6px!important;
 }
 
+@media only screen and (max-width: 600px) {
+    .csvPdfBtn {
+        padding: 0px;
+        padding-left: 0px;
+    }
+    .csvBtn {
+        padding: 10px;
+    }
+    .filterBtn {
+        padding-left: 30px!important;
+    }
+}
+
 .csvBtn:hover {
     color: #0093cd!important;
     border: .2px solid #0093cd;
