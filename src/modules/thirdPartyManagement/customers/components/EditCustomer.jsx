@@ -15,6 +15,7 @@ import Business from "../../../commons/Business/Business";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting"
 import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
 import IndexProduct from "../../../commons/product/IndexProduct";
+import ThirdPartyIcon from "../../../../containers/components/menu/icons/ThirdPartyIcon";
 
 const pageConfig = {
   headers: {
@@ -43,7 +44,7 @@ const EditCustomer = () => {
     },
     {
       title: "Business Details",
-      icon: <SummaryIcon />,
+      icon: <ThirdPartyIcon />,
       content: <Business id={id} />
     },
     {

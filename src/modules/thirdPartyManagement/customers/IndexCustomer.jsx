@@ -4,6 +4,7 @@ import { HeaderComponent, BodyComponent, SelectionTable, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getCustomers, deleteCustomer, getFilters } from "./requests";
 import CreateCustomer from "./components/CreateCustomer";
+import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
@@ -67,9 +68,16 @@ const IndexCustomer = () => {
         {
             key: 'status',
             title: 'Status',
-            dataIndex: 'status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
         // {
         //     key: 'created_at',
         //     title: 'Create At',

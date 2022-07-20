@@ -104,7 +104,7 @@ const EditCompany = (props) => {
                 {...getErrorProps(errors['trade_name'])}>
                 <Input />
               </Form.Item>
-              <h5>Summary</h5>
+              <h5>Identification</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={12}>
                   <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"

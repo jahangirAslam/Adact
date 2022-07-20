@@ -76,6 +76,16 @@ const CreateUser = (props) => {
         >
           <Input />
         </Form.Item>
+        <Form.Item name="first_name" rules={rules.name} label=" First Name :" className="da-mb-16"
+          {...getErrorProps(errors['name'])}
+        >
+          <Input />
+        </Form.Item>
+        <Form.Item name="last_name" rules={rules.name} label="Last Name :" className="da-mb-16"
+          {...getErrorProps(errors['name'])}
+        >
+          <Input />
+        </Form.Item>
 
         <Form.Item name="email" rules={rules.email} label="Email :" className="da-mb-16"
           {...getErrorProps(errors['email'])}
