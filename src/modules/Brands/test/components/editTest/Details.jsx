@@ -81,15 +81,15 @@ useEffect(() => {
               </Form.Item>
 
               <h5>Market</h5>
-              <Form.Item name="markit" label="Markit :">
+              <Form.Item name="market" label="Market :">
               <Select
                         showSearch
-                        placeholder="Markit"
+                        placeholder="Market"
                         options={deps.countries}
                     />
               </Form.Item>
               <h5>Agent</h5>
-              <Form.Item name="agent" label="Representative :">
+              <Form.Item name="agent_id" label="Representative :">
               <Select
                         showSearch
                         placeholder="agent"
@@ -101,7 +101,7 @@ useEffect(() => {
               <h5> Brand Identification</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="Product_id_notified_to_tpd" label="Product ID :">
+                  <Form.Item name="product_id_notified_tpd" label="Product ID :">
                   <Select
                         showSearch
                         placeholder="Product Id"
@@ -110,27 +110,27 @@ useEffect(() => {
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="Custom ID :">
+                  <Form.Item name="custom_id" label="Custom ID :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="UPC-A :">
+                  <Form.Item name="upc_a" label="UPC-A :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="EAN :">
+                  <Form.Item name="ean_13" label="EAN :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="GTIN :">
+                  <Form.Item name="gtin" label="GTIN :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="SKU :">
+                  <Form.Item name="sku" label="SKU :">
                     <Input />
                   </Form.Item>
                 </Col>
@@ -140,8 +140,11 @@ useEffect(() => {
 
             <Col className="gutter-row" xs={24} md={12} lg={12}>
             <h5>Status</h5>
-              <Form.Item name="trading_name" label="Representative :">
-                <Input />
+              <Form.Item name="status" label="Status :">
+                <Input  disabled/>
+              </Form.Item>
+              <Form.Item name="units" label="Units :">
+                <Input  />
               </Form.Item>
               <h5>published Date</h5>
               <Form.Item name="trading_name" label="Published Date :">
@@ -156,7 +159,11 @@ useEffect(() => {
             </div>
             <Col className="gutter-row discription-details" span={11} md={11} >
                 <h5 className="headerHeadings-details">Product Description</h5>
-            <TextArea rows={100} placeholder="Discription" maxLength={1000} />
+                <Form.Item name="comment" label="Comment :">
+
+            <TextArea rows={100}  maxLength={1000} />
+            </Form.Item>
+
             </Col>
 
             </Col>
