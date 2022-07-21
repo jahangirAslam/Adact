@@ -42,7 +42,7 @@ const IndexBrand = () => {
   const columns = [
     {
       key: "customer_name",
-      title: "Customer Product ",
+      title: " Product Name ",
       dataIndex: "customer_name",
       sorter: true,
     },
@@ -62,6 +62,12 @@ const IndexBrand = () => {
       key: "brand_withdraw",
       title: "Withdraw",
       dataIndex: "brand_withdraw",
+      sorter: true,
+    },
+    {
+      key: "launch_date",
+      title: "Launch Date",
+      dataIndex: "launch_date",
       sorter: true,
     },
   
@@ -231,6 +237,12 @@ const availableFilters = [
     placeholder: "WithDraw",
     type: "select",
     data_key: "withdrawn",
+  },
+  {
+    key: "launch_date",
+    placeholder: "Launch Date",
+    type: "text",
+    data_key: "launch_date",
   },
   {
     key: "units",

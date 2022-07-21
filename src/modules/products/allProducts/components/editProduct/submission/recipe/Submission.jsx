@@ -32,6 +32,12 @@ const Submission = (props) => {
             sorter: true,
         },
         {
+            key: 'product_to_submit ',
+            title: 'Product To Submit',
+            dataIndex: 'product_to_submit',
+            sorter: true,
+        },
+        {
             key: 'submission_status ',
             title: 'Submission Status',
             dataIndex: 'city',
