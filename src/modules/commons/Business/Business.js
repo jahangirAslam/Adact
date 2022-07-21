@@ -222,7 +222,7 @@ const Business = (props) => {
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
-          <CancelButton key="close_button" onClick={onCancel} />
+          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
         </Col>
       </div>
     </>
