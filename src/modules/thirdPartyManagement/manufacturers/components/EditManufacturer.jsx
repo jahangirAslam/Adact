@@ -38,7 +38,7 @@ const EditManufacturer = () => {
     },
     {
       title: "Contact Details",
-      icon: <ThirdPartyIcon />,
+      icon: <ContactIcon />,
       content: <Business group="manufacturers" />
       
     },

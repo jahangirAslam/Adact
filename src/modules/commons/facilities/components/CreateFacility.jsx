@@ -72,11 +72,11 @@ const CreateFacility = (props) => {
                     { ...getErrorProps(errors['name']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="first_address" rules={ rules.first_address } label="Address :" className="da-mb-16"
+                <Form.Item name="first_address" rules={ rules.first_address } label="Address line 1 :" className="da-mb-16"
                     { ...getErrorProps(errors['first_address']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="second_address" rules={ rules.second_address } label="Address :" className="da-mb-16"
+                <Form.Item name="second_address" rules={ rules.second_address } label="Address line 2 :" className="da-mb-16"
                     { ...getErrorProps(errors['second_address']) }>
                     <Input />
                 </Form.Item>

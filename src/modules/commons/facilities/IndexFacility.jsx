@@ -43,9 +43,9 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
-            key: 'county',
+            key: 'state',
             title: 'County',
-            dataIndex: 'county',
+            dataIndex: 'state',
             sorter: true,
         },
         {
@@ -56,7 +56,7 @@ const IndexFacility = (props) => {
         },
         {
             key: 'post_code',
-            title: 'Post Code',
+            title: 'Postcode',
             dataIndex: 'post_code',
             sorter: true,
         },
