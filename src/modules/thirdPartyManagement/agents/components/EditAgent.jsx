@@ -45,7 +45,7 @@ const EditAgent = () => {
       content: <IndexDocument id={ id } type="Agent" />
     },
     {
-      title: "Account Setting",
+      title: "Account Settings",
       icon:<SettingsIcon/>,
       content: <AcountSetting id={ id } type="Agent" />
     }

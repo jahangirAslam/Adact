@@ -54,7 +54,7 @@ const EditManufacturer = () => {
     },
     
     {
-      title: "Account Setting",
+      title: "Account Settings",
       icon:<SettingsIcon/>,
       content: <AcountSetting id={ id } />
     },

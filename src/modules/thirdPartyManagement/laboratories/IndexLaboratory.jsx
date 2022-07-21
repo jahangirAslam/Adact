@@ -8,7 +8,7 @@ import { deleteLaboratory, getFilters, getLaboratories } from "./requests";
 
 const pageConfig = {
     headers: {
-        title: "Laboratories",
+        title: "List Of Laboratories",
         breadcrumb: [
             {
                 name: "Laboratories",

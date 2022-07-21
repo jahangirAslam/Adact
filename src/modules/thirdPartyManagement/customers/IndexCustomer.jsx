@@ -8,10 +8,10 @@ import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
-        title: "Customers",
+        title: "Manage Customers",
         breadcrumb: [
             {
-                name: "Customers",
+                name: "Manage Customers",
                 path: "/third-party/customers"
             }
         ]

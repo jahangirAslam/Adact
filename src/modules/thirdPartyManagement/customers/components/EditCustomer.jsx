@@ -43,7 +43,7 @@ const EditCustomer = () => {
     },
     {
       title: "Business Details",
-      icon: <ThirdPartyIcon />,
+      icon: <ContactIcon />,
       content: <Business id={id} />
     },
     {
@@ -57,7 +57,7 @@ const EditCustomer = () => {
       content: <ContactIndex id={id} type="customers" />
     },
     {
-      title: "Account Setting",
+      title: "Account Settings",
       icon: <Setting />,
       content: <AcountSetting id={id} type="customers" />
     },
