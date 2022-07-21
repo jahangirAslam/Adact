@@ -35,6 +35,12 @@ const navigation = [{
                 permissionKey: "manufacturerss_index",
             },
             {
+                id: "agents",
+                title: "Agents",
+                uri: "/agents",
+                permissionKey: "agents_index",
+            },
+            {
                 id: "laboratories",
                 title: "Laboratories",
                 uri: "/laboratories",
@@ -46,12 +52,7 @@ const navigation = [{
                 uri: "/facilities",
                 permissionKey: "facilities_index",
             },
-            {
-                id: "agents",
-                title: "Agents",
-                uri: "/agents",
-                permissionKey: "agents_index",
-            },
+
             {
                 id: "allparties",
                 title: "All Third Parties",

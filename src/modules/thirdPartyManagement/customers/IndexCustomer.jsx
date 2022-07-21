@@ -64,6 +64,12 @@ const IndexCustomer = () => {
             dataIndex: 'Contact',
             sorter: true,
         },
+        {
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
+            sorter: true,
+        },
 
         {
             key: 'status',
