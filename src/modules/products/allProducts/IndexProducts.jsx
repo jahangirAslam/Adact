@@ -9,7 +9,7 @@ import { deleteProduct, getAllProducts, getFilters } from "./components/request"
 
 const pageConfig = {
     headers: {
-        title: "Products",
+        title: "Products list/All Types",
         breadcrumb: [
             {
                 name: "All Products",
@@ -54,6 +54,12 @@ const IndexProducts = () => {
             dataIndex: 'name',
             sorter: true,
         },
+        {
+            key: "on_market",
+            title: "On Market ",
+            dataIndex: "on_market",
+            sorter: true,
+          },
      
         {
             key: 'withdrawn',
@@ -61,13 +67,14 @@ const IndexProducts = () => {
             dataIndex: 'withdrawn',
             sorter: true,
         },
+        
         {
-            key: 'type',
-            title: 'Type',
-            dataIndex: 'type',
-            sorter: true,   
+          key: "type",
+          title: " Type",
+          dataIndex: "type",
+          sorter: true,
         },
-      
+        
      
 
 
@@ -211,6 +218,11 @@ const availableFilters = [
         type: 'text',
     },
     {
+        key: 'name',
+        placeholder: 'On Market',
+        type: 'text',
+    },
+    {
         key: 'withdrawn',
         placeholder: 'Withdrawn',
         type: 'select',
@@ -224,12 +236,12 @@ const availableFilters = [
 
     },
 
-    {
-        key: 'insights',
-        placeholder: 'Insights',
-        type: 'select',
-        data_key: 'insights',
+    // {
+    //     key: 'insights',
+    //     placeholder: 'Insights',
+    //     type: 'select',
+    //     data_key: 'insights',
 
-    },
+    // },
 
 ];
