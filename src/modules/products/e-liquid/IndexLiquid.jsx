@@ -10,10 +10,10 @@ import { deleteProduct, getAllProducts } from "./components/request";
 
 const pageConfig = {
     headers: {
-        title: "eLiquid",
+        title: "Products List/E-Liquids",
         breadcrumb: [
             {
-                name: "eLiquid",
+                name: "ELiquids",
             }
         ]
     }
@@ -60,11 +60,29 @@ const IndexLiquid = () => {
           sorter: true,
         },
         {
+            key: "pg/vg",
+            title: "PG/VG",
+            dataIndex: "pg/vg",
+            sorter: true,
+          },
+          {
+            key: "nicotine",
+            title: "Nicotine",
+            dataIndex: "nicotine",
+            sorter: true,
+          },
+        {
           key: "type",
           title: " Type",
           dataIndex: "type",
           sorter: true,
         },
+        {
+            key: "sub_type",
+            title: " Sub Type",
+            dataIndex: "sub_type",
+            sorter: true,
+          },
         {
           key: "status",
           title: "Status",
@@ -217,9 +235,9 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
-        placeholder: 'On Marki',
-        type: 'text',
+        key: 'on_market',
+        placeholder: 'On Market',
+        type: 'on_market',
     },
     {
         key: 'withdrawn',
@@ -246,18 +264,18 @@ const availableFilters = [
 
     },
     {
-        key: 'type',
+        key: 'sub_type',
         placeholder: 'Sub-Type',
         type: 'select',
-        data_key: 'type',
+        data_key: 'sub_type',
 
     },
-    {
-        key: 'insights',
-        placeholder: 'Insight',
-        type: 'select',
-        data_key: 'insights',
+    // {
+    //     key: 'insights',
+    //     placeholder: 'Insight',
+    //     type: 'select',
+    //     data_key: 'insights',
 
-    },
+    // },
 
 ];

@@ -1,5 +1,6 @@
 import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderComponent, TableComponent } from "@comps/components";
 import { formatCompleteDataTime, makeRequest, notify, removeById } from "@utils/helpers";
+import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateLaboratory from "./components/CreateLaboratory";
@@ -7,7 +8,7 @@ import { deleteLaboratory, getFilters, getLaboratories } from "./requests";
 
 const pageConfig = {
     headers: {
-        title: "Laboratories",
+        title: "List Of Laboratories",
         breadcrumb: [
             {
                 name: "Laboratories",
@@ -53,7 +54,7 @@ const IndexLaboratory = () => {
         },
         {
             key: 'first_address',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'first_address',
             sorter: true,
         },
@@ -65,11 +66,26 @@ const IndexLaboratory = () => {
         },
 
         {
-            key: 'status',
-            title: 'Status',
-            dataIndex: 'status',
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
             sorter: true,
         },
+
+        {
+            key: 'status',
+            title: 'Status',
+            dataIndex: 'is_active',
+            sorter: true,
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
+
         // {
         //     key: 'created_at',
         //     title: 'Create At',

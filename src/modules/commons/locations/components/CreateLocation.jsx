@@ -78,15 +78,15 @@ const CreateLocation = (props) => {
                     {...getErrorProps(errors['name'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="first_address" rules={rules.first_address} label="Address :" className="da-mb-16"
+                <Form.Item name="first_address" rules={rules.first_address} label="Address 1 :" className="da-mb-16"
                     {...getErrorProps(errors['first_address'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="second_address" rules={rules.second_address} label="Address :" className="da-mb-16"
+                <Form.Item name="second_address" rules={rules.second_address} label="Address 2 :" className="da-mb-16"
                     {...getErrorProps(errors['second_address'])}>
                     <Input />
                 </Form.Item>
-                <Form.Item name="state" rules={rules.state} label="State :" className="da-mb-16"
+                <Form.Item name="state" rules={rules.state} label="county/State :" className="da-mb-16"
                     {...getErrorProps(errors['state'])}>
                     <Input />
                 </Form.Item>

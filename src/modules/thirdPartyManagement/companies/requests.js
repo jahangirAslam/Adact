@@ -1,4 +1,4 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "third-party/companies";
 
@@ -19,7 +19,7 @@ export const createCompany = (payload) => {
 }
 
 export const updateCompany = (payload) => {
-    return put(`${api}/${payload.id}`, payload);
+    return put(`third-party/allparties/${payload.id}`, payload);
 }
 
 export const deleteCompany = (id) => {

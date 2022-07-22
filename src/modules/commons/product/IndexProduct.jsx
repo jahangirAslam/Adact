@@ -55,7 +55,7 @@ const IndexProduct = () => {
     },
     {
       key: "on_market",
-      title: "On Markit ",
+      title: "On Market ",
       dataIndex: "on_market",
       sorter: true,
     },
@@ -71,17 +71,17 @@ const IndexProduct = () => {
       dataIndex: "type",
       sorter: true,
     },
-    {
-      key: "status",
-      title: "Status",
-      sorter: true,
-      dataIndex: "is_active",
-      render: (is_active) => {
-        let color = is_active ? "green" : "red";
-        let text = is_active ? "ACTIVE" : "INACTIVE";
-        return <Tag color={color}>{text}</Tag>;
-      },
-    },
+    // {
+    //   key: "status",
+    //   title: "Status",
+    //   sorter: true,
+    //   dataIndex: "is_active",
+    //   render: (is_active) => {
+    //     let color = is_active ? "green" : "red";
+    //     let text = is_active ? "ACTIVE" : "INACTIVE";
+    //     return <Tag color={color}>{text}</Tag>;
+    //   },
+    // },
     
     
 

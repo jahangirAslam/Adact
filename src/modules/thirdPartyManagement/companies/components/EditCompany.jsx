@@ -50,6 +50,7 @@ const EditCompany = (props) => {
   }
 
   const onFinish = (submitData) => {
+   
     let payload = {
       "agent_id": submitData.agent_id, "dun_number": submitData.dun_number, "fda_number": submitData.fda_number, "name": submitData.name
       , "short_name": submitData.short_name, "id": props.id, "tpd_setting": submitData.tpd_setting, "trade_name": submitData.trade_name, "type": submitData.type
@@ -87,6 +88,9 @@ const EditCompany = (props) => {
   return (
     <>
       <div className="da-p-32">
+        <Row>
+          <Col span={24} xs={24}>
+          
         <Form
           layout="vertical"
           name={formName}
@@ -94,8 +98,8 @@ const EditCompany = (props) => {
           initialValues={data.object}
         >
           <Row gutter={[16, 24]}>
-            <Col className="gutter-row" span={24}>
-              <Divider orientation="left"><strong>SUMMARY</strong></Divider>
+            <Col className="gutter-row" span={24} xs={24}>
+              <h5 className="headerHeadings">Summary</h5>
               <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
@@ -104,9 +108,9 @@ const EditCompany = (props) => {
                 {...getErrorProps(errors['trade_name'])}>
                 <Input />
               </Form.Item>
-              <Divider orientation="left"><strong>IDENTYFICATION</strong></Divider>
+              <h5 className="headerHeadings">Identification</h5>
               <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" span={12} md={12} xs={24}>
                   <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"
                     {...getErrorProps(errors['short_name'])}>
                     <Input />
@@ -116,7 +120,7 @@ const EditCompany = (props) => {
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12}>
+                <Col className="gutter-row" span={12} md={12} xs={24}>
                   <Form.Item name="vat" rules={rules.vat} label="VAT number. (ex. GB 012345678) :" className="da-mb-16"
                     {...getErrorProps(errors['vat'])}>
                     <Input />
@@ -126,30 +130,30 @@ const EditCompany = (props) => {
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12}>
-                  <h5>TPD Setting</h5>
+                <Col className="gutter-row" span={12} md={12} xs={24}>
+                  <h5 className="headerHeadings">TPD Setting</h5>
                   <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
                     {...getErrorProps(errors['tpd_setting'])}>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12}>
-                <h5>Agent/Representative</h5>
+                <Col className="gutter-row" span={12} md={12} xs={24}>
+                <h5 className="headerHeadings">Agent/Representative</h5>
                   <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
                     <Input />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="agent_id" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
+                <Col className="gutter-row" span={12} md={12} xs={24}>
+                  <Form.Item name="Last_update_on" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
-                    <Input />
+                    <Input disabled />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12}>
-                  <Form.Item name="agent_id" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
+                <Col className="gutter-row" span={12} md={12} xs={24}>
+                  <Form.Item name="Last_updated_by" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
-                    <Input />
+                    <Input  disabled/>
                   </Form.Item>
                 </Col>
               </Row>
@@ -157,10 +161,12 @@ const EditCompany = (props) => {
             
           </Row>
         </Form>
-        <Col span={24} className="da-mt-32 da-text-align-right">
+        <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
-          <CancelButton key="close_button" onClick={onCancel} />
+          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
         </Col>
+        </Col>
+        </Row>
       </div>
     </>
   );

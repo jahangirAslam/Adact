@@ -3,6 +3,10 @@ import React from "react";
 import { Button, Badge, Row, Col, Dropdown, Divider, Avatar } from "antd";
 import { Notification, Message, Calendar } from "react-iconly";
 import { RiMoneyDollarCircleLine, RiTruckLine } from "react-icons/ri";
+import {
+  NotificationOutlined
+ 
+} from '@ant-design/icons';
 
 export default function HeaderNotifications() {
   const notificationMenu = (
@@ -24,16 +28,16 @@ export default function HeaderNotifications() {
       <div className="da-px-16">
         <Row align="middle">
           <Col className="da-mr-8">
-            <Avatar size={32} icon={<Message size={17} className="da-text-color-primary-1 remix-icon" />} className="da-d-flex-center-full" />
+            <Avatar size={32} icon={<NotificationOutlined />} className="da-d-flex-center-full" />
           </Col>
 
           <Col>
             <span className="da-d-block da-w-100 da-mb-4 da-badge-text da-font-weight-600 da-text-color-black-100">
-              New message received
+             Lorem ipsum dolor is here
             </span>
 
             <span className="da-d-block da-input-description da-font-weight-600 da-text-color-black-80">
-              24 unread messages.
+            Lorem ipsum dolor is here
             </span>
           </Col>
         </Row>
@@ -44,16 +48,16 @@ export default function HeaderNotifications() {
       <div className="da-px-16">
         <Row align="middle">
           <Col className="da-mr-8">
-            <Avatar size={32} icon={<Calendar size={17} className="da-text-color-primary-1 remix-icon" />} className="da-d-flex-center-full" />
+            <Avatar size={32} icon={<NotificationOutlined />} className="da-d-flex-center-full" />
           </Col>
 
           <Col>
             <span className="da-d-block da-w-100 da-mb-4 da-badge-text da-font-weight-600 da-text-color-black-100">
-              Incoming Events
+            Lorem ipsum dolor is here
             </span>
 
             <span className="da-d-block da-input-description da-font-weight-600 da-text-color-black-80">
-              You have 4 events this week.
+            Lorem ipsum dolor is here
             </span>
           </Col>
         </Row>
@@ -64,16 +68,16 @@ export default function HeaderNotifications() {
       <div className="da-px-16">
         <Row align="middle">
           <Col className="da-mr-8">
-            <Avatar size={32} icon={<RiMoneyDollarCircleLine size={17} className="da-text-color-primary-1 remix-icon" />} className="da-d-flex-center-full" />
+            <Avatar size={32} icon={<NotificationOutlined />} className="da-d-flex-center-full" />
           </Col>
 
           <Col>
             <span className="da-d-block da-w-100 da-mb-4 da-badge-text da-font-weight-600 da-text-color-black-100">
-              Congratulations🎉
+            Lorem ipsum dolor is here
             </span>
 
             <span className="da-d-block da-input-description da-font-weight-600 da-text-color-black-80">
-              You have 12 new sales!
+            Lorem ipsum dolor is here
             </span>
           </Col>
         </Row>
@@ -84,16 +88,16 @@ export default function HeaderNotifications() {
       <div className="da-px-16">
         <Row align="middle">
           <Col className="da-mr-8">
-            <Avatar size={32} icon={<RiTruckLine size={17} className="da-text-color-primary-1 remix-icon" />} className="da-d-flex-center-full" />
+            <Avatar size={32} icon={<NotificationOutlined />} className="da-d-flex-center-full" />
           </Col>
 
           <Col>
             <span className="da-d-block da-w-100 da-mb-4 da-badge-text da-font-weight-600 da-text-color-black-100">
-              Deliveries
+            Lorem ipsum dolor is here
             </span>
 
             <span className="da-d-block da-input-description da-font-weight-600 da-text-color-black-80">
-              Last 10 Orders has been delivered.
+            Lorem ipsum dolor is here
             </span>
           </Col>
         </Row>

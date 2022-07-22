@@ -131,11 +131,11 @@ const Business = (props) => {
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={11}>
-              <Form.Item name="first_address"  label="First Adress line :" className="da-mb-16"
+              <Form.Item name="first_address"  label="First Address line :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-              <Form.Item name="second_address"  label="Second Adress line :" className="da-mb-16"
+              <Form.Item name="second_address"  label="Second Address line :" className="da-mb-16"
               >
                 <Input />
               </Form.Item>
@@ -222,7 +222,7 @@ const Business = (props) => {
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
-          <CancelButton key="close_button" onClick={onCancel} />
+          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
         </Col>
       </div>
     </>

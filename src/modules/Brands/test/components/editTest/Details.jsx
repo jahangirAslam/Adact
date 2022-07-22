@@ -1,14 +1,20 @@
 import { ButtonComponent } from "@comps/components";
-import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Button, Col, Form, Input, Row } from "antd";
-import React, { useState } from "react";
-import { updateSubstance } from "../request";
+import { getErrorProps, makeRequest,makeRequestStateless, notify } from "@utils/helpers";
+import { Button, Col, Form, Input, Row, Select } from "antd";
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getDependencies } from "../request";
 import adact from '../../../../../assets/images/adact.png'
 import TextArea from "antd/lib/input/TextArea";
 
 const Details = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+  const [deps, setDeps] = useState({
+    countries: [],
+    agent:[],
+    Product_id_notified_to_tpd:[],
+
+});
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
@@ -29,6 +35,26 @@ const Details = (props) => {
   //   console.log("radio checked", e.target.value);
   //   setValue(e.target.value);
   // };
+  const getSelectFieldsData = () => {
+
+    makeRequestStateless(getDependencies, null, onDependencySuccess, null);
+}
+
+useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+}, []);
+  const onDependencySuccess = (data, res) => {
+
+    setDeps({
+        countries: data.countries,
+        agent: data.agent,
+        Product_id_notified_to_tpd:data.Product_id_notified_to_tpd,
+        
+    });
+
+
+}
 
   return (
     <>
@@ -54,45 +80,57 @@ const Details = (props) => {
                 <Input />
               </Form.Item>
 
-              <h5>Markit</h5>
+              <h5>Market</h5>
               <Form.Item name="market" label="Market :">
-                <Input />
+              <Select
+                        showSearch
+                        placeholder="Market"
+                        options={deps.countries}
+                    />
               </Form.Item>
               <h5>Agent</h5>
-              <Form.Item name="trading_name" label="Representative :">
-                <Input />
+              <Form.Item name="agent_id" label="Representative :">
+              <Select
+                        showSearch
+                        placeholder="agent"
+                        options={deps.agent}
+                    />
               </Form.Item>
              
 
               <h5> Brand Identification</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="short_name_code" label="Product ID :">
+                  <Form.Item name="product_id_notified_tpd" label="Product ID :">
+                  <Select
+                        showSearch
+                        placeholder="Product Id"
+                        options={deps.Product_id_notified_to_tpd}
+                    />
+                  </Form.Item>
+                </Col>
+                <Col className="gutter-row" xs={24} md={12} lg={12}>
+                  <Form.Item name="custom_id" label="Custom ID :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="Custom ID :">
+                  <Form.Item name="upc_a" label="UPC-A :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="UPC-A :">
+                  <Form.Item name="ean_13" label="EAN :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="EAN :">
+                  <Form.Item name="gtin" label="GTIN :">
                     <Input />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="GTIN :">
-                    <Input />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={12}>
-                  <Form.Item name="vat_number" label="SKU :">
+                  <Form.Item name="sku" label="SKU :">
                     <Input />
                   </Form.Item>
                 </Col>
@@ -102,8 +140,11 @@ const Details = (props) => {
 
             <Col className="gutter-row" xs={24} md={12} lg={12}>
             <h5>Status</h5>
-              <Form.Item name="trading_name" label="Representative :">
-                <Input />
+              <Form.Item name="status" label="Status :">
+                <Input  disabled/>
+              </Form.Item>
+              <Form.Item name="units" label="Units :">
+                <Input  />
               </Form.Item>
               <h5>published Date</h5>
               <Form.Item name="trading_name" label="Published Date :">
@@ -118,7 +159,11 @@ const Details = (props) => {
             </div>
             <Col className="gutter-row discription-details" span={11} md={11} >
                 <h5 className="headerHeadings-details">Product Description</h5>
-            <TextArea rows={100} placeholder="Discription" maxLength={1000} />
+                <Form.Item name="comment" label="Comment :">
+
+            <TextArea rows={100}  maxLength={1000} />
+            </Form.Item>
+
             </Col>
 
             </Col>

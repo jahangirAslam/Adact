@@ -4,10 +4,11 @@ import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getAgents, deleteAgent, getFilters } from "./requests";
 import CreateAgent from "./components/CreateAgent";
+import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
-        title: "Agent",
+        title: "Manage Agents",
         breadcrumb: [
             {
                 name: "Agents",
@@ -40,9 +41,9 @@ const IndexAgent = () => {
             sorter: true,
         },
         {
-            key: 'location_name',
+            key: 'country',
             title: 'Country',
-            dataIndex: 'location_name',
+            dataIndex: 'country',
             sorter: true,
         },
         {
@@ -53,23 +54,39 @@ const IndexAgent = () => {
         },
         {
             key: 'first_address',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'first_address',
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'contact',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'contact',
+            sorter: true,
+        },
+        {
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
             sorter: true,
         },
 
         {
             key: 'status',
             title: 'Status',
-            dataIndex: 'status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
+
+
+        
         // {
         //     key: 'created_at',
         //     title: 'Create At',

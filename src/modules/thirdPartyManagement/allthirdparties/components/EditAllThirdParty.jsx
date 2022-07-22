@@ -10,6 +10,11 @@ import { GetSettings } from "@mods/commons/settings/GetSettings";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting";
 import IndexProduct from "../../../commons/product/IndexProduct";
 import Submission from "../../../products/allProducts/components/editProduct/submission/recipe/Submission";
+import Business from "../../../commons/Business/Business";
+import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
+import ContactIcon from "../../../../containers/components/menu/icons/ContactIcon";
+import LocationIcon from "../../../../containers/components/menu/icons/LocationIcon";
+import SettingsIcon from "../../../../containers/components/menu/icons/SettingsIcon";
 
 const pageConfig = {
   headers: {
@@ -33,14 +38,22 @@ const EditAllThirdParty = () => {
   const tabs = [
     {
       title: "Summary",
+      icon: <SummaryIcon />,
       content: <EditCompany id={ id } />
     },
     {
+      title: "Business Details",
+      icon: <ContactIcon />,
+      content: <Business id={ id } type="AllThirdParties" />
+    },
+    {
       title: "Locations",
+      icon: <LocationIcon />,
       content: <LocationIndex id={ id } type="AllThirdParties" />
     },
     {
       title: "Contacts",
+      icon: <ContactIcon />,
       content: <ContactIndex id={ id } type="AllThirdParties" />
     },
     // {
@@ -52,25 +65,26 @@ const EditAllThirdParty = () => {
     //   content: <IndexAttachment type="AllThirdParties" />
     // },
     {
-      title: "Account Setting",
+      title: "Account Settings",
+      icon:<SettingsIcon/>,
       content: <AcountSetting type="AllThirdParties" />
     },
-    {
-      title: "Products",
-      content: <IndexProduct type="AllThirdParties" />
-    },
-    {
-      title: "Products",
-      content: "Products"
-    },
-    {
-      title: "Brands",
-      content: <IndexBrand type="customers" />
-    },
-    {
-      title: "Submissions",   
-      content: <Submission type="customers" />
-    },
+    // {
+    //   title: "Products",
+    //   content: <IndexProduct type="AllThirdParties" />
+    // },
+    // {
+    //   title: "Products",
+    //   content: "Products"
+    // },
+    // {
+    //   title: "Brands",
+    //   content: <IndexBrand type="customers" />
+    // },
+    // {
+    //   title: "Submissions",   
+    //   content: <Submission type="customers" />
+    // },
     // {
     //   title: "Changes",
     //   content: "Changes"

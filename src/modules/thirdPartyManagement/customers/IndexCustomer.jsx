@@ -4,13 +4,14 @@ import { HeaderComponent, BodyComponent, SelectionTable, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getCustomers, deleteCustomer, getFilters } from "./requests";
 import CreateCustomer from "./components/CreateCustomer";
+import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
-        title: "Customers",
+        title: "Manage Customers",
         breadcrumb: [
             {
-                name: "Customers",
+                name: "Manage Customers",
                 path: "/third-party/customers"
             }
         ]
@@ -53,7 +54,7 @@ const IndexCustomer = () => {
         },
         {
             key: 'first_address',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'first_address',
             sorter: true,
         },
@@ -63,13 +64,26 @@ const IndexCustomer = () => {
             dataIndex: 'Contact',
             sorter: true,
         },
+        {
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
+            sorter: true,
+        },
 
         {
             key: 'status',
             title: 'Status',
-            dataIndex: 'status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
         // {
         //     key: 'created_at',
         //     title: 'Create At',

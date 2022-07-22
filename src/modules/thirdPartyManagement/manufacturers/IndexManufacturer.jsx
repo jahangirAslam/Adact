@@ -4,13 +4,14 @@ import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getManufacturers, deleteManufacturer, getFilters } from "./requests";
 import CreateManufacturer from "./components/CreateManufacturer";
+import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
-        title: "Manufacturers",
+        title: " Manufactures List",
         breadcrumb: [
             {
-                name: "Manufacturers",
+                name: "Manufacturer",
                 path: "/third-party/manufacturers"
             }
         ]
@@ -53,7 +54,7 @@ const IndexManufacturer = () => {
         },
         {
             key: 'first_address',
-            title: 'Adress',
+            title: 'Address',
             dataIndex: 'first_address',
             sorter: true,
         },
@@ -63,13 +64,26 @@ const IndexManufacturer = () => {
             dataIndex: 'Contact',
             sorter: true,
         },
+        {
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
+            sorter: true,
+        },
 
         {
             key: 'status',
             title: 'Status',
-            dataIndex: 'status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
         // {
         //     key: 'created_at',
         //     title: 'Create At',

@@ -1,11 +1,14 @@
-import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
-
-import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexDocument from "@mods/documentManagement/documents/IndexDocument";
-import { GetSettings } from "@mods/commons/settings/GetSettings";
-import AcountSetting from "../../../commons/Account Setting/AcountSetting"
+import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
+import { useParams } from "react-router-dom";
+import ContactIcon from "../../../../containers/components/menu/icons/ContactIcon";
+import SettingsIcon from '../../../../containers/components/menu/icons/SettingsIcon';
+import DocumentsIcon from '../../../../containers/components/menu/icons/DocumentsIcon';
+import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
+import ThirdPartyIcon from "../../../../containers/components/menu/icons/ThirdPartyIcon";
+import AcountSetting from "../../../commons/Account Setting/AcountSetting";
 import Business from "../../../commons/Business/Business";
 
 const pageConfig = {
@@ -30,23 +33,29 @@ const EditManufacturer = () => {
   const tabs = [
     {
       title: "Summary",
+      icon: <SummaryIcon />,
       content: <EditCompany id={ id } />
     },
     {
-      title: "Contacts",
-      content: <ContactIndex id={ id } type="manufacturers" />
-    },
-    {
-      title: "Documents",
-      content: <IndexDocument/>
-    },
-    {
       title: "Contact Details",
+      icon: <ContactIcon />,
       content: <Business group="manufacturers" />
       
     },
     {
-      title: "Account Setting",
+      title: "Contacts",
+      icon: <ContactIcon />,
+      content: <ContactIndex id={ id } type="manufacturers" />
+    },
+    {
+      title: "Documents",
+      icon:<DocumentsIcon/>,
+      content: <IndexDocument/>
+    },
+    
+    {
+      title: "Account Settings",
+      icon:<SettingsIcon/>,
       content: <AcountSetting id={ id } />
     },
     // {

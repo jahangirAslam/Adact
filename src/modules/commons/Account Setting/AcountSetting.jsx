@@ -99,19 +99,24 @@ const AcountSetting = (props) => {
           onFinish={onFinish}
         >
           <Row gutter={[16, 24]}>
-            <Col className="gutter-row" span={24}>
-              <Divider orientation="left">
-                <strong>Account Setting</strong>
-              </Divider>
+            <Col className="gutter-row" span={24} sm={24}>
+              <h3 className="headerHeadings">Account Setting</h3>
             </Col>
-            <Col className="gutter-row " span={12}>
+            <Col className="gutter-row " span={12} xs={12}>
               <h5>Account Type</h5>
 
               <Row>
-                <Col span={12}>
+                <Col span={12} xs={12} >
                   <Form.Item
                     name="smes"
                     label="Small And Medium Size SMES :"
+                    className="da-mb-16"
+                  >
+                    <Switch />
+                  </Form.Item>
+                  <Form.Item
+                    name="customer"
+                    label="Enterprises (SMEs) Customers  :"
                     className="da-mb-16"
                   >
                     <Switch />
@@ -126,7 +131,7 @@ const AcountSetting = (props) => {
                     <Switch />
                   </Form.Item>
                 </Col>
-                <Col span={12}>
+                <Col span={12}  xs={12}>
                   <Form.Item
                     name="agent"
                     label="Agent :"
@@ -151,7 +156,7 @@ const AcountSetting = (props) => {
                 </Col>
               </Row>
             </Col>
-            <Col className="gutter-row " span={12}>
+            <Col className="gutter-row " span={12}  xs={12}>
               <h5>Account Status</h5>
               <Form.Item
                 name="account_status"
@@ -164,7 +169,7 @@ const AcountSetting = (props) => {
 
             </Col>
           </Row>
-          <Col span={24} className="da-mt-32 da-text-align-right">
+          <Col span={24}  xs={24} className="da-mt-32 da-text-align-right">
             <Form.Item style={{ textAlign: "end" }}>
               <ButtonComponent
                 className="da-mr-10"
@@ -172,7 +177,7 @@ const AcountSetting = (props) => {
                 htmlType="submit"
                 state={loader}
               >
-                Save
+                Apply
               </ButtonComponent>
             </Form.Item>
           </Col>

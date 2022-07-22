@@ -9,7 +9,7 @@ import { deleteProduct, getAllProducts } from "./components/request";
 
 const pageConfig = {
     headers: {
-        title: "eDevice",
+        title: "Products/EDevice",
         breadcrumb: [
             {
                 name: "eDevice",
@@ -55,17 +55,36 @@ const IndexDevice = () => {
             sorter: true,
         },
         {
-            key: 'category_name',
-            title: 'Category Name',
-            dataIndex: 'category_name',
+            key: "on_market",
+            title: "On Market ",
+            dataIndex: "on_market",
             sorter: true,
-        },
+          },
         {
             key: 'withdrawn',
-            title: 'WithDrawn',
+            title: 'Withdrawn',
             dataIndex: 'withdrawn',
             sorter: true,
         },
+        {
+            key: "type",
+            title: " Type",
+            dataIndex: "type",
+            sorter: true,
+          },
+          {
+              key: "sub_type",
+              title: " Sub Type",
+              dataIndex: "sub_type",
+              sorter: true,
+            },
+            {
+        key: 'sub_type',
+        placeholder: 'Sub-Type',
+        type: 'select',
+        data_key: 'sub_type',
+
+    },
 
 
         {
@@ -204,6 +223,7 @@ const availableFilters = [
         placeholder: 'Name',
         type: 'text',
     },
+   
     {
         key: 'withdrawn',
         placeholder: 'Withdrawn',
@@ -215,6 +235,13 @@ const availableFilters = [
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
+
+    },
+    {
+        key: 'sub_type',
+        placeholder: 'Sub-Type',
+        type: 'select',
+        data_key: 'sub_type',
 
     },
 

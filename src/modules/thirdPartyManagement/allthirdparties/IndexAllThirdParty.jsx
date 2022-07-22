@@ -4,13 +4,14 @@ import { HeaderComponent, BodyComponent, TableComponent, ActionComponent, Create
 import { makeRequest, removeById, formatCompleteDataTime, notify } from "@utils/helpers";
 import { getAllThirdParties, deleteAllThirdParty, getFilters } from "./requests";
 import CreateAllThirdParty from "./components/CreateAllThirdParty";
+import { Tag } from "antd";
 
 const pageConfig = {
     headers: {
-        title: "All Third Party",
+        title: " Third Party List",
         breadcrumb: [
             {
-                name: "All Third Partys",
+                name: " Manage Third Parties",
                 path: "/third-party/all-third-parties"
             }
         ]
@@ -40,9 +41,9 @@ const IndexAllThirdParty = () => {
             sorter: true,
         },
         {
-            key: 'location_name',
+            key: 'country',
             title: 'Country',
-            dataIndex: 'location_name',
+            dataIndex: 'country',
             sorter: true,
         },
         {
@@ -52,24 +53,39 @@ const IndexAllThirdParty = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
-            title: 'Adress',
-            dataIndex: 'first_address',
+            key: 'address',
+            title: 'Address',
+            dataIndex: 'address',
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'contact',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'contact',
+            sorter: true,
+        },
+        {
+            key: 'account',
+            title: 'Account',
+            dataIndex: 'account',
             sorter: true,
         },
 
         {
             key: 'status',
             title: 'Status',
-            dataIndex: 'status',
+            dataIndex: 'is_active',
             sorter: true,
-        },
+            render: (is_active) => {
+              let color = is_active ? 'green' : 'red';
+              let text = is_active ? 'ACTIVE' : 'INACTIVE';
+              return (
+                <Tag color={color} >{text}</Tag>
+              );
+            }
+          },
+
+        
         // {
         //     key: 'created_at',
         //     title: 'Create At',
