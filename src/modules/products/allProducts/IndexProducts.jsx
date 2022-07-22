@@ -54,12 +54,12 @@ const IndexProducts = () => {
             dataIndex: 'name',
             sorter: true,
         },
-        {
-            key: "on_market",
-            title: "On Market ",
-            dataIndex: "on_market",
-            sorter: true,
-          },
+        // {
+        //     key: "on_market",
+        //     title: "On Market ",
+        //     dataIndex: "on_market",
+        //     sorter: true,
+        //   },
      
         {
             key: 'withdrawn',
@@ -217,11 +217,11 @@ const availableFilters = [
         placeholder: 'Name',
         type: 'text',
     },
-    {
-        key: 'name',
-        placeholder: 'On Market',
-        type: 'text',
-    },
+    // {
+    //     key: 'name',
+    //     placeholder: 'On Market',
+    //     type: 'text',
+    // },
     {
         key: 'withdrawn',
         placeholder: 'Withdrawn',

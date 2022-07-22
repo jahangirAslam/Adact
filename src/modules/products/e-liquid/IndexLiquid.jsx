@@ -47,12 +47,12 @@ const IndexLiquid = () => {
           dataIndex: "name",
           sorter: true,
         },
-        {
-          key: "on_market",
-          title: "On Market ",
-          dataIndex: "on_market",
-          sorter: true,
-        },
+        // {
+        //   key: "on_market",
+        //   title: "On Market ",
+        //   dataIndex: "on_market",
+        //   sorter: true,
+        // },
         {
           key: "withdrawn",
           title: "Withdrawn",
@@ -234,11 +234,11 @@ const availableFilters = [
         placeholder: 'Name',
         type: 'text',
     },
-    {
-        key: 'on_market',
-        placeholder: 'On Market',
-        type: 'on_market',
-    },
+    // {
+    //     key: 'on_market',
+    //     placeholder: 'On Market',
+    //     type: 'on_market',
+    // },
     {
         key: 'withdrawn',
         placeholder: 'Withdrawn',
