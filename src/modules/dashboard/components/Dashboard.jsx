@@ -45,16 +45,16 @@ const Dashboard = () => {
 
 
   return (
-    <Row gutter={[32, 0]} className="da-px-36 da-pt-24" >
-    <Col  span={24}>
+    <Row gutter={[32, 0]} className="da-px-36" >
+    <Col span={24}>
       <h3>Welcome back, Edward 👋</h3>
 
       
     </Col>
 
-    <Row justify='space-around' align='center' >
+    <Row justify='' align='center' >
       <Col span={15}  >
-          <Row gutter={[32, 32]}>
+          <Row className='da-pr-24' gutter={[32, 32]}>
            
 
             <Col span={24}>
@@ -62,7 +62,7 @@ const Dashboard = () => {
             </Col>
 
             <Col md={6} span={12} className="dashbord-cards">
-            <ActiveUserCardVertical />
+              <OrderColumnCardVertical />
             </Col>
 
             <Col md={6} span={12} className="dashbord-cards">
@@ -70,11 +70,11 @@ const Dashboard = () => {
             </Col>
 
             <Col md={6} span={12} className="dashbord-cards">
-            <ActiveUserCardVertical />
+              <SubsColumnCardVertical />
             </Col>
 
             <Col md={6} span={12} className="dashbord-cards">
-            <ActiveUserCardVertical />
+              <CustomerSupportCardVertical />
             </Col>
 
             <Col span={24}>
