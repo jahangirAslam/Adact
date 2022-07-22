@@ -613,3 +613,19 @@ select:-webkit-autofill:focus {
 .ant-modal-body {
     padding: 23px 24px;
 }
+
+.ant-input-affix-wrapper {
+    padding: 0px 7px!important;
+}
+
+.ProfileModal {
+    width: 45%!important;
+}
+
+.profilebtn {
+    text-align: center;
+}
+
+.profilebtn button {
+    background-color: #0093CD;
+}
