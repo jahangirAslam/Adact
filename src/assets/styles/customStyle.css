@@ -631,5 +631,53 @@ select:-webkit-autofill:focus {
 }
 
 .dashbord-cards {
-    background-color: #0093cd;
+    background-color: white;
+    height: 270px!important;
+    border-radius: 14px;
+}
+
+.dashboardHeaders h3 {
+    padding-top: 8px!important;
+    padding-bottom: 8px!important;
+    color: #0093CD;
+    margin: 12px!important;
+}
+
+.dashboardCard {
+    padding-bottom: 12px!important;
+    margin-bottom: 20px!important;
+}
+
+.visiters {
+    font-weight: 800;
+    color: #0093CD;
+}
+
+.datePicker {
+    width: 230px!important;
+}
+
+.charts {
+    background-color: #ebfafa!important;
+    margin: 12px!important;
+}
+
+.order-Column {
+    font-size: 40px;
+    text-align: center!important;
+    padding: 16px!important;
+    font-weight: 500!important;
+}
+
+.order-Colums {
+    font-size: 25px;
+    text-align: center!important;
+    padding: 16px!important;
+    color: #636e72!important;
+    font-weight: 500!important;
+}
+
+.active-chart {
+    background-color: #fff9e9!important;
+    margin: 12px!important;
 }

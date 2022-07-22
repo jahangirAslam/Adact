@@ -114,7 +114,7 @@ export default function CustomerSupportCardVertical() {
         <Col span={24} className="hp-text-center">
           <div
             id="chart"
-            className="hp-bg-color-secondary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center-full hp-mb-18 hp-w-100 hp-overflow-hidden"
+            className="hp-bg-color-secondary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center-full hp-mb-18 hp-w-100 hp-overflow-hidden active-chart"
           >
             <Chart
               options={data.options}
@@ -126,8 +126,8 @@ export default function CustomerSupportCardVertical() {
             />
           </div>
 
-          <h3 className="hp-mb-0">2,345</h3>
-          <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50">
+          <h3 className="hp-mb-0 order-Column">2,345</h3>
+          <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50 order-Colums">
             Ticket Closed
           </p>
         </Col>
