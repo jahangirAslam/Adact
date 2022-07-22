@@ -101,16 +101,17 @@ export default function AnalyticsVisitersLineCard() {
   });
 
   return (
-    <Card className="hp-border-color-black-40 hp-analytics-visiters-chart hp-overflow-hidden">
+    <Card className="hp-border-color-black-40 hp-analytics-visiters-chart hp-overflow-hidden dashboardCard">
       <Row className="hp-w-100 hp-overflow-hidden">
         <Col className="hp-mb-16" span={24}>
           <Row justify="space-between">
             <Row align="bottom">
-              <h5 className="hp-mr-8">Visiters</h5>
+              <h4 className="hp-mr-8 visiters">Visiters</h4>
             </Row>
 
-            <Col>
+            <Col >
               <DatePicker
+                className="datePicker"
                 picker="year"
                 defaultValue={moment("2019", "YYYY")}
               />
@@ -121,10 +122,10 @@ export default function AnalyticsVisitersLineCard() {
         <Col span={24}>
           <div id="visiters-line-card">
             <Chart
-              options={data.options}
+               options={data.options}
               series={data.series}
               type="area"
-              height="90%"
+              height="100%"
               legend="legend"
             />
           </div>

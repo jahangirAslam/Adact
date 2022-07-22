@@ -83,7 +83,7 @@ export default function OrderColumnCardVertical() {
         <Col span={24} className="hp-text-center">
           <div
             id="chart"
-            className="hp-bg-color-primary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center hp-px-18 hp-mb-18"
+            className="hp-bg-color-primary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center hp-px-18 hp-mb-18 charts "
           >
             <Chart
               options={data.options}
@@ -95,8 +95,8 @@ export default function OrderColumnCardVertical() {
             />
           </div>
 
-          <h3 className="hp-mb-0">13,346</h3>
-          <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50">New Order</p>
+          <h3 className="hp-mb-0 order-Column">13,346</h3>
+          <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50 order-Colums">New Order</p>
         </Col>
       </Row>
     </div>
