@@ -609,3 +609,7 @@ select:-webkit-autofill:focus {
 .headerLocation {
     color: #0093CD;
 }
+
+.ant-modal-body {
+    padding: 23px 24px;
+}

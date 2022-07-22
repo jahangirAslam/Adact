@@ -1,8 +1,17 @@
 import { CChart } from '@coreui/react-chartjs';
 import { makeRequest } from "@utils/helpers";
-import { Switch } from "antd";
+import { Col, Row, Switch } from "antd";
 import React, { useEffect, useState } from "react";
+import AnalyticsProjectTableCard from './analytics/analyticsProjectTableCard';
+import AnalyticsRevenueRadarCard from './analytics/analyticsRevenueRadarCard';
+import AnalyticsVisitersLineCard from './analytics/analyticsVisitersLineCard';
+import ExpensesCard from './analytics/expensesCard';
 import { getDashbordData } from './requests';
+import ActiveUserCardVertical from './statistics/activeUserCardVertical';
+// import BestTeamCard from './statistics/bestTeamCard';
+import CustomerSupportCardVertical from './statistics/customerSupportCardVertical';
+import OrderColumnCardVertical from './statistics/orderColumnCardVertical';
+import SubsColumnCardVertical from './statistics/subsColumnCardVertical';
 
 const Dashboard = () => {
   // let lablesData = []
@@ -28,7 +37,7 @@ const Dashboard = () => {
     response.forEach(element => {
       data.push(element.value);
       lables.push(element.month)
-      
+
     });
     setLablesData(lables)
     setDataSource(data)
@@ -36,32 +45,70 @@ const Dashboard = () => {
 
 
   return (
-    <div>
-      <div className="dashboardBtn">
-        <Switch className="dashboardswitch" checkedChildren="Monthly" unCheckedChildren="Yearly" />
-      </div>
-    
-        <CChart
-          className="dashboardChart"
-          type="line"
-          data={{
-            labels: lablesData,
-            datasets: [
-              {
-                label: "My First dataset",
-                backgroundColor: "rgba(220, 220, 220, 0.2)",
-                borderColor: "rgba(220, 220, 220, 1)",
-                pointBackgroundColor: "rgba(220, 220, 220, 1)",
-                pointBorderColor: "#fff",
-                data: dataSource
-              },
+    <Row gutter={[32, 0]}>
+    <Col span={24}>
+      <h3>Welcome back, Edward 👋</h3>
 
-            ],
-          }}
+      <p className="hp-p1-body hp-mb-0">
+        Your current status and analytics are here
+      </p>
+    </Col>
 
-        />
-     
-    </div>
+    <Row>
+      <Col span={16}>
+          <Row gutter={[32, 32]}>
+            <Col span={24}>
+              {/* <UpgradePlanCardOneBg /> */}
+            </Col>
+
+            <Col span={24}>
+              <AnalyticsVisitersLineCard />
+            </Col>
+
+            <Col md={6} span={12} className="hp-overflow-hidden">
+              <OrderColumnCardVertical />
+            </Col>
+
+            <Col md={6} span={12} className="hp-overflow-hidden">
+              <ActiveUserCardVertical />
+            </Col>
+
+            <Col md={6} span={12} className="hp-overflow-hidden">
+              <SubsColumnCardVertical />
+            </Col>
+
+            <Col md={6} span={12} className="hp-overflow-hidden">
+              <CustomerSupportCardVertical />
+            </Col>
+
+            <Col span={24}>
+              {/* <BestTeamCard /> */}
+            </Col>
+
+            <Col span={24}>
+              {/* <EarningsCard /> */}
+            </Col>
+
+            <Col span={24}>
+              <AnalyticsProjectTableCard />
+            </Col>
+          </Row>
+
+      
+      </Col>
+      <Col span={8}>
+            <Col span={24}>
+              <ExpensesCard />
+            </Col>
+
+          
+
+            <Col span={24}>
+              <AnalyticsRevenueRadarCard />
+            </Col>
+        </Col>
+    </Row>
+  </Row>
   )
 }
 export default Dashboard;
