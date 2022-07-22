@@ -613,3 +613,7 @@ select:-webkit-autofill:focus {
 .ant-modal-body {
     padding: 23px 24px;
 }
+
+.dashbord-cards {
+    background-color: #0093cd;
+}

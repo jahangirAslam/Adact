@@ -45,40 +45,36 @@ const Dashboard = () => {
 
 
   return (
-    <Row gutter={[32, 0]}>
-    <Col span={24}>
+    <Row gutter={[32, 0]} className="da-px-36 da-pt-24" >
+    <Col  span={24}>
       <h3>Welcome back, Edward 👋</h3>
 
-      <p className="hp-p1-body hp-mb-0">
-        Your current status and analytics are here
-      </p>
+      
     </Col>
 
-    <Row>
-      <Col span={16}>
+    <Row justify='space-around' align='center' >
+      <Col span={15}  >
           <Row gutter={[32, 32]}>
-            <Col span={24}>
-              {/* <UpgradePlanCardOneBg /> */}
-            </Col>
+           
 
             <Col span={24}>
               <AnalyticsVisitersLineCard />
             </Col>
 
-            <Col md={6} span={12} className="hp-overflow-hidden">
-              <OrderColumnCardVertical />
+            <Col md={6} span={12} className="dashbord-cards">
+            <ActiveUserCardVertical />
             </Col>
 
-            <Col md={6} span={12} className="hp-overflow-hidden">
+            <Col md={6} span={12} className="dashbord-cards">
               <ActiveUserCardVertical />
             </Col>
 
-            <Col md={6} span={12} className="hp-overflow-hidden">
-              <SubsColumnCardVertical />
+            <Col md={6} span={12} className="dashbord-cards">
+            <ActiveUserCardVertical />
             </Col>
 
-            <Col md={6} span={12} className="hp-overflow-hidden">
-              <CustomerSupportCardVertical />
+            <Col md={6} span={12} className="dashbord-cards">
+            <ActiveUserCardVertical />
             </Col>
 
             <Col span={24}>
@@ -89,9 +85,7 @@ const Dashboard = () => {
               {/* <EarningsCard /> */}
             </Col>
 
-            <Col span={24}>
-              <AnalyticsProjectTableCard />
-            </Col>
+           
           </Row>
 
       
@@ -104,8 +98,11 @@ const Dashboard = () => {
           
 
             <Col span={24}>
-              <AnalyticsRevenueRadarCard />
+              {/* <AnalyticsRevenueRadarCard /> */}
             </Col>
+        </Col>
+        <Col span={24}>
+              <AnalyticsProjectTableCard />
         </Col>
     </Row>
   </Row>
