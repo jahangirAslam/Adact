@@ -629,3 +629,7 @@ select:-webkit-autofill:focus {
 .profilebtn button {
     background-color: #0093CD;
 }
+
+.dashbord-cards {
+    background-color: #0093cd;
+}
