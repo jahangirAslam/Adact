@@ -633,3 +633,10 @@ select:-webkit-autofill:focus {
 .dashbord-cards {
     background-color: #0093cd;
 }
+
+.dashboardHeaders {
+    padding-top: 8px!important;
+    padding-bottom: 8px!important;
+    color: #0093CD;
+    margin: 12px!important;
+}

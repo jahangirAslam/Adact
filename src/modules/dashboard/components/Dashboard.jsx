@@ -46,7 +46,7 @@ const Dashboard = () => {
 
   return (
     <Row gutter={[32, 0]} className="da-px-36" >
-    <Col span={24}>
+    <Col span={24} className='dashboardHeaders'>
       <h3>Welcome back, Edward 👋</h3>
 
       
