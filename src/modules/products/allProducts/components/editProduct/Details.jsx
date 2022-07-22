@@ -58,7 +58,7 @@ const Details = (props) => {
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="type_id" label="Type ID :">
+                    <Form.Item name="type_id" label="Type :">
                         <Select
                             showSearch
                             placeholder="Product category   "
@@ -68,29 +68,25 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="ecid" label="EC_ID(EU) :">
-                        <Input />
+                        <Input disabled />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_id" label="category_id :">
-                        <Select
-                            showSearch
-                            placeholder="Product category   "
-                            options={props.dependencies.product_categories}
-                        />
+                    <Form.Item name="product_categories" label="Overwrite last 5 digitsEC-Id() :">
+                    <Input  />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_id" label="Tobaco Product No :">
+                    <Form.Item name="fda_tobacco" label="Tobaco Product No :">
                     <Input />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="category_id" label="Agent :">
+                    <Form.Item name="agents" label="Agent :">
                         <Select
                             showSearch
-                            placeholder="Product category   "
-                            options={props.dependencies.product_categories}
+                            placeholder="Representative   "
+                            options={props.dependencies.agents}
                         />
                     </Form.Item>
                 </Col>

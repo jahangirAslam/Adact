@@ -84,11 +84,13 @@ export default function HeaderUser() {
         </Col>
       </Dropdown>
       <Modal
+      className="ProfileModal"
         title="Profile"
         visible={visible}
-        onOk={handleOk}
+       footer={null}
         confirmLoading={confirmLoading}
         onCancel={handleCancel}
+     
       >
         <Profile />
       </Modal>
