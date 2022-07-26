@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import Chart from "react-apexcharts";
 
-export default function CustomerSupportCardVertical() {
+export default function CustomerSupportCardVertical(props) {
+  let  prodcuts = props.dataSource.tested_product ? props.dataSource.tested_product : 0 ;  
   const [chartWidth, setChartWidth] = useState("50%")
 
   useEffect(() => {
@@ -126,9 +127,9 @@ export default function CustomerSupportCardVertical() {
             />
           </div>
 
-          <h3 className="hp-mb-0 order-Column">2,345</h3>
+          <h3 className="hp-mb-0 order-Column">{prodcuts}</h3>
           <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50 order-Colums">
-            Ticket Closed
+            Tested Products
           </p>
         </Col>
       </Row>

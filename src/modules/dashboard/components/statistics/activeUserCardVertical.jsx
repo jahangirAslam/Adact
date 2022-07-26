@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import Chart from "react-apexcharts";
 
-export default function ActiveUserCardVertical() {
+export default function ActiveUserCardVertical(props) {
+  let user = props.dataSource.total_user ? props.dataSource.total_user : 0 ;
   const [chartWidth, setChartWidth] = useState("50%")
 
   useEffect(() => {
@@ -126,7 +127,7 @@ export default function ActiveUserCardVertical() {
             />
           </div>
 
-          <h3 className="hp-mb-0 order-Column">17,346</h3>
+          <h3 className="hp-mb-0 order-Column">{user}</h3>
           <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50 order-Colums">
             Active Users
           </p>

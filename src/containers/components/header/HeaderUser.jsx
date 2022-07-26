@@ -5,7 +5,7 @@ import { React, useState } from "react";
 import { Logout, User } from "react-iconly";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import Profile from "./profile";
+import Profile from "./profile/profile";
 
 const AvatarIcon = () => {
   return <img src={Man} alt="Avatar" />;
@@ -25,7 +25,8 @@ export default function HeaderUser() {
     history.push('/');
   };
   const showModal = () => {
-    setVisible(true);
+    history.push(`/profile/edit/26`);
+    // setVisible(true);
   };
 
   const handleOk = () => {

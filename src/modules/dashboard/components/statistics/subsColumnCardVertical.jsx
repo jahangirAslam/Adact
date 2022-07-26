@@ -3,7 +3,9 @@ import React, { useEffect, useState } from "react";
 import { Row, Col } from "antd";
 import Chart from "react-apexcharts";
 
-export default function SubsColumnCardVertical() {
+export default function SubsColumnCardVertical(props) {
+  let Products = props.dataSource.total_product ? props.dataSource.total_product : 0 ;
+
   const [chartWidth, setChartWidth] = useState("50%")
 
   useEffect(() => {
@@ -95,9 +97,9 @@ export default function SubsColumnCardVertical() {
             />
           </div>
 
-          <h3 className="hp-mb-0 order-Column">1,346</h3>
+          <h3 className="hp-mb-0 order-Column">{Products}</h3>
           <p className="hp-p1-body hp-mb-0 hp-text-color-black-80 hp-text-color-dark-50 order-Colums">
-            New Subscribe
+            All Products
           </p>
         </Col>
       </Row>

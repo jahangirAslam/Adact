@@ -17,7 +17,7 @@ const Dashboard = () => {
   // let lablesData = []
   const [disabled, setDisabled] = useState(true);
   const [lablesData, setLablesData] = useState([]);
-  const [dataSource, setDataSource] = useState([]);
+  const [dataSource, setDataSource] = useState({});
   const [loader, setLoader] = useState(false);
 
   const toggle = () => {
@@ -31,14 +31,16 @@ const Dashboard = () => {
     makeRequest(setLoader, getDashbordData, payload, onSuccess, null);
   };
   const onSuccess = (response) => {
-    let lables = [];
-    let data = [];
-    response.forEach((element) => {
-      data.push(element.value);
-      lables.push(element.month);
-    });
-    setLablesData(lables);
-    setDataSource(data);
+      // let lables = [];
+    // let data = [];
+    // response.forEach((element) => {
+    //   data.push(element.value);
+    //   lables.push(element.month);
+    // });
+    // setLablesData(lables);
+    
+    setDataSource(response);
+    
   };
 
   return (
@@ -56,19 +58,19 @@ const Dashboard = () => {
             <Col span={24}>
             <Row justify="space-around">
               <Col md={5} span={12} className="dashbord-cards">
-                <OrderColumnCardVertical />
+                <OrderColumnCardVertical dataSource={dataSource} />
               </Col>
 
               <Col md={5} span={12} className="dashbord-cards">
-                <ActiveUserCardVertical />
+                <ActiveUserCardVertical dataSource={dataSource} />
               </Col>
 
               <Col md={5} span={12} className="dashbord-cards">
-                <SubsColumnCardVertical />
+                <SubsColumnCardVertical dataSource={dataSource} />
               </Col>
 
               <Col md={5} span={12} className="dashbord-cards">
-                <CustomerSupportCardVertical />
+                <CustomerSupportCardVertical dataSource={dataSource} />
               </Col>
             </Row>
             </Col>

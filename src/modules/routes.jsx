@@ -1,17 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-
-import Dashboard from "./dashboard/components/Dashboard";
-import UserModule from "./userManagement/routes";
-import CommonModule from "./commons/routes";
-import DocumentModule from "./documentManagement/routes";
-import ThirdPartyModule from "./thirdPartyManagement/routes"
-import SubstanceModule from "./componentManagement/routes"
-import ProductRoutes from "./products/allProducts/route";
-import LaboratoryModule from "./Laboratory/routes";
-import SettingsModule from "./Business/routes";
+import Profile from "../containers/components/header/profile/profile";
 import ProductBrands from "./Brands/routes";
+import SettingsModule from "./Business/routes";
+import CommonModule from "./commons/routes";
+import SubstanceModule from "./componentManagement/routes";
+import Dashboard from "./dashboard/components/Dashboard";
+import DocumentModule from "./documentManagement/routes";
 import Templates from "./globalTemplates/routes";
+import LaboratoryModule from "./Laboratory/routes";
+import ProductRoutes from "./products/allProducts/route";
+import ThirdPartyModule from "./thirdPartyManagement/routes";
+import UserModule from "./userManagement/routes";
 
 const ModuleRoutes = ({ match }) => (
   <Switch>
@@ -26,6 +26,7 @@ const ModuleRoutes = ({ match }) => (
     <Route path={ `${match.url}laboratory` } component={ LaboratoryModule } />
     <Route path={ `${match.url}settings` } component={ SettingsModule } />
     <Route path={ `${match.url}product` } component={ProductBrands} />
+    <Route path={ `${match.url}Profile` } component={ Profile } />
 
   </Switch>
 );
