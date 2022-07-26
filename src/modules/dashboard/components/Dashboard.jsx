@@ -31,60 +31,62 @@ const Dashboard = () => {
     makeRequest(setLoader, getDashbordData, payload, onSuccess, null);
   };
   const onSuccess = (response) => {
-      // let lables = [];
+    // let lables = [];
     // let data = [];
     // response.forEach((element) => {
     //   data.push(element.value);
     //   lables.push(element.month);
     // });
     // setLablesData(lables);
-    
+
     setDataSource(response);
-    
+
   };
 
   return (
     <Row gutter={[32, 0]} className="da-px-36">
       <Col span={24} className="dashboardHeaders">
-        <h3>Welcome back, Edward 👋</h3>
+        <h3>Welcome back 👋</h3>
       </Col>
 
       <Row justify="" align="center">
-        <Col span={15}>
+        <Col span={24}>
+          <AnalyticsVisitersLineCard />
+        </Col>
+        <Col span={16}>
+
           <Row className="da-pr-24" gutter={[32, 32]}>
+
             <Col span={24}>
-              <AnalyticsVisitersLineCard />
-            </Col>
-            <Col span={24}>
-            <Row justify="space-around">
-              <Col md={5} span={12} className="dashbord-cards">
-                <OrderColumnCardVertical dataSource={dataSource} />
-              </Col>
+              <Row justify="space-around">
+                <Col md={5} span={12} className="dashbord-cards">
+                  <OrderColumnCardVertical dataSource={dataSource} />
+                </Col>
 
-              <Col md={5} span={12} className="dashbord-cards">
-                <ActiveUserCardVertical dataSource={dataSource} />
-              </Col>
+                <Col md={5} span={12} className="dashbord-cards">
+                  <ActiveUserCardVertical dataSource={dataSource} />
+                </Col>
 
-              <Col md={5} span={12} className="dashbord-cards">
-                <SubsColumnCardVertical dataSource={dataSource} />
-              </Col>
+                <Col md={5} span={12} className="dashbord-cards">
+                  <SubsColumnCardVertical dataSource={dataSource} />
+                </Col>
 
-              <Col md={5} span={12} className="dashbord-cards">
-                <CustomerSupportCardVertical dataSource={dataSource} />
-              </Col>
-            </Row>
+                <Col md={5} span={12} className="dashbord-cards">
+                  <CustomerSupportCardVertical dataSource={dataSource} />
+                </Col>
+              </Row>
             </Col>
             <Col span={24}>{/* <BestTeamCard /> */}</Col>
 
             <Col span={24}>{/* <EarningsCard /> */}</Col>
           </Row>
         </Col>
-        <Col span={8}>
-          <Col span={24}>
+        <Col span={8}  >
+         
             <ExpensesCard />
-          </Col>
+       
 
-          <Col span={24}>{/* <AnalyticsRevenueRadarCard /> */}</Col>
+          {/* <Col span={24}><AnalyticsRevenueRadarCard /></Col> */}
         </Col>
         <Col span={24}>
           <AnalyticsProjectTableCard />

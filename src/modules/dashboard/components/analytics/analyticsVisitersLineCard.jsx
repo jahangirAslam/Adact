@@ -37,16 +37,16 @@ export default function AnalyticsVisitersLineCard() {
     setValues(value);
   }
   const [data] = useState({
-    series: [
-      {
-        name: "Ads",
-        data: values,
-      },
-      // {
-      //   name: "Organic",
-      //   data: [12245, 7952, 10623, 7935, 14345, 4002],
-      // },
-    ],
+      series: [
+        {
+          name: "Ads",
+          data: values,
+        },
+        {
+          name: "Organic",
+          data: [12245, 7952, 10623, 7935, 14345, 4002],
+        },
+      ],
     options: {
       chart: {
         fontFamily: "Manrope, sans-serif",
@@ -119,13 +119,13 @@ export default function AnalyticsVisitersLineCard() {
           style: {
             fontSize: "14px",
           },
-          formatter: (value) => {
-            return value / 1000 + "K";
-          },
+            // formatter: (value) => {
+            //   return value / 1000 + "K";
+            // },
         },
 
         min: 0,
-        max: 30000,
+        // max: 30000,
         tickAmount: 3,
       },
     },
@@ -155,7 +155,14 @@ export default function AnalyticsVisitersLineCard() {
           <div id="visiters-line-card">
             <Chart
               options={data.options}
-              series={data.series}
+              series={[
+                {
+                  name: "Ads",
+                  data: values,
+                },
+                
+              
+              ]}
               type="area"
               height="100%"
               legend="legend"

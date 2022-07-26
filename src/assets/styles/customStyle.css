@@ -632,8 +632,8 @@ select:-webkit-autofill:focus {
 
 .dashbord-cards {
     background-color: white;
-    height: 270px!important;
-    border-radius: 14px;
+    border-radius: 5px;
+    border: 1px solid #dfe6e9;
 }
 
 .dashboardHeaders h3 {
@@ -660,21 +660,23 @@ select:-webkit-autofill:focus {
 .charts {
     background-color: #ebfafa!important;
     margin: 12px!important;
+    border-radius: 5px;
 }
 
 .order-Column {
-    font-size: 40px;
+    font-size: 24px;
+    line-height: 28px;
     text-align: center!important;
-    padding: 16px!important;
+    padding-top: 5px!important;
     font-weight: 500!important;
+    color: #2d3436;
+    font-family: "Manrope", sans-serif;
 }
 
 .order-Colums {
-    font-size: 25px;
+    font-size: 17px;
     text-align: center!important;
-    padding: 16px!important;
     color: #636e72!important;
-    font-weight: 500!important;
 }
 
 .active-chart {

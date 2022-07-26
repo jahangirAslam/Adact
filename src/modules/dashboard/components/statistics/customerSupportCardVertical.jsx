@@ -4,7 +4,9 @@ import { Row, Col } from "antd";
 import Chart from "react-apexcharts";
 
 export default function CustomerSupportCardVertical(props) {
-  let  prodcuts = props.dataSource.tested_product ? props.dataSource.tested_product : 0 ;  
+  let prodcuts = props.dataSource.tested_product ? props.dataSource.tested_product : 0;
+  let avg = (props.dataSource.tested_product / props.dataSource.total_product)*100;
+  debugger
   const [chartWidth, setChartWidth] = useState("50%")
 
   useEffect(() => {
@@ -73,7 +75,7 @@ export default function CustomerSupportCardVertical(props) {
               fontSize: "14px",
               label: "",
               formatter: function (w) {
-                return "%" + 76;
+                return "%" + avg.toFixed(2);
               },
             },
           },
@@ -113,9 +115,9 @@ export default function CustomerSupportCardVertical(props) {
     <div className="hp-border-1 hp-overflow-hidden hp-border-color-black-40 hp-border-color-dark-80 hp-border-radius hp-bg-color-black-0 hp-bg-color-dark-100 hp-p-16 hp-card-2">
       <Row gutter={16} align="middle">
         <Col span={24} className="hp-text-center">
-          <div
+        <div
             id="chart"
-            className="hp-bg-color-secondary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center-full hp-mb-18 hp-w-100 hp-overflow-hidden active-chart"
+            className="hp-bg-color-secondary-4 hp-bg-color-dark-90 hp-border-radius hp-d-flex-center-full hp-mb-18 hp-w-100 hp-overflow-hidden charts"
           >
             <Chart
               options={data.options}
