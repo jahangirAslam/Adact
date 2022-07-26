@@ -22,7 +22,7 @@ const CreateLocation = (props) => {
             ...data
         }
         let payload = { "object": load }
-        debugger
+        
         payload.object["type"] = props.type;
         makeRequest(setLoader, createLocation, payload, onSuccess, onError);
     }

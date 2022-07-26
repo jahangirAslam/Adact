@@ -96,7 +96,7 @@ const Design = (props) => {
       product_id: id,
       ...data,
     };
-    debugger
+    
     let payload = { object: load };
     makeRequest(setLoader, createFlavour, payload, onCreated);
   };

@@ -15,7 +15,7 @@ export default function ExpensesCard() {
   );
 
   const [data] = useState({
-    series: [1244, 2155, 1541],
+    series: [8, 20, 4],
     options: {
       chart: {
         id: "expenses-donut-card",
@@ -30,7 +30,7 @@ export default function ExpensesCard() {
       },
       colors: ["#0010F7", "#55B1F3", "#1BE7FF"],
 
-      labels: ["Marketing", "Payments", "Bills"],
+      labels: ["prepared", "Requesr","Ready",],
 
       dataLabels: {
         enabled: false,
@@ -60,7 +60,7 @@ export default function ExpensesCard() {
                 color: "#636E72",
 
                 formatter: function (w) {
-                  return `$${w.globals.seriesTotals.reduce((a, b) => {
+                  return `${w.globals.seriesTotals.reduce((a, b) => {
                     return a + b;
                   }, 0)}`;
                 },
@@ -108,7 +108,7 @@ export default function ExpensesCard() {
         <Col span={24}>
           <Row justify="space-between" align="top">
             <Col>
-              <h5 className="hp-mb-32">Expenses</h5>
+              <h5 className="hp-mb-32">Submission</h5>
             </Col>
 
             <Col>
@@ -131,7 +131,7 @@ export default function ExpensesCard() {
           </div>
         </Col>
 
-        <Col span={24} className="hp-mt-24">
+        {/* <Col span={24} className="hp-mt-24">
           <h5 className="hp-mb-24">By Category</h5>
 
           <a href="#" className="hp-d-block hp-transition hp-py-12 hp-px-6 hp-border-radius hp-hover-bg-color-primary-4 hp-hover-bg-color-dark-primary">
@@ -221,7 +221,7 @@ export default function ExpensesCard() {
               <RiArrowRightSLine className="remix-icon" size={24} />
             </Row>
           </a>
-        </Col>
+        </Col> */}
       </Row>
     </Card>
   );

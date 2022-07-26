@@ -5,7 +5,7 @@ import Chart from "react-apexcharts";
 
 export default function OrderColumnCardVertical(props) {
   let ThirdPartyCount = props.dataSource.all_third_party ? props.dataSource.all_third_party : 0 ;
-  debugger
+  
   const [chartWidth, setChartWidth] = useState("50%")
 
   useEffect(() => {

@@ -22,7 +22,7 @@ const CreateFormulation = (props) => {
 });
 const {id} = useParams()
   const onFinish = (data) => {
-    debugger
+    
     const load = {
       substance_id: id,
       type : "substance",

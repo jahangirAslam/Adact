@@ -27,7 +27,7 @@ const CreateReplication = (props) => {
     });
 
     const onFinish = (data) => {
-        debugger
+        
         let load = {
             labtest_id: id,
             created_by: userId,
@@ -35,7 +35,7 @@ const CreateReplication = (props) => {
             authorised_by: userId,
             ...data
         }
-        debugger
+        
         let payload = { "object": load }
         payload.object["type"] = "product";
         makeRequest(setLoader, createItem, payload, onSuccess, onError);

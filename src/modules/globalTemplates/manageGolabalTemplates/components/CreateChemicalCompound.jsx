@@ -15,7 +15,7 @@ const CreateChemicalCompound = (props) => {
       customer_id: 18,
       ...data
     }
-    debugger
+    
     let payload = { "object": load }
     makeRequest(setLoader, createChemicalCompound, payload, onSuccess, onError);
   }
