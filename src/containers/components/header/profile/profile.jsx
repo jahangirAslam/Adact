@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import SummaryIcon from "../../menu/icons/SummaryIcon";
 import MyProfile from "./MyProfile";
+import Security from "./Security";
 
 
 
@@ -53,15 +54,35 @@ const Profile = () => {
             content: <MyProfile  />
         },
         {
-            title: "Recipe",
-            // icon: <DocumentsIcon />,
-            // content: <Recipe flavourId={id} />
-        },
-        {
-            title: "List of Product which uses this flavour",
-            // icon: <DocumentsIcon />,
-            // content: <ProductUseFlavour flavourId={id} />
-        },
+          title: "Security",
+          icon: <SummaryIcon />,
+
+          content: <Security  />
+      },
+      {
+        title: "Settings",
+        icon: <SummaryIcon />,
+
+        content: <Security  />
+    },
+    {
+      title: "Cloud",
+      icon: <SummaryIcon />,
+
+      content: <Security  />
+  },
+  {
+    title: "My devices",
+    icon: <SummaryIcon />,
+
+    content: <Security  />
+},
+{
+  title: "Activity log",
+  icon: <SummaryIcon />,
+
+  content: <Security  />
+},
 
     ]
 
