@@ -39,7 +39,7 @@ export default function AnalyticsVisitersLineCard() {
   const [data] = useState({
       series: [
         {
-          name: "Ads",
+          name: "Products",
           data: values,
         },
         {
@@ -157,7 +157,7 @@ export default function AnalyticsVisitersLineCard() {
               options={data.options}
               series={[
                 {
-                  name: "Ads",
+                  name: "Products",
                   data: values,
                 },
                 

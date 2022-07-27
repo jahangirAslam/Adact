@@ -58,7 +58,7 @@ const Dashboard = () => {
           <Row className="da-pr-24" gutter={[32, 32]}>
 
             <Col span={24}>
-              <Row justify="space-around">
+              <Row justify="space-between">
                 <Col md={5} span={12} className="dashbord-cards">
                   <OrderColumnCardVertical dataSource={dataSource} />
                 </Col>
@@ -79,9 +79,10 @@ const Dashboard = () => {
             <Col span={24}>{/* <BestTeamCard /> */}</Col>
 
             <Col span={24}>{/* <EarningsCard /> */}</Col>
+            
           </Row>
         </Col>
-        <Col span={8}  >
+        <Col span={8} className="da-pb-24" >
          
             <ExpensesCard />
        
@@ -89,7 +90,7 @@ const Dashboard = () => {
           {/* <Col span={24}><AnalyticsRevenueRadarCard /></Col> */}
         </Col>
         <Col span={24}>
-          <AnalyticsProjectTableCard />
+          <AnalyticsProjectTableCard dataSource={dataSource} />
         </Col>
       </Row>
     </Row>

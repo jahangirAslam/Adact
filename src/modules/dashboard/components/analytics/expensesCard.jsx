@@ -30,7 +30,7 @@ export default function ExpensesCard() {
       },
       colors: ["#0010F7", "#55B1F3", "#1BE7FF"],
 
-      labels: ["prepared", "Requesr","Ready",],
+      labels: ["prepared", "Request","Ready",],
 
       dataLabels: {
         enabled: false,
@@ -49,7 +49,7 @@ export default function ExpensesCard() {
                 fontWeight: "medium",
                 color: "#2D3436",
                 formatter(val) {
-                  return `$${val}`;
+                  return `${val}`;
                 },
               },
               total: {
