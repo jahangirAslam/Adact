@@ -4,8 +4,9 @@ import { Card, Row, Col, Table, Tag } from "antd";
 import { RiMoreFill } from "react-icons/ri";
 
 export default function AnalyticsProjectTableCard(props) {
-  const topCustomers  = props.dataSource.count ? props.dataSource.count : [] ;
-
+  let topCustomers  = props.dataSource.count ? props.dataSource.count : [] ;
+  topCustomers.sort(function(a, b){return   b.count - a.count})
+  debugger
   const columns = [
     // {
     //   title: <span className="hp-badge-size hp-font-weight-400 hp-text-color-black-60 hp-text-color-dark-40 hp-text-uppercase">#</span>,
@@ -161,7 +162,7 @@ export default function AnalyticsProjectTableCard(props) {
       <Row>
         <Col span={24}>
           <Row justify="space-between">
-            <h5 className="hp-mb-16">Projects</h5>
+            <h5 className="hp-mb-16">Top Customers</h5>
             {/* <RiMoreFill size={24} className="hp-text-color-dark-0" /> */}
           </Row>
 
