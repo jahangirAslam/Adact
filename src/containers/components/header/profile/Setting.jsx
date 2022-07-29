@@ -1,10 +1,11 @@
 import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Col, Divider, Form, Input, Row, Switch, Typography } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 import React, { useState } from "react";
 // import { updateSubstance } from "../request";
 
-const MyProfile = (props) => {
+const Setting = (props) => {
     const { Title } = Typography;
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
@@ -24,10 +25,7 @@ const MyProfile = (props) => {
     setErrors(errorList);
   };
 
-  // const onChange = (e) => {
-  //   console.log("radio checked", e.target.value);
-  //   setValue(e.target.value);
-  // };
+  
 
   return (
     <Form
@@ -38,77 +36,32 @@ const MyProfile = (props) => {
     >
       <Row gutter={[16, 24]}>
       <Col className=" gutter-row" span={24}>
-          <Title level={4}>Personal Information</Title>
+          <Title level={4}>Settings</Title>
         </Col>
-        <Col className="gutter-row" xs={24} md={12}  >
+        <Col className="gutter-row" xs={24}   >
           <Form.Item
             name="name"
             rules={rules.name}
             label="Name :"
             {...getErrorProps(errors["name"])}
           >
-            <Input />
+                <TextArea className="settingTextArea" rows={4} placeholder="maxLength is 6" maxLength={600} />
           </Form.Item>
         </Col>
     
-        <Col className="gutter-row" xs={24} md={12}  >
+        <Col className="gutter-row" xs={24}   >
           <Form.Item
-            name="email"
+            name="print"
             rules={rules.email}
-            label="Email :"
+            label="Print :"
             {...getErrorProps(errors["email"])}
           >
-            <Input />
-          </Form.Item>
-        </Col>
-    
-        <Col className="gutter-row" xs={24} md={12}  >
-          <Form.Item
-            name="last-name"
-            rules={rules.name}
-            label="Last Name :"
-            {...getErrorProps(errors["name"])}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
-    
-        <Col className="gutter-row" xs={24} md={12}  >
-          <Form.Item
-            name="phone"
-            rules={rules.name}
-            label="Phone :"
-            {...getErrorProps(errors["phone"])}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
-    
-        <Col className="gutter-row" xs={24} md={12}  >
-          <Form.Item
-            name="lanline"
-            rules={rules.name}
-            label="Lanline :"
-            {...getErrorProps(errors["lanline"])}
-          >
-            <Input />
-          </Form.Item>
-        </Col>
-    
-        <Col className="gutter-row" xs={24} md={12}  >
-          <Form.Item
-            name="title"
-            rules={rules.name}
-            label="Title :"
-            {...getErrorProps(errors["title"])}
-          >
-            <Input />
+            <Input  placeholder="Type text into and click on submit button"/>
           </Form.Item>
         </Col>
     
       </Row>
   
-      <Divider orientation="left" />
 
       <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent
@@ -117,14 +70,14 @@ const MyProfile = (props) => {
           htmlType="submit"
           state={loader}
         >
-          Save 
+          Apply 
         </ButtonComponent>
       </Form.Item>
     </Form>
   );
 };
 
-export default MyProfile;
+export default Setting;
 
 const rules = {
   name: [

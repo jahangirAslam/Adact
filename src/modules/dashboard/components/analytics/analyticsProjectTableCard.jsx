@@ -1,7 +1,6 @@
 import React from "react";
 
-import { Card, Row, Col, Table, Tag } from "antd";
-import { RiMoreFill } from "react-icons/ri";
+import { Card, Col, Row, Table } from "antd";
 
 export default function AnalyticsProjectTableCard(props) {
   let topCustomers  = props.dataSource.count ? props.dataSource.count : [] ;
@@ -162,7 +161,7 @@ export default function AnalyticsProjectTableCard(props) {
       <Row>
         <Col span={24}>
           <Row justify="space-between">
-            <h5 className="hp-mb-16">Top Customers</h5>
+            <h4 className="hp-mb-16 dashboardTable">Top Customers</h4>
             {/* <RiMoreFill size={24} className="hp-text-color-dark-0" /> */}
           </Row>
 

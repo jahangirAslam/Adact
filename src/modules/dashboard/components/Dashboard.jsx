@@ -1,9 +1,7 @@
-import { CChart } from "@coreui/react-chartjs";
 import { makeRequest } from "@utils/helpers";
-import { Col, Row, Switch } from "antd";
+import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import AnalyticsProjectTableCard from "./analytics/analyticsProjectTableCard";
-import AnalyticsRevenueRadarCard from "./analytics/analyticsRevenueRadarCard";
 import AnalyticsVisitersLineCard from "./analytics/analyticsVisitersLineCard";
 import ExpensesCard from "./analytics/expensesCard";
 import { getDashbordData } from "./requests";
@@ -50,14 +48,14 @@ const Dashboard = () => {
       </Col>
 
       <Row justify="" align="center">
-        <Col span={16}>
+        <Col span={16} xs={24} md={16}>
           <AnalyticsVisitersLineCard />
         </Col>
-        <Col span={8} className="da-px-10" >
+        <Col span={8} xs={24} md={8}  className="da-px-10" >
           <ExpensesCard />
         </Col>
         <Col span={24}>
-          <Row justify="space-between" className="da-pb-24" >
+          <Row justify="space-around" className="da-pb-24" >
             <Col md={4} span={12} className="dashbord-cards">
               <OrderColumnCardVertical dataSource={dataSource} />
             </Col>

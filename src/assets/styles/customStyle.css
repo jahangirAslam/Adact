@@ -683,3 +683,28 @@ select:-webkit-autofill:focus {
     background-color: #fff9e9!important;
     margin: 12px!important;
 }
+
+.settingTextArea {
+    height: 400px!important;
+}
+
+.devicesHeaders {
+    padding: 12px!important;
+    text-align: end!important;
+}
+
+.devicesBtn {
+    font-weight: 600!important;
+    padding: 20px;
+    color: white;
+    background-color: #0093cd!important;
+    font-size: 16px!important;
+    width: 150px!important;
+    margin: 12px!important;
+}
+
+.dashboardTable {
+    padding: 12px;
+    margin: 4px;
+    color: #0093CD;
+}
