@@ -49,7 +49,7 @@ const Details = (props) => {
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="trading_name" label="Test_ref :">
+              <Form.Item name="trading_name" label="Trading Name :">
                 <Input />
               </Form.Item>
 
@@ -110,7 +110,7 @@ const Details = (props) => {
 
             <Col className="gutter-row" xs={24} md={11}>
               <h5> Last update on</h5>
-              <Form.Item name="fda_number" label="last Update on  :">
+              <Form.Item name="last_updated_on" label="last Update on  :">
                 <Input />
               </Form.Item>
             </Col>
@@ -132,7 +132,7 @@ const Details = (props) => {
               htmlType="submit"
               state={loader}
             >
-              Save
+              Apply
             </ButtonComponent>
           </Form.Item>
         </Form>

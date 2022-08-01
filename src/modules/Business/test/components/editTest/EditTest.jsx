@@ -75,7 +75,7 @@ const EditTest = () => {
             content: <ContactIndex data={data.object} dependencies={data.dependencies} />
         },
         {
-            title: "Acount Setting  ",
+            title: "Account Setting  ",
             content: <AcountSetting data={data.object} dependencies={data.dependencies} />
         },
         {

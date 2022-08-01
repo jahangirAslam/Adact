@@ -41,29 +41,29 @@ const ContactDetails = (props) => {
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" xs={24} md={12}>
-              <Form.Item name="short_name_code" label="Contact name  :">
+              <Form.Item name="contact_name" label="Contact name  :">
                 <Input />
               </Form.Item>
             </Col>
 
             <Col className="gutter-row" xs={24} md={12}>
-              <Form.Item name="short_name_code" label="Wbsite :">
+              <Form.Item name="website" label="Website :">
                 <Input />
               </Form.Item>
             </Col>
             <Col className="gutter-row" xs={24} md={12}>
-              <Form.Item name="short_name_code" label="Mobile Number  :">
+              <Form.Item name="mobile_number" label="Mobile Number  :">
                 <Input />
               </Form.Item>
             </Col>
 
             <Col className="gutter-row" xs={24} md={12}>
-              <Form.Item name="short_name_code" label="Email Adress :">
+              <Form.Item name="email_address" label="Email Address :">
                 <Input />
               </Form.Item>
             </Col>
             <Col className="gutter-row" xs={24} md={12}>
-              <Form.Item name="short_name_code" label="LandLine Number :">
+              <Form.Item name="landline_number" label="LandLine Number :">
                 <Input />
               </Form.Item>
             </Col>

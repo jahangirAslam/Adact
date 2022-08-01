@@ -7,8 +7,6 @@ import { useHistory } from "react-router-dom";
 import CreateReplication from "./CreateReplications";
 import { deleteItems, getFilters, getAllItems } from "./component/request";
 
-
-
 const Replication = (props) => {
     var delItems = []
     const history = useHistory();
@@ -223,13 +221,13 @@ const availableFilters = [
         key: 'tested_date',
         placeholder: 'Tested Date',
         type: 'text',
-        data_key: 'types'
+        data_key: 'tested_date'
     },
     {
         key: 'authorised_date',
         placeholder: 'Authorised',
         type: 'text',
-        data_key: 'status'
+        data_key: 'authorised_date'
     },
     
 
