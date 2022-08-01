@@ -47,22 +47,22 @@ const IndexSubmission = (props) => {
             sorter: true,
             dataIndex: 'date_of_request',
         },
-        {
-            key: 'submission_type',
-            title: 'Type',
-            sorter: true,
-            dataIndex: 'submission_type',
-        },
-        {
-            key: 'message',
-            title: 'Message',
-            sorter: true,
-            dataIndex: 'message',
-        },
+        // {
+        //     key: 'submission_type',
+        //     title: 'Type',
+        //     sorter: true,
+        //     dataIndex: 'submission_type',
+        // },
+        // {
+        //     key: 'message',
+        //     title: 'Message',
+        //     sorter: true,
+        //     dataIndex: 'message',
+        // },
       
         {
             key: 'status_changes_at',
-            title: 'Status_changes_at',
+            title: 'Product to Submit As',
             sorter: true,
             dataIndex: 'status_changes_at',
         },

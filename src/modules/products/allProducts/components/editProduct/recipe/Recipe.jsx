@@ -94,12 +94,12 @@ const Recipe = (props) => {
             width: '25%',
             editable: false,
         },
-        {
-            title: 'Insight',
-            dataIndex: 'insights',
-            width: '25%',
-            editable: false,
-        },
+        // {
+        //     title: 'Insight',
+        //     dataIndex: 'insights',
+        //     width: '25%',
+        //     editable: false,
+        // },
         {
             title: 'Actions',
             dataIndex: 'operation',

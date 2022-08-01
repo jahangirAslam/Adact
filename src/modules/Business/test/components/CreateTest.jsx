@@ -62,7 +62,7 @@ const CreateTest = (props) => {
     // ------------------------------------
 
     return (
-        <ModalComponent mainTitle="Create" subTitle="Lab Test" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+        <ModalComponent mainTitle="Create" subTitle="Business" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
             <Form
                 layout="vertical"
                 name={formName}

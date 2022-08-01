@@ -51,6 +51,13 @@ const LabTest = (props) => {
             dataIndex: 'created_by',
         },
         {
+            key: 'created',
+            title: 'Created ',
+            sorter:true,
+            dataIndex: 'created',
+        },
+        
+        {
             key: 'status',
             title: 'Status',
             sorter:true,
@@ -74,6 +81,12 @@ const LabTest = (props) => {
             title: 'Laboratory name',
             sorter:true,
             dataIndex: 'laboratory_name',
+        },
+        {
+            key: 'authorised',
+            title: 'Authorised',
+            sorter:true,
+            dataIndex: 'authorised',
         },
 
         {
@@ -229,6 +242,21 @@ const availableFilters = [
         type: 'text',
     },
     {
+        key: 'created',
+        placeholder: 'created',
+        type: 'text',
+    },
+    {
+        key: 'tested_date',
+        placeholder: 'Tested Date',
+        type: 'text',
+    },
+    {
+        key: 'authorised',
+        placeholder: 'Authorised ',
+        type: 'text',
+    },
+    {
         key: 'type',
         placeholder: 'Type',
         type: 'select',
@@ -240,6 +268,7 @@ const availableFilters = [
         type: 'select',
         data_key: 'status'
     },
+
     {
         key: 'current',
         placeholder: 'Current',

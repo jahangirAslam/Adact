@@ -84,15 +84,16 @@ const EditProduct = () => {
             content: <Design product_id={id} />
         },
         {
-            title: "Submission",
-            icon: <LaboratoryIcon />,
-            content: <Submission product_id={id} />
-        },
-        {
             title: "Mandatory Declarations",
             icon: <LaboratoryIcon />,
             content: <Mandatory product_id={id} />
         },
+        {
+            title: "Submission",
+            icon: <LaboratoryIcon />,
+            content: <Submission product_id={id} />
+        },
+        
 
 
     ]
