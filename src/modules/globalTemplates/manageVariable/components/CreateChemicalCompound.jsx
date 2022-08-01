@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Form, Input,Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-// import { createChemicalCompound } from "../requests";
+import { createChemicalCompound } from "../requests";
 
 const formName = "createChemicalCompound";
 const CreateChemicalCompound = (props) => {
@@ -12,11 +12,11 @@ const CreateChemicalCompound = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    // makeRequest(setLoader, createChemicalCompound, payload, onSuccess, onError);
+    makeRequest(setLoader, createChemicalCompound, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
-    notify("Chemical Compound Created", res.msg);
+    notify("Created", res.msg);
     props.onCreated(res);
   }
 
@@ -59,7 +59,7 @@ const CreateChemicalCompound = (props) => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="reference"
+          name="tag_template"
           rules={rules.reference}
           label="Tag To Use Inside Template  :"
           className="da-mb-16"
@@ -68,7 +68,7 @@ const CreateChemicalCompound = (props) => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="reference"
+          name="description"
           rules={rules.reference}
           label="Variable Discription  :"
           className="da-mb-16"
@@ -77,7 +77,7 @@ const CreateChemicalCompound = (props) => {
           <Input />
         </Form.Item>
         <Form.Item
-          name="reference"
+          name="code"
           rules={rules.reference}
           label=" Code :"
           className="da-mb-16"

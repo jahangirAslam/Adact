@@ -21,7 +21,7 @@ const CreateChemicalCompound = (props) => {
   }
 
   const onSuccess = (data, res) => {
-    notify("Chemical Compound Created", res.msg);
+    notify("Created", res.msg);
     props.onCreated(res);
   }
 

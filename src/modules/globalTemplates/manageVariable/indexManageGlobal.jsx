@@ -1,11 +1,11 @@
-import { ActionComponent, BodyComponent, CreateButton, HeaderComponent, TableComponent } from "@comps/components";
+import { ActionComponent, BodyComponent, CreateButton, HeaderComponent, TableComponent,FilterComponent } from "@comps/components";
 import { makeRequest, notify, removeById } from "@utils/helpers";
 import { Tag } from "antd";
 import { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 // import { getChemicalCompounds, deleteChemicalCompound, getFilters } from "./requests";
 import CreateChemicalCompound from "./components/CreateChemicalCompound";
-import { getChemicalCompounds } from "./requests";
+import { getChemicalCompounds,getFilters } from "./requests";
 const pageConfig = {
     headers: {
         title: "Manage Template Variables ",
@@ -136,6 +136,11 @@ const IndexManageVariable = () => {
           <CreateButton onClick={onCreate} />
         </HeaderComponent>
         <BodyComponent>
+        <FilterComponent
+            filters={availableFilters}
+            onFilter={setFilters}
+            api={getFilters}
+          />
           <TableComponent
             loader={loader}
             columns={columns}
