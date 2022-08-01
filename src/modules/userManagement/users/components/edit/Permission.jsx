@@ -17,9 +17,9 @@ const Permission = (props) => {
     setModuleList(res);
   }
 
-  const onError = (res) => {
-    notify("Permission", res.msg);
-  }
+  const onError = (error, msg) => {
+    notify(msg.message);
+  };
 
   if (moduleList.length === 0) {
     return <Skeleton />;

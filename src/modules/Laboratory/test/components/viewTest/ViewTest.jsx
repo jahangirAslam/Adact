@@ -1,5 +1,5 @@
 import { TabComponent } from "@comps/components";
-import { makeRequest } from "@utils/helpers";
+import { makeRequest,notify} from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getProduct } from "../request";
@@ -57,9 +57,10 @@ const ViewTest = () => {
 
     ]
 
-    const onError = (res) => {
-        // handle call failed error
-    }
+    const onError = (error, msg) => {
+        notify(msg.message);
+      };
+    
 
     if (data.length === 0) {
         return "";

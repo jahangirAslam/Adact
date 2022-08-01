@@ -199,7 +199,7 @@ const IndexUser = () => {
   }
 
   const onError = (error, msg) => {
-    //
+    notify(msg.message)
   }
 
   return (

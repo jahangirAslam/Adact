@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { TabComponent } from "@comps/components";
-import { makeRequest } from "@utils/helpers";
+import { makeRequest,notify } from "@utils/helpers";
 import { getUser } from "../requests";
 
 import BasicInformation from "./view/BasicInformation";
@@ -71,9 +71,10 @@ const ViewUser = () => {
     }
   ]
 
-  const onError = (res) => {
-    // handle call failed error
-  }
+  const onError = (error, msg) => {
+    notify(msg.message);
+  };
+
 
   if (data.length === 0) {
     return "";

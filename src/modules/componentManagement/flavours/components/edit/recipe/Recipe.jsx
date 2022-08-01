@@ -198,7 +198,7 @@ const Recipe = (props) => {
     }
 
     const onError = (error, msg) => {
-        //
+        notify(msg.message)
     }
 
     return (

@@ -180,8 +180,9 @@ const LabTest = (props) => {
     }
 
     const onError = (error, msg) => {
-        //
-    }
+        notify(msg.message);
+      };
+    
 
     return (
         < >

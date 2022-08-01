@@ -196,7 +196,7 @@ const ProductUseFlavour = (props) => {
     }
 
     const onError = (error, msg) => {
-        //
+        notify(msg.message)
     }
 
     return (
