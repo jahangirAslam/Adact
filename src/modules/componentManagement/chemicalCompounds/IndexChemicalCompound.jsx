@@ -8,7 +8,7 @@ import CreateChemicalCompound from "./components/CreateChemicalCompound";
 
 const pageConfig = {
     headers: {
-        title: "Chemical Compound",
+        title: " Manage Chemical Compounds",
         breadcrumb: [
             {
                 name: "Chemical Compounds",
@@ -36,13 +36,13 @@ const IndexChemicalCompound = () => {
     const columns = [
       {
         key: "name",
-        title: "Name",
+        title: "Chemical Compound",
         dataIndex: "name",
         sorter: true,
       },
       {
         key: "reference",
-        title: "Reference",
+        title: " Compound Reference",
         dataIndex: "reference",
         sorter: true,
       },
@@ -63,15 +63,15 @@ const IndexChemicalCompound = () => {
           return <Tag color={color}>{text}</Tag>;
         },
       },
-      {
-        key: "created_at",
-        title: "Create At",
-        dataIndex: "created_at",
-        sorter: true,
-        render: (created_at) => {
-          return formatCompleteDataTime(created_at);
-        },
-      },
+      // {
+      //   key: "created_at",
+      //   title: "Create At",
+      //   dataIndex: "created_at",
+      //   sorter: true,
+      //   render: (created_at) => {
+      //     return formatCompleteDataTime(created_at);
+      //   },
+      // },
       {
         key: "actions",
         title: "Actions",
@@ -188,7 +188,7 @@ const availableFilters = [
   {
     key: "customer_id",
     placeholder: "Select Customer",
-    type: "select",
+    type: "text",
     data_key: "all_customers",
   },
 ];

@@ -2,6 +2,7 @@ import { TabComponent } from "@comps/components";
 import { makeRequest,notify } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import SummaryIcon from "../../../../../containers/components/menu/icons/SummaryIcon";
 import LaboratoryIcon from "../../../../../containers/components/menu/icons/LaboratoryIcon";
 import { getProduct } from "../request";
 import Details from './Details';
@@ -51,7 +52,7 @@ const EditTest = () => {
     const tabs = [
         {
             title: "Summary",
-            icon: <LaboratoryIcon />,
+            icon: <SummaryIcon/>,
             content: <Details data={data.object} dependencies={data.dependencies} />
         },
         {

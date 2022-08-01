@@ -12,7 +12,7 @@ const pageConfig = {
     title: "Test ",
     breadcrumb: [
       {
-        name: "Manage Global Template ",
+        name: "Manage Chemical Compounds ",
         path: "/global-template/manage-global-templates"
       },
       {
@@ -42,7 +42,7 @@ const chemicalCompoundSuccess = (res) =>{
 
   const tabs = [
     {
-      title: "Subject",
+      title: "Summary",
       content: (
         <BasicInformation
           id={id}
@@ -52,7 +52,7 @@ const chemicalCompoundSuccess = (res) =>{
       ),
     },
     {
-      title: "Preview",
+      title: "Formulation",
       content: (
         <Formulation
           id={id}

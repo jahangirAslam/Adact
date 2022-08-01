@@ -44,12 +44,12 @@ const CreateSubstance = (props) => {
         name={formName}
         onFinish={onFinish}
       >
-        <Form.Item name="name" rules={rules.name} label="Substances Name :" className="da-mb-16"
+        <Form.Item name="name" rules={rules.name} label="Substance  Name :" className="da-mb-16"
           {...getErrorProps(errors['name'])}
         >
           <Input />
         </Form.Item>
-        <Form.Item name="cas_number" rules={rules.cas_number} label="CAS Number :" className="da-mb-16"
+        <Form.Item name="cas_number" rules={rules.cas_number} label="CAS  Number :" className="da-mb-16"
           {...getErrorProps(errors['cas_number'])}
         >
           <Input />

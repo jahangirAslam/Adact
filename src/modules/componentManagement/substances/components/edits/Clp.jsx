@@ -108,7 +108,7 @@ const onDependencySuccess = (data, res) => {
         <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
             name="Clp_Dermal"
-            label="CLP DErmal :"
+            label="CLP Dermal :"
             className="da-mb-16"
           >
             <Select

@@ -39,7 +39,7 @@ const Details = (props) => {
             </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="type"
+                        name="manufacturer"
                         rules={rules.name}
                         label="Manufacturer :"
                         {...getErrorProps(errors["name"])}
@@ -49,13 +49,13 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                 
-                    <Form.Item name="test_ref" label="Product :">
+                    <Form.Item name="product" label="Product :">
                         <Input />
                     </Form.Item>
                 </Col>
 
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="status" label="Test Type :">
+                    <Form.Item name="test_type" label="Test Type :">
                         <Input />
                     </Form.Item>
                 </Col>
@@ -69,7 +69,7 @@ const Details = (props) => {
             </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="type"
+                        name="laboratory"
                         rules={rules.name}
                         label="Laboratory :"
                         {...getErrorProps(errors["name"])}
@@ -79,7 +79,7 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                 
-                    <Form.Item name="test_ref" label="Faculty :">
+                    <Form.Item name="faculty" label="Faculty :">
                         <Input />
                     </Form.Item>
                 </Col>
@@ -96,18 +96,18 @@ const Details = (props) => {
             </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="type"
+                        name="created_on"
                         rules={rules.name}
                         label="Created On :"
                         {...getErrorProps(errors["name"])}
                     >
-                        <Input />
+                        <Input disabled />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                 
-                    <Form.Item name="test_ref" label="Created By :">
-                        <Input />
+                    <Form.Item name="created_by" label="Created By :">
+                        <Input disabled />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
@@ -121,29 +121,29 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8} >
                     <Form.Item
-                        name="type"
+                        name="authorised_on"
                         rules={rules.name}
                         label="Authorised on :"
                         {...getErrorProps(errors["name"])}
                     >
-                        <Input />
+                        <Input disabled />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                 
-                    <Form.Item name="test_ref" label="Authorised By :">
-                        <Input />
+                    <Form.Item name="authorised_on" label="Authorised By :">
+                        <Input disabled />
                     </Form.Item>
                 </Col>
 
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                <Form.Item name="test_ref" label="Last Update On  :">
-                        <Input />
+                <Form.Item name="last_updtae_on" label="Last Update On  :">
+                        <Input disabled />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
-                <Form.Item name="test_ref" label="Last Update By :">
-                        <Input />
+                <Form.Item name="last_updtae_by" label="Last Update By :">
+                        <Input  disabled/>
                     </Form.Item>
                 </Col>
 

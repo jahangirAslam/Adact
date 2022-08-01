@@ -82,12 +82,12 @@ const LabTest = (props) => {
             sorter:true,
             dataIndex: 'laboratory_name',
         },
-        {
-            key: 'authorised',
-            title: 'Authorised',
-            sorter:true,
-            dataIndex: 'authorised',
-        },
+        // {
+        //     key: 'authorised',
+        //     title: 'Authorised',
+        //     sorter:true,
+        //     dataIndex: 'authorised',
+        // },
 
         {
             key: "actions",
@@ -251,11 +251,11 @@ const availableFilters = [
         placeholder: 'Tested Date',
         type: 'text',
     },
-    {
-        key: 'authorised',
-        placeholder: 'Authorised ',
-        type: 'text',
-    },
+    // {
+    //     key: 'authorised',
+    //     placeholder: 'Authorised ',
+    //     type: 'text',
+    // },
     {
         key: 'type',
         placeholder: 'Type',

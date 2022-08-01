@@ -180,7 +180,7 @@ const CreateReplication = (props) => {
                         </Form.Item>
                     </Col>
                     <Col span={11} offset={2}>
-                        <Form.Item name="coil_age" label="CoilAge" className="da-mb-8"
+                        <Form.Item name="coil_age" label="Coil Age" className="da-mb-8"
                             {...getErrorProps(errors['role_id'])}
                         >
                             <Input />
@@ -198,7 +198,7 @@ const CreateReplication = (props) => {
                         </Form.Item>
                     </Col>
                     <Col span={11} offset={2}>
-                        <Form.Item name="heat_setting" label="Heat Seating" className="da-mb-8"
+                        <Form.Item name="heat_setting" label="Heat Setting" className="da-mb-8"
                             {...getErrorProps(errors['role_id'])}
                         >
                             <Select

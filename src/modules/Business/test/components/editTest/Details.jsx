@@ -111,14 +111,14 @@ const Details = (props) => {
             <Col className="gutter-row" xs={24} md={11}>
               <h5> Last update on</h5>
               <Form.Item name="last_updated_on" label="last Update on  :">
-                <Input />
+                <Input disabled />
               </Form.Item>
             </Col>
             {/* <h5>Last Update</h5> */}
             <Col className="gutter-row" xs={24} md={11}>
               <h5> Last update by</h5>
               <Form.Item name="updated_by" label="last Update by  :">
-                <Input />
+                <Input disabled />
               </Form.Item>
             </Col>
           </Row>

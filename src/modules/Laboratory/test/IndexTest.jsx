@@ -9,10 +9,10 @@ import { deleteProduct, getAllProducts, getFilters } from "./components/request"
 
 const pageConfig = {
     headers: {
-        title: "Laboratory",
+        title: "Laboratory Tests",
         breadcrumb: [
             {
-                name: "Laboratory",
+                name: "Laboratory Test",
             }
         ]
     }
@@ -36,13 +36,13 @@ const IndexTest = () => {
     const columns = [
         {
             key: 'laboratory_name',
-            title: 'Laboratory name',
+            title: 'Laboratory Name',
             sorter:true,
             dataIndex: 'laboratory_name',
         },
         {
             key: 'product_name',
-            title: 'Product name',
+            title: 'Product Name',
             sorter:true,
             dataIndex: 'product_name',
         },
@@ -83,6 +83,18 @@ const IndexTest = () => {
                     <Tag color={color} >{text}</Tag>
                 );
             }
+        },
+        {
+            key: 'tested_date',
+            title: 'Tested_date',
+            sorter:true,
+            dataIndex: 'tested_date',
+        },
+        {
+            key: 'authorised',
+            title: 'Authorised',
+            sorter:true,
+            dataIndex: 'authorised',
         },
 
 
@@ -238,6 +250,21 @@ const availableFilters = [
         placeholder: 'Status',
         type: 'select',
         data_key: 'status'
+    },
+    {
+        key: 'created',
+        placeholder: 'created',
+        type: 'text',
+    },
+    {
+        key: 'tested_date',
+        placeholder: 'Tested Date',
+        type: 'text',
+    },
+    {
+        key: 'authorised',
+        placeholder: 'Authorised ',
+        type: 'text',
     },
     {
         key: 'current',

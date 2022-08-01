@@ -13,10 +13,10 @@ import { deleteSubstance, getFilters, getSubstances } from "./requests";
 
 const pageConfig = {
   headers: {
-    title: "Substance",
+    title: "Chemical Substances",
     breadcrumb: [
       {
-        name: "Substance",
+        name: "Substances",
         path: "/component-management/substances",
       },
     ],
