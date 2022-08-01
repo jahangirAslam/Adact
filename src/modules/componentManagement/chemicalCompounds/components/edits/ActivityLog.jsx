@@ -64,9 +64,9 @@ const Submission = (props) => {
             sorter: true,
         },
         {
-            key: 'ip_adress ',
+            key: 'ip_address ',
             title: 'IP Adress ',
-            dataIndex: 'ip_adress',
+            dataIndex: 'ip_address',
             sorter: true,
         },
         

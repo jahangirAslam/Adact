@@ -217,8 +217,8 @@ const availableFilters = [
     data_key: "name",
   },
   {
-    key: "on_markit",
-    placeholder: "On Markit",
+    key: "on_market",
+    placeholder: "On Market",
     type: "text",
     data_key: "email",
   },
