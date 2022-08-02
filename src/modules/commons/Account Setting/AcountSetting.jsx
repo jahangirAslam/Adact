@@ -10,7 +10,7 @@ import {
   makeRequest, makeRequestStateless, notify
 } from "@utils/helpers";
 import { useEffect } from "react";
-import { addAcSettings, getCompany } from "./requests";
+import { addAcSettings, getAcSettings, getCompany } from "./requests";
 import { updateContact } from "../contacts/requests";
 const formName = "editCompany";
 
@@ -23,16 +23,16 @@ const AcountSetting = (props) => {
   const [deps, setDeps] = useState({
     countries: [],
   });
-  useEffect(() => {
-    makeRequest(
-      setLoader,
-      getCompany,
-      props.id ? props.id : id,
-      onCompanySuccess,
-      onCompanyError
-    );
-    // eslint-disable-next-line
-  }, []);
+  // useEffect(() => {
+  //   makeRequest(
+  //     setLoader,
+  //     getAcSettings,
+  //     id,
+  //     onCompanySuccess,
+  //     onCompanyError
+  //   );
+  //   // eslint-disable-next-line
+  // }, []);
 
   const onCompanySuccess = (res) => {
     setData(res);
@@ -44,19 +44,21 @@ const AcountSetting = (props) => {
 
   const getSelectFieldsData = () => {
     makeRequestStateless(
-      getLocationDependencies,
-      null,
+      getAcSettings,
+      id,
       onDependencySuccess,
       null
     );
   };
 
   useEffect(() => {
+    
     getSelectFieldsData();
     // eslint-disable-next-line
   }, []);
 
   const onDependencySuccess = (data, res) => {
+    debugger
     setDeps({
       countries: data.countries,
     });
