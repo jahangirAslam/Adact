@@ -149,8 +149,7 @@ const IndexProduct = () => {
   };
 
   const onView = (record) => {
-    // setChildComponent(<ViewBrand onUpdated={onUpdated} id={record.id} />);
-  };
+    history.push(`/products/product/view/${record.id}`);  };
 
   const onEdit = (record) => {
     history.push(`/products/product/edit/${record.id}`);
@@ -220,18 +219,18 @@ const availableFilters = [
     key: "on_market",
     placeholder: "On Market",
     type: "text",
-    data_key: "email",
+    data_key: "on_market",
   },
   {
     key: "withdrawn",
     placeholder: "With Drawn",
-    type: "text",
+    type: "select",
     data_key: "withdrawn",
   },
   {
     key: "type",
     placeholder: "Type",
-    type: "text",
+    type: "select",
     data_key: "type",
   },
   

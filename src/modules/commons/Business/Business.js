@@ -3,7 +3,7 @@ import { updateContact } from "@mods/commons/contacts/requests";
 import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
 import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
-import { Col, Form, Input, Row, Skeleton } from "antd";
+import { Col, Form, Input, Row, Select, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { getCompany, updateCompany } from "../../thirdPartyManagement/companies/requests";
@@ -164,7 +164,7 @@ const Business = (props) => {
               <h5 className="headerHeadings">Email</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item name="email"  label="Email" className="da-mb-16"
+                  <Form.Item name="email"  className="da-mb-16"
                     >
                     <Input />
                   </Form.Item>
@@ -184,10 +184,19 @@ const Business = (props) => {
                 <Input />
               </Form.Item>
               <h5 className="headerHeadings">Country</h5>
-              <Form.Item name="country_id" rules={rules.trade_name} label=" country" className="da-mb-16"
-                >
-                <Input />
-              </Form.Item>
+              <Form.Item
+          name="country_id"
+          rules={rules.country}
+          label="Country :"
+          className="da-mb-16"
+          {...getErrorProps(errors["country"])}
+        >
+          <Select
+            showSearch
+            placeholder="Select a country"
+            options={deps.countries}
+          />
+        </Form.Item>
               {/* Map  */}
 
               {isLoaded && <GoogleMap
@@ -207,15 +216,15 @@ const Business = (props) => {
           </Row>
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={12}>
-              <Form.Item name="name" rules={rules.name} label="Last Update On" className="da-mb-16"
+              <Form.Item name="last_update_on" rules={rules.name} label="Last Update On" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
-                <Input />
+                <Input disabled />
               </Form.Item>
             </Col>
             <Col className="gutter-row" span={12}>
-              <Form.Item name="name" rules={rules.name} label="Last Updated By" className="da-mb-16"
+              <Form.Item name="last_update_by" rules={rules.name} label="Last Updated By" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
-                <Input />
+                <Input disabled />
               </Form.Item>
             </Col>
           </Row>

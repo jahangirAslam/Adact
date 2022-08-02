@@ -115,33 +115,33 @@ const EditCompany = (props) => {
                     {...getErrorProps(errors['short_name'])}>
                     <Input />
                   </Form.Item>
-                  <Form.Item name="dun_number" rules={rules.dun_number} label="D-U-N-S Number :" className="da-mb-16"
+                  {/* <Form.Item name="dun_number" rules={rules.dun_number} label="D-U-N-S Number :" className="da-mb-16"
                     {...getErrorProps(errors['dun_number'])}>
                     <Input />
-                  </Form.Item>
+                  </Form.Item> */}
                 </Col>
                 <Col className="gutter-row" span={12} md={12} xs={24}>
                   <Form.Item name="vat" rules={rules.vat} label="VAT number. (ex. GB 012345678) :" className="da-mb-16"
                     {...getErrorProps(errors['vat'])}>
                     <Input />
                   </Form.Item>
-                  <Form.Item name="fda_number" rules={rules.fda_number} label="FDA Establishment Identification number :" className="da-mb-16"
+                  {/* <Form.Item name="fda_number" rules={rules.fda_number} label="FDA Establishment Identification number :" className="da-mb-16"
                     {...getErrorProps(errors['fda_number'])}>
                     <Input />
-                  </Form.Item>
+                  </Form.Item> */}
                 </Col>
                 <Col className="gutter-row" span={12} md={12} xs={24}>
                   <h5 className="headerHeadings">TPD Setting</h5>
                   <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
                     {...getErrorProps(errors['tpd_setting'])}>
-                    <Input />
+                    <Input maxLength={5} />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={12} md={12} xs={24}>
                 <h5 className="headerHeadings">Agent/Representative</h5>
                   <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
-                    <Input />
+                    <Input disabled />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" span={12} md={12} xs={24}>

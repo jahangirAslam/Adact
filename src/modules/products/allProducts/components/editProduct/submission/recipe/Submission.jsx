@@ -33,7 +33,7 @@ const Submission = (props) => {
         },
         {
             key: 'product_to_submit ',
-            title: 'Product To Submit',
+            title: 'Products to Submit',
             dataIndex: 'product_to_submit',
             sorter: true,
         },
@@ -45,7 +45,7 @@ const Submission = (props) => {
         },
         {
             key: 'date_of_request',
-            title: ' Date OF Requst',
+            title: ' Date Of Request',
             dataIndex: 'created_at',
             sorter: true,
             render: (created_at) => {
