@@ -10,7 +10,7 @@ import {
   makeRequest, makeRequestStateless, notify
 } from "@utils/helpers";
 import { useEffect } from "react";
-import { addAcSettings, getCompany } from "./requests";
+import { addAcSettings, getAcSettings, getCompany } from "./requests";
 import { updateContact } from "../contacts/requests";
 const formName = "editCompany";
 
@@ -26,8 +26,8 @@ const AcountSetting = (props) => {
   useEffect(() => {
     makeRequest(
       setLoader,
-      getCompany,
-      props.id ? props.id : id,
+      getAcSettings,
+      id,
       onCompanySuccess,
       onCompanyError
     );
@@ -35,6 +35,7 @@ const AcountSetting = (props) => {
   }, []);
 
   const onCompanySuccess = (res) => {
+    
     setData(res);
   };
 
@@ -53,7 +54,6 @@ const AcountSetting = (props) => {
 
   useEffect(() => {
     getSelectFieldsData();
-    // eslint-disable-next-line
   }, []);
 
   const onDependencySuccess = (data, res) => {

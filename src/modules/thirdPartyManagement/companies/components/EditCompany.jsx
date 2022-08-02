@@ -9,6 +9,7 @@ import { getLocationDependencies, updateLocation } from "@mods/commons/locations
 import { updateContact } from "@mods/commons/contacts/requests";
 const formName = "editCompany";
 const EditCompany = (props) => {
+  debugger;
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
@@ -104,59 +105,57 @@ const EditCompany = (props) => {
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
+              {props.type === "laboratory"?"":
+
               <Form.Item name="trade_name" rules={rules.trade_name} label="Trading Name :" className="da-mb-16"
                 {...getErrorProps(errors['trade_name'])}>
                 <Input />
               </Form.Item>
+            }
+
+              {props.type === "manufacture" || props.type === "laboratory"?"":
+              
+             <div>
+              <Row>
+                
               <h5 className="headerHeadings">Identification</h5>
-              <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
+
+                <Col className="gutter-row" span={12} md={24} xs={24}>
                   <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"
                     {...getErrorProps(errors['short_name'])}>
                     <Input />
                   </Form.Item>
-                  {/* <Form.Item name="dun_number" rules={rules.dun_number} label="D-U-N-S Number :" className="da-mb-16"
-                    {...getErrorProps(errors['dun_number'])}>
-                    <Input />
-                  </Form.Item> */}
+                  
                 </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
+                <Col className="gutter-row" span={12} md={24} xs={24}>
                   <Form.Item name="vat" rules={rules.vat} label="VAT number. (ex. GB 012345678) :" className="da-mb-16"
                     {...getErrorProps(errors['vat'])}>
                     <Input />
                   </Form.Item>
-                  {/* <Form.Item name="fda_number" rules={rules.fda_number} label="FDA Establishment Identification number :" className="da-mb-16"
-                    {...getErrorProps(errors['fda_number'])}>
-                    <Input />
-                  </Form.Item> */}
                 </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
+                <Col className="gutter-row" span={12} md={24} xs={24}>
                   <h5 className="headerHeadings">TPD Setting</h5>
                   <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
                     {...getErrorProps(errors['tpd_setting'])}>
                     <Input maxLength={5} />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                <h5 className="headerHeadings">Agent/Representative</h5>
-                  <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
-                    {...getErrorProps(errors['agent_id'])}>
-                    <Input disabled />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
+                </Row>
+                </div>
+                }
+                <Col className="gutter-row" span={12}  xs={24}>
                   <Form.Item name="Last_update_on" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
                     <Input disabled />
                   </Form.Item>
                 </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
+                <Col className="gutter-row" span={12}  xs={24}>
                   <Form.Item name="Last_updated_by" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
                     {...getErrorProps(errors['agent_id'])}>
                     <Input  disabled/>
                   </Form.Item>
                 </Col>
-              </Row>
+             
             </Col>
             
           </Row>

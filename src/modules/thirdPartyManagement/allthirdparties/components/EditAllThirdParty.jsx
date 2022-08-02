@@ -39,7 +39,7 @@ const EditAllThirdParty = () => {
     {
       title: "Summary",
       icon: <SummaryIcon />,
-      content: <EditCompany id={ id } />
+      content: <EditCompany id={ id } type="allThirdParty" />
     },
     {
       title: "Business Details",
