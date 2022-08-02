@@ -8,6 +8,8 @@ import {
   makeRequestStateless,
 } from "@utils/helpers";
 import { createCustomer } from "../requests";
+import Cookies from "js-cookie";
+
 import { getLocationDependencies } from "@mods/commons/locations/requests";
 
 const formName = "createCustomer";
@@ -19,7 +21,10 @@ const CreateCustomer = (props) => {
   });
 
   const onFinish = (data) => {
-    let payload = { object: data };
+
+    const userId = Cookies.get("userId");
+    const load = { ...data, last_updated_by: userId }
+    let payload = { object: load };
     payload.object["type"] = "customers";
     makeRequest(setLoader, createCustomer, payload, onSuccess, onError);
   };

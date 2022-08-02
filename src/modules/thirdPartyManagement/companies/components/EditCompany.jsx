@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Form, Input, Skeleton, Row, Col, Divider, Select } from "antd";
-import { useHistory, useParams } from "react-router-dom";
-import { CancelButton, SaveButton } from "@comps/components";
-import { makeRequest, getErrorProps, notify, makeRequestStateless } from "@utils/helpers";
-import { getCompany, updateCompany } from "../requests";
-import { useEffect } from "react";
-import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
+import { SaveButton } from "@comps/components";
 import { updateContact } from "@mods/commons/contacts/requests";
+import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
+import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
+import { Col, Form, Input, Row, Skeleton } from "antd";
+import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { formatCompleteData } from "../../../../utils/helpers";
+import { getCompany, updateCompany } from "../requests";
 const formName = "editCompany";
 const EditCompany = (props) => {
   const history = useHistory();
@@ -23,7 +23,10 @@ const EditCompany = (props) => {
   }, []);
 
   const onCompanySuccess = (res) => {
-    setData(res);
+  
+   const updateOn = formatCompleteData(res.object.updated_at) ;
+    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby.name});
+
   }
 
   const onCompanyError = (res) => {
@@ -50,7 +53,7 @@ const EditCompany = (props) => {
   }
 
   const onFinish = (submitData) => {
-   
+
     let payload = {
       "agent_id": submitData.agent_id, "dun_number": submitData.dun_number, "fda_number": submitData.fda_number, "name": submitData.name
       , "short_name": submitData.short_name, "id": props.id, "tpd_setting": submitData.tpd_setting, "trade_name": submitData.trade_name, "type": submitData.type
@@ -90,82 +93,82 @@ const EditCompany = (props) => {
       <div className="da-p-32">
         <Row>
           <Col span={24} xs={24}>
-          
-        <Form
-          layout="vertical"
-          name={formName}
-          onFinish={onFinish}
-          initialValues={data.object}
-        >
-          <Row gutter={[16, 24]}>
-            <Col className="gutter-row" span={24} xs={24}>
-              <h5 className="headerHeadings">Summary</h5>
-              <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
-                {...getErrorProps(errors['name'])}>
-                <Input />
-              </Form.Item>
-              <Form.Item name="trade_name" rules={rules.trade_name} label="Trading Name :" className="da-mb-16"
-                {...getErrorProps(errors['trade_name'])}>
-                <Input />
-              </Form.Item>
-              <h5 className="headerHeadings">Identification</h5>
+
+            <Form
+              layout="vertical"
+              name={formName}
+              onFinish={onFinish}
+              initialValues={data }
+            >
               <Row gutter={[16, 24]}>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                  <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"
-                    {...getErrorProps(errors['short_name'])}>
+                <Col className="gutter-row" span={24} xs={24}>
+                  <h5 className="headerHeadings">Summary</h5>
+                  <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
+                    {...getErrorProps(errors['name'])}>
                     <Input />
                   </Form.Item>
-                  {/* <Form.Item name="dun_number" rules={rules.dun_number} label="D-U-N-S Number :" className="da-mb-16"
+                  <Form.Item name="trade_name" rules={rules.trade_name} label="Trading Name :" className="da-mb-16"
+                    {...getErrorProps(errors['trade_name'])}>
+                    <Input />
+                  </Form.Item>
+                  <h5 className="headerHeadings">Identification</h5>
+                  <Row gutter={[16, 24]}>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <Form.Item name="short_name" rules={rules.short_name} label="Short Name Code :" className="da-mb-16"
+                        {...getErrorProps(errors['short_name'])}>
+                        <Input />
+                      </Form.Item>
+                      {/* <Form.Item name="dun_number" rules={rules.dun_number} label="D-U-N-S Number :" className="da-mb-16"
                     {...getErrorProps(errors['dun_number'])}>
                     <Input />
                   </Form.Item> */}
-                </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                  <Form.Item name="vat" rules={rules.vat} label="VAT number. (ex. GB 012345678) :" className="da-mb-16"
-                    {...getErrorProps(errors['vat'])}>
-                    <Input />
-                  </Form.Item>
-                  {/* <Form.Item name="fda_number" rules={rules.fda_number} label="FDA Establishment Identification number :" className="da-mb-16"
+                    </Col>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <Form.Item name="vat" rules={rules.vat} label="VAT number. (ex. GB 012345678) :" className="da-mb-16"
+                        {...getErrorProps(errors['vat'])}>
+                        <Input />
+                      </Form.Item>
+                      {/* <Form.Item name="fda_number" rules={rules.fda_number} label="FDA Establishment Identification number :" className="da-mb-16"
                     {...getErrorProps(errors['fda_number'])}>
                     <Input />
                   </Form.Item> */}
+                    </Col>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <h5 className="headerHeadings">TPD Setting</h5>
+                      <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
+                        {...getErrorProps(errors['tpd_setting'])}>
+                        <Input maxLength={5} />
+                      </Form.Item>
+                    </Col>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <h5 className="headerHeadings">Agent/Representative</h5>
+                      <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
+                        {...getErrorProps(errors['agent_id'])}>
+                        <Input disabled />
+                      </Form.Item>
+                    </Col>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <Form.Item name="updateOn" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
+                        {...getErrorProps(errors['agent_id'])}>
+                        <Input disabled />
+                      </Form.Item>
+                    </Col>
+                    <Col className="gutter-row" span={12} md={12} xs={24}>
+                      <Form.Item name="updatedby" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
+                        {...getErrorProps(errors['agent_id'])}>
+                        <Input disabled />
+                      </Form.Item>
+                    </Col>
+                  </Row>
                 </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                  <h5 className="headerHeadings">TPD Setting</h5>
-                  <Form.Item name="tpd_setting" rules={rules.tpd_id} label="TPD Submitter ID (xxxxx) :" className="da-mb-16"
-                    {...getErrorProps(errors['tpd_setting'])}>
-                    <Input maxLength={5} />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                <h5 className="headerHeadings">Agent/Representative</h5>
-                  <Form.Item name="agent_id" rules={rules.agent_id} label="Agent / Representative :" className="da-mb-16"
-                    {...getErrorProps(errors['agent_id'])}>
-                    <Input disabled />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                  <Form.Item name="Last_update_on" rules={rules.agent_id} label="Last Update on :" className="da-mb-16"
-                    {...getErrorProps(errors['agent_id'])}>
-                    <Input disabled />
-                  </Form.Item>
-                </Col>
-                <Col className="gutter-row" span={12} md={12} xs={24}>
-                  <Form.Item name="Last_updated_by" rules={rules.agent_id} label="Last Updated by" className="da-mb-16"
-                    {...getErrorProps(errors['agent_id'])}>
-                    <Input  disabled/>
-                  </Form.Item>
-                </Col>
+
               </Row>
+            </Form>
+            <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
+              <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
+              {/* <CancelButton key="close_button" onClick={onCancel} /> */}
             </Col>
-            
-          </Row>
-        </Form>
-        <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
-          <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
-          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
-        </Col>
-        </Col>
+          </Col>
         </Row>
       </div>
     </>
