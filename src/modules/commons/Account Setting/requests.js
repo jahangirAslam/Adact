@@ -32,5 +32,5 @@ export const addAcSettings = (payload) => {
 }
 export const getAcSettings = (payload) => {
     debugger
-    return get(`${accountSettings}/${payload}`);
+    return get(accountSettings, payload);
 }

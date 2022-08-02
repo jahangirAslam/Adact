@@ -20,19 +20,7 @@ const AcountSetting = (props) => {
   const { id } = useParams();
   const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
-  const [deps, setDeps] = useState({
-    countries: [],
-  });
-  // useEffect(() => {
-  //   makeRequest(
-  //     setLoader,
-  //     getAcSettings,
-  //     id,
-  //     onCompanySuccess,
-  //     onCompanyError
-  //   );
-  //   // eslint-disable-next-line
-  // }, []);
+  const [setting, setSetting] = useState([]);
 
   const onCompanySuccess = (res) => {
     setData(res);
@@ -43,12 +31,10 @@ const AcountSetting = (props) => {
   };
 
   const getSelectFieldsData = () => {
-    makeRequestStateless(
-      getAcSettings,
-      id,
-      onDependencySuccess,
-      null
-    );
+    let payload = {
+      filters:{companies_id:id}
+    };
+    // makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
   };
 
   useEffect(() => {
@@ -58,10 +44,8 @@ const AcountSetting = (props) => {
   }, []);
 
   const onDependencySuccess = (data, res) => {
+    setSetting(data.data[0])
     debugger
-    setDeps({
-      countries: data.countries,
-    });
   };
 
   const onCancel = () => {
@@ -74,7 +58,7 @@ const AcountSetting = (props) => {
     }
     let payload = { "object": load }
 
-    makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
+    // makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
@@ -96,6 +80,7 @@ const AcountSetting = (props) => {
     <>
       <div className="da-p-32">
         <Form
+        // initialValues={setting}
           layout="vertical"
           // labelCol={{ span: 7 }}
           onFinish={onFinish}
