@@ -34,7 +34,7 @@ const EditManufacturer = () => {
     {
       title: "Summary",
       icon: <SummaryIcon />,
-      content: <EditCompany id={ id } />
+      content: <EditCompany id={ id }  type="manufacture"/>
     },
     {
       title: "Contact Details",

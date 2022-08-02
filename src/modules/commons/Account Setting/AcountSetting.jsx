@@ -23,6 +23,7 @@ const AcountSetting = (props) => {
   const [setting, setSetting] = useState([]);
 
   const onCompanySuccess = (res) => {
+    
     setData(res);
   };
 
@@ -40,7 +41,6 @@ const AcountSetting = (props) => {
   useEffect(() => {
     
     getSelectFieldsData();
-    // eslint-disable-next-line
   }, []);
 
   const onDependencySuccess = (data, res) => {

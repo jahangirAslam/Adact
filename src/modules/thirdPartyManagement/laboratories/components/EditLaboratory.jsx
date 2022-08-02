@@ -32,7 +32,7 @@ const EditLaboratory = () => {
     {
       title: "Summary",
       icon: <SummaryIcon />,
-      content: <EditCompany id={ id } />
+      content: <EditCompany id={ id } type="laboratory" />
     },
     // {
     //   title: "Locations",

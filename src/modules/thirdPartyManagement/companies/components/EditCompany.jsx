@@ -9,6 +9,7 @@ import { formatCompleteData } from "../../../../utils/helpers";
 import { getCompany, updateCompany } from "../requests";
 const formName = "editCompany";
 const EditCompany = (props) => {
+  debugger;
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
