@@ -53,15 +53,15 @@ const IndexAllThirdParty = () => {
             sorter: true,
         },
         {
-            key: 'address',
+            key: 'first_address',
             title: 'Address',
-            dataIndex: 'address',
+            dataIndex: 'adfirst_address',
             sorter: true,
         },
         {
-            key: 'contact',
+            key: 'Contact',
             title: 'Contact',
-            dataIndex: 'contact',
+            dataIndex: 'Contact',
             sorter: true,
         },
         {

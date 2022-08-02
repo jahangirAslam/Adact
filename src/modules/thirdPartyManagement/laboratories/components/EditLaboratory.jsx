@@ -1,6 +1,5 @@
 import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
-
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import IndexAttachment from "@mods/commons/attachments/IndexAttachment";

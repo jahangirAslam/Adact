@@ -46,12 +46,6 @@ const navigation = [{
                 uri: "/laboratories",
                 permissionKey: "laboratories_index",
             },
-            {
-                id: "facilities",
-                title: "Facilities",
-                uri: "/facilities",
-                permissionKey: "facilities_index",
-            },
 
             {
                 id: "allparties",

@@ -187,7 +187,7 @@ const Business = (props) => {
               <Form.Item
           name="country_id"
           rules={rules.country}
-          label="Country :"
+          label="select :"
           className="da-mb-16"
           {...getErrorProps(errors["country"])}
         >

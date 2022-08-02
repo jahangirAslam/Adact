@@ -31,9 +31,9 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
-            key: 'address',
+            key: 'first_address',
             title: 'Address',
-            dataIndex: 'address',
+            dataIndex: 'first_address',
             sorter: true,
         },
         {
@@ -43,21 +43,21 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
-            key: 'state',
+            key: 'county',
             title: 'County',
+            dataIndex: 'county',
+            sorter: true,
+        },
+        {
+            key: 'state',
+            title: 'Country',
             dataIndex: 'state',
             sorter: true,
         },
         {
-            key: 'country',
-            title: 'Country',
-            dataIndex: 'country',
-            sorter: true,
-        },
-        {
-            key: 'post_code',
+            key: 'zipcode',
             title: 'Postcode',
-            dataIndex: 'post_code',
+            dataIndex: 'zipcode',
             sorter: true,
         },
         
