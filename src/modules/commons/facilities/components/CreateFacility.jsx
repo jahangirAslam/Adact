@@ -72,19 +72,19 @@ const CreateFacility = (props) => {
                     { ...getErrorProps(errors['name']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="first_address" rules={ rules.first_address } label="Address line 1 :" className="da-mb-16"
+                <Form.Item name="first_address_line" rules={ rules.first_address } label="Address line 1 :" className="da-mb-16"
                     { ...getErrorProps(errors['first_address']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="second_address" rules={ rules.second_address } label="Address line 2 :" className="da-mb-16"
+                <Form.Item name="second_address_line" rules={ rules.second_address } label="Address line 2 :" className="da-mb-16"
                     { ...getErrorProps(errors['second_address']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="state" rules={ rules.state } label="State :" className="da-mb-16"
-                    { ...getErrorProps(errors['state']) }>
+                <Form.Item name="town_citys" rules={ rules.state } label="State :" className="da-mb-16"
+                    { ...getErrorProps(errors['town_city']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="zipcode" rules={ rules.zipcode } label="Zip code :" className="da-mb-16"
+                <Form.Item name="postcode" rules={ rules.zipcode } label="Post  code :" className="da-mb-16"
                     { ...getErrorProps(errors['zipcode']) }>
                     <Input />
                 </Form.Item>
@@ -96,7 +96,7 @@ const CreateFacility = (props) => {
                         options={ deps.countries }
                     />
                 </Form.Item>
-                <Form.Item name="city" rules={ rules.city } label="City :" className="da-mb-16"
+                <Form.Item name="town_city" rules={ rules.city } label="City :" className="da-mb-16"
                     { ...getErrorProps(errors['city']) }>
                     <Input />
                 </Form.Item>

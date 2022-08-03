@@ -11,7 +11,7 @@ import ViewFacility from "./components/ViewFacility.jsx";
 const IndexFacility = (props) => {
 
     const [loader, setLoader] = useState(false);
-    const [filters, setFilters] = useState({});
+    const [filters, setFilters] = useState({type:"facility"});
     const [dataSource, setDataSource] = useState([]);
     const [totalRecords, setTotalRecords] = useState(0);
     const [pagination, setPagination] = useState({
@@ -31,15 +31,15 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'first_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
-            key: 'city',
+            key: 'town_city',
             title: 'Town/City',
-            dataIndex: 'city',
+            dataIndex: 'town_city',
             sorter: true,
         },
         {
@@ -49,15 +49,15 @@ const IndexFacility = (props) => {
             sorter: true,
         },
         {
-            key: 'state',
+            key: 'country',
             title: 'Country',
-            dataIndex: 'state',
+            dataIndex: 'country',
             sorter: true,
         },
         {
-            key: 'zipcode',
+            key: 'postcode',
             title: 'Postcode',
-            dataIndex: 'zipcode',
+            dataIndex: 'postcode',
             sorter: true,
         },
         
@@ -71,7 +71,7 @@ const IndexFacility = (props) => {
     useEffect(() => {
         getAllFacilities();
         // eslint-disable-next-line
-    }, [pagination]);
+    }, [pagination ,filters]);
 
     const getAllFacilities = () => {
         let payload = {
@@ -79,7 +79,7 @@ const IndexFacility = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "facility" }
+            filters
         };
         makeRequest(setLoader, getFacilities, payload, onSuccess, null);
     }

@@ -25,6 +25,7 @@ const AcountSetting = (props) => {
   };
 
   const getSelectFieldsData = () => {
+    
     let payload = {
       filters:{companies_id:id}
     };
@@ -60,6 +61,7 @@ const AcountSetting = (props) => {
   };
 
   const onError = (err) => {
+    
     let errorList = [];
     errorList["name"] = err.first_name;
     setErrors(errorList);
