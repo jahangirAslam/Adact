@@ -3,11 +3,11 @@ import IndexBrand from "@mods/commons/brands/IndexBrand";
 import ContactIndex from "@mods/commons/contacts/IndexContact";
 import LocationIndex from "@mods/commons/locations/IndexLocation";
 import EditCompany from "@mods/thirdPartyManagement/companies/components/EditCompany";
-import { Setting } from "react-iconly";
 import { useParams } from "react-router-dom";
 import ContactIcon from "../../../../containers/components/menu/icons/ContactIcon";
 import LocationIcon from "../../../../containers/components/menu/icons/LocationIcon";
 import ProductsIcon from "../../../../containers/components/menu/icons/ProductsIcon";
+import SettingsIcon from "../../../../containers/components/menu/icons/SettingsIcon";
 import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting";
 import Business from "../../../commons/Business/Business";
@@ -56,7 +56,7 @@ const EditCustomer = () => {
     },
     {
       title: "Account Settings",
-      icon: <Setting />,
+      icon: <SettingsIcon />,
       content: <AcountSetting id={id} type="customers" />
     },
   
