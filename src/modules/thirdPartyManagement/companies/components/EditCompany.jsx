@@ -9,7 +9,7 @@ import { formatCompleteData } from "../../../../utils/helpers";
 import { getCompany, updateCompany } from "../requests";
 const formName = "editCompany";
 const EditCompany = (props) => {
-  debugger
+  
   
   const history = useHistory();
   const [loader, setLoader] = useState(false);
@@ -19,7 +19,10 @@ const EditCompany = (props) => {
   const [deps, setDeps] = useState({
     countries: [],
   });
-  useEffect(() => {
+
+  const getComanyData = () => {
+    
+    // let payload = {   };
     makeRequest(
       setLoader,
       getCompany,
@@ -27,17 +30,26 @@ const EditCompany = (props) => {
       onCompanySuccess,
       onCompanyError
     );
+  }
+
+
+
+
+  useEffect(() => {
+    getComanyData()
     // eslint-disable-next-line
   }, []);
 
   const onCompanySuccess = (res) => { 
+    
    const updateOn = formatCompleteData(res.object.updated_at) ;
-    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby.name});
+    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby?.name});
 
   }
 
   const onCompanyError = (res) => {
-    notify(res.msg);
+    
+    // notify(res.msg);
   };
 
   const getSelectFieldsData = () => {
