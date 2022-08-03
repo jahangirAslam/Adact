@@ -258,7 +258,7 @@ const availableFilters = [
     },
     {
       key: "market",
-      placeholder: "Maret",
+      placeholder: "Market",
       type: "text",
    
     },
