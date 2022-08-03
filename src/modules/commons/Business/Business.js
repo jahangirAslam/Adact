@@ -60,7 +60,7 @@ const Business = (props) => {
 
   const onCompanySuccess = (res) => {
     const updateOn = formatCompleteData(res.object.updated_at) ;
-    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby.name});
+    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby?.name});
   }
 
   const onCompanyError = (res) => {
