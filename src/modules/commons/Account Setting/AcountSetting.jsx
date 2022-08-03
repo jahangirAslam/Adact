@@ -1,17 +1,10 @@
 import { ButtonComponent } from "@comps/components";
-import { Col, Divider, Form, Row, Skeleton, Switch } from "antd";
+import { Col, Form, Row, Skeleton, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
 
-import {
-  getLocationDependencies
-} from "@mods/commons/locations/requests";
-import {
-  makeRequest, makeRequestStateless, notify
-} from "@utils/helpers";
+import { notify } from "@utils/helpers";
 import { useEffect } from "react";
-import { addAcSettings, getAcSettings, getCompany } from "./requests";
-import { updateContact } from "../contacts/requests";
 const formName = "editCompany";
 
 const AcountSetting = (props) => {

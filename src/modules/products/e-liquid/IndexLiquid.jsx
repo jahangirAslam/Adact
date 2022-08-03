@@ -139,8 +139,15 @@ const IndexLiquid = () => {
 
     const onSuccess = (response) => {
         setTotalRecords(response.recordsTotal);
-        setDataSource(response.data);
-    }
+        let data = [];
+       
+        response.data.forEach(element => {
+    
+          data.push({...element , type: element.e_type ? element.e_type[0].type  :"N/A"  })
+        });
+        setDataSource(data);
+      };
+
 
 
 
