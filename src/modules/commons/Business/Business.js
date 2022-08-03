@@ -6,6 +6,7 @@ import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils
 import { Col, Form, Input, Row, Select, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { formatCompleteData } from "../../../utils/helpers";
 import { getCompany, updateCompany } from "../../thirdPartyManagement/companies/requests";
 
 
@@ -58,7 +59,8 @@ const Business = (props) => {
   }, []);
 
   const onCompanySuccess = (res) => {
-    setData(res);
+    const updateOn = formatCompleteData(res.object.updated_at) ;
+    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby.name});
   }
 
   const onCompanyError = (res) => {
@@ -127,19 +129,19 @@ const Business = (props) => {
           layout="vertical"
           name={formName}
           onFinish={onFinish}
-          initialValues={data.object}
+          initialValues={data}
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={11}>
-              <Form.Item name="first_address"  label="First Address line :" className="da-mb-16"
+              <Form.Item name="first_address_line"  label="First Address line :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-              <Form.Item name="second_address"  label="Second Address line :" className="da-mb-16"
+              <Form.Item name="second_address_line"  label="Second Address line :" className="da-mb-16"
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="city"  label="Town/City :" className="da-mb-16"
+              <Form.Item name="town_city"  label="Town/City :" className="da-mb-16"
                 >
                 <Input />
               </Form.Item>
@@ -154,7 +156,7 @@ const Business = (props) => {
                    >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="mobile"  label="Phone :" className="da-mb-16"
+                  <Form.Item name="phone"  label="Phone :" className="da-mb-16"
                     >
                     <Input />
                   </Form.Item>
@@ -175,11 +177,11 @@ const Business = (props) => {
             <Col className="gutter-row" span={2}></Col>
 
             <Col className="gutter-row" span={11}>
-              <Form.Item name="state" rules={rules.name} label="County" className="da-mb-16"
+              <Form.Item name="county" rules={rules.name} label="County" className="da-mb-16"
                >
                 <Input />
               </Form.Item>
-              <Form.Item name="zipcode" rules={rules.trade_name} label="Postcode  :" className="da-mb-16"
+              <Form.Item name="postcode" rules={rules.trade_name} label="Postcode  :" className="da-mb-16"
                 >
                 <Input />
               </Form.Item>
@@ -216,13 +218,13 @@ const Business = (props) => {
           </Row>
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={12}>
-              <Form.Item name="last_update_on" rules={rules.name} label="Last Update On" className="da-mb-16"
+              <Form.Item name="updateOn" rules={rules.name} label="Last Update On" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input disabled />
               </Form.Item>
             </Col>
             <Col className="gutter-row" span={12}>
-              <Form.Item name="last_update_by" rules={rules.name} label="Last Updated By" className="da-mb-16"
+              <Form.Item name="updatedby" rules={rules.name} label="Last Updated By" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input disabled />
               </Form.Item>
