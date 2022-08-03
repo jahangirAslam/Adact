@@ -2,8 +2,8 @@ import { ButtonComponent } from "@comps/components";
 import { Col, Form, Row, Skeleton, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
-import { notify } from "@utils/helpers";
+import {getAcSettings,addAcSettings} from "./requests"
+import { notify,makeRequest } from "@utils/helpers";
 import { useEffect } from "react";
 const formName = "editCompany";
 
@@ -29,7 +29,7 @@ const AcountSetting = (props) => {
     let payload = {
       filters:{companies_id:id}
     };
-    // makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
+     makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
   };
 
   useEffect(() => {
@@ -52,7 +52,7 @@ const AcountSetting = (props) => {
     }
     let payload = { "object": load }
 
-    // makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
+     makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
@@ -75,7 +75,7 @@ const AcountSetting = (props) => {
     <>
       <div className="da-p-32">
         <Form
-        // initialValues={setting}
+        initialValues={setting}
           layout="vertical"
           // labelCol={{ span: 7 }}
           onFinish={onFinish}
