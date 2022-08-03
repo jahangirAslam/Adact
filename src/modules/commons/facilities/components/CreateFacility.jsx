@@ -80,11 +80,11 @@ const CreateFacility = (props) => {
                     { ...getErrorProps(errors['second_address']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="state" rules={ rules.state } label="State :" className="da-mb-16"
+                <Form.Item name="state" rules={ rules.state } label="State/County :" className="da-mb-16"
                     { ...getErrorProps(errors['state']) }>
                     <Input />
                 </Form.Item>
-                <Form.Item name="zipcode" rules={ rules.zipcode } label="Zip code :" className="da-mb-16"
+                <Form.Item name="zipcode" rules={ rules.zipcode } label="Zop code/Post Code :" className="da-mb-16"
                     { ...getErrorProps(errors['zipcode']) }>
                     <Input />
                 </Form.Item>
@@ -96,7 +96,7 @@ const CreateFacility = (props) => {
                         options={ deps.countries }
                     />
                 </Form.Item>
-                <Form.Item name="city" rules={ rules.city } label="City :" className="da-mb-16"
+                <Form.Item name="city" rules={ rules.city } label="City/Town :" className="da-mb-16"
                     { ...getErrorProps(errors['city']) }>
                     <Input />
                 </Form.Item>
