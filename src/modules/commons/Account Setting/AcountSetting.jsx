@@ -67,9 +67,9 @@ const AcountSetting = (props) => {
     setErrors(errorList);
   };
 
-  if (data.length === 0) {
-    return <Skeleton />;
-  }
+  // if (data.length === 0) {
+  //   return <Skeleton />;
+  // }
 
   return (
     <>

@@ -187,13 +187,13 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'country_id',
         placeholder: 'Country ',
         type: 'select',
         data_key:'country'
     },
     {
-        key: 'name',
+        key: 'email',
         placeholder: 'Email ',
         type: 'text',
     },
