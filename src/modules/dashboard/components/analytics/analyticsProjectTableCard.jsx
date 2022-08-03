@@ -5,7 +5,7 @@ import { Card, Col, Row, Table } from "antd";
 export default function AnalyticsProjectTableCard(props) {
   let topCustomers  = props.dataSource.count ? props.dataSource.count : [] ;
   topCustomers.sort(function(a, b){return   b.count - a.count})
-  debugger
+  
   const columns = [
     // {
     //   title: <span className="hp-badge-size hp-font-weight-400 hp-text-color-black-60 hp-text-color-dark-40 hp-text-uppercase">#</span>,

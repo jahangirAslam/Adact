@@ -45,7 +45,7 @@ const AcountSetting = (props) => {
 
   const onDependencySuccess = (data, res) => {
     setSetting(data.data[0])
-    debugger
+    
   };
 
   const onCancel = () => {

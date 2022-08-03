@@ -9,7 +9,8 @@ import { formatCompleteData } from "../../../../utils/helpers";
 import { getCompany, updateCompany } from "../requests";
 const formName = "editCompany";
 const EditCompany = (props) => {
-  debugger;
+  debugger
+  
   const history = useHistory();
   const [loader, setLoader] = useState(false);
   const { id } = useParams();
@@ -22,15 +23,14 @@ const EditCompany = (props) => {
     makeRequest(
       setLoader,
       getCompany,
-      props.id ? props.id : id,
+       id,
       onCompanySuccess,
       onCompanyError
     );
     // eslint-disable-next-line
   }, []);
 
-  const onCompanySuccess = (res) => {
-  
+  const onCompanySuccess = (res) => { 
    const updateOn = formatCompleteData(res.object.updated_at) ;
     setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby.name});
 
