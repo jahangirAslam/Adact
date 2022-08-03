@@ -10,6 +10,7 @@ import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIco
 import ThirdPartyIcon from "../../../../containers/components/menu/icons/ThirdPartyIcon";
 import AcountSetting from "../../../commons/Account Setting/AcountSetting";
 import Business from "../../../commons/Business/Business";
+import Document from "../../../commons/document/Document";
 
 const pageConfig = {
   headers: {
@@ -50,7 +51,7 @@ const EditManufacturer = () => {
     {
       title: "Documents",
       icon:<DocumentsIcon/>,
-      content: <IndexDocument/>
+      content: <Document/>
     },
     
     {
