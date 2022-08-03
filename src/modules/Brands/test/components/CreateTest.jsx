@@ -21,7 +21,6 @@ const CreateTest = (props) => {
 
     const { id } = useParams()
     const onFinish = (data) => {
-        
         const load = {
             selectedCountries: [data.country_id],
             ...data
@@ -86,7 +85,7 @@ const CreateTest = (props) => {
                 >
                     <Select
                         showSearch
-                        placeholder="Test Ref"
+                        placeholder="select"
                         options={deps.customer}
                     />
                 </Form.Item>
@@ -94,7 +93,7 @@ const CreateTest = (props) => {
                 >
                     <Select
                         showSearch
-                        placeholder="Test Ref"
+                        placeholder="select"
                         options={deps.product}
                     />
                 </Form.Item>
