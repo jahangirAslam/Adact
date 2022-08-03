@@ -1,22 +1,22 @@
-import { useParams } from "react-router-dom";
-import React, { useState, useEffect } from "react";
 import { TabComponent } from "@comps/components";
 import { makeRequest } from "@utils/helpers";
-import BasicInformation from "./edits/BasicInformation";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import ActivityLog from "../../../componentManagement/chemicalCompounds/components/edits/ActivityLog"
 import { getChemicalCompound } from "../requests";
-import ActivityLog from "./edits/ActivityLog";
-import Formulation from "./edits/Formulation";
+import BasicInformation from "./edits/BasicInformation";
+import Preview from "./edits/Preview";
 
 const pageConfig = {
   headers: {
-    title: "Manage Chemical Compound",
+    title: "Manage Global Templates",
     breadcrumb: [
       {
-        name: "ChemicalCompounds",
-        path: "/component-management/compounds"
+        name: " Global Templates",
+        path: "/global-template/manage-global-templates"
       },
       {
-        name: "Manage",
+        name: "Test",
       }
     ]
   }
@@ -24,7 +24,7 @@ const pageConfig = {
 }
 
 
-const EditChemicalCompound = () => {
+const EditTemplate = () => {
   const { id } = useParams();
   const [data, setData] = useState({
     object: {},
@@ -42,7 +42,7 @@ const chemicalCompoundSuccess = (res) =>{
 
   const tabs = [
     {
-      title: "Summary",
+      title: "Subject",
       content: (
         <BasicInformation
           id={id}
@@ -52,18 +52,17 @@ const chemicalCompoundSuccess = (res) =>{
       ),
     },
     {
-      title: "Formulation",
+      title: "Preview",
       content: (
-        <Formulation
+        <Preview
           id={id}
           data={data.object}
           dependencies={data.dependencies}
         />
       ),
     },
-    
     {
-      title: "ActivityLog",
+      title: "Activity Logs",
       content: (
         <ActivityLog
           id={id}
@@ -72,9 +71,13 @@ const chemicalCompoundSuccess = (res) =>{
         />
       ),
     },
+
+   
+    
+   
   ];
 
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={loader}></TabComponent> ;
 }
 
-export default EditChemicalCompound;
+export default EditTemplate;
