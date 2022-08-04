@@ -7,6 +7,8 @@ import { updateSubstance } from "../request";
 import adact1 from '../../../../../assets/images/adact1.png'
 
 const Details = (props) => {
+    
+    const data = {...props.data , typeName : props.data.type.name }
     const [loader, setLoader] = useState("");
     const [errors, setErrors] = useState([]);
 
@@ -43,7 +45,7 @@ const Details = (props) => {
         <Form
             layout="vertical"
             // labelCol={{ span: 7 }}
-            initialValues={props.data}
+            initialValues={data}
             onFinish={onFinish}
         >
             <Row gutter={[16, 24]}>
@@ -62,7 +64,7 @@ const Details = (props) => {
                         <Select
                             showSearch
                             placeholder="Product category   "
-                            options={props.dependencies.e_types}
+                            options={props.dependencies.product_types}
                         />
                     </Form.Item>
                 </Col>
@@ -73,7 +75,7 @@ const Details = (props) => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="product_categories" label="Overwrite last 5 digitsEC-Id() :">
-                    <Input  />
+                    <Input maxLength={5}  />
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
@@ -81,7 +83,7 @@ const Details = (props) => {
                     <Input />
                     </Form.Item>
                 </Col>
-                <Col className="gutter-row" xs={24} md={12} lg={8}>
+                {/* <Col className="gutter-row" xs={24} md={12} lg={8}>
                     <Form.Item name="agents" label="Agent :">
                         <Select
                             showSearch
@@ -89,15 +91,15 @@ const Details = (props) => {
                             options={props.dependencies.agents}
                         />
                     </Form.Item>
-                </Col>
+                </Col> */}
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                <div className="logoAdact">
+                {/* <div className="logoAdact">
             <img src={adact1} alt="Logo"  />
             </div>
             <div>
             <input type="file" id="actual-btn" hidden/>
             <label for="actual-btn" className="label">Change</label>
-            </div>
+            </div> */}
 
                     
                 </Col>

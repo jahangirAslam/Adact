@@ -2,8 +2,8 @@ import { ButtonComponent } from "@comps/components";
 import { Col, Form, Row, Skeleton, Switch } from "antd";
 import React, { useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-
-import { notify } from "@utils/helpers";
+import {getAcSettings,addAcSettings} from "./requests"
+import { notify,makeRequest } from "@utils/helpers";
 import { useEffect } from "react";
 const formName = "editCompany";
 
@@ -13,7 +13,7 @@ const AcountSetting = (props) => {
   const { id } = useParams();
   const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
-  const [setting, setSetting] = useState([]);
+  const [setting, setSetting] = useState({});
 
   const onCompanySuccess = (res) => {
     
@@ -29,7 +29,7 @@ const AcountSetting = (props) => {
     let payload = {
       filters:{companies_id:id}
     };
-    // makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
+     makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
   };
 
   useEffect(() => {
@@ -38,6 +38,7 @@ const AcountSetting = (props) => {
   }, []);
 
   const onDependencySuccess = (data, res) => {
+    
     setSetting(data.data[0])
     
   };
@@ -46,18 +47,22 @@ const AcountSetting = (props) => {
     history.push(`/common/companies`);
   };
   const onFinish = (data) => {
+    debugger
     const load = {
       companies_id: id,
       ...data
     }
     let payload = { "object": load }
 
-    // makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
+     makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
+    debugger  
+    getSelectFieldsData();
     notify("Updated", res.msg);
     props.onUpdated(data.object);
+   
   };
 
   const onError = (err) => {
@@ -67,15 +72,15 @@ const AcountSetting = (props) => {
     setErrors(errorList);
   };
 
-  // if (data.length === 0) {
-  //   return <Skeleton />;
-  // }
+  if (loader) {
+    return <Skeleton />;
+  }
 
   return (
     <>
       <div className="da-p-32">
         <Form
-        // initialValues={setting}
+        initialValues={setting?setting:{}}
           layout="vertical"
           // labelCol={{ span: 7 }}
           onFinish={onFinish}
@@ -94,14 +99,14 @@ const AcountSetting = (props) => {
                     label="Small And Medium Size SMES :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch  defaultChecked = {setting?.smes  == true ? true : false} />
                   </Form.Item>
                   <Form.Item
                     name="customer"
                     label="Enterprises (SMEs) Customers  :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch  defaultChecked = {setting?.customer  == true ? true : false} />
                   </Form.Item>
 
                
@@ -110,7 +115,7 @@ const AcountSetting = (props) => {
                     label="Laboratory :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch  defaultChecked = {setting?.labolatory  == true ? true : false} />
                   </Form.Item>
                 </Col>
                 <Col span={12}  xs={12}>
@@ -119,21 +124,22 @@ const AcountSetting = (props) => {
                     label="Agent :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch  defaultChecked = {setting?.agent  == true ? true : false} />
                   </Form.Item>
                   <Form.Item
                     name="manufacturer"
                     label="Manufacturer :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch defaultChecked = {setting?.manufacturer  == true ? true : false} />
                   </Form.Item>
+                
                   <Form.Item
                     name="supplier"
                     label="Supplier :"
                     className="da-mb-16"
                   >
-                    <Switch />
+                    <Switch  defaultChecked = {setting?.supplier  == true ? true : false}   />
                   </Form.Item>
                 </Col>
               </Row>

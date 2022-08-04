@@ -78,15 +78,15 @@ const IndexLiquid = () => {
           sorter: true,
         },
         {
-            key: "sub_type",
+            key: "type_name",
             title: " Sub Type",
-            dataIndex: "sub_type",
+            dataIndex: "type_name",
             sorter: true,
           },
         {
           key: "status",
           title: "Status",
-          sorter: true,
+          sorter: false,
           dataIndex: "is_active",
           render: (is_active) => {
             let color = is_active ? "green" : "red";
@@ -253,25 +253,25 @@ const availableFilters = [
         data_key: 'withdrawn',
     },
     {
-        key: 'name',
+        key: 'pg/vg',
         placeholder: 'PG/VG',
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'nicotine',
         placeholder: 'Nicotine',
         type: 'text',
     },
 
     {
-        key: 'type',
+        key: 'category_name',
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
 
     },
     {
-        key: 'sub_type',
+        key: 'type_id',
         placeholder: 'Sub-Type',
         type: 'select',
         data_key: 'sub_type',

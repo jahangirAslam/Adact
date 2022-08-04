@@ -5,6 +5,7 @@ import React, { useState } from "react";
 import { updateSubstance } from "../request";
 
 const FlavourInformation = (props) => {
+  
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
 

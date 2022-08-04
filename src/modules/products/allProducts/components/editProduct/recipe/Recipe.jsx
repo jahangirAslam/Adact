@@ -70,30 +70,15 @@ const Recipe = (props) => {
             width: '15%',
             editable: false,
         },
-        {
-            title: 'REF',
-            dataIndex: 'ref',
-            width: '15%',
-            editable: false,
-        },
+    
         {
             title: 'Percentage',
             dataIndex: 'percentage',
             width: '25%',
             editable: true,
         },
-        {
-            title: 'ML',
-            dataIndex: 'ml',
-            width: '25%',
-            editable: false,
-        },
-        {
-            title: 'MG/ML',
-            dataIndex: 'mg_1ml',
-            width: '25%',
-            editable: false,
-        },
+     
+      
         // {
         //     title: 'Insight',
         //     dataIndex: 'insights',

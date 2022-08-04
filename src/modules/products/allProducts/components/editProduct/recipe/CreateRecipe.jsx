@@ -23,6 +23,7 @@ const CreateRecipe = (props) => {
     const { id } = useParams();
 
     const onFinish = (data) => {
+        
         let load = {
             product_id: id,
             name: data.name,
