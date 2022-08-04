@@ -25,3 +25,6 @@ export const updateChemicalCompound = (payload) => {
 export const deleteChemicalCompound = (id) => {
     return del(`${api}/${id}`);
 }
+export const getDependencies = () => {
+    return get(`${api}/dependencies`);
+}

@@ -1,14 +1,18 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Form, Input, Row, Col, Divider, Switch, Select } from "antd";
-import { makeRequest, getErrorProps, notify } from "@utils/helpers";
-import { updateChemicalCompound } from "../../requests";
+import { makeRequest, getErrorProps, notify,makeRequestStateless } from "@utils/helpers";
+import { updateChemicalCompound,getFilters, getDependencies } from "../../requests";
 import { ButtonComponent } from "@comps/components";
 import TextArea from "antd/lib/input/TextArea";
-
-
 const BasicInformation = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+  const [deps, setDeps] = useState({
+    Table_of_content: [],
+    Report_level:[],
+    Validation_Status:[],
+    Product_Type:[],
+  });
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
@@ -18,6 +22,29 @@ const BasicInformation = (props) => {
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
   };
+
+  const getSelectFieldsData = () => {
+    makeRequestStateless(
+      getDependencies,
+       null,
+      onDependencySuccess,
+      null
+    );
+  };
+  useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+  }, []);
+
+  const onDependencySuccess = (data, res) => {
+    setDeps({
+      Table_of_content: data.Table_of_content,
+      Report_level:data.Report_level,
+      Validation_Status:data.Validation_Status,
+      Product_Type:data.Product_Type
+    });
+  };
+
 
   const onError = (err) => {
     let errorList = [];
@@ -61,7 +88,9 @@ const BasicInformation = (props) => {
           </Form.Item>
           <h5 className="TemplateHeader">Master File</h5>
           <Form.Item name="master_file" label="Assign to table of Content :">
-          <Select />
+          <Select
+           options={deps.Table_of_content}
+          />
           </Form.Item>
           <h5 className="TemplateHeader">Content</h5>
           {/* text Editor */}
@@ -73,7 +102,10 @@ const BasicInformation = (props) => {
             <Input disabled />
           </Form.Item>
           <Form.Item name="validation_status" label="Validation Status :">
-          <Select />
+          <Select
+          options={deps.Validation_Status}
+
+          />
           </Form.Item>
           <Form.Item name="validated_on" label="Validate on :">
             <Input disabled />
@@ -88,57 +120,62 @@ const BasicInformation = (props) => {
         <Col className="gutter-row" xs={24} md={12} lg={11} offset={1}>
         <h3 className="TemplateHeader">Report Level </h3>
           <Form.Item name="report_level" label="Overview :">
-            <Input />
+          <Select 
+             options={deps.Report_level}
+
+          />
           </Form.Item>
           <h5 className="TemplateHeader">Apply This Templates To Specified Product Type</h5>
           <Form.Item name="product_type" label="Not Set :">
-            <Select />
+            <Select
+             options={deps.Product_Type}
+            />
           </Form.Item>
           <h5 className="TemplateHeader">Document Visibility</h5>
           <Form.Item name="confidential_visibility" label="Not Confidental :">
-          <Switch defaultChecked onChange={onChange} />;
+          <Switch defaultChecked={props.data.confidential_visibility==true?true:false} onChange={onChange} />;
 
           </Form.Item>
           <Form.Item name="descrpublic_private_visibilityiption" label="Public :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.descrpublic_private_visibilityiption==true?true:false} onChange={onChange} />
           </Form.Item>
           <h5 className="TemplateHeader">Template For</h5>
           <Form.Item name="template_for" label="Specified Customers :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked={props.data.template_for==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <h5 className="TemplateHeader">Document Type</h5>
           <Form.Item name="tpd_document_type" label="TPD Document :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.tpd_document_type==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="pmta_document_type" label="PMTA Document :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked  ={props.data.pmta_document_type==true?true:false}  onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="mhra_document_type" label="MHRA Document :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked  ={props.data.mhra_document_type==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="cbd_document_type" label="CBD Document :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.cbd_document_type==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <h5 className="TemplateHeader">Default For</h5>
           <Form.Item name="tpd_default_for" label="TPD  :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.tpd_default_for==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="fda_default_for" label="FDA  :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.fda_default_for==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="mhra_default_for" label="MHRA  :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.mhra_default_for==true?true:false} onChange={onChange} />
 
           </Form.Item>
           <Form.Item name="cbd_default_for" label="CBD  :">
-          <Switch defaultChecked onChange={onChange} />
+          <Switch defaultChecked ={props.data.cbd_default_for==true?true:false} onChange={onChange} />
 
           </Form.Item>
         </Col>

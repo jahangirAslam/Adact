@@ -71,7 +71,7 @@ const CreateUser = (props) => {
         name={formName}
         onFinish={onFinish}
       >
-        <Form.Item name="name" rules={rules.name} label="Name :" className="da-mb-16"
+        <Form.Item name="name" rules={rules.name} label=" User Name :" className="da-mb-16"
           {...getErrorProps(errors['name'])}
         >
           <Input />
@@ -121,10 +121,8 @@ export default CreateUser
 
 const rules = {
   name: [
-    { required: true, message: 'Please input your password!', },
-    { min: 3, message: 'Minimum password length is 3', },
-    { max: 100, message: 'Maximum password length is 100', },
-  ],
+    { required: true, message: 'Please input your name!', },
+      ],
   email: [
     { type: "email", message: "The input is not valid email!" },
     { required: true, message: "Please input your email!" },
