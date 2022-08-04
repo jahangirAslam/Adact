@@ -65,9 +65,9 @@ const IndexBrands = () => {
           sorter: true,
         },
         {
-          key: "launched_date",
+          key: "created_at",
           title: "Launch Date",
-          dataIndex: "launched_date",
+          dataIndex: "created_at",
           sorter: true,
         },
       
