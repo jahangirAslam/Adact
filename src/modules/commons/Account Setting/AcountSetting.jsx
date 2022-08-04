@@ -1,10 +1,9 @@
 import { ButtonComponent } from "@comps/components";
-import { Col, Form, Row, Skeleton, Switch } from "antd";
-import React, { useState } from "react";
+import { makeRequest, notify } from "@utils/helpers";
+import { Col, Form, Row, Switch } from "antd";
+import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import {getAcSettings,addAcSettings} from "./requests"
-import { notify,makeRequest } from "@utils/helpers";
-import { useEffect } from "react";
+import { addAcSettings, getAcSettings } from "./requests";
 const formName = "editCompany";
 
 const AcountSetting = (props) => {
@@ -16,7 +15,6 @@ const AcountSetting = (props) => {
   const [setting, setSetting] = useState([]);
 
   const onCompanySuccess = (res) => {
-    
     setData(res);
   };
 
@@ -25,21 +23,24 @@ const AcountSetting = (props) => {
   };
 
   const getSelectFieldsData = () => {
-    
     let payload = {
-      filters:{companies_id:id}
+      filters: { companies_id: id },
     };
-     makeRequest(setLoader,getAcSettings, payload, onDependencySuccess, onError);
+    makeRequest(
+      setLoader,
+      getAcSettings,
+      payload,
+      onDependencySuccess,
+      onError
+    );
   };
 
   useEffect(() => {
-    
     getSelectFieldsData();
   }, []);
 
   const onDependencySuccess = (data, res) => {
-    setSetting(data.data[0])
-    
+    setSetting(data.data[0]);
   };
 
   const onCancel = () => {
@@ -48,12 +49,12 @@ const AcountSetting = (props) => {
   const onFinish = (data) => {
     const load = {
       companies_id: id,
-      ...data
-    }
-    let payload = { "object": load }
+      ...data,
+    };
+    let payload = { object: load };
 
-     makeRequest(setLoader,addAcSettings, payload, onSuccess, onError);
-  }
+    makeRequest(setLoader, addAcSettings, payload, onSuccess, onError);
+  };
 
   const onSuccess = (data, res) => {
     notify("Updated", res.msg);
@@ -61,7 +62,6 @@ const AcountSetting = (props) => {
   };
 
   const onError = (err) => {
-    
     let errorList = [];
     errorList["name"] = err.first_name;
     setErrors(errorList);
@@ -75,7 +75,7 @@ const AcountSetting = (props) => {
     <>
       <div className="da-p-32">
         <Form
-        initialValues={setting}
+          initialValues={setting}
           layout="vertical"
           // labelCol={{ span: 7 }}
           onFinish={onFinish}
@@ -88,7 +88,7 @@ const AcountSetting = (props) => {
               <h5>Account Type</h5>
 
               <Row>
-                <Col span={12} xs={12} >
+                <Col span={12} xs={12}>
                   <Form.Item
                     name="smes"
                     label="Small And Medium Size SMES :"
@@ -104,7 +104,6 @@ const AcountSetting = (props) => {
                     <Switch />
                   </Form.Item>
 
-               
                   <Form.Item
                     name="labolatory"
                     label="Laboratory :"
@@ -113,12 +112,8 @@ const AcountSetting = (props) => {
                     <Switch />
                   </Form.Item>
                 </Col>
-                <Col span={12}  xs={12}>
-                  <Form.Item
-                    name="agent"
-                    label="Agent :"
-                    className="da-mb-16"
-                  >
+                <Col span={12} xs={12}>
+                  <Form.Item name="agent" label="Agent :" className="da-mb-16">
                     <Switch />
                   </Form.Item>
                   <Form.Item
@@ -138,7 +133,7 @@ const AcountSetting = (props) => {
                 </Col>
               </Row>
             </Col>
-            <Col className="gutter-row " span={12}  xs={12}>
+            <Col className="gutter-row " span={12} xs={12}>
               <h5>Account Status</h5>
               <Form.Item
                 name="account_status"
@@ -147,11 +142,9 @@ const AcountSetting = (props) => {
               >
                 <Switch />
               </Form.Item>
-
-
             </Col>
           </Row>
-          <Col span={24}  xs={24} className="da-mt-32 da-text-align-right">
+          <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
             <Form.Item style={{ textAlign: "end" }}>
               <ButtonComponent
                 className="da-mr-10"
@@ -164,7 +157,6 @@ const AcountSetting = (props) => {
             </Form.Item>
           </Col>
         </Form>
-
       </div>
     </>
   );

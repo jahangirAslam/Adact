@@ -41,9 +41,9 @@ const IndexManageGlobal = () => {
         sorter: true,
       },
       {
-        key: "table_of_content",
+        key: "master_file",
         title: "Table of Content",
-        dataIndex: "table_of_contentnce",
+        dataIndex: "master_file",
         sorter: true,
       },
       {
