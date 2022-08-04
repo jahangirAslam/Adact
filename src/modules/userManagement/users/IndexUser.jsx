@@ -114,7 +114,7 @@ const IndexUser = () => {
       }
     }
     return (
-      <ActionComponent each={record} onView={onView} onEdit={onEdit} onDelete={onDelete}>
+      <ActionComponent each={record}  onEdit={onEdit} onDelete={onDelete}>
         <Button className="da-px-10 da-my-0" type="link" size="middle" onClick={() => activateDeactiveUser(record)}>{icon}</Button>
       </ActionComponent>
     );
@@ -180,9 +180,9 @@ const IndexUser = () => {
     setChildComponent(<ImportUser onImported={onImported} />);
   }
 
-  const onView = (record) => {
-    history.push(`/user-management/users/view/${record.id}`);
-  }
+  // const onView = (record) => {
+  //   history.push(`/user-management/users/view/${record.id}`);
+  // }
 
   const onEdit = (record) => {
     history.push(`/user-management/users/edit/${record.id}`);
