@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Form, Input, Row, Col, Divider, Switch, Select } from "antd";
 import { makeRequest, getErrorProps, notify,makeRequestStateless } from "@utils/helpers";
-import { updateChemicalCompound,getFilters } from "../../requests";
+import { updateChemicalCompound,getFilters, getDependencies } from "../../requests";
 import { ButtonComponent } from "@comps/components";
 import TextArea from "antd/lib/input/TextArea";
 const BasicInformation = (props) => {
@@ -10,7 +10,8 @@ const BasicInformation = (props) => {
   const [deps, setDeps] = useState({
     Table_of_content: [],
     Report_level:[],
-    status:[],
+    Validation_Status:[],
+    Product_Type:[],
   });
 
   const onFinish = (payload) => {
@@ -24,7 +25,7 @@ const BasicInformation = (props) => {
 
   const getSelectFieldsData = () => {
     makeRequestStateless(
-       getFilters,
+      getDependencies,
        null,
       onDependencySuccess,
       null
@@ -39,7 +40,8 @@ const BasicInformation = (props) => {
     setDeps({
       Table_of_content: data.Table_of_content,
       Report_level:data.Report_level,
-      status:data.status,
+      Validation_Status:data.Validation_Status,
+      Product_Type:data.Product_Type
     });
   };
 
@@ -101,7 +103,7 @@ const BasicInformation = (props) => {
           </Form.Item>
           <Form.Item name="validation_status" label="Validation Status :">
           <Select
-          options={deps.status}
+          options={deps.Validation_Status}
 
           />
           </Form.Item>
@@ -125,7 +127,9 @@ const BasicInformation = (props) => {
           </Form.Item>
           <h5 className="TemplateHeader">Apply This Templates To Specified Product Type</h5>
           <Form.Item name="product_type" label="Not Set :">
-            <Select />
+            <Select
+             options={deps.Product_Type}
+            />
           </Form.Item>
           <h5 className="TemplateHeader">Document Visibility</h5>
           <Form.Item name="confidential_visibility" label="Not Confidental :">
