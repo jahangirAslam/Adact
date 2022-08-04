@@ -4,11 +4,11 @@ import { useParams } from "react-router-dom";
 import { TabComponent } from "@comps/components";
 import { makeRequest,notify } from "@utils/helpers";
 import { getUser } from "../requests";
-
 import BasicInformation from "./edit/BasicInformation";
 import Permission from "./edit/Permission";
 import { GetSettings } from "@mods/commons/settings/GetSettings";
 import SettingsIcon from "../../../../containers/components/menu/icons/SettingsIcon";
+import Submission from "../../../globalTemplates/manageVariable/components/edits/ActivityLog";
 
 
 const pageConfig = {
@@ -75,6 +75,11 @@ const EditUser = () => {
       title: "Setting",
       icon: <SettingsIcon />,
       content: <GetSettings group="users" />
+    },
+    {
+      title: "Logs",
+      icon: <SettingsIcon />,
+      content: <Submission group="users" />
     }
   ]
 
