@@ -4,6 +4,7 @@ import { Form, Select } from "antd";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { createFlavour, getProductDependencies } from "./request";
+import Cookies from "js-cookie";
 
 
 const formName = "createProductRecipe";
@@ -16,12 +17,15 @@ const CreateTest = (props) => {
         types: [],
 
     });
+    const userId = Cookies.get("userId");
+
     const { id } = useParams();
 
 
     const onFinish = (data) => {
         let load = {
             product_id: id,
+            created_by:userId,
             ...data
         }
         let payload = { "object": load }

@@ -19,9 +19,9 @@ const ViewDetails = (props) => {
       <Form.Item name="categoryName" label="Category Name :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>
-      <Form.Item name="category_id" label="category_id :" className="da-mb-16">
+      {/* <Form.Item name="category_id" label="category_id :" className="da-mb-16">
         <Input disabled={true} />
-      </Form.Item>
+      </Form.Item> */}
       <Form.Item name="type" label="type :" className="da-mb-16">
         <Input disabled={true} />
       </Form.Item>

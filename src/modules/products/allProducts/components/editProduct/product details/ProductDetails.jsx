@@ -58,9 +58,9 @@ const ProductDetails = (props) => {
         <Col className="gutter-row" xs={24} md={12} lg={12}>
           <Form.Item
             name="Launch Year"
-            rules={rules.name}
+          
             label="Product Available for purchase from Date :"
-            {...getErrorProps(errors["name"])}
+           
           >
             <DatePicker />
           </Form.Item>
@@ -84,7 +84,7 @@ const ProductDetails = (props) => {
         <Col className="gutter-row" xs={24} lg={12}>
           <Form.Item
             name="is_active"
-            label="This product is withdrawal from selling :"
+            label="This product is withdrawan from selling :"
             className="da-mb-16"
           >
             <Switch defaultChecked onChange={onChange} />
@@ -110,7 +110,7 @@ const ProductDetails = (props) => {
             <strong>
               <WarningOutlined />
             </strong>
-            This Product hase invalid recepi
+            This Product hase invalid recipe
           </p>
           <p>
             {" "}

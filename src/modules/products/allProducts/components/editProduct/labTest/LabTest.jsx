@@ -45,10 +45,10 @@ const LabTest = (props) => {
             dataIndex: 'type',
         },
         {
-            key: 'created_by',
+            key: 'user_name',
             title: 'Created by',
             sorter:true,
-            dataIndex: 'created_by',
+            dataIndex: 'user_name',
         },
         {
             key: 'created',
