@@ -59,9 +59,9 @@ const IndexCustomer = () => {
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'phone',
             sorter: true,
         },
         {
@@ -111,7 +111,8 @@ const IndexCustomer = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters,
+            // filters : {"type": "customers"},
+            filters : {...filters,type: "customers" },
         };
         makeRequest(setLoader, getCustomers, payload, onSuccess, null);
     }

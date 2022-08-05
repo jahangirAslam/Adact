@@ -41,9 +41,9 @@ const IndexLaboratory = () => {
             sorter: true,
         },
         {
-            key: 'location_name',
+            key: 'country_name',
             title: 'Country',
-            dataIndex: 'location_name',
+            dataIndex: 'country_name',
             sorter: true,
         },
         {
@@ -113,7 +113,9 @@ const IndexLaboratory = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": "Laboratories"}
+            // filters : {"type": "Laboratories"}
+            filters : {...filters,type: "Laboratories" }
+
         };
         makeRequest(setLoader, getLaboratories, payload, onSuccess, null);
     }
@@ -187,18 +189,18 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'country_id',
         placeholder: 'Country ',
         type: 'select',
         data_key:'country'
     },
     {
-        key: 'name',
+        key: 'email',
         placeholder: 'Email ',
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'status',
         placeholder: 'Status ',
         type: 'select',
         data_key:'status'
