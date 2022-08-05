@@ -59,9 +59,9 @@ const IndexLaboratory = () => {
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'phone',
             sorter: true,
         },
 
