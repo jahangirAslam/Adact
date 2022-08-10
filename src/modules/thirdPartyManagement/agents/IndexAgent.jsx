@@ -39,6 +39,7 @@ const IndexAgent = () => {
             title: 'Name',
             dataIndex: 'name',
             sorter: true,
+            
         },
         {
             key: 'country_name',
@@ -53,9 +54,9 @@ const IndexAgent = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'first_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
@@ -64,12 +65,12 @@ const IndexAgent = () => {
             dataIndex: 'phone',
             sorter: true,
         },
-        {
-            key: 'account',
-            title: 'Account',
-            dataIndex: 'account',
-            sorter: true,
-        },
+        // {
+        //     key: 'account',
+        //     title: 'Account',
+        //     dataIndex: 'account',
+        //     sorter: true,
+        // },
 
         {
             key: 'status',
@@ -83,9 +84,6 @@ const IndexAgent = () => {
               );
             }
           },
-
-
-        
         // {
         //     key: 'created_at',
         //     title: 'Create At',
@@ -101,6 +99,7 @@ const IndexAgent = () => {
             render: (record) => ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete })
         },
     ];
+
 
     useEffect(() => {
         getAllAgents();

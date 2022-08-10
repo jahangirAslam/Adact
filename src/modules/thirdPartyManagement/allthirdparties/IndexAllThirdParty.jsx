@@ -39,6 +39,7 @@ const IndexAllThirdParty = () => {
             title: 'Name',
             dataIndex: 'name',
             sorter: true,
+            
         },
         {
             key: 'country',
@@ -53,9 +54,9 @@ const IndexAllThirdParty = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'adfirst_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
@@ -64,12 +65,12 @@ const IndexAllThirdParty = () => {
             dataIndex: 'phone',
             sorter: true,
         },
-        {
-            key: 'account',
-            title: 'Account',
-            dataIndex: 'account',
-            sorter: true,
-        },
+        // {
+        //     key: 'account',
+        //     title: 'Account',
+        //     dataIndex: 'account',
+        //     sorter: true,
+        // },
 
         {
             key: 'status',
@@ -83,8 +84,6 @@ const IndexAllThirdParty = () => {
               );
             }
           },
-
-        
         // {
         //     key: 'created_at',
         //     title: 'Create At',

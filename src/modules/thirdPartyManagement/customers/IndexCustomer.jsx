@@ -39,6 +39,7 @@ const IndexCustomer = () => {
             title: 'Name',
             dataIndex: 'name',
             sorter: true,
+            
         },
         {
             key: 'country_name',
@@ -53,9 +54,9 @@ const IndexCustomer = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'first_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
@@ -64,12 +65,12 @@ const IndexCustomer = () => {
             dataIndex: 'phone',
             sorter: true,
         },
-        {
-            key: 'account',
-            title: 'Account',
-            dataIndex: 'account',
-            sorter: true,
-        },
+        // {
+        //     key: 'account',
+        //     title: 'Account',
+        //     dataIndex: 'account',
+        //     sorter: true,
+        // },
 
         {
             key: 'status',

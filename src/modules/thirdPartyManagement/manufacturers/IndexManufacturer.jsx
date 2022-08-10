@@ -39,6 +39,7 @@ const IndexManufacturer = () => {
             title: 'Name',
             dataIndex: 'name',
             sorter: true,
+            
         },
         {
             key: 'country_name',
@@ -53,9 +54,9 @@ const IndexManufacturer = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'first_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
@@ -64,12 +65,12 @@ const IndexManufacturer = () => {
             dataIndex: 'phone',
             sorter: true,
         },
-        {
-            key: 'account',
-            title: 'Account',
-            dataIndex: 'account',
-            sorter: true,
-        },
+        // {
+        //     key: 'account',
+        //     title: 'Account',
+        //     dataIndex: 'account',
+        //     sorter: true,
+        // },
 
         {
             key: 'status',
@@ -111,7 +112,7 @@ const IndexManufacturer = () => {
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
             // filters : {"type": "Manufacturers"},
-            filters : {...filters,type: "customers" },
+            filters : {...filters,type: "manufacture" },
 
         
         };
