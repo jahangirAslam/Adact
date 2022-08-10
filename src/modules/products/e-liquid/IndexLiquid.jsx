@@ -4,9 +4,8 @@ import { makeRequest, notify } from "@utils/helpers";
 import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getFilters } from "../allProducts/components/request";
 import CreateProduct from "./components/CreateProducts";
-import { deleteProduct, getAllProducts } from "./components/request";
+import { deleteProduct, getAllProducts ,getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {
@@ -138,7 +137,7 @@ const IndexLiquid = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters
+            filters,
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
@@ -222,7 +221,7 @@ const IndexLiquid = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} rowSelection={rowSelection} onChange={handleTableChange} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection}  onChange={handleTableChange} />
             </BodyComponent>
         </>
     );
@@ -236,7 +235,7 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'customers',
+        key: 'customer_id',
         placeholder: 'Client Name',
         type: 'select',
         data_key: 'customers',
