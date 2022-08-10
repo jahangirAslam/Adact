@@ -62,7 +62,7 @@ const AcountSetting = (props) => {
 
   const onSuccess = (data, res) => {
 
-    setSetting(data)
+    setSetting(data.object)
     notify("Updated", res.msg);
     props.onUpdated(data.object);
 
@@ -152,7 +152,7 @@ const AcountSetting = (props) => {
                 label="Account Status :"
                 className="da-mb-16"
               >
-                <Switch />
+                <Switch defaultChecked={setting?.account_status == true ? true : false} />
               </Form.Item>
             </Col>
           </Row>
