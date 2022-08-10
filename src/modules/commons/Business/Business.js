@@ -208,7 +208,6 @@ const Business = (props) => {
                 onLoad={onLoad}
                 onUnmount={onUnmount}
               >
-                { /* Child components, such as markers, info windows, etc. */}
                 <></>
               </GoogleMap>}
 
@@ -233,7 +232,6 @@ const Business = (props) => {
         </Form>
         <Col span={24} className="da-mt-32 da-text-align-right">
           <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
-          {/* <CancelButton key="close_button" onClick={onCancel} /> */}
         </Col>
       </div>
     </>

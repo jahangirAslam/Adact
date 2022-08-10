@@ -59,9 +59,9 @@ const IndexAllThirdParty = () => {
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'phone',
             sorter: true,
         },
         {
@@ -113,7 +113,7 @@ const IndexAllThirdParty = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters    
+            filters , 
             };
         makeRequest(setLoader, getAllThirdParties, payload, onSuccess, null);
     }
@@ -198,7 +198,7 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'status',
         placeholder: 'Status ',
         type: 'select',
         data_key:'status'

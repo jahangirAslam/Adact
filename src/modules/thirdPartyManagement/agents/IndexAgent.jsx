@@ -41,9 +41,9 @@ const IndexAgent = () => {
             sorter: true,
         },
         {
-            key: 'country',
+            key: 'country_name',
             title: 'Country',
-            dataIndex: 'country',
+            dataIndex: 'country_name',
             sorter: true,
         },
         {
@@ -59,9 +59,9 @@ const IndexAgent = () => {
             sorter: true,
         },
         {
-            key: 'contact',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'contact',
+            dataIndex: 'phone',
             sorter: true,
         },
         {
@@ -114,7 +114,9 @@ const IndexAgent = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "Agents" }
+            // filters: { "type": "Agents" }
+            filters : {...filters,type: "agents" }
+
         };
         makeRequest(setLoader, getAgents, payload, onSuccess, null);
     }
@@ -188,18 +190,18 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'country_id',
         placeholder: 'Country ',
         type: 'select',
         data_key:'country'
     },
     {
-        key: 'name',
+        key: 'email',
         placeholder: 'Email ',
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'status',
         placeholder: 'Status ',
         type: 'select',
         data_key:'status'

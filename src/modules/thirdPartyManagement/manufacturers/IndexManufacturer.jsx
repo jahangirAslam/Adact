@@ -41,9 +41,9 @@ const IndexManufacturer = () => {
             sorter: true,
         },
         {
-            key: 'location_name',
+            key: 'country_name',
             title: 'Country',
-            dataIndex: 'location_name',
+            dataIndex: 'country_name',
             sorter: true,
         },
         {
@@ -59,9 +59,9 @@ const IndexManufacturer = () => {
             sorter: true,
         },
         {
-            key: 'Contact',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'Contact',
+            dataIndex: 'phone',
             sorter: true,
         },
         {
@@ -111,7 +111,10 @@ const IndexManufacturer = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters : {"type": "Manufacturers"}
+            // filters : {"type": "Manufacturers"},
+            filters : {...filters,type: "customers" },
+
+        
         };
         makeRequest(setLoader, getManufacturers, payload, onSuccess, null);
     }
@@ -186,18 +189,18 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'country_id',
         placeholder: 'Country ',
         type: 'select',
         data_key:'country'
     },
     {
-        key: 'name',
+        key: 'email',
         placeholder: 'Email ',
         type: 'text',
     },
     {
-        key: 'name',
+        key: 'status',
         placeholder: 'Status ',
         type: 'select',
         data_key:'status'

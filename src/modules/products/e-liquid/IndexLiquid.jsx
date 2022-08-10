@@ -42,6 +42,12 @@ const IndexLiquid = () => {
           sorter: true,
         },
         {
+            key: "customer_name",
+            title: " Client Name ",
+            dataIndex: "customer_name",
+            sorter: true,
+          },
+        {
           key: "name",
           title: " Name ",
           dataIndex: "name",
@@ -72,9 +78,9 @@ const IndexLiquid = () => {
             sorter: true,
           },
         {
-          key: "type",
+          key: "category_id",
           title: " Type",
-          dataIndex: "type",
+          dataIndex: "category_name",
           sorter: true,
         },
         {
@@ -230,7 +236,7 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'client',
+        key: 'customers',
         placeholder: 'Client Name',
         type: 'select',
         data_key: 'customers',
@@ -264,7 +270,7 @@ const availableFilters = [
     },
 
     {
-        key: 'category_name',
+        key: 'category_id',
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
