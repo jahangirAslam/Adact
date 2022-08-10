@@ -75,7 +75,6 @@ const IndexManufacturer = () => {
             key: 'status',
             title: 'Status',
             dataIndex: 'is_active',
-            sorter: true,
             render: (is_active) => {
               let color = is_active ? 'green' : 'red';
               let text = is_active ? 'ACTIVE' : 'INACTIVE';

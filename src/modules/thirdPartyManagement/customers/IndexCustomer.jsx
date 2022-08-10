@@ -75,7 +75,6 @@ const IndexCustomer = () => {
             key: 'status',
             title: 'Status',
             dataIndex: 'is_active',
-            sorter: true,
             render: (is_active) => {
               let color = is_active ? 'green' : 'red';
               let text = is_active ? 'ACTIVE' : 'INACTIVE';
@@ -106,6 +105,7 @@ const IndexCustomer = () => {
     }, [pagination, filters]);
 
     const getAllCustomers = () => {
+        
         let payload = {
             start: pagination.current - 1,
             length: pagination.pageSize,
@@ -123,6 +123,7 @@ const IndexCustomer = () => {
     }
 
     const handleTableChange = (page, fil, sorter) => {
+        
         let payload = {
             ...pagination,
             current: page.current,
@@ -178,7 +179,7 @@ const IndexCustomer = () => {
             </HeaderComponent>
             <BodyComponent>
                 <FilterComponent filters={availableFilters} onFilter={setFilters} api={getFilters} />
-                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} />
+                <SelectionTable loader={loader} columns={columns} dataSource={dataSource} pagination={{ ...pagination, total: totalRecords }} rowSelection={rowSelection} onChange={handleTableChange} />
             </BodyComponent>
         </>
     );
