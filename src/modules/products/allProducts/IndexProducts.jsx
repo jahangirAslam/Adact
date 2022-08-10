@@ -79,9 +79,9 @@ const IndexProducts = () => {
     },
 
     {
-      key: "type",
+      key: "category_id",
       title: " Type",
-      dataIndex: "type",
+      dataIndex: "category_name",
       sorter: true,
     },
 
@@ -252,9 +252,10 @@ const availableFilters = [
     data_key: "withdrawn",
   },
   {
-    key: "type",
-    placeholder: "Type",
-    type: "select",
-    data_key: "type",
-  },
+    key: 'category_id',
+    placeholder: 'Type',
+    type: 'select',
+    data_key: 'product_category',
+
+},
 ];
