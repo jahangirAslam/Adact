@@ -74,7 +74,6 @@ const IndexBrands = () => {
         {
           key: "status",
           title: "Status",
-          sorter: true,
           dataIndex: "is_active",
           render: (is_active) => {
             let color = is_active ? "green" : "red";
@@ -136,7 +135,7 @@ const IndexBrands = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters
+            filters,
         };
         makeRequest(setLoader, getAllItems, payload, onSuccess, null);
     }
@@ -219,9 +218,10 @@ export default IndexBrands;
 
 const availableFilters = [
   {
-    key: "customer_name",
+    key: "customer_id",
     placeholder: "Customer Name",
-    type: "text",
+    type: "select",
+    data_key: "customers",
  
   },
  
@@ -257,13 +257,15 @@ const availableFilters = [
    
     },
     {
-      key: "market",
+      key: "country_id",
       placeholder: "Market",
-      type: "text",
+      type: "select",
+      data_key: "country",
+
    
     },
     {
-      key: "id",
+      key: "custom_id",
       placeholder: "ID",
       type: "text",
   
