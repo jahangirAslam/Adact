@@ -1,7 +1,7 @@
 import { CancelButton, SaveButton } from "@comps/components";
 import { updateContact } from "@mods/commons/contacts/requests";
 import { getLocationDependencies, updateLocation } from "@mods/commons/locations/requests";
-import { GoogleMap, useJsApiLoader } from '@react-google-maps/api';
+import { GoogleMap, LoadScript } from '@react-google-maps/api';
 import { getErrorProps, makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Col, Form, Input, Row, Select, Skeleton } from "antd";
 import React, { useEffect, useState } from "react";
@@ -11,39 +11,26 @@ import { getCompany, updateCompany } from "../../thirdPartyManagement/companies/
 
 
 
+// const containerStyle = {
+//   width: '400px',
+//   height: '400px'
+// };
+
+const center = {
+  lat: 55.378052,
+  lng: -3.435973
+};
 const containerStyle = {
   width: '400px',
   height: '400px'
 };
 
-const center = {
-  lat: -3.745,
-  lng: -38.523
-};
+
 
 const formName = "editBusiness";
 const Business = (props) => {
 
-  // for map
-
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    googleMapsApiKey: "AIzaSyCEpFt_-vILimIlSXObiiEeUI5VdWyCXy8"
-  })
-
-  const [map, setMap] = React.useState(null)
-
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
-
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
-
-
+ 
 
   const history = useHistory();
   const [loader, setLoader] = useState(false);
@@ -193,17 +180,18 @@ const Business = (props) => {
                   options={deps.countries}
                 />
               </Form.Item>
-
-
-              {isLoaded && <GoogleMap
-                mapContainerStyle={containerStyle}
-                center={center}
-                zoom={10}
-                onLoad={onLoad}
-                onUnmount={onUnmount}
+              <LoadScript
+                googleMapsApiKey="AIzaSyCEpFt_-vILimIlSXObiiEeUI5VdWyCXy8"
               >
-                <></>
-              </GoogleMap>}
+                <GoogleMap
+                  mapContainerStyle={containerStyle}
+                  center={center}
+                  zoom={8}
+                >
+                  { /* Child components, such as markers, info windows, etc. */}
+                  <></>
+                </GoogleMap>
+              </LoadScript>
 
 
             </Col>
