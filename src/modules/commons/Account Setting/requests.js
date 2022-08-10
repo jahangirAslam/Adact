@@ -28,6 +28,7 @@ export const deleteCompany = (id) => {
 }
 
 export const addAcSettings = (payload) => {
+
     return post(accountSettings, payload);
 }
 export const getAcSettings = (payload) => {

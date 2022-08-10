@@ -1,9 +1,9 @@
 import {
-    ActionComponent, BodyComponent, CreateButton,
-    FilterComponent, TableComponent
+  ActionComponent, BodyComponent, CreateButton,
+  FilterComponent, TableComponent
 } from "@comps/components";
 import {
-    makeRequest, notify, removeById, replaceById
+  makeRequest, notify, removeById, replaceById
 } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
@@ -15,7 +15,7 @@ import { deleteLocation, getFilters, getLocations } from "./requests";
 const IndexLocation = (props) => {
   const { id } = useParams();
   const [loader, setLoader] = useState(false);
-  const [filters, setFilters] = useState({ companies_id: id });
+  const [filters, setFilters] = useState({});
   const [dataSource, setDataSource] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [pagination, setPagination] = useState({
@@ -85,8 +85,8 @@ const IndexLocation = (props) => {
       length: pagination.pageSize,
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
-      filters: { type: props.type },
-      filters,
+      filters: { ...filters, companies_id: id }
+
     };
     makeRequest(setLoader, getLocations, payload, onSuccess, null);
   };

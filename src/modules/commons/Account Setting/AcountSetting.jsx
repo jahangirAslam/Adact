@@ -6,7 +6,7 @@ import { useHistory, useParams } from "react-router-dom";
 import {getAcSettings,addAcSettings} from "./requests"
 
 
-const formName = "editCompany";
+const formName = "accountSettings";
 
 const AcountSetting = (props) => {
   const history = useHistory();
@@ -15,6 +15,7 @@ const AcountSetting = (props) => {
   const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
   const [setting, setSetting] = useState({});
+  const [length, setLength] = useState(0);
 
   const onCompanySuccess = (res) => {
     setData(res);
@@ -38,16 +39,17 @@ const AcountSetting = (props) => {
   const onDependencySuccess = (data, res) => {
     
     setSetting(data.data[0])
-    
+    setLength(data.data.length)
   };
 
   const onCancel = () => {
     history.push(`/common/companies`);
   };
   const onFinish = (data) => {
-    debugger
+    
     const load = {
       companies_id: id,
+      length:length,
       ...data,
     };
     let payload = { object: load };
@@ -56,8 +58,8 @@ const AcountSetting = (props) => {
   }
 
   const onSuccess = (data, res) => {
-    debugger  
-    getSelectFieldsData();
+    debugger
+    setSetting(data)
     notify("Updated", res.msg);
     props.onUpdated(data.object);
    
