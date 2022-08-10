@@ -28,8 +28,13 @@ export const deleteCompany = (id) => {
 }
 
 export const addAcSettings = (payload) => {
-
-    return post(accountSettings, payload);
+    if (payload.object.length.len < 1) {
+        debugger
+        return post(accountSettings, payload);
+    } else {
+        debugger
+        return put(`${accountSettings}/${payload.object.length.acId}`, payload.object);
+    }
 }
 export const getAcSettings = (payload) => {
 
