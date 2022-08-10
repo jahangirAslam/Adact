@@ -25,11 +25,11 @@ import { deleteBrand, getBrands, getFilters } from "./requests";
 // }
 
 const IndexProduct = () => {
-  const {id}  = useParams ()
+  const { id } = useParams()
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [dataSource, setDataSource] = useState([]);
-  const [filters, setFilters] = useState({customer_id:id});
+  const [filters, setFilters] = useState({ customer_id: id });
   const [totalRecords, setTotalRecords] = useState(0);
   const [pagination, setPagination] = useState({
     current: 1,
@@ -82,8 +82,8 @@ const IndexProduct = () => {
     //     return <Tag color={color}>{text}</Tag>;
     //   },
     // },
-    
-    
+
+
 
     {
       key: "actions",
@@ -114,7 +114,7 @@ const IndexProduct = () => {
   useEffect(() => {
     getAllBrands();
     // eslint-disable-next-line
-  }, [pagination]);
+  }, [pagination, filters]);
 
   const getAllBrands = () => {
     let payload = {
@@ -129,7 +129,13 @@ const IndexProduct = () => {
 
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
-    setDataSource(response.data);
+    let data = [];
+
+    response.data.forEach(element => {
+
+      data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name })
+    });
+    setDataSource(data);
   };
 
   const handleTableChange = (page, fil, sorter) => {
@@ -149,7 +155,8 @@ const IndexProduct = () => {
   };
 
   const onView = (record) => {
-    history.push(`/products/product/view/${record.id}`);  };
+    history.push(`/products/product/view/${record.id}`);
+  };
 
   const onEdit = (record) => {
     history.push(`/products/product/edit/${record.id}`);
@@ -233,6 +240,6 @@ const availableFilters = [
     type: "select",
     data_key: "type",
   },
-  
-  
+
+
 ];
