@@ -3,9 +3,9 @@ import { ActionComponent, BodyComponent, CreateButton, FilterComponent, HeaderCo
 import { makeRequest, notify } from "@utils/helpers";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import { getFilters } from "../allProducts/components/request";
+// import { getFilters } from "../allProducts/components/request";
 import CreateProduct from "./components/CreateProducts";
-import { deleteProduct, getAllProducts } from "./components/request";
+import { deleteProduct, getAllProducts,getFilters } from "./components/request";
 
 const pageConfig = {
     headers: {
@@ -54,12 +54,12 @@ const IndexDevice = () => {
             dataIndex: 'name',
             sorter: true,
         },
-        {
-            key: "on_market",
-            title: "On Market ",
-            dataIndex: "on_market",
-            sorter: true,
-          },
+        // {
+        //     key: "on_market",
+        //     title: "On Market ",
+        //     dataIndex: "on_market",
+        //     sorter: true,
+        //   },
         {
             key: 'withdrawn',
             title: 'Withdrawn',
@@ -67,24 +67,17 @@ const IndexDevice = () => {
             sorter: true,
         },
         {
-            key: "type",
+            key: "category_id",
             title: " Type",
-            dataIndex: "type",
+            dataIndex: "category_name",
             sorter: true,
           },
           {
-              key: "sub_type",
+              key: "type_name",
               title: " Sub Type",
-              dataIndex: "sub_type",
+              dataIndex: "type_name",
               sorter: true,
             },
-            {
-        key: 'sub_type',
-        placeholder: 'Sub-Type',
-        type: 'select',
-        data_key: 'sub_type',
-
-    },
 
 
         {
@@ -121,7 +114,7 @@ const IndexDevice = () => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters
+            filters,
         };
         makeRequest(setLoader, getAllProducts, payload, onSuccess, null);
     }
@@ -218,7 +211,7 @@ const availableFilters = [
         type: 'text',
     },
     {
-        key: 'client',
+        key: 'customer_id',
         placeholder: 'Client Name',
         type: 'select',
         data_key: 'customers',
@@ -237,14 +230,14 @@ const availableFilters = [
         data_key: 'withdrawn',
     },
     {
-        key: 'type',
+        key: 'category_id',
         placeholder: 'Type',
         type: 'select',
         data_key: 'type',
 
     },
     {
-        key: 'sub_type',
+        key: 'type_id',
         placeholder: 'Sub-Type',
         type: 'select',
         data_key: 'sub_type',

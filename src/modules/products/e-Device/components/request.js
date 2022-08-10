@@ -20,3 +20,7 @@ export const updateSubstance = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 
 };
+export const getFilters = () => {
+
+    return get(`${api}/filters`);
+}
