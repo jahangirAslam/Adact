@@ -78,36 +78,43 @@ const EditCompany = (props) => {
 
   const onFinish = (submitData) => {
 
-    let payload = {
-      agent_id: submitData.agent_id,
-      dun_number: submitData.dun_number,
-      fda_number: submitData.fda_number,
-      name: submitData.name,
-      short_name: submitData.short_name,
-      id: props.id,
-      tpd_setting: submitData.tpd_setting,
-      trade_name: submitData.trade_name,
-      type: submitData.type,
-      vat: submitData.vat,
-    };
-    let location = {
-      first_address: submitData.first_address,
-      second_address: submitData.second_address,
-      country_id: submitData.country_id,
-      state: submitData.state,
-      zipcode: submitData.zipcode,
-      id: data.object.location_id,
-    };
-    let contact = {
-      email: submitData.email,
-      landline: submitData.landline,
-      mobile: submitData.mobile,
-      website: submitData.website,
-      id: data.object.contact_id,
-    };
+let payload = {
+
+  companies_id:id,
+  id:id,
+  ...submitData
+}
+    // let payload = {
+    //   agent_id: submitData.agent_id,
+    //   dun_number: submitData.dun_number,
+    //   fda_number: submitData.fda_number,
+    //   name: submitData.name,
+    //   short_name: submitData.short_name,
+    //   id: props.id,
+    //   tpd_setting: submitData.tpd_setting,
+    //   trade_name: submitData.trade_name,
+    //   type: submitData.type,
+    //   vat: submitData.vat,
+    // };
+    // let location = {
+    //   first_address: submitData.first_address,
+    //   second_address: submitData.second_address,
+    //   country_id: submitData.country_id,
+    //   state: submitData.state,
+    //   zipcode: submitData.zipcode,
+    //   id: data.object.location_id,
+    // };
+    // let contact = {
+    //   email: submitData.email,
+    //   landline: submitData.landline,
+    //   mobile: submitData.mobile,
+    //   website: submitData.website,
+    //   id: data.object.contact_id,
+    // };
+  
     makeRequest(setLoader, updateCompany, payload, onSuccess, onError);
-    makeRequest(setLoader, updateLocation, location, Function, onError);
-    makeRequest(setLoader, updateContact, contact, Function, onError);
+    // makeRequest(setLoader, updateLocation, location, Function, onError);
+    // makeRequest(setLoader, updateContact, contact, Function, onError);
   };
 
   const onSuccess = (data, res) => {

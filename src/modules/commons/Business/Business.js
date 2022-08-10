@@ -21,7 +21,7 @@ const center = {
   lng: -38.523
 };
 
-const formName = "editCompany";
+const formName = "editBusiness";
 const Business = (props) => {
 
   // for map
@@ -59,8 +59,8 @@ const Business = (props) => {
   }, []);
 
   const onCompanySuccess = (res) => {
-    const updateOn = formatCompleteData(res.object.updated_at) ;
-    setData({...res.object , updateOn:updateOn   , updatedby:res.object.updatedby?.name});
+    const updateOn = formatCompleteData(res.object.updated_at);
+    setData({ ...res.object, updateOn: updateOn, updatedby: res.object.updatedby?.name });
   }
 
   const onCompanyError = (res) => {
@@ -87,22 +87,16 @@ const Business = (props) => {
   }
 
   const onFinish = (submitData) => {
+    debugger
     let payload = {
-      "agent_id": submitData.agent_id, "dun_number": submitData.dun_number, "fda_number": submitData.fda_number, "name": submitData.name
-      , "short_name": submitData.short_name, "id": props.id, "tpd_setting": submitData.tpd_setting, "trade_name": submitData.trade_name, "type": submitData.type
-      , "vat": submitData.vat
+
+      companies_id: id,
+      id: id,
+      ...submitData
     }
-    let location = {
-      "first_address": submitData.first_address, "second_address": submitData.second_address, "country_id": submitData.country_id,
-      "state": submitData.state, "zipcode": submitData.zipcode, id: data.object.location_id
-    }
-    let contact = {
-      "email": submitData.email, "landline": submitData.landline, "mobile": submitData.mobile,
-      "website": submitData.website, id: data.object.contact_id
-    }
+
     makeRequest(setLoader, updateCompany, payload, onSuccess, onError);
-    makeRequest(setLoader, updateLocation, location, Function, onError);
-    makeRequest(setLoader, updateContact, contact, Function, onError);
+
   }
 
   const onSuccess = (data, res) => {
@@ -133,31 +127,31 @@ const Business = (props) => {
         >
           <Row gutter={[16, 24]}>
             <Col className="gutter-row" span={11}>
-              <Form.Item name="first_address_line"  label="First Address line :" className="da-mb-16"
+              <Form.Item name="first_address_line" label="First Address line :" className="da-mb-16"
                 {...getErrorProps(errors['name'])}>
                 <Input />
               </Form.Item>
-              <Form.Item name="second_address_line"  label="Second Address line :" className="da-mb-16"
+              <Form.Item name="second_address_line" label="Second Address line :" className="da-mb-16"
               >
                 <Input />
               </Form.Item>
-              <Form.Item name="town_city"  label="Town/City :" className="da-mb-16"
-                >
+              <Form.Item name="town_city" label="Town/City :" className="da-mb-16"
+              >
                 <Input />
               </Form.Item>
               <h5 className="headerHeadings">Contact Details</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item name="website"  label="Website" className="da-mb-16"
+                  <Form.Item name="website" label="Website" className="da-mb-16"
                   >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="landline"  label="Landline  :" className="da-mb-16"
-                   >
+                  <Form.Item name="landline" label="Landline  :" className="da-mb-16"
+                  >
                     <Input />
                   </Form.Item>
-                  <Form.Item name="phone"  label="Phone :" className="da-mb-16"
-                    >
+                  <Form.Item name="phone" label="Phone :" className="da-mb-16"
+                  >
                     <Input />
                   </Form.Item>
                 </Col>
@@ -166,8 +160,8 @@ const Business = (props) => {
               <h5 className="headerHeadings">Email</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" span={24}>
-                  <Form.Item name="email"  className="da-mb-16"
-                    >
+                  <Form.Item name="email" className="da-mb-16"
+                  >
                     <Input />
                   </Form.Item>
                 </Col>
@@ -178,28 +172,28 @@ const Business = (props) => {
 
             <Col className="gutter-row" span={11}>
               <Form.Item name="county" rules={rules.name} label="County" className="da-mb-16"
-               >
+              >
                 <Input />
               </Form.Item>
               <Form.Item name="postcode" rules={rules.trade_name} label="Postcode  :" className="da-mb-16"
-                >
+              >
                 <Input />
               </Form.Item>
               <h5 className="headerHeadings">Country</h5>
               <Form.Item
-          name="country_id"
-          rules={rules.country}
-          label="select :"
-          className="da-mb-16"
-          {...getErrorProps(errors["country"])}
-        >
-          <Select
-            showSearch
-            placeholder="Select a country"
-            options={deps.countries}
-          />
-        </Form.Item>
-              {/* Map  */}
+                name="country_id"
+                rules={rules.country}
+                label="select :"
+                className="da-mb-16"
+                {...getErrorProps(errors["country"])}
+              >
+                <Select
+                  showSearch
+                  placeholder="Select a country"
+                  options={deps.countries}
+                />
+              </Form.Item>
+
 
               {isLoaded && <GoogleMap
                 mapContainerStyle={containerStyle}
@@ -230,8 +224,14 @@ const Business = (props) => {
             </Col>
           </Row>
         </Form>
-        <Col span={24} className="da-mt-32 da-text-align-right">
-          <SaveButton className="da-mr-12" form={formName} key="create_button" htmlType="submit" state={loader} />
+        <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
+          <SaveButton
+            className="da-mr-12"
+            form={formName}
+            key="create_button"
+            htmlType="submit"
+            state={loader}
+          />
         </Col>
       </div>
     </>
