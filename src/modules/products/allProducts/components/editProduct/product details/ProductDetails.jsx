@@ -3,6 +3,7 @@ import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Col, DatePicker, Form, Input, Row, Select, Switch } from "antd";
 import React, { useState } from "react";
+import moment from 'moment';
 import { useParams } from "react-router-dom";
 import { updateSubstance } from "../../request";
 
@@ -54,6 +55,7 @@ const ProductDetails = (props) => {
     <Form
       layout="vertical"
       // labelCol={{ span: 7 }}
+
       initialValues={props.data}
       onFinish={onFinish}
     >
@@ -64,12 +66,12 @@ const ProductDetails = (props) => {
 
         <Col className="gutter-row" xs={24} md={12} lg={12}>
           <Form.Item
-            name="Launch Year"
+            name="dateasdfefe"
           
             label="Product Available for purchase from Date :"
            
           >
-            <DatePicker />
+            <DatePicker defaultValue={moment(props.data.on_market)} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12} lg={12}>

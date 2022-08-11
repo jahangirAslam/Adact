@@ -64,12 +64,12 @@ const IndexProducts = () => {
       dataIndex: "name",
       sorter: true,
     },
-    // {
-    //     key: "on_market",
-    //     title: "On Market ",
-    //     dataIndex: "on_market",
-    //     sorter: true,
-    //   },
+    {
+        key: "on_market",
+        title: "On Market ",
+        dataIndex: "on_market",
+        sorter: true,
+      },
 
     {
       key: "withdrawn_date",
@@ -132,7 +132,7 @@ const IndexProducts = () => {
     let data = [];
    
     response.data.forEach(element => {
-      debugger
+    
       data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name , withdrawn_date:element.withdrawn ? element.withdrawn:"No" })
     });
     setDataSource(data);

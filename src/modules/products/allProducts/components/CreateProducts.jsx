@@ -20,7 +20,11 @@ const CreateProduct = (props) => {
 
 
     const onFinish = (data) => {
-        let payload = { "object": data }
+        let load={
+            on_market:new Date().toISOString().slice(0, 10),
+            ...data 
+        }
+        let payload = { "object": load }
         makeRequest(setLoader, createProduct, payload, onSuccess, onError);
 
     }

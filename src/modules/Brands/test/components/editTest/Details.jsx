@@ -17,6 +17,7 @@ const Details = (props) => {
 });
 const onFinish = (payload) => {
   payload.id = props.data.id;
+  debugger;
   makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
 };
 
@@ -93,7 +94,7 @@ useEffect(() => {
                     />
               </Form.Item>
               <h5>Agent</h5>
-              <Form.Item name="agent" label="Representative :">
+              <Form.Item name="agent_id" label="Representative :">
               <Select
                         showSearch
                         placeholder="agent"
@@ -115,7 +116,7 @@ useEffect(() => {
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>
                   <Form.Item name="custom_id" label="Custom ID :">
-                    <Input />
+                    <Input type='number' />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={12}>

@@ -19,7 +19,6 @@ const CreateTest = (props) => {
 
     });
 
-    const { id } = useParams()
     const onFinish = (data) => {
         const load = {
             selectedCountries: [data.country_id],
