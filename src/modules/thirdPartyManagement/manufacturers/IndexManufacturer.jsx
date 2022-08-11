@@ -11,7 +11,7 @@ import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
 import CreateManufacturer from "./components/CreateManufacturer";
-import { deleteManufacturer, getFilters, getManufacturers } from "./requests";
+import { deleteManufacture, deleteManufacturer, getFilters, getManufacturers } from "./requests";
 
 const pageConfig = {
   headers: {
@@ -155,17 +155,17 @@ const IndexManufacturer = () => {
   };
 
   const onDelete = (record) => {
-    makeRequest(
-      setLoader,
-      deleteManufacturer,
-      record.id,
-      onDeleteSuccess,
-      onError
-    );
-  };
+    let index = delItems.findIndex(o => o === record.id);
+    if (index === -1) {
+      delItems.push(record.id)
+    }
+    const payload = { "ids": delItems };
+        makeRequest(setLoader, deleteManufacture,payload, onDeleteSuccess,
+            onError)
+    }
 
   const onDeleteSuccess = (response, msg) => {
-    setDataSource(removeById(dataSource, response.id));
+    getAllManufacturers();
     notify(msg.msg);
   };
 

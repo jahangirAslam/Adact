@@ -1,4 +1,4 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "third-party/manufacturer";
 
@@ -22,6 +22,6 @@ export const updateManufacturer = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 }
 
-export const deleteManufacturer = (id) => {
-    return del(`${api}/${id}`);
+export const deleteManufacture = (payload) => {
+    return post(`${api}/bulkDelete`, payload);
 }

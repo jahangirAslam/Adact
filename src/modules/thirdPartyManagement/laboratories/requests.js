@@ -22,6 +22,6 @@ export const updateLaboratory = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 }
 
-export const deleteLaboratory = (id) => {
-    return del(`${api}/${id}`);
+export const deleteLaboratory = (payload) => {
+    return post(`${api}/bulkDelete`, payload);
 }

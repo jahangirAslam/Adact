@@ -152,7 +152,7 @@ const IndexCustomer = () => {
     }
 
     const onDelete = (record) => {
-        let index = delItems.findIndex(o => o === record.id);
+    let index = delItems.findIndex(o => o === record.id);
     if (index === -1) {
       delItems.push(record.id)
     }
@@ -162,7 +162,7 @@ const IndexCustomer = () => {
     }
 
     const onDeleteSuccess = (response, msg) => {
-        setDataSource(removeById(dataSource, response.id));
+        getAllCustomers();
         notify(msg.msg)
     }
 

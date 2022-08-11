@@ -1,4 +1,4 @@
-import { get, post, del, put } from "@utils/axios";
+import {get, post, del, put } from "@utils/axios";
 
 const api = "third-party/agents";
 
@@ -22,6 +22,6 @@ export const updateAgent = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 }
 
-export const deleteAgent = (id) => {
-    return del(`${api}/${id}`);
+export const deleteAgents = (payload) => {
+    return post(`${api}/bulkDelete`, payload);
 }
