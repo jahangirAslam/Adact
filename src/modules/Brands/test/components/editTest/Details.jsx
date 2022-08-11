@@ -15,11 +15,15 @@ const Details = (props) => {
     Product_id_notified_to_tpd:[],
 
 });
+const onFinish = (payload) => {
+  payload.id = props.data.id;
+  makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
+};
 
-  const onFinish = (payload) => {
-    payload.id = props.data.id;
-    makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
-  };
+  // const onFinish = (payload) => {
+  //   payload.id = props.data.id;
+  //   makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
+  // };
 
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
@@ -89,7 +93,7 @@ useEffect(() => {
                     />
               </Form.Item>
               <h5>Agent</h5>
-              <Form.Item name="agent_id" label="Representative :">
+              <Form.Item name="agent" label="Representative :">
               <Select
                         showSearch
                         placeholder="agent"
