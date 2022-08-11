@@ -3,6 +3,7 @@ import { ButtonComponent } from "@comps/components";
 import { getErrorProps, makeRequest, notify } from "@utils/helpers";
 import { Col, DatePicker, Form, Input, Row, Select, Switch } from "antd";
 import React, { useState } from "react";
+import { useParams } from "react-router-dom";
 import { updateSubstance } from "../../request";
 
 const ProductDetails = (props) => {
@@ -18,10 +19,16 @@ const ProductDetails = (props) => {
 
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+   const {id} = useParams()
+  const onFinish = (data) => {
+    
+     let load  = {
+      id : id,
+      ...data
+     }
+    // let payload = { "object": load }
 
-  const onFinish = (payload) => {
-    payload.id = props.data.id;
-    makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
+    makeRequest(setLoader, updateSubstance, load, onSuccess, onError);
   };
 
   const onSuccess = (data, res) => {
@@ -83,16 +90,21 @@ const ProductDetails = (props) => {
 
         <Col className="gutter-row" xs={24} lg={12}>
           <Form.Item
-            name="is_active"
+            name="withdraw"
             label="This product is withdrawan from selling :"
             className="da-mb-16"
           >
-            <Switch defaultChecked onChange={onChange} />
+            <Switch   onChange={toggle} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} lg={12}>
-          <Form.Item name="product_width" label="Withdrawal Date">
-            <Input disabled={disabled} />
+        <Form.Item
+            name="withdraw_date"
+          
+            label="Product Available for purchase from Date :"
+           
+          >
+            <DatePicker disabled={disabled} />
           </Form.Item>
         </Col>
       </Row>

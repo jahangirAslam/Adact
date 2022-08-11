@@ -72,9 +72,9 @@ const IndexProducts = () => {
     //   },
 
     {
-      key: "withdrawn",
+      key: "withdrawn_date",
       title: "Withdrawn",
-      dataIndex: "withdrawn",
+      dataIndex: "withdrawn_date",
       sorter: true,
     },
 
@@ -132,8 +132,8 @@ const IndexProducts = () => {
     let data = [];
    
     response.data.forEach(element => {
-      
-      data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name })
+      debugger
+      data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name , withdrawn_date:element.withdrawn ? element.withdrawn:"No" })
     });
     setDataSource(data);
   };
