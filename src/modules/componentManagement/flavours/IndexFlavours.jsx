@@ -74,7 +74,6 @@ const Flavours = () => {
       key: 'status',
       title: 'Status',
       dataIndex: 'status',
-      sorter: { compare: (a, b) => a.fed_uuin - b.fed_uuin }
 
     },
     {
