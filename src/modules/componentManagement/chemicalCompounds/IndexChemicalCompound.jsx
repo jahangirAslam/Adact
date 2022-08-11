@@ -186,9 +186,9 @@ const availableFilters = [
     data_key: "actives",
   },
   {
-    key: "customer_id",
+    key: "company_id",
     placeholder: "Select Customer",
-    type: "text",
+    type: "select",
     data_key: "all_customers",
   },
 ];

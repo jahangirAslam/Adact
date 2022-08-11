@@ -71,8 +71,6 @@ const IndexSubstance = () => {
       key: 'status',
       title: 'Status',
       dataIndex: 'is_active',
-      sorter: (a, b) => a && a.status.length - b && b.status.length,
-
       render: (is_active) => {
         let color = is_active ? 'green' : 'red';
         let text = is_active ? 'ACTIVE' : 'INACTIVE';
@@ -110,6 +108,19 @@ const IndexSubstance = () => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
   };
+
+
+  const handleTableChange = (page, fil, sorter) => {
+        
+    let payload = {
+        ...pagination,
+        current: page.current,
+        pageSize: page.pageSize,
+        sortName: sorter.field || 'id',
+        sortType: sorter.order === 'ascend' ? 'asc' : 'desc',
+    };
+    setPagination(payload);
+}
 
   
 
@@ -164,6 +175,7 @@ const IndexSubstance = () => {
           columns={columns}
           dataSource={dataSource}
           pagination={{ ...pagination, total: totalRecords }}
+          onChange={handleTableChange}
         />
       </BodyComponent>
     </>

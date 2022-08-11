@@ -55,7 +55,7 @@ const BasicInformation = (props) => {
         </Col>
         <Col className="gutter-row" span={12}>
           <Form.Item
-            name="customer_id"
+            name="company_id"
             label="Select Customer :"
             rules={rules.customer_id}
             className="da-mb-8"
