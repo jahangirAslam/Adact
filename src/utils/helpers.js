@@ -116,7 +116,7 @@ export const removeById = (data, id) => {
     });
 };
 
-const formatDate = (date, format) => {
+export const formatDate = (date, format) => {
     return moment(date).format(format);
 };
 
