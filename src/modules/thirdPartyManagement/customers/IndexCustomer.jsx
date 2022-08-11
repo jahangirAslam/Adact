@@ -45,7 +45,7 @@ const IndexCustomer = () => {
             key: 'country_name',
             title: 'Country',
             dataIndex: 'country_name',
-            sorter: true,
+            sorter: false,
         },
         {
             key: 'Email',
@@ -152,7 +152,12 @@ const IndexCustomer = () => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteCustomer, record.id, onDeleteSuccess,
+        let index = delItems.findIndex(o => o === record.id);
+    if (index === -1) {
+      delItems.push(record.id)
+    }
+    const payload = { "ids": delItems };
+        makeRequest(setLoader, deleteCustomer,payload, onDeleteSuccess,
             onError)
     }
 

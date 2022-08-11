@@ -28,11 +28,11 @@ export const deleteCompany = (id) => {
 }
 
 export const addAcSettings = (payload) => {
-    if (payload.object.length.len < 1) {
-
+    if (payload.object.length.len === undefined) {
+        debugger
         return post(accountSettings, payload);
     } else {
-
+        debugger
         return put(`${accountSettings}/${payload.object.length.acId}`, payload.object);
     }
 }

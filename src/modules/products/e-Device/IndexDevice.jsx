@@ -67,9 +67,9 @@ const IndexDevice = () => {
             sorter: true,
         },
         {
-            key: "category_id",
+            key: "type",
             title: " Type",
-            dataIndex: "category_name",
+            dataIndex: "type",
             sorter: true,
           },
           {
@@ -125,7 +125,7 @@ const IndexDevice = () => {
        
         response.data.forEach(element => {
     
-          data.push({...element , type: element.e_type ? element.e_type[0].type  :"N/A"  })
+            data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name })
         });
         setDataSource(data);
       };

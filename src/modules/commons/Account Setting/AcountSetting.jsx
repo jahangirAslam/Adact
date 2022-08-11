@@ -15,7 +15,7 @@ const AcountSetting = (props) => {
   const [errors, setErrors] = useState([]);
   const [data, setData] = useState([]);
   const [setting, setSetting] = useState({});
-  const [length, setLength] = useState(0);
+  const [length, setLength] = useState({});
 
   const onCompanySuccess = (res) => {
     setData(res);

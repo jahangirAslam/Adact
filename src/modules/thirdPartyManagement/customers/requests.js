@@ -22,6 +22,6 @@ export const updateCustomer = (payload) => {
     return put(`${api}/${payload.id}`, payload);
 }
 
-export const deleteCustomer = (id) => {
-    return del(`${api}/${id}`);
+export const deleteCustomer = (payload) => {
+    return post(`${api}/bulkDelete`, payload);
 }
