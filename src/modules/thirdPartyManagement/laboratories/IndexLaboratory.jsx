@@ -53,9 +53,9 @@ const IndexLaboratory = () => {
             sorter: true,
         },
         {
-            key: 'first_address',
+            key: 'first_address_line',
             title: 'Address',
-            dataIndex: 'first_address',
+            dataIndex: 'first_address_line',
             sorter: true,
         },
         {
