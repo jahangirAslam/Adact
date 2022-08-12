@@ -74,7 +74,7 @@ const Details = (props) => {
                     </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={8}>
-                    <Form.Item name="product_categories" label="Overwrite last 5 digitsEC-Id() :">
+                    <Form.Item name="ec_five" label="Overwrite last 5 digitsEC-Id() :">
                     <Input maxLength={5}  />
                     </Form.Item>
                 </Col>

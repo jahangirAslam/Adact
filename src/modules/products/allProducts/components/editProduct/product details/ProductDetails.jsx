@@ -27,7 +27,7 @@ const ProductDetails = (props) => {
       // withdraw:data.withdraw,
       customers:data.customers,
       id : id,
-      on_market:`${formatFullYearOnly(data.market)}-${formatMonthOnly(data.market)}-${formatDayOnly(data.market)}`,
+      on_market:`${formatFullYearOnly(data.marketVal)}-${formatMonthOnly(data.marketVal)}-${formatDayOnly(data.marketVal)}`,
       withdraw_date:`${formatFullYearOnly(data.withdraw_date)}-${formatMonthOnly(data.withdraw_date)}-${formatDayOnly(data.withdraw_date)}`
      }
      debugger
@@ -72,7 +72,7 @@ const ProductDetails = (props) => {
 
         <Col className="gutter-row" xs={24} md={12} lg={12}>
           <Form.Item
-            name="market"
+            name="marketVal"
           
             label="Product Available for purchase from Date :"
            
