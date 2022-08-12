@@ -9,7 +9,7 @@ import { updateSubstance } from "../../request";
 import { formatDate, formatDayOnly, formatFullYearOnly, formatMonthOnly } from "../../../../../../utils/helpers";
 
 const ProductDetails = (props) => {
-  debugger
+  
   const [disabled, setDisabled] = useState(true);
   const toggle = () => {
     setDisabled(!disabled);
@@ -24,13 +24,13 @@ const ProductDetails = (props) => {
   const onFinish = (data) => {
     
      let load  = {
-      // withdraw:data.withdraw,
-      // customers:data.customers,
-      // id : id,
-      // on_market:`${formatFullYearOnly(data.on_market)}-${formatMonthOnly(data.on_market)}-${formatDayOnly(data.on_market)}`,
-      // withdraw_date:`${formatFullYearOnly(data.withdraw_date)}-${formatMonthOnly(data.withdraw_date)}-${formatDayOnly(data.withdraw_date)}`
+      withdraw:data.withdraw,
+      customers:data.customers,
+      id : id,
+      on_market:`${formatFullYearOnly(data.on_market)}-${formatMonthOnly(data.on_market)}-${formatDayOnly(data.on_market)}`,
+      withdraw_date:`${formatFullYearOnly(data.withdraw_date)}-${formatMonthOnly(data.withdraw_date)}-${formatDayOnly(data.withdraw_date)}`
      }
-     debugger
+     
     // let payload = { "object": load }
 
     makeRequest(setLoader, updateSubstance, load, onSuccess, onError);
@@ -75,7 +75,7 @@ const ProductDetails = (props) => {
             label="Product Available for purchase from Date :"
            
           >
-            {/* <DatePicker defaultValue={moment(props.data.on_market)} /> */}
+            <DatePicker defaultValue={moment(props.data.on_market)} />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12} lg={12}>
@@ -110,7 +110,7 @@ const ProductDetails = (props) => {
             label="Product Available for purchase from Date :"
            
           >
-            {/* <DatePicker disabled={disabled} /> */}
+            <DatePicker disabled={disabled} />
           </Form.Item>
         </Col>
       </Row>
