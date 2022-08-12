@@ -20,7 +20,10 @@ const CreateProduct = (props) => {
 
 
     const onFinish = (data) => {
+
         let load={
+            ec_five:Math.floor(1000 + Math.random() * 90000),
+            ecid:`${Math.floor(1000 + Math.random() * 90000)}-${new Date().getFullYear()}`,
             on_market:new Date().toISOString().slice(0, 10),
             ...data 
         }
