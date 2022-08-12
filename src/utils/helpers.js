@@ -37,7 +37,7 @@ export const makeRequest = async(
         }
     } catch (e) {
         if (onError) {
-            onError(e.message, e);
+            // onError(e.message, e);
         }
     }
     loader(false);

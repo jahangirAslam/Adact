@@ -1,12 +1,16 @@
 import { ButtonComponent } from "@comps/components";
-import { getErrorProps, makeRequest, notify } from "@utils/helpers";
+import { getErrorProps, makeRequest, notify,makeRequestStateless } from "@utils/helpers";
 import { Col, Divider, Form, Input, Row, Select, Switch } from "antd";
-import React, { useState } from "react";
-import { updateSubstance } from "../../requests";
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getDependencies } from "../../requests";
 
 const BasicInformation = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
+  const [deps, setDeps] = useState({
+    Reach_Registration: [],
+    Non_Vaporised_Status:[]
+});
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
@@ -16,6 +20,22 @@ const BasicInformation = (props) => {
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
   };
+
+  const getSelectFieldsData = () => {
+    makeRequestStateless(getDependencies, null, onDependencySuccess, null);
+}
+
+useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+}, []);
+
+const onDependencySuccess = (data, res) => {
+  setDeps({
+    Reach_Registration: data.Reach_Registration,
+    Non_Vaporised_Status:data.Non_Vaporised_Status
+  });
+}
 
   const onError = (err) => {
     let errorList = [];
@@ -71,6 +91,7 @@ const BasicInformation = (props) => {
           <Select
               showSearch
               placeholder="Select"
+              options={deps.Reach_Registration}
               
             />
           </Form.Item>
@@ -85,10 +106,7 @@ const BasicInformation = (props) => {
             <Select
               showSearch
               placeholder="Select a country"
-              options={[
-                { label: "Yes", value: "yes" },
-                { label: "No", value: "no" },
-              ]}
+              options={deps.Non_Vaporised_Status}
             />
           </Form.Item>
         </Col>
