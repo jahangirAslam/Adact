@@ -6,7 +6,7 @@ import React, { useState } from "react";
 import moment from 'moment';
 import { useParams } from "react-router-dom";
 import { updateSubstance } from "../../request";
-import { formatDate, formatDayOnly, formatFullYearOnly, formatMonthOnly } from "../../../../../../utils/helpers";
+import { formatComplete, formatDate, formatDayOnly, formatFullYearOnly, formatMonthOnly } from "../../../../../../utils/helpers";
 
 const ProductDetails = (props) => {
   
@@ -27,8 +27,8 @@ const ProductDetails = (props) => {
       // withdraw:data.withdraw,
       customers:data.customers,
       id : id,
-      on_market:`${formatFullYearOnly(data.marketVal)}-${formatMonthOnly(data.marketVal)}-${formatDayOnly(data.marketVal)}`,
-      withdraw_date:`${formatFullYearOnly(data.withdraw_date)}-${formatMonthOnly(data.withdraw_date)}-${formatDayOnly(data.withdraw_date)}`
+      on_market:`${formatComplete(data.marketVal)}`,
+      withdraw_date:`${formatComplete(data.withdraw_date)}`
      }
      debugger
     // let payload = { "object": load }

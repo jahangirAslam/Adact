@@ -139,6 +139,9 @@ export const formatDayOnly = (date) => {
 export const formatCompleteData = (date) => {
     return formatDate(date, "MM DD, YYYY");
 };
+export const formatComplete = (date) => {
+    return formatDate(date, "YYYY-MM-DD");
+};
 
 export const formatCompleteDataTime = (date) => {
     return formatDate(date, "MMMM DD, YYYY hh:mm A");
