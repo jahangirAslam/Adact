@@ -1,15 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { BodyComponent, EditAbleTable, ActionComponent, CreateButton } from "@comps/components";
-import { makeRequest, removeById, formatCompleteDataTime, notify, replaceById } from "@utils/helpers";
-import { getFacilities,deleteFacility } from "../../../../commons/facilities/requests";
-import CreateFacility from "../../../../commons/facilities/components/CreateFacility";
+import { ActionComponent, BodyComponent, CreateButton, EditAbleTable } from "@comps/components";
+import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
+import { Form } from "antd";
+import React, { useEffect, useState } from "react";
 import EditFacility from "../../../../commons/facilities/components/EditFacility";
 import ViewFacility from "../../../../commons/facilities/components/ViewFacility";
+import { deleteFormulation, getFormulation, getFormulations, updateSubstance } from "./components/request";
 import CreateFormulation from "./CreateFormulation";
-import { Form, Popconfirm, Row, Typography } from "antd";
-import { getFlavours, updateSubstance } from "./components/request";
-
-
 const Formulation = (props) => {
     var delItems = []
     const [form] = Form.useForm();
@@ -50,7 +46,7 @@ const Formulation = (props) => {
             }
             makeRequest(setLoader, updateSubstance, payload, onError);
             setEditingKey('');
-            getFlavours();
+            getFormulation();
         } catch (errInfo) {
             console.log('Validate Failed:', errInfo);
         }
@@ -96,7 +92,7 @@ const Formulation = (props) => {
             key: "actions",
             title: "Actions",
             render: (record) =>
-              ActionComponent({ each: record, onEdit: onEdit, onDelete: onDelete }),
+              ActionComponent({ each: record,  onDelete: onDelete }),
           },
         
         
@@ -114,13 +110,14 @@ const Formulation = (props) => {
             length: pagination.pageSize,
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
-            filters: { "type": "facility" }
+            
         };
-        makeRequest(setLoader, getFacilities, payload, onSuccess, null);
+        makeRequest(setLoader, getFormulations, payload, onSuccess, null);
     }
 
     const onSuccess = (response) => {
         setTotalRecords(response.recordsTotal);
+        debugger
         setDataSource(response.data);
     }
 
@@ -169,7 +166,7 @@ const Formulation = (props) => {
     }
 
     const onDelete = (record) => {
-        makeRequest(setLoader, deleteFacility, record.id, onDeleteSuccess,
+        makeRequest(setLoader, deleteFormulation, record.id, onDeleteSuccess,
             onError)
     }
 

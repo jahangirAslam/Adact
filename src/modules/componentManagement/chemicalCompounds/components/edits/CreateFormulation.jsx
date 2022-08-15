@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Form, Input, InputNumber, Row, Select, Switch } from "antd";
 import { CancelButton, SaveButton, ModalComponent } from "@comps/components";
 import { makeRequest, getErrorProps, notify,makeRequestStateless } from "@utils/helpers";
-import { createFlavour,getProductDependencies } from "./components/request";
+import { createFormulation,getProductDependencies } from "./components/request";
 import { useParams } from "react-router-dom";
 
 
@@ -29,11 +29,11 @@ const {id} = useParams()
       ...data
     }
     let payload = { "object": load }
-    makeRequest(setLoader, createFlavour, payload, onSuccess, onError);
+    makeRequest(setLoader, createFormulation, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
-    notify("Chemical Compound Created", res.msg);
+    notify("Formulation Created", res.msg);
     props.onCreated(res);
   }
 
