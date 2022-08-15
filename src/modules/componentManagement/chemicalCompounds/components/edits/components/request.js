@@ -2,10 +2,10 @@ import {get, post, del, put } from "@utils/axios";
 
 const api = "component-management/formulations";
 
-export const createFlavour = (payload) => {
+export const createFormulation = (payload) => {
     return post(api, payload);
 }
-export const getFlavours = (payload) => {
+export const getFormulation = (payload) => {
     return get(api, payload);
 }
 export const getFlavour = (id) => {
@@ -15,7 +15,7 @@ export const updateSubstance = (payload) => {
     console.log(payload);
     return put(`${api}/${payload.id}`, payload);
 };
-export const deleteFlavour = (payload) => {
+export const deleteFormulation = (payload) => {
     return post(`${api}/bulkDelete`, payload);
 }
 export const getFilters = () => {
@@ -24,4 +24,7 @@ export const getFilters = () => {
 export const getProductDependencies = () => {
 
     return get(`${api}/dependencies`);
+}
+export const getFormulations = (payload) => {
+    return get(api, payload);
 }

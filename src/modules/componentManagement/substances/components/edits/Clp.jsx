@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { updateSubstance,getDependencies, getDependenciesClp } from "../../requests";
+import { updateSubstance,getDependencies, getDependenciesClp,getClp } from "../../requests";
 import { ButtonComponent } from "@comps/components";
 import { makeRequest,makeRequestStateless, notify } from "@utils/helpers";
 import {
@@ -10,6 +10,9 @@ import {
 } from "antd";
 const { TextArea } = Input;
 const Clp = (props) => {
+  const [totalRecords, setTotalRecords] = useState(0);
+  const [dataSource, setDataSource] = useState([]);
+  const [clp, setClp] = useState({});
   const [deps, setDeps] = useState({
     // countries: [],
     Clp_Whether_Classification:[],
@@ -51,11 +54,24 @@ const Clp = (props) => {
     
     makeRequestStateless(getDependenciesClp, null, onDependencySuccess, null);
 }
+const getClpData= ()=>{
+
+  makeRequestStateless(getClp, null,onClpSuccess, null);
+
+}
+
 
 useEffect(() => {
+    getClpData();
     getSelectFieldsData();
     // eslint-disable-next-line
 }, []);
+
+const onClpSuccess= (data)=>{
+  debugger;
+  setClp(data.data[0]);
+
+}
 
 const onDependencySuccess = (data, res) => {
   
@@ -83,8 +99,7 @@ const onDependencySuccess = (data, res) => {
   return (
     <Form
       layout="vertical"
-      // labelCol={{ span: 12 }}
-      initialValues={props.data}
+      initialValues={clp ? clp : {}}
       onFinish={onFinish}
       className="inner-form-heading"
     >
