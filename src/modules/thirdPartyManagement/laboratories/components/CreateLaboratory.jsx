@@ -16,7 +16,7 @@ const CreateLaboratory = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    payload.object["type"] = "Laboratories";
+    payload.object["labolatory"] = true;
     makeRequest(setLoader, createLaboratory, payload, onSuccess, onError);
   }
 

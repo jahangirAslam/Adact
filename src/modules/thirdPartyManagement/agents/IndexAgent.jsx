@@ -123,7 +123,7 @@ const IndexAgent = () => {
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
       // filters: { "type": "Agents" }
-      filters: { ...filters, type: "agents" },
+      filters: { ...filters, agent: true },
     };
     makeRequest(setLoader, getAgents, payload, onSuccess, null);
   };

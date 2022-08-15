@@ -117,7 +117,7 @@ const IndexManufacturer = () => {
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
       // filters : {"type": "Manufacturers"},
-      filters: { ...filters, type: "manufacture" },
+      filters: { ...filters, manufacturer: true },
     };
     makeRequest(setLoader, getManufacturers, payload, onSuccess, null);
   };

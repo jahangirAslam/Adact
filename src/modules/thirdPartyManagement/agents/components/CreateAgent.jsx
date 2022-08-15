@@ -16,7 +16,7 @@ const CreateAgent = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    payload.object["type"] = "agents";
+    payload.object["agent"] = true;
     makeRequest(setLoader, createAgent, payload, onSuccess, onError);
   }
 

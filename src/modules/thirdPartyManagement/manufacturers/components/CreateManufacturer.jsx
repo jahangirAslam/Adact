@@ -16,7 +16,7 @@ const CreateManufacturer = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    payload.object["type"] = "manufacturer";
+    payload.object["manufacturer"] = true;
     makeRequest(setLoader, createManufacturer, payload, onSuccess, onError);
   }
 

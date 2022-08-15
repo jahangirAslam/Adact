@@ -25,7 +25,7 @@ const CreateCustomer = (props) => {
     const userId = Cookies.get("userId");
     const load = { ...data, last_updated_by: userId }
     let payload = { object: load };
-    payload.object["type"] = "customers";
+    payload.object["customer"] = true;
     makeRequest(setLoader, createCustomer, payload, onSuccess, onError);
   };
 

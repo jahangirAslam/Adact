@@ -16,7 +16,7 @@ const CreateAllThirdParty = (props) => {
 
   const onFinish = (data) => {
     let payload = { "object": data }
-    payload.object["type"] = "AllThirdParties";
+    // payload.object["type"] = "AllThirdParties";
     makeRequest(setLoader, createAllThirdParty, payload, onSuccess, onError);
   }
 

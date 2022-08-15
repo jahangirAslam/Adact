@@ -125,7 +125,7 @@ const IndexLaboratory = () => {
       sort_name: pagination.sortName,
       sort_type: pagination.sortType,
       // filters : {"type": "Laboratories"}
-      filters: { ...filters, type: "Laboratories" },
+      filters: { ...filters, labolatory: true },
     };
     makeRequest(setLoader, getLaboratories, payload, onSuccess, null);
   };

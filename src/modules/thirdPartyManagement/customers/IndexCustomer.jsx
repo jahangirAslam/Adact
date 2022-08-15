@@ -113,7 +113,7 @@ const IndexCustomer = () => {
             sort_name: pagination.sortName,
             sort_type: pagination.sortType,
             // filters : {"type": "customers"},
-            filters : {...filters,type: "customers" },
+            filters : {...filters,customer: true },
         };
         makeRequest(setLoader, getCustomers, payload, onSuccess, null);
     }
