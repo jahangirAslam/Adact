@@ -20,6 +20,7 @@ export const createCompany = (payload) => {
 }
 
 export const updateCompany = (payload) => {
+    debugger
     return put(`${api}/${payload.id}`, payload);
 }
 

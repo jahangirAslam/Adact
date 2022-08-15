@@ -3,7 +3,7 @@ import { makeRequest, notify } from "@utils/helpers";
 import { Col, Form, Row, Skeleton, Switch } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory, useParams } from "react-router-dom";
-import { getAcSettings, addAcSettings } from "./requests"
+import { getAcSettings, addAcSettings, getCompanys, getCompany, updateCompany } from "./requests"
 
 
 const formName = "accountSettings";
@@ -24,12 +24,10 @@ const AcountSetting = (props) => {
   const onCompanyError = (res) => {
     notify(res.msg);
   };
-
+ 
   const getSelectFieldsData = () => {
-    let payload = {
-      filters: { companies_id: id },
-    };
-    makeRequest(setLoader, getAcSettings, payload, onDependencySuccess, onError);
+  
+    makeRequest(setLoader, getCompany, id, onDependencySuccess, onError);
   };
 
   useEffect(() => {
@@ -38,11 +36,8 @@ const AcountSetting = (props) => {
 
   const onDependencySuccess = (data, res) => {
     
-    setSetting(data.data[0])
-    setLength({
-      len: data.data.length,
-      acId: data.data[0].id
-    })
+    setSetting(data.object)
+   
   };
 
   const onCancel = () => {
@@ -50,14 +45,14 @@ const AcountSetting = (props) => {
   };
   const onFinish = (data) => {
 
-    const load = {
+    const payload = {
       companies_id: id,
-      length: length,
+      id: id,
       ...data,
     };
-    let payload = { object: load };
+  
 
-    makeRequest(setLoader, addAcSettings, payload, onSuccess, onError);
+    makeRequest(setLoader, updateCompany, payload, onSuccess, onError);
   }
 
   const onSuccess = (data, res) => {
@@ -101,14 +96,14 @@ const AcountSetting = (props) => {
                     label="Small And Medium Size SMES :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.smes == true ? true : false} />
+                    <Switch defaultChecked={setting?.smes} />
                   </Form.Item>
                   <Form.Item
                     name="customer"
                     label="Enterprises (SMEs) Customers  :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.customer == true ? true : false} />
+                    <Switch defaultChecked={setting?.customer} />
                   </Form.Item>
 
                   <Form.Item
@@ -116,7 +111,7 @@ const AcountSetting = (props) => {
                     label="Laboratory :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.labolatory == true ? true : false} />
+                    <Switch defaultChecked={setting?.labolatory} />
                   </Form.Item>
                 </Col>
                 <Col span={12} xs={12}>
@@ -125,14 +120,14 @@ const AcountSetting = (props) => {
                     label="Agent :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.agent == true ? true : false} />
+                    <Switch defaultChecked={setting?.agent} />
                   </Form.Item>
                   <Form.Item
                     name="manufacturer"
                     label="Manufacturer :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.manufacturer == true ? true : false} />
+                    <Switch defaultChecked={setting?.manufacturer} />
                   </Form.Item>
 
                   <Form.Item
@@ -140,7 +135,7 @@ const AcountSetting = (props) => {
                     label="Supplier :"
                     className="da-mb-16"
                   >
-                    <Switch defaultChecked={setting?.supplier == true ? true : false} />
+                    <Switch defaultChecked={setting?.supplier} />
                   </Form.Item>
                 </Col>
               </Row>
@@ -152,7 +147,7 @@ const AcountSetting = (props) => {
                 label="Account Status :"
                 className="da-mb-16"
               >
-                <Switch defaultChecked={setting?.account_status == true ? true : false} />
+                <Switch defaultChecked={setting?.account_status} />
               </Form.Item>
             </Col>
           </Row>
