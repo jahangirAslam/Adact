@@ -134,7 +134,7 @@ const IndexProducts = () => {
     response.data.forEach(element => {
     
       data.push({ ...element, type: element.e_type ? element.e_type[0].type +  "\nand " +  element.category_name  : element.category_name , withdrawn_date:element.withdrawn ? element.withdrawn:"No" , edId:`${element.ecid}-${element.ec_five}`})
-      debugger
+    
     });
     setDataSource(data);
   };

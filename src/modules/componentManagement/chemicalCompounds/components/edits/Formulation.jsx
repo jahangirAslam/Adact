@@ -117,7 +117,7 @@ const Formulation = (props) => {
 
     const onSuccess = (response) => {
         setTotalRecords(response.recordsTotal);
-        debugger
+        
         setDataSource(response.data);
     }
 

@@ -74,7 +74,7 @@ const Business = (props) => {
   }
 
   const onFinish = (submitData) => {
-    debugger
+   
     let payload = {
 
       companies_id: id,

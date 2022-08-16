@@ -17,7 +17,7 @@ const Details = (props) => {
 });
 const onFinish = (payload) => {
   payload.id = props.data.id;
-  debugger;
+ 
   makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
 };
 

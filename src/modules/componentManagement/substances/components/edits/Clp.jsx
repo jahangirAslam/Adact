@@ -68,7 +68,7 @@ useEffect(() => {
 }, []);
 
 const onClpSuccess= (data)=>{
-  debugger;
+  
   setClp(data.data[0]);
 
 }

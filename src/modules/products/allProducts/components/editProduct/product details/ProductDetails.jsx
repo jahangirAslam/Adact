@@ -30,7 +30,7 @@ const ProductDetails = (props) => {
       on_market:`${formatComplete(data.marketVal)}`,
       withdraw_date:`${formatComplete(data.withdraw_date)}`
      }
-     debugger
+  
     // let payload = { "object": load }
 
     makeRequest(setLoader, updateSubstance, load, onSuccess, onError);
@@ -62,7 +62,7 @@ const ProductDetails = (props) => {
       layout="vertical"
       // labelCol={{ span: 7 }}
       name="Details"
-      initialValues={props?.data}
+      // initialValues={props?.data}
       onFinish={onFinish}
     >
       <Row gutter={[16, 24]}>

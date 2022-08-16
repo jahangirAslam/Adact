@@ -4,6 +4,7 @@ import { Col, Divider, Form, Input, Row, Select, Switch } from "antd";
 import React, { useEffect, useState } from "react";
 import { updateSubstance,getDependencies } from "../../requests";
 
+
 const BasicInformation = (props) => {
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
