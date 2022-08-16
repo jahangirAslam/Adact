@@ -70,7 +70,7 @@ const IndexSubstance = () => {
     {
       key: 'status',
       title: 'Status',
-      dataIndex: 'is_active',
+      dataIndex: 'status',
       render: (is_active) => {
         let color = is_active ? 'green' : 'red';
         let text = is_active ? 'ACTIVE' : 'INACTIVE';

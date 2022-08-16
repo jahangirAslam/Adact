@@ -42,36 +42,39 @@ const Clp = (props) => {
 
   const onFinish = (payload) => {
     payload.id = props.data.id;
-    makeRequest(setLoader, updateSubstance, payload, onSuccess);
+    makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
   };
 
   const onSuccess = (data, res) => {
     notify("Substance", res.msg);
   };
-
+  const onError = (err) => {
+    notify("Product Created",);
+  
+  };
 
   const getSelectFieldsData = () => {
     
     makeRequestStateless(getDependenciesClp, null, onDependencySuccess, null);
 }
-const getClpData= ()=>{
+// const getClpData= ()=>{
 
-  makeRequestStateless(getClp, null,onClpSuccess, null);
+//   makeRequestStateless(getClp, null,onClpSuccess, null);
 
-}
+// }
 
 
 useEffect(() => {
-    getClpData();
+    // getClpData();
     getSelectFieldsData();
     // eslint-disable-next-line
 }, []);
 
-const onClpSuccess= (data)=>{
+// const onClpSuccess= (data)=>{
   
-  setClp(data.data[0]);
+//   setClp(data.data[0]);
 
-}
+// }
 
 const onDependencySuccess = (data, res) => {
   
@@ -280,7 +283,7 @@ const onDependencySuccess = (data, res) => {
       <Row>
       <Col className="gutter-row" xs={24} md={12}  >
           <Form.Item
-            name="description"
+            name="clp_stot_description"
             label="Description"
             className="da-mb-16 discription"
           >

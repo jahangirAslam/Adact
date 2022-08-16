@@ -1,7 +1,7 @@
 import {get, post, del, put } from "@utils/axios";
 
 const api = "component-management/substances";
-const clp = "component-management/substance/clp";
+const clp = "component-management/substances/clp";
 
 export const getFilters = () => {
     return get(`${api}/filters`);
