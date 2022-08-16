@@ -73,9 +73,9 @@ const IndexCustomer = () => {
         // },
 
         {
-            key: 'status',
+            key: 'account_status',
             title: 'Status',
-            dataIndex: 'is_active',
+            dataIndex: 'account_status',
             render: (is_active) => {
               let color = is_active ? 'green' : 'red';
               let text = is_active ? 'ACTIVE' : 'INACTIVE';
