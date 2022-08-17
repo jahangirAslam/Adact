@@ -1,18 +1,14 @@
-import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
-import {
-  ActionComponent,
-  BodyComponent, ButtonComponent
-} from "@comps/components";
+import { BodyComponent, ButtonComponent } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Col, Form, Input, Row, Select, Switch } from "antd";
 import TextArea from "antd/lib/input/TextArea";
 import { useEffect, useState } from "react";
-import { useHistory, useParams } from "react-router-dom";
-import CreateRecipe from "./CreateTest";
+import { useHistory } from "react-router-dom";
 import {
-  createFlavour,
-  deleteFlavour, getFlavours, getProductDependencies
-} from "./request";
+  getFlavours,
+  getProductDependencies,
+  updateSubstance,
+} from "../Mandatory/request";
 const onChange = (value) => {
   console.log("changed", value);
 };
@@ -26,6 +22,7 @@ const Design = (props) => {
   const [loader, setLoader] = useState(false);
   const [filters, setFilters] = useState({});
   const [dataSource, setDataSource] = useState([]);
+  const [errors, setErrors] = useState([]);
   const [totalRecords, setTotalRecords] = useState(0);
   const [pagination, setPagination] = useState({
     current: 1,
@@ -35,22 +32,22 @@ const Design = (props) => {
   });
   const [deps, setDeps] = useState({
     volt: [],
-
   });
   const [childComponent, setChildComponent] = useState(null);
 
   const getSelectFieldsData = () => {
-    makeRequestStateless(getProductDependencies, null, onDependencySuccess, null);
-  }
+    makeRequestStateless(
+      getProductDependencies,
+      null,
+      onDependencySuccess,
+      null
+    );
+  };
   const onDependencySuccess = (data, res) => {
     setDeps({
-
       volt: data.Volt_Walt_Adjustable,
-
     });
-
-
-  }
+  };
   useEffect(() => {
     getSelectFieldsData();
     // eslint-disable-next-line
@@ -74,11 +71,15 @@ const Design = (props) => {
   const onSuccess = (response) => {
     setTotalRecords(response.recordsTotal);
     setDataSource(response.data);
-
+  };
+  const onError = (err) => {
+    let errorList = [];
+    errorList["password"] = err;
+    setErrors(errorList);
   };
   const onCreated = () => {
     notify("Design created successfuly ");
-  }
+  };
 
   //deleted multi Items
   const rowSelection = {
@@ -87,18 +88,10 @@ const Design = (props) => {
       delItems = selectedRowKeys;
     },
   };
-  // Create component modal
-
-
- const {id} = useParams()
-  const onFinish = (data) => {
-    let load = {
-      product_id: id,
-      ...data,
-    };
-    
-    let payload = { object: load };
-    makeRequest(setLoader, createFlavour, payload, onCreated);
+  
+  const onFinish = (payload) => {
+    payload.id = props.data.id;
+    makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
   };
   return (
     <>
@@ -150,17 +143,22 @@ const Design = (props) => {
               <h5>E-Liquid</h5>
               <Row gutter={[16, 24]}>
                 <Col className="gutter-row" xs={24} md={12} lg={10}>
-                  <Form.Item name="" label="Liquid Volume Capacity" >
+                  <Form.Item
+                    name="liquid_volume_capacity"
+                    label="Liquid Volume Capacity"
+                  >
                     <Input disabled={disabled} />
                   </Form.Item>
                 </Col>
                 <Col className="gutter-row" xs={24} md={12} lg={10}>
-                  <Form.Item name="" label="Nicotine Concentration" >
+                  <Form.Item
+                    name="nicotine_concentration"
+                    label="Nicotine Concentration"
+                  >
                     <Input disabled={disabled} />
                   </Form.Item>
                 </Col>
               </Row>
-
             </Col>
           </Row>
 
@@ -234,7 +232,7 @@ const Design = (props) => {
                 lg={4}
               >
                 <Form.Item name="wick_changeable" label="wick_changeable :">
-                  <Switch />
+                  <Switch defaultChecked={props.data.wick_changeable} />
                 </Form.Item>
               </Col>
             </Row>
@@ -294,7 +292,7 @@ const Design = (props) => {
                 lg={4}
               >
                 <Form.Item name="microprocessor" label="Microprocessor :">
-                  <Switch />
+                  <Switch defaultChecked={props.data.microprocessor} />
                 </Form.Item>
               </Col>
             </Row>
@@ -350,10 +348,10 @@ const Design = (props) => {
                 lg={4}
               >
                 <Form.Item
-                  name=" airflow_adjustable"
+                  name="airflow_adjustable"
                   label="airflow_adjustable :"
                 >
-                  <Switch />
+                  <Switch defaultChecked={props.data.airflow_adjustable} />
                 </Form.Item>
               </Col>
             </Row>
@@ -376,5 +374,3 @@ const Design = (props) => {
 };
 
 export default Design;
-
-

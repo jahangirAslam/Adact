@@ -1,6 +1,7 @@
 import {get, post, del, put } from "@utils/axios";
 
-const api = "product-management/product/design";
+// const api = "product-management/product/design";
+const api = "product-management/products";
 
 export const createFlavour = (payload) => {
     return post(api, payload);
@@ -9,12 +10,12 @@ export const getFlavours = (payload) => {
     return get(api, payload);
 }
 export const getFlavour = (id) => {
-    return get(`${api}/${id}`);
-}
-export const updateSubstance = (payload) => {
-    console.log(payload);
-    return put(`${api}/${payload.id}`, payload);
-};
+        return get(`${api}/${id}`);
+    }
+    // export const updateSubstance = (payload) => {
+    //     console.log(payload);
+    //     return put(`${api}/${payload.id}`, payload);
+    // };
 export const deleteFlavour = (payload) => {
     return post(`${api}/bulkDelete`, payload);
 }
@@ -24,3 +25,9 @@ export const getFilters = () => {
 export const getProductDependencies = () => {
     return get(`${api}/dependencies`);
 }
+
+// new function
+export const updateSubstance = (payload) => {
+    console.log(payload);
+    return put(`${api}/${payload.id}`, payload);
+};

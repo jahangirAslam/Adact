@@ -7,7 +7,7 @@ import { updateSubstance } from "../request";
 import adact1 from '../../../../../assets/images/adact1.png'
 
 const Details = (props) => {
-    
+
     const data = {...props.data , typeName : props.data.type?.name }
     const [loader, setLoader] = useState("");
     const [errors, setErrors] = useState([]);

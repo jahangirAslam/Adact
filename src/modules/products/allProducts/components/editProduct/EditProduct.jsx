@@ -35,9 +35,11 @@ const EditProduct = () => {
     const [loader, setLoader] = useState(true);
 
     const [data, setData] = useState({
+        
         object: null,
         dependencies: []
     });
+
 
 
 
@@ -81,12 +83,12 @@ const EditProduct = () => {
         {
             title: "Design",
             icon: <LaboratoryIcon />,
-            content: <Design product_id={id} />
+            content: <Design data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Mandatory Declarations",
-            icon: <LaboratoryIcon />,
-            content: <Mandatory product_id={id} />
+            icon: <LaboratoryIcon  />,
+            content: <Mandatory data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Submission",

@@ -2,7 +2,7 @@ import { CancelButton, ModalComponent, SaveButton } from "@comps/components";
 import { makeRequest, makeRequestStateless, notify } from "@utils/helpers";
 import { Form, Select } from "antd";
 import React, { useEffect, useState } from "react";
-import { createFlavour, getProductDependencies } from "./request";
+import { createFlavour, getProductDependencies } from "../Mandatory/request";
 
 
 const formName = "createProductRecipe";

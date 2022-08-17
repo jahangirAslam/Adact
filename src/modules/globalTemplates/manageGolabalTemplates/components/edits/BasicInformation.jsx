@@ -80,7 +80,6 @@ const BasicInformation = (props) => {
           </Form.Item>
           <Form.Item
             name="description"
-            rules={rules.name}
             label="Description :"
             {...getErrorProps(errors["name"])}
           >

@@ -54,27 +54,26 @@ const IndexBusiness = () => {
             sorter: true,
         },
         {
-            key: 'trading_name',
+            key: 'first_address',
             title: 'Address',
-            dataIndex: 'trading_name',
+            dataIndex: 'first_address',
             sorter: true,
         },
         {
-            key: 'trading_name',
+            key: 'phone',
             title: 'Contact',
-            dataIndex: 'trading_name',
+            dataIndex: 'phone',
             sorter: true,
         },
         {
-            key: 'trading_name',
+            key: 'account',
             title: 'Account',
-            dataIndex: 'trading_name',
+            dataIndex: 'account',
             sorter: true,
         },
         {
             key: 'status',
             title: 'Status',
-            sorter:true,
             dataIndex: 'is_active',
             render: (is_active) => {
                 let color = is_active ? 'green' : 'red';
@@ -210,7 +209,7 @@ const availableFilters = [
         data_key: 'name'
     },
     {
-        key: 'countries',
+        key: 'country_id',
         placeholder: 'Country Name',
         type: 'select',
         data_key: 'countries'

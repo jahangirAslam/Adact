@@ -55,9 +55,9 @@ const Formulation = (props) => {
 
     const columns = [
         {
-            key: 'chemical_substance ',
+            key: 'substance_name ',
             title: 'Chemical Substance ',
-            dataIndex: 'chemical_substance',
+            dataIndex: 'substance_name',
             sorter: true,
             editable: false,
         },
