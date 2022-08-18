@@ -246,29 +246,358 @@ const ChemicalPhysicalProperties = (props) => {
             <Input type="number" />
           </Form.Item>
         </Col>
-      </Row>
-      <Divider orientation="left" />
-      <Row gutter={[16, 24]}>
-        <Col className="gutter-row" xs={8}>
+        <Col className="gutter-row" xs={24} md={12} >
           <Form.Item
-            name="is_safe"
-            label="Ingredient unsafe to use? :"
+            name="isotope_atom_count"
+            label="Isotops Atom Count :"
             className="da-mb-16"
           >
-            <Switch defaultChecked={props.data.is_safe} />
+            <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={8}>
-          <Form.Item name="status" label="Status :" className="da-mb-16">
-            <Switch defaultChecked={props.data.status} />
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="undefined_bond_stereocenter_count"
+            label="Undefined Bond Stereocenter Count :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
           </Form.Item>
         </Col>
-        <Col className="gutter-row" xs={8}>
-          <Form.Item name="is_test" label="Test Mode :" className="da-mb-16">
-            <Switch defaultChecked={props.data.is_test} />
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="henrys_law"
+            label="Henry's Law :"
+            className="da-mb-16"
+          >
+            <Input  />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="ionization_porential"
+            label="ionization porential :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="undefined_atom_stereocenter_count"
+            label="Undefined Atom Stereocenter Count :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="covalently_bonded_unit"
+            label="Covalently-Bonded Unit Count :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="xlog_kkoa"
+            label="XLOG KKOA :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="idlh"
+            label="IDLH :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        {/*  */}
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="defined_bond_stereocenter_count"
+            label="defined Bond  Stereocenter Count :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="viscosity"
+            label="Viscosity  :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="x_logp"
+            label="XLOG P3:"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="surface_tension"
+            label="Surface tension:"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+
+        {/*  */}
+
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="index_refraction"
+            label="Index Of Refrection :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="thermal_conductivity"
+            label="Thermal Conductivity  :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="autoignition_temperature"
+            label="Autogenation Temperature:"
+            className="da-mb-16"
+          >
+            <Input  />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="vapor_pressure"
+            label="Vapor Pressure:"
+            className="da-mb-16"
+          >
+            <Input  />
+          </Form.Item>
+        </Col>
+        {/*  */}
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="molar_refractivity"
+            label="Molar Refractivity :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="explosive_limit_lower"
+            label="Explosive Limit (Lower)  :"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="cnf_ingredient"
+            label="CNF_Ingredient_cap_Vapor_pressure_temperature:"
+            className="da-mb-16"
+          >
+            <Input  />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="polarizability"
+            label="Polarize Ability:"
+            className="da-mb-16"
+          >
+            <Input type="number" />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={24} md={12} >
+          <Form.Item
+            name="explosive_limit_upper"
+            label="Explosive Limit (Upper):"
+            className="da-mb-16"
+          >
+            <Input type="number" />
           </Form.Item>
         </Col>
       </Row>
+      <Divider orientation="left" />
+      
+      {/*  */}
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="specific_gravity"
+            className="da-mb-16"
+          >
+              <h5>Specific Gravity</h5>
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="specific_gravity"
+            className="da-mb-16"
+          >
+              <h5>Water Sulubility</h5>
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="specific_gravity"
+            className="da-mb-16"
+          >
+              <h5>Melting Points</h5>
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="specific_gravity"
+            className="da-mb-16"
+          >
+              <h5>Flash Point</h5>
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={6}>
+          
+        </Col>
+        <Col className="gutter-row" xs={6}>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_c"
+            className="da-mb-16"
+            label="°C"
+          >
+              <Input/>  
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_c"
+            className="da-mb-16"
+            label="°C"
+          >
+               <Input/>  
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={6}>
+          
+        </Col>
+        <Col className="gutter-row" xs={6}>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_f"
+            className="da-mb-16"
+            label="°F"
+          >
+              <Input/>  
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_f"
+            className="da-mb-16"
+            label="°F"
+          >
+               <Input/>  
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={6}>
+          
+        </Col>
+        <Col className="gutter-row" xs={6}>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_mm"
+            className="da-mb-16"
+            label="mm"
+          >
+              <Input/>  
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={6}>
+          <Form.Item
+            name="melting_point_mm"
+            className="da-mb-16"
+            label="mm"
+          >
+               <Input/>  
+          </Form.Item>
+        </Col>
+      </Row>
+      <Row gutter={[16, 24]}>
+       <Col xs={24}>
+        <h5>NFPA 704</h5>
+       </Col>
+      <Col className="gutter-row" xs={12}>
+          <Form.Item
+            name="nfpa_health"
+            className="da-mb-16"
+            label="Health"
+          >
+              <Input/>  
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={12}>
+          <Form.Item
+            name="nfpa_instability"
+            className="da-mb-16"
+            label="Instability"
+          >
+               <Input/>  
+          </Form.Item>
+        </Col>
+        
+      </Row>
+      <Row gutter={[16, 24]}>
+        <Col className="gutter-row" xs={12}>
+          <Form.Item
+            name="nfpa_flammability"
+            className="da-mb-16"
+            label="Flammability"
+          >
+              <Input/>  
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" xs={12}>
+          <Form.Item
+            name="nfpa_special"
+            className="da-mb-16"
+            label="Special"
+          >
+               <Input/>  
+          </Form.Item>
+        </Col>
+      </Row>
+      
       <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent
           className="da-mr-10"
