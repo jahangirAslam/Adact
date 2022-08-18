@@ -102,7 +102,7 @@ const onDependencySuccess = (data, res) => {
   return (
     <Form
       layout="vertical"
-      initialValues={clp ? clp : {}}
+      initialValues={props.data}
       onFinish={onFinish}
       className="inner-form-heading"
     >
