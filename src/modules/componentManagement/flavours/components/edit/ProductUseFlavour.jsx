@@ -58,31 +58,31 @@ const ProductUseFlavour = (props) => {
     const columns = [
         {
             title: 'Product Id',
-            dataIndex: 'name',
+            dataIndex: 'product_id',
             width: '25%',
             editable: false,
         },
         {
             title: 'Client',
-            dataIndex: 'type',
+            dataIndex: 'client',
             width: '15%',
             editable: false,
         },
         {
             title: 'Name',
-            dataIndex: 'cas_number',
+            dataIndex: 'name',
             width: '15%',
             editable: false,
         },
         {
             title: 'On Markit',
-            dataIndex: 'ref',
+            dataIndex: 'on_markit',
             width: '15%',
             editable: false,
         },
         {
             title: 'Withdrawn',
-            dataIndex: 'percentage',
+            dataIndex: 'withdrawn',
             width: '25%',
             editable: true,
         },
@@ -98,31 +98,7 @@ const ProductUseFlavour = (props) => {
             width: '15%',
             editable: false,
         },
-        // {
-        //     title: 'operation',
-        //     dataIndex: 'operation',
-        //     render: (_, record) => {
-        //         const editable = isEditing(record);
-        //         return editable ? (
-        //             <span>
-        //                 <Typography.Link
-        //                     onClick={() => save(record.id)}
-        //                     style={{
-        //                         marginRight: 8,
-        //                     }}
-        //                 >
-        //                     Save
-        //                 </Typography.Link>
-        //                 <Popconfirm title="Sure to cancel?" onConfirm={cancel}>
-        //                     <p>Cancel</p>
-        //                 </Popconfirm>
-        //             </span>
-        //         ) : (
-        //             <ActionComponent each={record} onEdit={edit} onDelete={onDelete} >
-        //             </ActionComponent>
-        //         );
-        //     },
-        // },
+        
     ];
 
 

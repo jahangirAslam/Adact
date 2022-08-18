@@ -44,7 +44,7 @@ const Flavours = () => {
 
     },
     {
-      key: 'manufacture_name',
+      key: 'manufacture_id',
       title: 'Manufacturer name',
       dataIndex: 'manufacture_name',
       sorter: (a, b) => a && a.manufacture_name.length - b && b.manufacture_name.length,

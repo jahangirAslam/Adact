@@ -134,11 +134,11 @@ const Mandatory = (props) => {
                 />
               </Form.Item>
               <Form.Item
-                name="no_risk"
+                name="non_risk"
                 label="No Risk Declaration"
                 valuePropName="checked"
               >
-                <Switch defaultChecked={props.data.no_risk} />
+                <Switch defaultChecked={props.data.non_risk} />
               </Form.Item>
            
           </Col>

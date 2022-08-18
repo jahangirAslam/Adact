@@ -1,14 +1,17 @@
 import { ButtonComponent } from "@comps/components";
-import { getErrorProps, makeRequest, notify } from "@utils/helpers";
-import { Col, Divider, Form, Input, Row, Switch } from "antd";
-import React, { useState } from "react";
-import { updateSubstance } from "../request";
+import { getErrorProps, makeRequest, notify,  makeRequestStateless,
+} from "@utils/helpers";
+import { Col, Divider, Form, Input, Row, Select, Switch } from "antd";
+import React, { useEffect, useState } from "react";
+import { updateSubstance,getProductDependencies } from "../request";
 
 const FlavourInformation = (props) => {
   
   const [loader, setLoader] = useState("");
   const [errors, setErrors] = useState([]);
-
+  const [deps, setDeps] = useState({
+    manufacturers: [],
+  });
   const onFinish = (payload) => {
     payload.id = props.data.id;
     makeRequest(setLoader, updateSubstance, payload, onSuccess, onError);
@@ -22,6 +25,27 @@ const FlavourInformation = (props) => {
     let errorList = [];
     errorList["password"] = err;
     setErrors(errorList);
+  };
+
+
+  const getSelectFieldsData = () => {
+    makeRequestStateless(
+      getProductDependencies,
+      null,
+      onDependencySuccess,
+      null
+    );
+  };
+
+  useEffect(() => {
+    getSelectFieldsData();
+    // eslint-disable-next-line
+  }, []);
+
+  const onDependencySuccess = (data, res) => {
+    setDeps({
+      manufacturers: data.manufacturers,
+    });
   };
 
   // const onChange = (e) => {
@@ -53,8 +77,12 @@ const FlavourInformation = (props) => {
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12} lg={8}>
-          <Form.Item name="manufacturer_ref" label="Manufacturer Name :">
-            <Input />
+          <Form.Item name="manufacturer_id" label="Manufacturer Name :">
+          <Select
+            showSearch
+            placeholder="Select  Manufacturer"
+            options={deps.manufacturers}
+          />
           </Form.Item>
         </Col>
         <Col className="gutter-row" xs={24} md={12} lg={8}>
@@ -82,17 +110,30 @@ const FlavourInformation = (props) => {
       <Row gutter={[16, 24]}>
         <Col className="gutter-row" span={8}>
           <Form.Item name="is_active" label="Flavour status">
-            <Switch defaultChecked={props.data.is_safe} />
+            <Switch defaultChecked={props.data.is_active} />
           </Form.Item>
         </Col>
 
         <Col className="gutter-row" span={8}>
-          <Form.Item name="is_test" label="Test Mode :">
-            <Switch defaultChecked={props.data.is_test} />
+          <Form.Item name="in_testing" label="Test Mode :">
+            <Switch defaultChecked={props.data.in_testing} />
           </Form.Item>
         </Col>
       </Row>
       <Divider orientation="left" />
+      <Row gutter={[16, 24]}>
+      <Col className="gutter-row" span={11}>
+          <Form.Item name="updated_on" label="Last Updated On">
+          <Input disabled={true} />
+          </Form.Item>
+        </Col>
+        <Col className="gutter-row" span={11}>
+          <Form.Item name="updated_on" label="Last Updated By">
+          <Input disabled={true} />
+          </Form.Item>
+        </Col>
+
+      </Row>
 
       <Form.Item style={{ textAlign: "end" }}>
         <ButtonComponent
