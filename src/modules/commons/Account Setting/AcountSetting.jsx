@@ -86,6 +86,7 @@ const AcountSetting = (props) => {
             <Col className="gutter-row" span={24} sm={24}>
               <h3 className="headerHeadings">Account Setting</h3>
             </Col>
+            {props.type==="manufacture"?(""):(
             <Col className="gutter-row " span={12} xs={12}>
               <h5>Account Type</h5>
 
@@ -140,6 +141,7 @@ const AcountSetting = (props) => {
                 </Col>
               </Row>
             </Col>
+            )}
             <Col className="gutter-row " span={12} xs={12}>
               <h5>Account Status</h5>
               <Form.Item
@@ -150,8 +152,33 @@ const AcountSetting = (props) => {
                 <Switch defaultChecked={setting?.account_status} />
               </Form.Item>
             </Col>
-          </Row>
-          <Col span={24} xs={24} className="da-mt-32 da-text-align-right">
+            </Row>
+            {props.type === "customers" ||"AllThirdParties" ? ( 
+                    ""
+                  ) : (
+                    <div>
+              <Col className="gutter-row " span={12} xs={12}>
+              <h5>Manufacturer Type</h5>
+              <Form.Item
+                name="eliquid_manufacturer_type"
+                label="ELiquid Manufacturer Type :"
+                className="da-mb-16"
+              >
+                <Switch defaultChecked={setting?.eliquid_manufacturer_type} />
+              </Form.Item>
+              </Col>
+              <Col className="gutter-row " span={12} xs={12}>
+              <Form.Item
+                name="flavour_manufacturer_type"
+                label="Flavour Manufacturer Type :"
+                className="da-mb-16"
+              >
+                <Switch defaultChecked={setting?.flavour_manufacturer_type} />
+              </Form.Item>
+              </Col>
+              </div>
+              )}
+         
             <Form.Item style={{ textAlign: "end" }}>
               <ButtonComponent
                 className="da-mr-10"
@@ -162,7 +189,6 @@ const AcountSetting = (props) => {
                 Apply
               </ButtonComponent>
             </Form.Item>
-          </Col>
         </Form>
       </div>
     </>

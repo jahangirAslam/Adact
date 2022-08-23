@@ -156,7 +156,7 @@ let payload = {
                   >
                     <Input />
                   </Form.Item>
-                  {props.type === "laboratory" ? (
+                 {props.type === "laboratory" ? ( 
                     ""
                   ) : (
                     <Form.Item
