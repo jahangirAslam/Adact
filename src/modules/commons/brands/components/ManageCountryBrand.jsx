@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
-import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
-import { Card } from 'antd';
+import React, { useState } from "react";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
+import { Card } from "antd";
 
 const ManageCountryBrand = (props) => {
-
-
   const [columns, setColumns] = useState(props.columnsFromBackend);
 
   const onDragEnd = (result, columns, setColumns) => {
@@ -44,41 +42,75 @@ const ManageCountryBrand = (props) => {
     }
   };
   return (
-    <DragDropContext onDragEnd={ (result) => onDragEnd(result, columns, setColumns) }>
+    
+    <DragDropContext
+      onDragEnd={(result) => onDragEnd(result, columns, setColumns)}
+    >
       <div className="site-card-border-less-wrapper">
-        <div style={ { display: "flex" } }>
-          <div style={ { margin: "8px", display: "flex", width: "100%", minHeight: "30vh" } }>
-            { Object.entries(columns).map(([columnId, column], index) => {
+        <div style={{ display: "flex" }}>
+          <div
+            style={{
+              margin: "8px",
+              display: "flex",
+              width: "100%",
+              minHeight: "30vh",
+            }}
+          >
+            {Object.entries(columns).map(([columnId, column], index) => {
               return (
-                <Card title={ column.title } className='da-mr-36' style={ { width: 500 } } key={ index }>
-                  <div style={ { height: "300px", overflow: "auto", paddingRight: "20px" } }>
-                    <Droppable key={ columnId } droppableId={ columnId }>
-                      { (provided, snapshot) => (
+                <Card
+                  title={column.title}
+                  className="da-mr-36"
+                  style={{ width: 500 }}
+                  key={index}
+                >
+                  <div
+                    style={{
+                      height: "300px",
+                      overflow: "auto",
+                      paddingRight: "20px",
+                    }}
+                  >
+                    <Droppable key={columnId} droppableId={columnId}>
+                      {(provided, snapshot) => (
                         <div
-                          ref={ provided.innerRef }
-                          style={ { height: "300px" } }
+                          ref={provided.innerRef}
+                          style={{ height: "300px" }}
                         >
-                          { column.items.map((item, index) => (
-                            <Draggable key={ index } draggableId={ `'${item.id}'` } index={ index }>
-                              { (provided) => (
+                          {column.items.map((item, index) => (
+                            <Draggable
+                              key={index}
+                              draggableId={`'${item.id}'`}
+                              index={index}
+                            >
+                              {(provided) => (
                                 <div
-                                  ref={ provided.innerRef }
-                                  { ...provided.draggableProps }
-                                  { ...provided.dragHandleProps }
+                                  ref={provided.innerRef}
+                                  {...provided.draggableProps}
+                                  {...provided.dragHandleProps}
                                 >
-                                  <p style={ { border: "solid 2px lightgrey", padding: "5px", borderRadius: "5px", cursor: "move" } }>{ item.name }</p>
+                                  <p
+                                    style={{
+                                      border: "solid 2px lightgrey",
+                                      padding: "5px",
+                                      borderRadius: "5px",
+                                      cursor: "move",
+                                    }}
+                                  >
+                                    {item.name}
+                                  </p>
                                 </div>
-                              ) }
+                              )}
                             </Draggable>
-                          )) }
-                          { provided.placeholder }
+                          ))}
+                          {provided.placeholder}
                         </div>
-                      ) }
+                      )}
                     </Droppable>
                   </div>
                 </Card>
               );
-            }) }
+            })}
           </div>
         </div>
       </div>

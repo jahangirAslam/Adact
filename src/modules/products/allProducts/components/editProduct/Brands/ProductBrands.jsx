@@ -2,29 +2,30 @@ import { CheckOutlined, CloseOutlined } from "@ant-design/icons";
 import {
   ActionComponent,
   BodyComponent,
+  CreateButton,
   FilterComponent,
+  HeaderComponent,
   TableComponent,
 } from "@comps/components";
 import { makeRequest, notify, removeById, replaceById } from "@utils/helpers";
 import { Tag } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ViewBrand from "./components/ViewBrand.jsx";
 import { deleteBrand, getBrands, getFilters } from "./requests";
+import ViewBrand from "./ViewBrand";
+const pageConfig = {
+    headers: {
+        title: "Manage All Product",
+        breadcrumb: [
+            {
+                name: "Manage Brands",
+                path: "/third-party/customers"
+            }
+        ]
+    }
+}
 
-// const pageConfig = {
-//     headers: {
-//         title: "Brands",
-//         breadcrumb: [
-//             {
-//                 name: "Brands",
-//                 path: "/common/brands"
-//             }
-//         ]
-//     }
-// }
-
-const IndexBrand = () => {
+const ProductBrands = () => {
   const [loader, setLoader] = useState(false);
   const history = useHistory();
   const [dataSource, setDataSource] = useState([]);
@@ -40,12 +41,7 @@ const IndexBrand = () => {
   const [childComponent, setChildComponent] = useState(null);
 
   const columns = [
-    {
-      key: "customer_name",
-      title: " Product Name ",
-      dataIndex: "customer_name",
-      sorter: true,
-    },
+    
     {
       key: "name",
       title: "Brand Name ",
@@ -70,7 +66,7 @@ const IndexBrand = () => {
       dataIndex: "launch_date",
       sorter: true,
     },
-  
+
     {
       key: "status",
       title: "Status",
@@ -194,16 +190,16 @@ const IndexBrand = () => {
   return (
     <>
       {childComponent}
-      {/* <HeaderComponent headers={ pageConfig.headers }>
-                <CreateButton onClick={ onCreate } />
-            </HeaderComponent> */}
+      <HeaderComponent headers={pageConfig.headers}>
+        <CreateButton onClick={onCreate} />
+      </HeaderComponent>
 
       <BodyComponent>
-        {/* <FilterComponent
+        <FilterComponent
           filters={availableFilters}
           onFilter={setFilters}
           api={getFilters}
-        /> */}
+        />
         <TableComponent
           loader={loader}
           columns={columns}
@@ -216,51 +212,44 @@ const IndexBrand = () => {
   );
 };
 
-export default IndexBrand;
+export default ProductBrands;
 
-// const availableFilters = [
- 
-//   {
-//     key: "name",
-//     placeholder: "Brand Name",
-//     type: "text",
- 
-//   },
-//   {
-//     key: "sub_name",
-//     placeholder: "Sub Brand",
-//     type: "text",
-    
-//   },
-//   {
-//     key: "brand_withdraw",
-//     placeholder: "WithDraw",
-//     type: "select",
-//     data_key: "withdrawn",
-//   },
-//   {
-//     key: "launch_date",
-//     placeholder: "Launch Date",
-//     type: "text",
-//     data_key: "launch_date",
-//   },
-//   {
-//     key: "units",
-//     placeholder: "Units",
-//     type: "text",
- 
-//   },
-//   {
-//     key: "market",
-//     placeholder: "Maret",
-//     type: "text",
- 
-//   },
-//   {
-//     key: "id",
-//     placeholder: "ID",
-//     type: "text",
-
-//   },
- 
-// ];
+const availableFilters = [
+  {
+    key: "name",
+    placeholder: "Brand Name",
+    type: "text",
+  },
+  {
+    key: "sub_name",
+    placeholder: "Sub Brand",
+    type: "text",
+  },
+  {
+    key: "brand_withdraw",
+    placeholder: "WithDraw",
+    type: "select",
+    data_key: "withdrawn",
+  },
+  {
+    key: "launch_date",
+    placeholder: "Launch Date",
+    type: "text",
+    data_key: "launch_date",
+  },
+  {
+    key: "units",
+    placeholder: "Units",
+    type: "text",
+  },
+  {
+    key: "market",
+    placeholder: "Maret",
+    type: "text",
+  },
+  {
+    key: "id",
+    placeholder: "ID",
+    type: "text",
+  },
+];
