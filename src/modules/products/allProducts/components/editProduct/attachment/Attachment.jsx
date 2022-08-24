@@ -6,33 +6,31 @@ import {
   FilterComponent,
   HeaderComponent,
   SelectionTable,
-  ImportButton,
+  Dropzone,
 } from "@comps/components";
 import { makeRequest, notify } from "@utils/helpers";
 import { Col, Row } from "antd";
 import React, { useEffect, useState } from "react";
 import { useHistory } from "react-router-dom";
-import ImportUser from "../../userManagement/users/components/ImportUser";
-import CreateProduct from "./components/CreateProducts";
-import ImportProduct from "./components/ImportProduct";
+import CreateAttachment from "./CreateAttachment.jsx";
 import {
   deleteProduct,
   getAllProducts,
   getFilters,
-} from "./components/request";
+} from "./request";
 
-const pageConfig = {
-  headers: {
-    title: "Products list/All Types",
-    breadcrumb: [
-      {
-        name: "All Products",
-      },
-    ],
-  },
-};
+// const pageConfig = {
+//   headers: {
+//     title: "Products list/All Types",
+//     breadcrumb: [
+//       {
+//         name: "All Products",
+//       },
+//     ],
+//   },
+// };
 
-const IndexProducts = () => {
+const Attachment = () => {
   var delItems = [];
   const [loader, setLoader] = useState(false);
   const history = useHistory();
@@ -49,44 +47,56 @@ const IndexProducts = () => {
 
   const columns = [
     {
-      key: "edId",
-      title: "Product ID",
-      dataIndex: "edId",
+      key: "file_name",
+      title: "File Name",
+      dataIndex: "file_name",
       sorter: true,
     },
     {
-      key: "customer_name",
-      title: "Client Name",
-      dataIndex: "customer_name",
+        key: "file_type",
+        title: "File type",
+        dataIndex: "file_type",
+        sorter: true,
+      },
+    {
+      key: "file_size",
+      title: "File Size (byte)",
+      dataIndex: "file_size",
       sorter: true,
     },
 
     {
-      key: "name",
-      title: "Name",
-      dataIndex: "name",
+      key: "category",
+      title: "Category",
+      dataIndex: "category",
       sorter: true,
     },
     {
-        key: "on_market",
-        title: "On Market ",
-        dataIndex: "on_market",
+        key: "subject",
+        title: "Subject ",
+        dataIndex: "subject",
         sorter: true,
       },
 
     {
-      key: "withdrawn_date",
-      title: "Withdrawn",
-      dataIndex: "withdrawn_date",
+      key: "slot",
+      title: "Slot",
+      dataIndex: "slot",
       sorter: true,
     },
 
     {
-      key: "type",
-      title: " Type",
-      dataIndex: "type",
+      key: "submission",
+      title: " Submission",
+      dataIndex: "submission",
       sorter: true,
     },
+    {
+        key: "attachment",
+        title: " Attachment",
+        dataIndex: "ttachment",
+        sorter: true,
+      },
 
     {
       key: "actions",
@@ -141,10 +151,6 @@ const IndexProducts = () => {
     });
     setDataSource(data);
   };
-  const onImported = (res) => {
-    // getAllUsers();
-    setChildComponent(null);
-  }
   const handleTableChange = (page, fil, sorter) => {
     let payload = {
       ...pagination,
@@ -166,7 +172,7 @@ const IndexProducts = () => {
 
   // Create component modal
   const onCreate = () => {
-    setChildComponent(<CreateProduct onCreated={onCreated} />);
+    setChildComponent(<CreateAttachment onCreated={onCreated} />);
   };
 
   const onCreated = (res) => {
@@ -175,9 +181,6 @@ const IndexProducts = () => {
     }
     setChildComponent(null);
   };
-  const onImport = () => {
-    setChildComponent(<ImportProduct onImported={onImported} />);
-  }
   const onView = (record) => {
     history.push(`/products/product/view/${record.id}`);
   };
@@ -206,10 +209,9 @@ const IndexProducts = () => {
   return (
     <>
       {childComponent}
-      <HeaderComponent headers={pageConfig.headers}>
-      <ImportButton onClick={onImport} />
+      <div className="createBtn">
         <CreateButton onClick={onCreate} />
-      </HeaderComponent>
+        </div>
       <BodyComponent>
         <FilterComponent
           filters={availableFilters}
@@ -233,41 +235,26 @@ const IndexProducts = () => {
   );
 };
 
-export default IndexProducts;
+export default Attachment;
 
 const availableFilters = [
   {
-    key: "prduct_id",
-    placeholder: "Product ID",
+    key: "File Name",
+    placeholder: "file_name ",
     type: "text",
   },
   {
-    key: "customer_id",
-    placeholder: "Client Name",
+    key: "category",
+    placeholder: "Category",
     type: "select",
-    data_key: "customers",
+    data_key: "category",
   },
   {
-    key: "name",
-    placeholder: "Name",
-    type: "text",
-  },
-  // {
-  //     key: 'name',
-  //     placeholder: 'On Market',
-  //     type: 'text',
-  // },
-  {
-    key: "withdrawn",
-    placeholder: "Withdrawn",
+    key: "subject",
+    placeholder: "Subject",
     type: "select",
-    data_key: "withdrawn",
-  },
-  {
-    key: 'category_id',
-    placeholder: 'Type',
-    type: 'select',
-    data_key: 'product_category',
+    data_key: "subject",
 
-},
+  },
+ 
 ];

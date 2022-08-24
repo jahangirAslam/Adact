@@ -32,7 +32,7 @@ const ImportUser = (props) => {
   // ------------------------------------
 
   return (
-    <ModalComponent mainTitle="Import" subTitle="User" visible={true} footer={footer} onCancel={() => props.onCreated(false)}>
+    <ModalComponent mainTitle="Import" subTitle="User" visible={true} footer={footer} >
         <Dropzone text="Drag or Click Here To Upload File" multiple={false} files={upload} loader={loader}/>
     </ModalComponent>
   );

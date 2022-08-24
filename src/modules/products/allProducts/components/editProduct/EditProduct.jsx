@@ -14,6 +14,7 @@ import ProductDetails from "./product details/ProductDetails";
 import Submission from "./submission/recipe/Submission";
 import Mandatory from "./Mandatory/Mandatory";
 import ProductBrands from "./Brands/ProductBrands";
+import Attachment from "./attachment/Attachment";
 
 const pageConfig = {
     headers: {
@@ -100,6 +101,11 @@ const EditProduct = () => {
             title: "Mandatory Declarations",
             icon: <LaboratoryIcon  />,
             content: <Mandatory data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Attachment",
+            icon: <LaboratoryIcon  />,
+            content: <Attachment data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Submission",

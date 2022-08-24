@@ -708,3 +708,15 @@ select:-webkit-autofill:focus {
     margin: 4px;
     color: #0093CD;
 }
+
+.createBtn {
+    text-align: end!important;
+}
+
+.uploadFile {
+    width: 100%!important;
+}
+
+.importSaveBtn {
+    width: 100%!important;
+}
