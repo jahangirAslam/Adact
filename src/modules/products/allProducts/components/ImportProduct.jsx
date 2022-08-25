@@ -46,8 +46,8 @@ const ImportProduct = (props) => {
             >
               <Row>
                 <Col sm={24}>
-                  <p>To import products please first download and fill template file</p>
-                  <p>Then please choase a client name and product type,upload the file and import</p>
+                  <p className="importCondition">To import products please first download and fill template file</p>
+                  <p className="importCondition">Then please choase a client name and product type,upload the file and import</p>
 
                 </Col>
                 <Divider/>

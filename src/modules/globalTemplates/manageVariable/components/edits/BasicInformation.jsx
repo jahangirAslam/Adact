@@ -64,7 +64,7 @@ const BasicInformation = (props) => {
             <Select
               showSearch
               placeholder="Select a Customer"
-              options={props.dependencies.customers}
+              // options={props.dependencies.customers}
             />
           </Form.Item>
         </Col>
@@ -124,7 +124,7 @@ const BasicInformation = (props) => {
             <Select
               showSearch
               placeholder="Select a Customer"
-              options={props.dependencies.customers}
+              // options={props.dependencies.customers}
             />
           </Form.Item>
         </Col>

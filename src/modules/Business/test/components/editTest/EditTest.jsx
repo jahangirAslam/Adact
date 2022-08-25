@@ -14,6 +14,7 @@ import SummaryIcon from "../../../../../containers/components/menu/icons/Summary
 import ContactIcon from "../../../../../containers/components/menu/icons/ContactIcon";
 import LocationIcon from "../../../../../containers/components/menu/icons/LocationIcon";
 import SettingsIcon from "../../../../../containers/components/menu/icons/SettingsIcon";
+import Attachment from "./attachment/Attachment";
 
 
 
@@ -86,6 +87,11 @@ const EditTest = () => {
             title: "Account Setting  ",
             icon: <SettingsIcon />,
             content: <AcountSetting data={data.object} dependencies={data.dependencies} />
+        },
+        {
+            title: "Attachments  ",
+            icon: <SettingsIcon />,
+            content: <Attachment data={data.object} dependencies={data.dependencies} />
         },
         {
             title: "Submission ",

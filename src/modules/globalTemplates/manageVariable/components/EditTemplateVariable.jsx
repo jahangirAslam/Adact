@@ -5,11 +5,11 @@ import { useParams } from "react-router-dom";
 import ActivityLog from "../../../componentManagement/chemicalCompounds/components/edits/ActivityLog"
 import { getChemicalCompound } from "../requests";
 import BasicInformation from "./edits/BasicInformation";
-import Preview from "./edits/Preview";
+import Preview from './edits/Preview'
 
 const pageConfig = {
   headers: {
-    title: "Manage Global Templates",
+    title: "Manage Global Templates Variable",
     breadcrumb: [
       {
         name: " Global Templates",
@@ -24,7 +24,7 @@ const pageConfig = {
 }
 
 
-const EditTemplate = () => {
+const EditTemplateVariable = () => {
   const { id } = useParams();
   const [data, setData] = useState({
     object: {},
@@ -51,16 +51,17 @@ const chemicalCompoundSuccess = (res) =>{
         />
       ),
     },
-    {
-      title: "Preview",
-      content: (
-        <Preview
-          id={id}
-          data={data.object}
-          dependencies={data.dependencies}
-        />
-      ),
-    },
+    // {
+    //   title: "Preview",
+    //   content: (
+    //     <Preview
+    //       id={id}
+    //       data={data.object}
+    //       dependencies={data.dependencies}
+    //     />
+    //   ),
+    // },
+    
     {
       title: "Activity Logs",
       content: (
@@ -80,4 +81,4 @@ const chemicalCompoundSuccess = (res) =>{
   return <TabComponent headers={ pageConfig.headers } tabs={ tabs } loader={loader}></TabComponent> ;
 }
 
-export default EditTemplate;
+export default EditTemplateVariable;

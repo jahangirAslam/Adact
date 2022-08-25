@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import ActivityLog from "../../../componentManagement/chemicalCompounds/components/edits/ActivityLog"
 import { getChemicalCompound } from "../requests";
+import Attachment from "./edits/Attachment";
 import BasicInformation from "./edits/BasicInformation";
 import Preview from "./edits/Preview";
 
@@ -55,6 +56,16 @@ const chemicalCompoundSuccess = (res) =>{
       title: "Preview",
       content: (
         <Preview
+          id={id}
+          data={data.object}
+          dependencies={data.dependencies}
+        />
+      ),
+    },
+    {
+      title: "Attachments",
+      content: (
+        <Attachment
           id={id}
           data={data.object}
           dependencies={data.dependencies}

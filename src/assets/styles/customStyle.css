@@ -719,4 +719,13 @@ select:-webkit-autofill:focus {
 
 .importSaveBtn {
     width: 100%!important;
+    font-size: 22px!important;
+    font-weight: 600!important;
+    color: white;
+    background-color: #0093CD;
+}
+
+.importCondition {
+    font-size: 17px!important;
+    font-weight: 600;
 }

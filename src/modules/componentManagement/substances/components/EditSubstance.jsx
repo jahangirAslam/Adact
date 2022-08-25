@@ -6,6 +6,7 @@ import Chemical from "../../../../containers/components/menu/icons/Chemical";
 import DashboardIcon from "../../../../containers/components/menu/icons/DashboardIcon";
 import SummaryIcon from "../../../../containers/components/menu/icons/SummaryIcon";
 import { getSubstance } from "./../requests";
+import Attachment from "./edits/Attachment";
 import BasicInformation from "./edits/BasicInformation";
 import ChemicalPhysicalProperties from "./edits/ChemicalPhysicalProperties";
 import Clp from "./edits/Clp";
@@ -60,6 +61,11 @@ const EditSubstance = () => {
       title: "Toxical",
       icon: <Chemical />,
       content: <Toxical id={id} data={data} />,
+    },
+    {
+      title: "Attachments",
+      icon: <Chemical />,
+      content: <Attachment id={id} data={data} />,
     },
     {
       title: "Data Source",

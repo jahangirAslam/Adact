@@ -8,7 +8,7 @@ import { getFlavour } from "../request";
 import FlavourInformation from "./FlavourInformation";
 import ProductUseFlavour from "./ProductUseFlavour";
 import Recipe from "./recipe/Recipe";
-
+import Attachment from './attachment/Attachment'
 
 const pageConfig = {
     headers: {
@@ -67,6 +67,11 @@ const EditFlavour = () => {
             title: "List of Product which uses this flavour",
             icon: <DocumentsIcon />,
             content: <ProductUseFlavour flavourId={id} />
+        },
+        {
+            title: "Attachments",
+            icon: <DocumentsIcon />,
+            content: <Attachment flavourId={id} />
         },
 
     ]
